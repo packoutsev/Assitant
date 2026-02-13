@@ -1,0 +1,45 @@
+BACKTEST SUMMARY — 2026-02-13 01:28
+================================================================================
+
+Customers tested: 15 (7 post-acquisition, 8 pre-acquisition)
+Excluded: 4
+
+AGGREGATE ACCURACY METRICS
+----------------------------------------
+Metric                     MAPE       MdAE       Bias
+TAGs                      60.2%      52.3%     +11.7%
+Boxes                     61.0%      63.2%     +69.4%
+Labor Hours               53.5%      55.3%     -18.3%
+Total RCV                 57.6%      48.5%      -6.2%
+
+Post-Acquisition RCV MAPE: 54.9% (n=7)
+
+PER-CUSTOMER RESULTS
+----------------------------------------
+Adler, Jason: 15 rooms, pred $14,575 vs actual $11,241 (+29.7%)
+Alexander, Keith: 5 rooms, pred $6,654 vs actual $12,923 (-48.5%)
+Cash, Christina: 7 rooms, pred $8,389 vs actual $20,609 (-59.3%)
+Dodd, Susan: 10 rooms, pred $9,138 vs actual $6,646 (+37.5%)
+Ezer, Ben Ray: 17 rooms, pred $18,014 vs actual $127,668 (-85.9%) [post-acq]
+Harmon, Michael: 9 rooms, pred $10,008 vs actual $7,529 (+32.9%) [post-acq]
+Hill, Tracy: 7 rooms, pred $7,044 vs actual $14,948 (-52.9%) [post-acq]
+Katz Sarah: 9 rooms, pred $9,905 vs actual $7,631 (+29.8%)
+Kuhn Dale: 14 rooms, pred $15,406 vs actual $18,965 (-18.8%)
+Morrison, Heather: 6 rooms, pred $7,412 vs actual $20,338 (-63.6%) [post-acq]
+Mulvaney, Chad: 9 rooms, pred $10,371 vs actual $10,816 (-4.1%) [post-acq]
+Murphy Kevin: 5 rooms, pred $6,119 vs actual $4,694 (+30.4%)
+Qaqish, Mark: 11 rooms, pred $13,539 vs actual $44,162 (-69.3%) [post-acq]
+Stout, Michael: 9 rooms, pred $9,331 vs actual $2,874 (+224.7%)
+Susank, David: 4 rooms, pred $5,055 vs actual $20,962 (-75.9%) [post-acq]
+
+AI vs HUMAN ESTIMATOR
+----------------------------------------
+AI RCV MAPE: 56.1%
+Human RCV MAPE: 57.2%
+
+NOTES
+- Storage defaulted to 3 months (actual varies per job)
+- All rooms set to 'medium' density (no photo analysis)
+- Drive time defaulted to 25 min
+- Exterior rooms excluded from analysis
+- With Claude vision API, density + room analysis would improve accuracy
