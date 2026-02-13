@@ -1,0 +1,444 @@
+{
+  "metadata": {
+    "generated": "2026-02-13T01:05:54.961809",
+    "source_estimates": 117,
+    "acquisition_date": "2025-04-15",
+    "total_unique_line_items": 397,
+    "standard_items_count": 27,
+    "core_items_count": 9
+  },
+  "items": [
+    {
+      "desc": "Inventory, Packing, Boxing, and Moving charge - per hour",
+      "cat": "CPS",
+      "sel": "LAB",
+      "unit": "HR",
+      "group_desc": "Bedroom",
+      "default_unit_cost": 58.7,
+      "unit_cost_range": [
+        58.7,
+        58.7
+      ],
+      "default_qty": 16.2,
+      "frequency_pct": 73.5,
+      "estimate_count": 86,
+      "is_core": true
+    },
+    {
+      "desc": "Eval. pack & invent. misc items - per Med box-high density",
+      "cat": "CPS",
+      "sel": "BXMME>",
+      "unit": "EA",
+      "group_desc": "Packout",
+      "default_unit_cost": 32.89,
+      "unit_cost_range": [
+        28.78,
+        32.89
+      ],
+      "default_qty": 35.0,
+      "frequency_pct": 53.0,
+      "estimate_count": 62,
+      "is_core": true
+    },
+    {
+      "desc": "Off-site storage vault (per month)",
+      "cat": "CPS",
+      "sel": "STORV",
+      "unit": "MO",
+      "group_desc": "Storage",
+      "default_unit_cost": 195.0,
+      "unit_cost_range": [
+        150.0,
+        250.0
+      ],
+      "default_qty": 8.0,
+      "frequency_pct": 55.6,
+      "estimate_count": 65,
+      "is_core": true
+    },
+    {
+      "desc": "Contents Evaluation and/or Supervisor/Admin - per hour",
+      "cat": "CPS",
+      "sel": "LABS",
+      "unit": "HR",
+      "group_desc": "Phase 2: Moving & Storage",
+      "default_unit_cost": 79.31,
+      "unit_cost_range": [
+        79.31,
+        79.31
+      ],
+      "default_qty": 7.3,
+      "frequency_pct": 59.8,
+      "estimate_count": 70,
+      "is_core": true
+    },
+    {
+      "desc": "Evaluate, tag, & inventory miscellaneous - per item",
+      "cat": "CPS",
+      "sel": "TAG",
+      "unit": "EA",
+      "group_desc": "Packout",
+      "default_unit_cost": 11.81,
+      "unit_cost_range": [
+        11.76,
+        11.81
+      ],
+      "default_qty": 37.0,
+      "frequency_pct": 63.2,
+      "estimate_count": 74,
+      "is_core": true
+    },
+    {
+      "desc": "Eval. pack & invent. bric-a-brac -per Med box-high density",
+      "cat": "CPS",
+      "sel": "BXBME>",
+      "unit": "EA",
+      "group_desc": "Pack-out",
+      "default_unit_cost": 36.46,
+      "unit_cost_range": [
+        36.46,
+        36.46
+      ],
+      "default_qty": 41.0,
+      "frequency_pct": 12.8,
+      "estimate_count": 15,
+      "is_core": false
+    },
+    {
+      "desc": "Moving van (21'-27') and equipment (per day)",
+      "cat": "CPS",
+      "sel": "TR>",
+      "unit": "EA",
+      "group_desc": "Phase 3: Packback",
+      "default_unit_cost": 202.42,
+      "unit_cost_range": [
+        202.42,
+        202.42
+      ],
+      "default_qty": 2.0,
+      "frequency_pct": 58.1,
+      "estimate_count": 68,
+      "is_core": true
+    },
+    {
+      "desc": "Provide furniture lightweight blanket/pad",
+      "cat": "CPS",
+      "sel": "PAD",
+      "unit": "EA",
+      "group_desc": "Packout",
+      "default_unit_cost": 9.07,
+      "unit_cost_range": [
+        9.07,
+        9.07
+      ],
+      "default_qty": 22.0,
+      "frequency_pct": 64.1,
+      "estimate_count": 75,
+      "is_core": true
+    },
+    {
+      "desc": "Moving, Inventory, and Staging - per hour",
+      "cat": "CPS",
+      "sel": "LAB",
+      "unit": "HR",
+      "group_desc": "Phase 3: Packback",
+      "default_unit_cost": 58.7,
+      "unit_cost_range": [
+        58.7,
+        58.7
+      ],
+      "default_qty": 21.4,
+      "frequency_pct": 16.2,
+      "estimate_count": 19,
+      "is_core": false
+    },
+    {
+      "desc": "Eval. pack & invent. misc items - per Lg box-high density",
+      "cat": "CPS",
+      "sel": "BXMLE>",
+      "unit": "EA",
+      "group_desc": "Packout",
+      "default_unit_cost": 41.58,
+      "unit_cost_range": [
+        36.17,
+        41.58
+      ],
+      "default_qty": 7.0,
+      "frequency_pct": 29.9,
+      "estimate_count": 35,
+      "is_core": false
+    },
+    {
+      "desc": "Evaluate pack & inventory misc items - per Med box",
+      "cat": "CPS",
+      "sel": "BXMME",
+      "unit": "EA",
+      "group_desc": "Sitting Area",
+      "default_unit_cost": 17.23,
+      "unit_cost_range": [
+        14.16,
+        18.22
+      ],
+      "default_qty": 9.0,
+      "frequency_pct": 10.3,
+      "estimate_count": 12,
+      "is_core": false
+    },
+    {
+      "desc": "Haul debris - per pickup truck load - including dump fees",
+      "cat": "DMO",
+      "sel": "PU",
+      "unit": "EA",
+      "group_desc": "Phase 3: Packback",
+      "default_unit_cost": 162.03,
+      "unit_cost_range": [
+        160.65,
+        162.03
+      ],
+      "default_qty": 1.0,
+      "frequency_pct": 58.1,
+      "estimate_count": 68,
+      "is_core": true
+    },
+    {
+      "desc": "Off-site storage & insur. - climate control. (per month)",
+      "cat": "CPS",
+      "sel": "STORH",
+      "unit": "SF",
+      "group_desc": "Storage",
+      "default_unit_cost": 1.55,
+      "unit_cost_range": [
+        1.55,
+        4.0
+      ],
+      "default_qty": 200.0,
+      "frequency_pct": 23.1,
+      "estimate_count": 27,
+      "is_core": false
+    },
+    {
+      "desc": "Moving, Inventory, and Staging - Supervisor/Admin - per hour",
+      "cat": "CPS",
+      "sel": "LABS",
+      "unit": "HR",
+      "group_desc": "Phase 3: Packback",
+      "default_unit_cost": 79.31,
+      "unit_cost_range": [
+        79.31,
+        79.31
+      ],
+      "default_qty": 5.2,
+      "frequency_pct": 16.2,
+      "estimate_count": 19,
+      "is_core": false
+    },
+    {
+      "desc": "Eval. pack & invent. misc items - per Xlg box-high density",
+      "cat": "CPS",
+      "sel": "BXMXE>",
+      "unit": "EA",
+      "group_desc": "Phase 1: Packout",
+      "default_unit_cost": 55.96,
+      "unit_cost_range": [
+        49.07,
+        56.01
+      ],
+      "default_qty": 4.0,
+      "frequency_pct": 23.1,
+      "estimate_count": 27,
+      "is_core": false
+    },
+    {
+      "desc": "Provide box, packing paper & tape - medium size",
+      "cat": "CPS",
+      "sel": "BX",
+      "unit": "EA",
+      "group_desc": "Phase 1:  Inventory & Packout",
+      "default_unit_cost": 4.06,
+      "unit_cost_range": [
+        4.02,
+        4.06
+      ],
+      "default_qty": 20.0,
+      "frequency_pct": 28.2,
+      "estimate_count": 33,
+      "is_core": false
+    },
+    {
+      "desc": "Bubble wrap - 24\" wide - Add-on cost for fragile items",
+      "cat": "CPS",
+      "sel": "BWRAP",
+      "unit": "LF",
+      "group_desc": "Phase 1: Packout",
+      "default_unit_cost": 0.22,
+      "unit_cost_range": [
+        0.22,
+        0.22
+      ],
+      "default_qty": 404.2,
+      "frequency_pct": 43.6,
+      "estimate_count": 51,
+      "is_core": false
+    },
+    {
+      "desc": "Provide stretch film/wrap - 20\" x 1000' roll",
+      "cat": "CPS",
+      "sel": "WRAP",
+      "unit": "RL",
+      "group_desc": "Phase 1: Packout",
+      "default_unit_cost": 29.83,
+      "unit_cost_range": [
+        29.83,
+        29.83
+      ],
+      "default_qty": 2.0,
+      "frequency_pct": 59.0,
+      "estimate_count": 69,
+      "is_core": true
+    },
+    {
+      "desc": "Telehandler/forklift and operator",
+      "cat": "EQU",
+      "sel": "TELEH",
+      "unit": "HR",
+      "group_desc": "Off-Site Storage",
+      "default_unit_cost": 119.18,
+      "unit_cost_range": [
+        118.35,
+        119.18
+      ],
+      "default_qty": 1.2,
+      "frequency_pct": 15.4,
+      "estimate_count": 18,
+      "is_core": false
+    },
+    {
+      "desc": "Bubble wrap - 48\" wide - Add-on cost for fragile items",
+      "cat": "CPS",
+      "sel": "BWRAP>",
+      "unit": "LF",
+      "group_desc": "Packout",
+      "default_unit_cost": 0.4,
+      "unit_cost_range": [
+        0.4,
+        0.4
+      ],
+      "default_qty": 500.0,
+      "frequency_pct": 15.4,
+      "estimate_count": 18,
+      "is_core": false
+    },
+    {
+      "desc": "Bubble Wrap - Add-on cost for fragile items",
+      "cat": "CPS",
+      "sel": "BWRAP",
+      "unit": "LF",
+      "group_desc": "Phase 1:  Inventory & Packout",
+      "default_unit_cost": 0.22,
+      "unit_cost_range": [
+        0.22,
+        0.22
+      ],
+      "default_qty": 500.0,
+      "frequency_pct": 15.4,
+      "estimate_count": 18,
+      "is_core": false
+    },
+    {
+      "desc": "Moving van (16'-20') and equipment (per day)",
+      "cat": "CPS",
+      "sel": "TR",
+      "unit": "EA",
+      "group_desc": "Pack Out",
+      "default_unit_cost": 155.0,
+      "unit_cost_range": [
+        155.0,
+        155.0
+      ],
+      "default_qty": 1.5,
+      "frequency_pct": 11.1,
+      "estimate_count": 13,
+      "is_core": false
+    },
+    {
+      "desc": "Provide stretch film/wrap",
+      "cat": "CPS",
+      "sel": "WRAP",
+      "unit": "RL",
+      "group_desc": "Phase 1:  Inventory & Packout",
+      "default_unit_cost": 29.83,
+      "unit_cost_range": [
+        29.83,
+        29.83
+      ],
+      "default_qty": 2.0,
+      "frequency_pct": 17.9,
+      "estimate_count": 21,
+      "is_core": false
+    },
+    {
+      "desc": "Eval. pack & invent. misc items - per Med box-low density",
+      "cat": "CPS",
+      "sel": "BXMME<",
+      "unit": "EA",
+      "group_desc": "Phase 1: Packout",
+      "default_unit_cost": 13.4,
+      "unit_cost_range": [
+        9.6,
+        13.4
+      ],
+      "default_qty": 3.0,
+      "frequency_pct": 10.3,
+      "estimate_count": 12,
+      "is_core": false
+    },
+    {
+      "desc": "Provide TV box, packing paper & tape",
+      "cat": "CPS",
+      "sel": "BXTV",
+      "unit": "EA",
+      "group_desc": "Packing",
+      "default_unit_cost": 29.89,
+      "unit_cost_range": [
+        29.89,
+        29.89
+      ],
+      "default_qty": 1.0,
+      "frequency_pct": 11.1,
+      "estimate_count": 13,
+      "is_core": false
+    },
+    {
+      "desc": "Personal protective gloves - Disposable (per pair)",
+      "cat": "HMR",
+      "sel": "PPEG6",
+      "unit": "EA",
+      "group_desc": "Phase 1:  Inventory & Packout",
+      "default_unit_cost": 0.41,
+      "unit_cost_range": [
+        0.41,
+        0.44
+      ],
+      "default_qty": 12.0,
+      "frequency_pct": 13.7,
+      "estimate_count": 16,
+      "is_core": false
+    },
+    {
+      "desc": "Provide plastic mattress cover & packing tape - King size",
+      "cat": "CPS",
+      "sel": "CVMTK",
+      "unit": "EA",
+      "group_desc": "Bed 1",
+      "default_unit_cost": 10.08,
+      "unit_cost_range": [
+        10.08,
+        10.08
+      ],
+      "default_qty": 1.0,
+      "frequency_pct": 10.3,
+      "estimate_count": 12,
+      "is_core": false
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+desc,group_desc,cat,sel,unit,estimate_count,frequency_pct,unit_cost_median,unit_cost_weighted_median,unit_cost_p25,unit_cost_p75,unit_cost_min,unit_cost_max,unit_cost_std,qty_median,qty_mean,total_rcv
+"Inventory, Packing, Boxing, and Moving charge - per hour",Bedroom,CPS,LAB,HR,86,73.5,58.7,58.7,58.7,58.7,53.43,85.0,4.54,16.2,23.2,324812.48
+Eval. pack & invent. misc items - per Med box-high density,Packout,CPS,BXMME>,EA,62,53.0,32.88,32.89,28.78,32.89,28.33,47.88,2.95,35.0,70.9,271378.17
+Off-site storage vault (per month),Storage,CPS,STORV,MO,65,55.6,150.0,195.0,150.0,250.0,144.7,350.0,62.98,8.0,11.9,161914.0
+Contents Evaluation and/or Supervisor/Admin - per hour,Phase 2: Moving & Storage,CPS,LABS,HR,70,59.8,79.31,79.31,79.31,79.31,76.76,111.11,7.92,7.3,9.6,101882.4
+"Evaluate, tag, & inventory miscellaneous - per item",Packout,CPS,TAG,EA,74,63.2,11.81,11.81,11.76,11.81,10.07,12.99,0.28,37.0,46.1,77168.54
+Eval. pack & invent. bric-a-brac -per Med box-high density,Pack-out,CPS,BXBME>,EA,15,12.8,36.46,36.46,36.46,36.46,31.91,36.46,1.34,41.0,64.7,75713.76
+Moving van (21'-27') and equipment (per day),Phase 3: Packback,CPS,TR>,EA,68,58.1,202.42,202.42,202.42,202.42,202.42,600.0,39.98,2.0,2.0,53598.38
+Clean misc items - per Med box - high density,Phase 2: Cleaning,CGN,BXMM>,EA,4,3.4,135.18,135.18,135.18,135.18,135.18,135.18,0.0,87.5,83.5,45169.51
+Eval. unpack bric-a-brac -per Med box-high density,TAKE BACK,CPS,BXBME>,EA,3,2.6,31.91,31.91,31.84,31.91,31.76,31.91,0.09,182.0,434.7,41583.34
+Clean misc items - per Med box,Box - Cleaning,CGN,BXMM,EA,8,6.8,65.02,67.59,61.28,67.59,57.81,67.6,4.36,48.0,75.9,36785.58
+Provide furniture lightweight blanket/pad,Packout,CPS,PAD,EA,75,64.1,9.07,9.07,9.07,9.07,9.07,9.98,0.08,22.0,31.0,35870.62
+Windows - Aluminum (Bid Item),,WDA,BIDITM,EA,1,0.9,34772.31,34772.31,34772.31,34772.31,34772.31,34772.31,0.0,1.0,1.0,34772.31
+"Moving, Inventory, and Staging - per hour",Phase 3: Packback,CPS,LAB,HR,19,16.2,58.7,58.7,58.7,58.7,58.7,58.7,0.0,21.4,30.0,33490.11
+Eval. pack & invent. misc items - per Lg box-high density,Packout,CPS,BXMLE>,EA,35,29.9,41.58,41.58,36.17,41.58,35.44,47.53,2.96,7.0,11.8,32830.09
+Off-site storage vault - per month,Off-Site Storage,CPS,STORV,MO,10,8.5,300.0,300.0,187.5,403.75,144.7,425.0,114.99,5.5,13.6,28294.8
+"Inventory, Packing, Boxing & Moving - per hour - after hrs",Phase 1: Packout & Moving,CPS,LABA,HR,11,9.4,88.46,88.79,88.14,88.79,88.14,127.5,10.44,15.0,21.7,28100.3
+Moving charge - per hour,Pack Back Labor,CPS,LAB,HR,3,2.6,64.08,58.7,58.7,69.46,58.7,69.46,6.21,105.2,105.2,25383.14
+Evaluate pack & inventory misc items - per Med box,Sitting Area,CPS,BXMME,EA,12,10.3,17.86,17.23,14.16,18.22,14.16,18.25,1.93,9.0,23.7,21589.33
+Eval. unpack & invent. misc items - per Med box-high density,Phase 3: Packback,CPS,BXMME>,EA,9,7.7,28.34,28.34,28.33,28.34,28.28,47.88,6.19,32.0,70.1,20600.35
+Clean bric-a-brac - per Med box - high density - Lt Clean,Cleaning,CGN,BXBM>-,EA,1,0.9,120.91,120.91,120.91,120.91,120.91,120.91,0.0,150.0,150.0,18136.5
+Eval. unpack & invent. bric-a-brac -per Med box-high density,Boxes,CPS,BXBME>,EA,3,2.6,31.91,31.91,31.91,34.18,31.91,36.46,2.63,72.0,176.0,17215.41
+Haul debris - per pickup truck load - including dump fees,Phase 3: Packback,DMO,PU,EA,68,58.1,161.73,162.03,160.65,162.03,152.59,178.23,3.13,1.0,1.3,15886.16
+Off-site storage & insur. - climate control. (per month),Storage,CPS,STORH,SF,27,23.1,1.55,1.55,1.55,4.0,1.31,4.25,1.18,200.0,271.1,15649.46
+"Inventory, Packing, Boxing, and Moving charge - Supervisor - per hour",Pack Out,CPS,LABS,HR,4,3.4,79.31,79.31,79.31,79.31,79.31,79.31,0.0,19.6,23.0,14593.04
+Inventory Specialist / Supervisor - per hour,PACKOUT,CPS,LABS,HR,6,5.1,95.21,79.31,79.31,111.11,79.31,111.11,17.42,14.5,24.8,14520.19
+Cleaning Technician - per hour,Cleaning,CLN,LAB,HR,9,7.7,58.7,58.7,58.7,58.7,57.0,58.7,0.59,14.2,15.1,13233.27
+"Inventory, unpack, and reset - per Med box-high density",Take Back,CPS,BXMME>,EA,4,3.4,28.33,28.33,28.33,28.33,28.33,28.33,0.0,112.0,112.8,12776.83
+Content Manipulation charge - per hour,Phase 1:  Inventory & Packout,CON,LAB,HR,11,9.4,69.46,69.46,55.15,69.46,53.43,85.0,9.41,5.5,8.0,11803.15
+Fine art - Handling and Storage,Specialty Handling,ARC,HOUSING,EA,2,1.7,4835.0,4835.0,4835.0,4835.0,4835.0,4835.0,0.0,1.0,1.0,11604.0
+"Moving, Inventory, and Staging - Supervisor/Admin - per hour",Phase 3: Packback,CPS,LABS,HR,19,16.2,79.31,79.31,79.31,79.31,79.31,79.31,0.0,5.2,7.6,11435.7
+"Inventory, Unpacking, Unboxing, and Moving charge - per hour",Primary Bedroom/Closet/Bath,CPS,LAB,HR,3,2.6,83.33,83.33,71.02,83.33,58.7,83.33,14.22,50.0,50.0,11268.0
+Unpack & invent. misc items - per Med box-high density,Phase 4: Packback,CPS,BXMME>,EA,7,6.0,28.34,28.34,28.34,28.34,28.33,32.89,1.72,53.0,53.1,10802.17
+Eval. pack & invent. misc items - per Xlg box-high density,Phase 1: Packout,CPS,BXMXE>,EA,27,23.1,55.96,55.96,49.07,56.01,47.21,95.96,8.05,4.0,5.4,10655.51
+Provide furniture blanket/pad,Pack-out,CPS,PAD+,EA,5,4.3,18.26,18.26,18.26,18.26,18.26,18.26,0.0,100.0,87.5,9703.91
+"Packaging, Handling, Storage (Bid Item)",Packout,CPS,BIDITM,EA,2,1.7,3975.0,750.0,2362.5,5587.5,750.0,7200.0,4560.84,1.5,1.5,8700.0
+"Provide box, packing paper & tape - medium size",Phase 1:  Inventory & Packout,CPS,BX,EA,33,28.2,4.06,4.06,4.02,4.06,4.01,4.06,0.02,20.0,30.5,8191.88
+"Bubble wrap - 24"" wide - Add-on cost for fragile items",Phase 1: Packout,CPS,BWRAP,LF,51,43.6,0.22,0.22,0.22,0.22,0.22,0.24,0.0,404.2,602.6,7563.33
+Cleaning - Supervisory/Administrative - per hour,Box Cartage,CLN,LABS,HR,3,2.6,79.31,79.31,79.31,79.31,75.5,79.31,1.68,8.0,10.7,7560.92
+Unbox Med box-high density,Phase 1:  Packback,CPS,BXMME>,EA,1,0.9,30.94,30.94,30.94,30.94,30.94,30.94,0.0,243.0,243.0,7518.42
+Content Manipulation charge - per hour - after hours,"Emergency Pack, Move, Reset",CON,LABA,HR,1,0.9,83.2,83.2,83.2,83.2,83.2,83.2,0.0,42.9,42.9,7270.02
+Clean misc items - per Lg box,Box - Cleaning,CGN,BXML,EA,2,1.7,72.24,72.24,72.24,72.24,72.24,72.24,0.0,48.0,48.0,6941.18
+Clean furniture,Cleaning,CHF,FRN,EA,4,3.4,47.86,49.84,45.91,49.82,45.91,49.84,2.26,37.5,36.5,6886.31
+unpack & invent. misc items - per Med box-high density,Phase3:  Inventory & Packout,CPS,BXMME>,EA,2,1.7,32.72,32.72,32.72,32.72,32.72,32.72,0.0,98.0,98.0,6413.12
+Contents Evaluation and/or Supervisor/Admin - after hours,Content Manipulation,CPS,LABSA,HR,6,5.1,119.09,119.09,119.09,130.31,119.09,141.53,10.95,3.0,7.4,6338.04
+"Stucco repair around doors, windows, etc - 2nd floor",,STU,RP2,LF,1,0.9,33.76,33.76,33.76,33.76,33.76,33.76,0.0,185.0,185.0,6245.6
+Content manipulation from property into truck - per hour,PACKOUT,CPS,LAB,HR,6,5.1,71.02,58.7,58.7,83.33,58.7,83.33,13.49,14.5,14.7,6208.39
+Content Manipulation from Truck to Storage - per hour,OFF-SITE STORAGE,CPS,LAB,HR,6,5.1,71.02,58.7,58.7,83.33,58.7,83.33,13.49,14.5,14.7,6200.06
+Concrete cutting - wall (per LF per inch of saw depth),,CNC,SAWW,LF,1,0.9,16.1,16.1,16.1,16.1,16.1,16.1,0.0,344.0,344.0,5538.4
+"Provide stretch film/wrap - 20"" x 1000' roll",Phase 1: Packout,CPS,WRAP,RL,69,59.0,29.83,29.83,29.83,29.83,29.83,37.83,1.34,2.0,2.2,5267.05
+Clean blouse - knit - Full service,Cleaning,CDC,BLSK,EA,1,0.9,20.37,20.37,20.37,20.37,20.37,20.37,0.0,250.0,250.0,5092.5
+Inventory Specialist,TAKE BACK,CPS,LABS,HR,3,2.6,95.21,79.31,79.31,111.11,79.01,111.11,17.47,9.2,8.6,4990.27
+Clean shirt - T-shirt - Full service,Phase 3: Cleaning,CDC,SHIRTT,EA,7,6.0,5.87,5.87,5.71,5.87,4.9,5.87,0.35,51.0,123.9,4925.7
+Additional Cost of Fuel - per mile,Pack-out,FEE,DRV,EA,3,2.6,0.95,0.95,0.7,0.95,0.7,0.95,0.14,1308.0,1080.0,4740.0
+Off-site storage & insurance (per month),Phase 2: Storage,CPS,STOR,SF,11,9.4,4.0,4.29,1.14,4.29,0.75,4.64,1.66,200.0,169.9,4738.16
+Telehandler/forklift and operator,Off-Site Storage,EQU,TELEH,HR,18,15.4,118.82,119.18,118.35,119.18,117.35,119.18,0.75,1.2,1.6,4693.99
+"Bubble wrap - 48"" wide - Add-on cost for fragile items",Packout,CPS,BWRAP>,LF,18,15.4,0.4,0.4,0.4,0.4,0.4,0.4,0.0,500.0,603.6,4692.99
+Bubble Wrap - Add-on cost for fragile items,Phase 1:  Inventory & Packout,CPS,BWRAP,LF,18,15.4,0.22,0.22,0.22,0.22,0.22,0.22,0.0,500.0,878.5,4684.39
+"Inventory, Unwrapping, and Reset charge - per hour","Unpack, Unwrap, and Reset",CPS,LAB,HR,1,0.9,58.7,58.7,58.7,58.7,58.7,58.7,0.0,76.6,76.6,4496.42
+Eval. pack & invent. misc items - per Lg box-high density (double-medium),Pack Out,CPS,BXMLE>,EA,2,1.7,41.58,41.58,41.58,41.58,41.58,41.58,0.0,53.0,53.0,4407.48
+Eval. pack & invent. misc items - per Lg box-high density (double-medium) (labor only),Take Back,CPS,BXMLE>,EA,2,1.7,41.58,41.58,41.58,41.58,41.58,41.58,0.0,53.0,53.0,4407.48
+"Stucco repair around doors, windows, etc - 1st floor",,STU,RP,LF,1,0.9,23.95,23.95,23.95,23.95,23.95,23.95,0.0,174.0,174.0,4167.3
+Moving van (16'-20') and equipment - per day,PACKOUT,CPS,TR,EA,8,6.8,155.0,155.0,155.0,250.0,155.0,325.0,72.66,2.0,1.4,4160.0
+BID ITEM: IRespond Recoonction,Vendor Work,USR,MISC,EA,2,1.7,1704.54,1704.54,1704.54,1704.54,1704.54,1704.54,0.0,1.2,1.2,4090.9
+BID ITEM:IRespond TV disconnect,Vendor Work,USR,MISC,EA,2,1.7,1701.46,1701.46,1701.46,1701.46,1701.46,1701.46,0.0,1.2,1.2,4083.5
+Moving van (16'-20') and equipment (per day),Pack Out,CPS,TR,EA,13,11.1,155.0,155.0,155.0,155.0,155.0,600.0,111.25,1.5,1.4,4010.0
+Eval. pack & invent. bric-a-brac - per Lg box-high density,PACKOUT,CPS,BXBLE>,EA,2,1.7,45.92,45.8,45.86,45.97,45.8,46.03,0.16,42.5,42.5,3912.55
+Hourly Cost to Unwrap and replace tag items,Pack Back,CPS,LAB,HR,5,4.3,58.7,58.7,58.7,58.7,58.7,58.7,0.0,19.2,12.8,3756.82
+Content Manipulation from truck to property - per hour,TAKE BACK,CPS,LAB,HR,3,2.6,83.33,83.33,71.02,83.6,58.7,83.88,14.38,18.0,16.3,3625.1
+Furniture Unwrapping - per hour,TAKE BACK,CPS,LAB,HR,3,2.6,83.33,83.33,71.02,83.6,58.7,83.88,14.38,16.4,16.6,3622.97
+"Inventory, unpack, and reset- per Med box-high density",Pack Back,CPS,BXMME>,EA,5,4.3,32.88,32.88,32.88,32.88,32.88,32.88,0.0,32.0,21.4,3544.8
+Job-site moving/storage container - 16' long (per month),Primary Bedroom/Closet/Bath,CON,STOPM<,MO,5,4.3,325.0,259.9,259.9,325.0,240.0,352.5,47.99,2.0,2.2,3527.1
+Off-site storage & insur. - climate controlled - per month,Storage,CPS,STORH,SF,3,2.6,1.31,1.31,1.31,2.16,1.31,3.0,0.98,864.0,716.0,3523.68
+Clean sofa,Tag - Cleaning,CUP,SOFA,LF,5,4.3,49.19,49.19,43.15,50.39,43.15,50.82,3.87,11.0,13.3,3202.22
+Moving charge -  Supervisor/Admin - per hour,Phase3:  Inventory & Packout,CPS,LABS,HR,2,1.7,99.79,99.79,99.79,99.79,99.79,99.79,0.0,15.8,15.8,3153.36
+Clean misc items - per Med box - high density - Hvy Clean,BOXES,CGN,BXMM>+,EA,1,0.9,178.3,178.3,178.3,178.3,178.3,178.3,0.0,1.0,1.0,3035.18
+Unpack & invent. bric-a-brac -per Med box-high density,Phase 4: Packback,CPS,BXBME>,EA,3,2.6,31.91,31.91,31.91,34.18,31.91,36.46,2.63,15.0,30.7,2994.49
+Aluminum window - Detach & reset,,WDA,ALRS,EA,1,0.9,133.81,133.81,133.81,133.81,133.81,133.81,0.0,21.0,21.0,2810.01
+Furniture Wrapping and Dismantling - per hour,Pack-out,CPS,LAB,HR,3,2.6,83.33,83.33,71.02,83.33,58.7,83.33,14.22,12.0,12.0,2704.32
+Content Manipulation - After Hours - Supervisor Hours,"Emergency Pack, Move, Reset",CPS,LABSA,HR,1,0.9,119.09,119.09,119.09,119.09,119.09,119.09,0.0,9.9,9.9,2542.57
+5-0 7-0 vinyl sliding patio door,Living Room,WDP,6V8,EA,1,0.9,1877.66,1877.66,1877.66,1877.66,1877.66,1877.66,0.0,1.0,1.0,2504.46
+Clean misc items - per Xlg box - high density,Phase 2: Cleaning,CGN,BXMX>,EA,3,2.6,224.46,224.46,224.46,224.46,224.45,224.46,0.01,1.0,3.7,2470.6
+Contents Transportation - per hour,Off-Site Storage,CPS,LAB,HR,3,2.6,83.33,83.33,77.17,83.33,58.7,83.33,12.31,8.0,8.0,2469.52
+Clean bric-a-brac - per Med box - high density - Hvy Clean,BOXES,CGN,BXBM>+,EA,1,0.9,224.23,224.23,224.23,224.23,224.23,224.23,0.0,1.0,1.0,2469.17
+"Wide Flange Beam - 10 1/8""d. x 5 3/4""w. x 1/4""thick",Living Room,STL,W10X22,LF,3,2.6,52.34,52.34,52.34,52.34,52.34,52.34,0.0,17.4,11.6,2420.74
+Specialty AV Handling,Specialty Handling,CON,MISC,EA,2,1.7,1000.0,1000.0,1000.0,1000.0,1000.0,1000.0,0.0,1.0,1.0,2413.44
+"Inventory, Packing and Moving charge - per hour",Phase 2: Cleaning,CPS,LAB,HR,5,4.3,58.7,58.7,58.7,58.7,58.7,58.7,0.0,6.8,8.1,2389.09
+Inventory and Moving charge - per hour,Phase 3: Move Back,CPS,LAB,HR,2,1.7,58.7,58.7,58.7,58.7,58.7,58.7,0.0,20.0,20.0,2348.0
+Clean furniture - Heavy clean,Cleaning,CHF,FRN+,EA,1,0.9,78.94,78.94,78.94,78.94,78.94,78.94,0.0,29.0,29.0,2298.73
+Clean bric-a-brac - per Med box - high density,Phase 2: Cleaning,CGN,BXBM>,EA,1,0.9,152.05,152.05,152.05,152.05,152.05,152.05,0.0,15.0,15.0,2282.58
+Moving van (21'-27') and equipment - per day,Pack-out,CPS,TR>,EA,3,2.6,375.0,375.0,331.86,375.0,202.42,375.0,86.29,2.0,1.8,2279.84
+Cargo van and equipment (per day),Pack-out,CPS,TRCV,EA,5,4.3,165.04,130.09,130.09,200.0,130.09,200.0,38.29,1.5,2.5,2230.99
+Clean pants - Full service,Phase 3: Cleaning,CDC,PANT,EA,7,6.0,19.23,19.23,18.7,19.23,12.21,19.23,2.6,14.0,16.9,2171.38
+Hotel Room,Pack-out,FEE,EMOB,RM,3,2.6,179.0,179.0,179.0,179.0,179.0,179.0,0.0,4.0,4.0,2148.0
+Provide wardrobe box & tape - medium size,Primary Bedroom/Closet/Bath,CDC,BXWDR,EA,7,6.0,19.39,19.39,19.39,19.39,19.39,19.39,0.0,7.0,7.9,2101.7
+Clean chair - large,Cleaning,CUP,CH>,EA,1,0.9,168.03,168.03,168.03,168.03,168.03,168.03,0.0,12.0,12.0,2019.59
+"Inventory, unpack, and reset bric-a-brac -per Med box-high density",Take Back,CPS,BXBME>,EA,2,1.7,31.91,31.91,31.91,31.91,31.91,31.91,0.0,31.5,31.5,2010.33
+After Hours Pack Back (Agreed Price),After hours Packback,CPS,AGP,EA,1,0.9,2000.0,2000.0,2000.0,2000.0,2000.0,2000.0,0.0,1.0,1.0,2000.0
+"Packaging, Handling, Storage (Agreed Price) - After Hours Packback Additional Costs",Phase 3: Packback,CPS,AGP,EA,1,0.9,2000.0,2000.0,2000.0,2000.0,2000.0,2000.0,0.0,1.0,1.0,2000.0
+Temporary shoring post - Screw jack (per day),Living Room,FRM,SJACK,DA,3,2.6,52.24,52.24,52.24,52.24,52.24,52.24,0.0,15.0,10.0,1959.0
+Masonry - Labor Minimum,Living Room,MAS,MN,EA,4,3.4,308.08,307.81,307.81,308.35,307.81,308.35,0.31,1.5,1.2,1925.16
+"Handling (includes wrapping, moving, and handling of boxes and tags from site and into storage)",Phase 2: Move out,CPS,LAB,HR,1,0.9,58.7,58.7,58.7,58.7,58.7,58.7,0.0,31.7,31.7,1860.79
+Clean shorts - Full service,Phase 3: Cleaning,CDC,SHRT,EA,7,6.0,9.28,9.28,9.02,9.28,8.16,9.28,0.41,26.0,28.9,1833.6
+Firearm Handling,Specialty Handling,CON,MISC,EA,2,1.7,750.0,750.0,750.0,750.0,750.0,750.0,0.0,1.0,1.0,1810.08
+Clean Longsleeve shirt - Full service,Textile - Cleaning,CDC,SHIRT,EA,2,1.7,9.43,9.43,9.43,9.43,9.43,9.43,0.0,95.0,95.0,1791.7
+Provide stretch film/wrap,Phase 1:  Inventory & Packout,CPS,WRAP,RL,21,17.9,29.83,29.83,29.83,29.83,29.83,37.5,1.38,2.0,1.9,1775.74
+Clean jacket - Full service,Textile - Cleaning,CDC,JCK,EA,2,1.7,23.14,23.14,23.14,23.14,23.14,23.14,0.0,38.0,38.0,1758.64
+Door - Labor Minimum,Living Room,DOR,MN,EA,4,3.4,230.73,230.53,230.53,230.93,230.53,230.93,0.23,2.0,1.5,1729.99
+Evaluate pack & inventory misc items - per Med box (Stay Box),Pack Out,CPS,BXMME,EA,2,1.7,18.22,18.22,18.22,18.22,18.22,18.22,0.0,44.0,44.0,1603.36
+Clean storage bin/tub- Heavy clean,Tag - Cleaning,CGN,BIN+,EA,3,2.6,18.75,19.9,17.6,19.9,17.6,19.9,1.33,22.5,22.5,1595.34
+Inventory and Moving Charge - Supervisor/Admin - per hour,Phase 3: Move Back,CPS,LABS,HR,2,1.7,79.31,79.31,79.31,79.31,79.31,79.31,0.0,10.0,10.0,1586.2
+Travel Per Diem per employee,Pack-out,FEC,MISC,EA,4,3.4,50.0,50.0,50.0,50.0,50.0,50.0,0.0,8.0,7.8,1550.0
+"Clean picture - frame, glass & back only - Heavy clean",Tag - Cleaning,CWH,PIC+,SF,2,1.7,10.88,10.88,10.88,10.88,10.88,10.88,0.0,70.0,70.0,1530.06
+"Provide glasspack box, packing paper & tape",Glass Packs,CPS,BXGL,EA,1,0.9,20.27,20.27,20.27,20.27,20.27,20.27,0.0,75.0,75.0,1520.25
+Eval. pack & invent. bric-a-brac -per Xlg box-high density,Pack-out,CPS,BXBXE>,EA,1,0.9,61.96,61.96,61.96,61.96,61.96,61.96,0.0,24.4,24.4,1511.82
+Contingency (Additional Charges),General Conditions,CON,BIDITM,EA,3,2.6,500.0,500.0,500.0,500.0,500.0,500.0,0.0,1.0,1.0,1500.0
+Fine art - shipping and handling fees,Storage,ARC,SHIP,EA,1,0.9,1500.0,1500.0,1500.0,1500.0,1500.0,1500.0,0.0,1.0,1.0,1500.0
+"Dumpster load - Approx. 12 yards, 1-3 tons of debris",Phase 2: Total Loss,DMO,DUMP<,EA,3,2.6,426.11,426.11,426.11,426.11,426.11,426.11,0.0,1.0,1.2,1491.39
+Evaluate pack & inventory misc items - per Xlg box,Bed 1,CPS,BXMXE,EA,3,2.6,31.38,31.38,23.6,31.38,23.6,31.38,4.02,1.0,4.6,1465.56
+Eval. unpack & invent. misc items - per Lg box-high density,Phase 3: Packback,CPS,BXMLE>,EA,6,5.1,35.44,35.44,35.44,35.44,35.44,35.44,0.0,8.0,6.5,1403.8
+"Dumpster load - Approx. 30 yards, 5-7 tons of debris",Pack-out,DMO,DUMP>,EA,3,2.6,679.94,679.94,679.94,679.94,679.94,679.94,0.0,1.0,0.7,1359.88
+Clean shirt - polo - Full service,Textile - Cleaning,CDC,SHIRTP,EA,2,1.7,11.28,11.28,11.28,11.28,11.28,11.28,0.0,60.0,60.0,1353.6
+Clean sheet - full size - satin - Full service,Phase 3: Cleaning,CDC,SHTFST,EA,7,6.0,13.47,13.47,13.28,13.47,13.1,13.47,0.18,9.0,14.0,1303.04
+Structural engineer residential evaluation fee,General Conditions,FEE,ENGEV,EA,2,1.7,500.0,500.0,500.0,500.0,500.0,500.0,0.0,1.0,1.0,1250.0
+Clean sofa - leather - Heavy clean,Tag - Cleaning,CUP,SOFAL+,LF,2,1.7,40.8,40.8,40.8,40.8,40.8,40.8,0.0,15.0,15.0,1231.2
+Provide wardrobe box & tape - large size,Pack-out,CDC,BXWDR>,EA,9,7.7,28.06,29.27,28.06,29.27,28.06,29.27,0.62,3.5,4.2,1209.17
+Clean dress - Full service,Textile - Cleaning,CDC,DRES,EA,3,2.6,25.25,25.25,22.49,25.25,19.74,25.25,3.18,20.0,15.7,1148.18
+Floor protection - heavy paper and tape,Clean Up,DMO,MASKSFP,SF,4,3.4,0.37,0.37,0.37,0.37,0.37,0.37,0.0,750.0,750.0,1126.8
+Unpack Boxes,Phase 3:Packback,CPS,BXMME,EA,1,0.9,17.23,17.23,17.23,17.23,17.23,17.23,0.0,65.0,65.0,1119.95
+Clean chair,Cleaning,CUP,CH,EA,2,1.7,110.68,111.87,110.08,111.27,109.48,111.87,1.69,5.0,5.0,1109.14
+Cleaning Room Rental,Cleaning,CPS,MISC,EA,1,0.9,357.75,357.75,357.75,357.75,357.75,357.75,0.0,3.0,3.0,1073.25
+Clean shirt - child - Full service,Phase 3: Cleaning,CDC,SHIRTCH,EA,7,6.0,8.31,8.31,8.08,8.31,6.08,8.31,0.82,27.0,18.7,1057.32
+Clean shoes (pair) - Full service,Hall Closet,CDC,SHOE,EA,2,1.7,24.51,24.5,24.5,24.51,24.5,24.51,0.01,21.5,21.5,1053.79
+Clean sweater - Full service,Phase 3: Cleaning,CDC,SWT,EA,4,3.4,19.65,19.65,19.65,19.65,19.65,19.65,0.0,13.0,13.0,1021.8
+"Inventory, unpack & invent. misc items - per Med box-high density",Pack Back,CPS,BXMME>,EA,1,0.9,28.33,28.33,28.33,28.33,28.33,28.33,0.0,35.0,35.0,1006.04
+Moving of Upright Piano - 2 units at $500 each,Speicalty Items,SPE,AGP,EA,1,0.9,500.0,500.0,500.0,500.0,500.0,500.0,0.0,2.0,2.0,1000.0
+Content Manipulation from Storage to Truck - per hour,Off-Site Storage,CPS,LAB,HR,1,0.9,83.33,83.33,83.33,83.33,83.33,83.33,0.0,12.0,12.0,999.96
+Eval. pack & invent. misc items - per Med box-low density,Phase 1: Packout,CPS,BXMME<,EA,12,10.3,12.72,13.4,9.6,13.4,9.44,13.56,1.75,3.0,4.2,986.63
+Tech Cartage Labor for removing all items from loss site into isolated soiled storage prior to cleaning,Phase 2: Move to Storage,CPS,LAB,HR,1,0.9,58.7,58.7,58.7,58.7,58.7,58.7,0.0,16.8,16.8,986.16
+Inventory/Content manipulation- per hour,TOTAL LOSS,CPS,LAB,HR,3,2.6,58.7,58.7,58.56,71.02,58.43,83.33,14.3,2.0,5.3,985.22
+Clean misc items - per Med box - Hvy clean,BOXES,CGN,BXMM+,EA,1,0.9,89.14,89.14,89.14,89.14,89.14,89.14,0.0,1.0,1.0,981.86
+Unwrapping,Phase3:  Inventory & Packout,CPS,LAB,HR,1,0.9,58.43,58.43,58.43,58.43,58.43,58.43,0.0,16.8,16.8,978.7
+"Unwrapping, inventorying, and replacing of tagged items",Phase3:  PACK BACK,CPS,LAB,HR,1,0.9,58.43,58.43,58.43,58.43,58.43,58.43,0.0,16.8,16.8,978.7
+"Disassemble, Move, Store, Return, and Reassemble a Billiards Table",Pool Table (by others),CPS,AGP,EA,1,0.9,962.5,962.5,962.5,962.5,962.5,962.5,0.0,1.0,1.0,962.5
+General Demolition - per hour,Living Room,DMO,LAB,HR,4,3.4,55.0,55.0,55.0,55.0,55.0,55.0,0.0,4.0,3.5,962.5
+Floor protection - cardboard and tape,General Conditions,DMO,MASKSFC,SF,5,4.3,0.62,0.62,0.58,0.78,0.58,0.78,0.1,300.0,240.0,960.1
+Provide wardrobe box & tape - Evaluate pack & inventory misc items - medium size,Pack Out,CPS,BXWDR,EA,4,3.4,47.72,47.72,33.21,47.72,28.38,47.72,9.99,4.0,3.7,953.14
+"Provide box, packing paper & tape - large size",Living Room,CPS,BX>,EA,6,5.1,5.49,5.49,5.49,5.49,5.44,5.49,0.01,4.0,11.3,942.14
+Clean towel - Full service,Phase 3: Cleaning,CDC,TW,EA,7,6.0,3.23,3.23,3.18,3.23,3.14,3.23,0.04,16.0,41.6,920.49
+Unpack & invent. misc items - per Lg box-high density,Phase 3: Packback,CPS,BXMLE>,EA,3,2.6,35.44,35.44,35.44,35.44,35.44,35.44,0.0,12.0,8.3,899.96
+"Moving, Unrwapping, and Rewrapping charge - per hour",Cleaning,CPS,LAB,HR,2,1.7,58.56,58.7,58.5,58.63,58.43,58.7,0.19,7.5,7.5,878.88
+Unpack & invent. misc items - per Xlg box-high density,Phase 4: Packback,CPS,BXMXE>,EA,6,5.1,47.21,47.21,47.21,47.21,47.21,55.96,3.57,2.0,3.0,872.02
+Clean countertop appliance - large - Heavy clean,Tag - Cleaning,CAP,APP>+,EA,2,1.7,35.95,35.95,35.95,35.95,35.95,35.95,0.0,12.0,12.0,864.36
+Clean sofa - leather,Cleaning,CUP,SOFAL,LF,1,0.9,44.29,44.29,44.29,44.29,44.29,44.29,0.0,19.0,19.0,841.51
+Provide furniture heavyweight blanket/pad,Bedroom,CPS,PAD+,EA,2,1.7,18.26,18.26,18.26,18.26,18.26,18.26,0.0,6.1,7.0,824.07
+Appliances (Bid Item),Washer/Dryer,APP,BIDITM,EA,1,0.9,800.0,800.0,800.0,800.0,800.0,800.0,0.0,1.0,1.0,800.0
+Job-site cargo container - pick up/del. (each way) 16'-40',Content Manipulation & On-Site Storage,CPS,STOPCD,EA,2,1.7,121.0,90.0,105.5,136.5,90.0,152.0,43.84,3.0,3.0,798.39
+Clean exercise equipment - Heavy clean,Tag - Cleaning,CHF,EXER+,EA,2,1.7,55.19,55.19,55.19,55.19,55.19,55.19,0.0,7.0,7.0,773.36
+Laundry - dry/fold - per pound - Full service,Cleaning,CDC,AV,LB,1,0.9,6.99,6.99,6.99,6.99,6.99,6.99,0.0,110.0,110.0,768.9
+"6"" x 6"" x 10' - fir/larch post - material only",Living Room,FRM,6X6X10,EA,3,2.6,53.0,53.0,53.0,53.0,53.0,53.0,0.0,5.0,3.3,722.8
+"110 volt copper wiring run, box and switch",Living Room,ELE,110S,EA,4,3.4,90.92,90.78,90.78,91.06,90.78,91.06,0.16,1.0,1.8,721.23
+Clean cushion,Phase 2: Cleaning,CUP,CUSH,EA,1,0.9,44.36,44.36,44.36,44.36,44.36,44.36,0.0,16.0,16.0,709.76
+Clean hat - Full service,Phase 3: Cleaning,CDC,HAT,EA,7,6.0,21.77,21.77,21.46,21.77,21.17,21.77,0.29,1.0,4.7,707.28
+"Concrete core drilling - 1"" diameter x 1"" deep",Living Room,CNC,COR1,EA,3,2.6,13.92,13.92,13.92,13.92,13.92,13.92,0.0,8.0,13.3,696.0
+Dust control barrier per square foot,General Conditions,DMO,BARR,SF,2,1.7,0.88,0.88,0.88,0.88,0.88,0.88,0.0,300.0,300.0,672.28
+Inventory Specialist/Working Supervisor - Labor to manipulate and load items from lost site to warehouse for evalution,Phase 2: Total Loss,CPS,LABS,HR,1,0.9,79.31,79.31,79.31,79.31,79.31,79.31,0.0,8.4,8.4,666.2
+"Provide TV box, packing paper & tape",Packing,CPS,BXTV,EA,13,11.1,29.89,29.89,29.89,29.89,28.63,49.85,5.02,1.0,1.2,650.91
+Laundry - wash/dry/fold - per pound - Full service,Phase 3: Cleaning,CDC,AV,LB,7,6.0,6.99,6.99,6.52,6.99,5.1,6.99,0.87,10.0,12.6,634.79
+Vinyl Window - Labor Minimum,Living Room,WDV,MN,EA,3,2.6,247.27,247.27,247.27,247.27,247.27,247.27,0.0,1.0,0.7,618.18
+"Inventory, Unpacking, Unwrapping, and Moving charge - per hour",Tags,CPS,LAB,HR,1,0.9,58.7,58.7,58.7,58.7,58.7,58.7,0.0,10.4,10.4,612.83
+Lodging,Pack-out,FEE,EMOB,RM,1,0.9,600.0,600.0,600.0,600.0,600.0,600.0,0.0,1.0,1.0,600.0
+General Laborer - per hour,Living Room,LAB,LBR,HR,2,1.7,55.44,55.44,55.44,55.44,55.44,55.44,0.0,4.0,4.0,554.4
+HEPA Vacuuming - hourly charge,Phase 3:Clean,HMR,HEPAVAC,HR,3,2.6,92.84,79.55,86.2,92.84,79.55,92.84,7.67,0.5,2.3,554.23
+Moving van (17' - 20') and equipment - per day,Phase 1:  Inventory & Packout,CPS,TR,EA,3,2.6,185.0,185.0,170.0,185.0,155.0,185.0,17.32,1.0,1.0,525.0
+Clean rug - large - Full service,Tag - Cleaning,CDC,RUG>,EA,3,2.6,164.02,164.02,164.02,164.02,164.02,164.02,0.0,1.0,1.0,524.86
+Add for personal protective equipment - Heavy duty,General Conditions,WTR,PPE+,EA,6,5.1,39.81,39.81,39.81,39.81,39.81,50.39,4.32,2.0,1.7,515.52
+Pallet Jack - up to 6000 lb capacity - manual,Phase 1:  Inventory & Packout,EQU,PJK,DA,6,5.1,45.0,45.0,45.0,47.0,45.0,47.0,1.03,1.0,1.1,507.0
+Clean chair - dining - Heavy clean,Tag - Cleaning,CHF,CHD+,EA,2,1.7,22.36,22.36,22.36,22.36,22.36,22.36,0.0,11.0,11.0,495.92
+Clean blouse - Full service,Textile - Cleaning,CDC,BLS,EA,3,2.6,16.22,16.22,13.31,16.22,10.4,16.22,3.36,12.0,11.3,493.28
+Evaluate pack & inventory misc items - per Lg box,Kitchen,CPS,BXMLE,EA,3,2.6,17.73,17.73,17.73,23.23,17.73,23.23,2.82,1.0,1.2,486.75
+Brick lintel - steel,Living Room,MAS,BRKL,LF,4,3.4,7.19,2.5,2.5,11.88,2.5,300.0,120.01,1.5,4.6,483.66
+Labor to manipulate and load items from lost site to warehouse for evalution,Phase 2: Total Loss,CON,LAB,HR,1,0.9,55.41,55.41,55.41,55.41,55.41,55.41,0.0,8.4,8.4,465.44
+"Metal studding, 3 5/8"" wide, 16"" OC, 25 gauge",Living Room,DRY,MST4,SF,1,0.9,2.3,0.45,1.37,3.22,0.45,4.14,2.61,54.0,54.0,446.92
+Exterior - paint one coat,Living Room,PNT,X1,SF,2,1.7,0.86,0.86,0.86,0.86,0.86,0.86,0.0,202.5,202.5,444.6
+Metal Structure - Labor Minimum,Living Room,MTL,MN,EA,2,1.7,175.31,175.31,175.31,175.31,175.31,175.31,0.0,1.0,1.0,438.27
+Clean water bed frame - plain fabric,Cleaning,CUP,BDWT,LF,1,0.9,17.43,17.43,17.43,17.43,17.43,17.43,0.0,25.0,25.0,437.71
+Additional driving charge - per mile,Packing,FEE,DRV,EA,1,0.9,0.7,0.7,0.7,0.7,0.7,0.7,0.0,312.0,312.0,436.8
+Content Manipulation Supervisor charge - per hour,,CON,LAB,HR,1,0.9,105.0,105.0,105.0,105.0,105.0,105.0,0.0,4.0,4.0,420.0
+Unpack and reset specialty boxed items - per hour,TAKE BACK,CPS,LAB,HR,2,1.7,70.88,58.43,64.66,77.1,58.43,83.33,17.61,2.5,2.5,416.65
+"1/2"" drywall - hung, taped, ready for texture",Living Room,DRY,1/2-,SF,4,3.4,2.66,2.66,2.66,2.66,0.5,2.66,0.97,17.4,26.3,400.86
+Clean rug - custom - no fringe - on site - Heavy clean,Cleaning,CUP,RUGC+,SF,1,0.9,1.63,1.63,1.63,1.63,1.63,1.63,0.0,240.0,240.0,393.89
+Clean & deodorize mattress or box spring - king - Heavy cl,Tag - Cleaning,CUP,MATK+,EA,2,1.7,193.97,193.97,193.97,193.97,193.97,193.97,0.0,1.0,1.0,388.72
+"Clean sofa - fancy (tufts, tassels etc.)",Living Room,CUP,SOFAF,LF,1,0.9,54.66,54.66,54.66,54.66,54.66,54.66,0.0,7.0,7.0,383.52
+Eval. unpack & invent. misc items - per Xlg box-high density,Phase 3: Packback,CPS,BXMXE>,EA,5,4.3,47.21,47.21,47.21,47.21,47.21,47.21,0.0,1.0,1.6,381.67
+Containment Barrier/Airlock/Decon. Chamber,GC,WTR,BARR,SF,2,1.7,1.17,1.17,1.17,1.17,1.17,1.17,0.0,136.0,136.0,362.04
+Personal protective gloves - Disposable (per pair),Phase 1:  Inventory & Packout,HMR,PPEG6,EA,16,13.7,0.41,0.41,0.41,0.44,0.41,0.44,0.01,12.0,43.2,344.13
+Eval. unpack & invent. misc items - per Wardrobe Box,Pack Back and Reset,CPS,BXMLE>,EA,1,0.9,28.02,28.02,28.02,28.02,28.02,28.02,0.0,12.0,12.0,342.94
+"Provide box, packing paper & tape - extra large size",Bedroom,CPS,BX>>,EA,3,2.6,7.78,7.78,7.78,7.78,7.78,7.78,0.0,2.0,3.3,339.53
+Unpack & invent. TV BOX items - per Xlg box-high density,Phase3:  Inventory & Packout,CPS,BXMXE>,EA,2,1.7,55.67,55.67,55.67,55.67,55.67,55.67,0.0,3.0,3.0,337.5
+Clean table cloth - Full service,Textile - Cleaning,CDC,TABCL,EA,2,1.7,28.05,28.05,28.05,28.05,28.05,28.05,0.0,6.0,6.0,336.6
+Working Supervisor Cartage Labor for removing all items from loss site into isolated soiled storage prior to cleaning,Phase 2: Move to Storage,CPS,LABS,HR,1,0.9,79.31,79.31,79.31,79.31,79.31,79.31,0.0,4.2,4.2,333.1
+Paint the surface area - one coat,Living Room,PNT,P,SF,3,2.6,0.78,0.78,0.78,0.78,0.78,0.78,0.0,130.6,108.7,323.54
+Supervisor/Admin - per hour - Content Evaluation with Policyholder,Phase 2: Total Loss,CPS,LABS,HR,1,0.9,79.31,79.31,79.31,79.31,79.31,79.31,0.0,4.0,4.0,317.24
+Clean dresser - triple,Phase 3:Clean,CHF,DRES3,EA,2,1.7,77.46,77.46,77.46,77.46,77.46,77.46,0.0,2.0,2.0,309.84
+Clean luggage - average size - Heavy clean,Tag - Cleaning,CGN,LUG+,EA,2,1.7,30.74,30.74,30.74,30.74,30.74,30.74,0.0,5.0,5.0,308.52
+Clean bookcase (per sf of face area) - Heavy clean,Tag - Cleaning,CHF,BK+,SF,3,2.6,3.06,3.24,2.88,3.24,2.88,3.24,0.21,19.0,24.0,307.96
+Clean Kitchen towel - Full service,Textile - Cleaning,CDC,TW,EA,2,1.7,3.14,3.14,3.14,3.14,3.14,3.14,0.0,49.0,49.0,307.72
+Clean Buttondown shirt - Full service,Textile - Cleaning,CDC,SHIRT,EA,2,1.7,9.43,9.43,9.43,9.43,9.43,9.43,0.0,16.0,16.0,301.76
+Cleaning - Labor Minimum,Pack Back,CLN,MN,EA,1,0.9,146.75,146.75,146.75,146.75,146.75,146.75,0.0,2.0,2.0,293.5
+Provide plastic mattress cover & packing tape - King size,Bed 1,CPS,CVMTK,EA,12,10.3,10.08,10.08,10.08,10.08,10.08,11.09,0.24,1.0,1.5,288.25
+Built-in oven - Detach,"Evaluate, Inventory, Packout, Moving and Handling",APP,OVBIRS,EA,3,2.6,172.57,172.57,172.57,197.42,172.57,222.28,28.7,0.5,0.5,283.72
+Built-in oven - Reset,Pack Back and Reset,APP,OVBIRS,EA,3,2.6,172.57,172.57,172.57,197.42,172.57,222.28,28.7,0.5,0.5,283.72
+"Brick - structural (Giant brick), 4""",Living Room,MAS,BRKS4,SF,3,2.6,13.56,13.56,13.56,13.56,13.56,13.56,0.0,8.0,5.4,281.1
+Dust control barrier - tension post (per day),General Conditions,DMO,BARRP,DA,2,1.7,3.63,3.63,3.63,3.63,3.63,3.63,0.0,30.0,30.0,272.26
+Clean chair seat,Phase 2: Cleaning,CUP,CHST,EA,4,3.4,33.78,33.73,33.73,33.82,33.73,33.82,0.05,2.0,2.0,270.49
+"Provide TV box, packing paper & tape (billed at materials +large box labor)",Pack Out,CPS,BXTV,EA,2,1.7,65.43,65.43,65.43,65.43,65.43,65.43,0.0,2.0,2.0,261.72
+Clean and deodorize pillow - large,Cleaning,CUP,PIL>,EA,2,1.7,32.58,32.62,32.56,32.6,32.54,32.62,0.06,4.0,4.0,261.43
+Clean rug - Full service,Tag - Cleaning,CDC,RUG,EA,2,1.7,126.66,126.66,126.66,126.66,126.66,126.66,0.0,1.0,1.0,253.32
+Clean cap - stocking - Full service,Phase 3: Cleaning,CDC,CAPS,EA,4,3.4,6.92,6.92,6.92,6.92,6.92,6.92,0.0,9.0,9.0,249.12
+Inventory and evaluate - per item,Unpacking,CPS,TAG,EA,1,0.9,11.81,11.81,11.81,11.81,11.81,11.81,0.0,21.0,21.0,248.01
+Clean chair - small - Heavy clean,Tag - Cleaning,CHF,CH<+,EA,3,2.6,22.1,22.1,22.1,23.52,22.1,24.93,1.63,5.0,3.7,247.17
+Clean pillow case - Full service,Phase 3: Cleaning,CDC,PILC,EA,5,4.3,4.39,4.39,4.39,4.39,4.39,4.39,0.0,12.0,11.2,245.84
+Clean rug - small - Full service,Textiles,CDC,RUG<,EA,1,0.9,40.65,40.65,40.65,40.65,40.65,40.65,0.0,6.0,6.0,243.9
+Fuel surcharge,Content Manipulation,FEE,FLSRCHG,EA,4,3.4,0.99,0.43,0.85,13.24,0.43,50.0,24.6,38.0,116.5,242.94
+Clean coat - Full service,Textiles,CDC,CT,EA,1,0.9,26.82,26.82,26.82,26.82,26.82,26.82,0.0,9.0,9.0,241.38
+"On-Site Inventory, Packing, Boxing, Moving chrg - per hour",Bedroom,CDC,LABC,HR,1,0.9,60.17,60.17,60.17,60.17,60.17,60.17,0.0,2.0,2.0,240.68
+Clean chair - large or ornate,Phase 2: Cleaning,CHF,CH>,EA,4,3.4,23.81,23.81,23.81,23.81,23.81,23.81,0.0,3.0,2.5,238.19
+Clean misc items - per Med box - low density - Hvy Clean,BOXES,CGN,BXMM<+,EA,1,0.9,59.44,59.44,59.44,59.44,59.44,59.44,0.0,1.0,1.0,238.08
+Total Loss - Processing Time,Phase 3: Packback,CPS,LABS,HR,3,2.6,79.31,79.31,79.31,79.31,79.31,79.31,0.0,1.0,1.0,237.93
+Personal protective mask (N-95),Phase 1:  Inventory & Packout,HMR,PPEM,EA,9,7.7,1.57,1.57,1.57,1.57,1.57,1.57,0.0,13.0,12.5,237.52
+tv handling labor - per hour,Unpacking,CPS,LAB,HR,1,0.9,58.7,58.7,58.7,58.7,58.7,58.7,0.0,4.0,4.0,234.8
+Hydroxyl generator - odor counteractant - 3 optics,Cleaning,CLN,DODHY>,DA,1,0.9,234.48,234.48,234.48,234.48,234.48,234.48,0.0,1.0,1.0,234.48
+Home prep,TAKE BACK,CPS,HP,EA,2,1.7,227.23,227.23,227.23,227.23,227.23,227.23,0.0,0.5,0.5,227.23
+"Inventory, unpack, and reset - per Med box",Take Back,CPS,BXMME,EA,2,1.7,14.16,14.16,14.16,14.16,14.16,14.16,0.0,8.0,8.0,226.56
+Clean night stand,Phase 3:Clean,CHF,NIT,EA,3,2.6,25.15,25.17,25.15,25.16,25.15,25.17,0.01,4.0,3.0,226.47
+Clean china cabinet / hutch top - large - Heavy clean,Tag - Cleaning,CHF,CHIN>+,EA,2,1.7,110.36,110.36,110.36,110.36,110.36,110.36,0.0,1.0,1.0,221.94
+Labor to manipulate and dispose of total loss items.,Phase 2: Total Loss,CON,LAB,HR,1,0.9,55.41,55.41,55.41,55.41,55.41,55.41,0.0,4.0,4.0,221.64
+Clean buffet / hutch bottom - large - Heavy clean,Tag - Cleaning,CHF,BUF>+,EA,2,1.7,54.13,54.13,54.13,54.13,54.13,54.13,0.0,1.0,1.0,217.4
+Clean table - end table,Phase 3:Clean,CHF,TABE,EA,4,3.4,15.72,14.56,14.56,16.87,14.56,16.87,1.33,3.5,3.5,213.96
+Nano-deodorization - per cubic foot,Phase 3:Clean,CLN,DODNAN,CF,2,1.7,0.22,0.22,0.22,0.22,0.22,0.22,0.0,480.0,480.0,211.2
+Scaffold - per section (per day),Living Room,SCF,RENTD,DA,2,1.7,27.74,27.74,27.74,27.74,27.74,27.74,0.0,3.0,3.0,208.05
+Clean tie - Full service,Hall Closet,CDC,TIE,EA,2,1.7,6.12,6.0,6.06,6.18,6.0,6.24,0.17,16.5,16.5,202.32
+"1/2"" Cement board",Living Room,FCT,BCEM1/2,SF,3,2.6,4.38,4.38,4.38,4.38,4.38,4.38,0.0,17.4,11.6,198.28
+Plastic bag - used for disposal of contaminated items,Phase 2: Total Loss,HMR,BAG,EA,3,2.6,3.21,2.69,2.95,3.21,2.69,3.21,0.3,15.0,20.7,196.89
+Clean chair - leather,Cleaning,CUP,CHL,EA,1,0.9,97.12,97.12,97.12,97.12,97.12,97.12,0.0,2.0,2.0,194.24
+Clean pants - denim jeans - fancy - Full service,Textile - Cleaning,CDC,PANTJF,EA,2,1.7,12.01,12.01,12.01,12.01,12.01,12.01,0.0,8.0,8.0,192.16
+Clean curtains - plain - large - Full service,Textile - Cleaning,CDC,CURP>,EA,2,1.7,46.57,46.57,46.57,46.57,46.57,46.57,0.0,2.0,2.0,186.28
+Clean wall hanging - large - Heavy clean,Tag - Cleaning,CWH,WH>+,EA,2,1.7,17.81,17.81,17.81,17.81,17.81,17.81,0.0,5.0,5.0,178.66
+Clean and deodorize ottoman - plain fabric,Cleaning,CUP,OTTO,LF,1,0.9,43.53,43.53,43.53,43.53,43.53,43.53,0.0,4.0,4.0,174.88
+Clean dress - child - Full service,Textiles,CDC,DRESCH,EA,1,0.9,13.18,13.18,13.18,13.18,13.18,13.18,0.0,13.0,13.0,171.34
+Clean misc items - per Lg box - high density,Phase 2: Cleaning,CGN,BXML>,EA,1,0.9,168.91,168.91,168.91,168.91,168.91,168.91,0.0,1.0,1.0,169.05
+Clean golf bag - Heavy clean,Tag - Cleaning,CGN,GOLFB+,EA,2,1.7,83.45,83.45,83.45,83.45,83.45,83.45,0.0,1.0,1.0,167.62
+Microwave oven - over range or drawer type- Reset,Pack Back and Reset,APP,MWSRS,EA,3,2.6,100.12,100.12,100.12,114.64,100.12,129.15,16.76,0.5,0.5,164.7
+Microwave oven - over range or drawer type- Detach,"Evaluate, Inventory, Packout, Moving and Handling",APP,MWSRS,EA,3,2.6,100.12,100.12,100.12,114.64,100.12,129.15,16.76,0.5,0.5,164.7
+Clean dresser - triple - Heavy clean,Tag - Cleaning,CHF,DRES3+,EA,2,1.7,81.46,81.46,81.46,81.46,81.46,81.46,0.0,1.0,1.0,163.7
+Provide mattress box & tape - queen size,"Inventory, Packing, and Tagging",CPS,BXMATQ,EA,2,1.7,36.72,36.72,36.72,36.72,36.72,36.72,0.0,2.0,2.0,160.24
+"Handling (includes wrapping, moving, and handling of boxes and tags from site and into storage)  Supervisor/Admin - per hour",Phase 2: Move out,CPS,LABS,HR,1,0.9,79.31,79.31,79.31,79.31,79.31,79.31,0.0,2.0,2.0,158.62
+Clean stereo - comp. - speakers - large - ext. wipe down,Tags,CEL,STERS>,EA,3,2.6,18.68,18.68,16.51,18.68,16.51,18.68,1.19,1.0,1.8,155.62
+Clean bag - Full service,Textiles,CDC,BAG,EA,1,0.9,12.64,12.64,12.64,12.64,12.64,12.64,0.0,12.0,12.0,151.68
+Clean headboard - plain fabric,Cleaning,CUP,BDHD,LF,1,0.9,21.55,21.55,21.55,21.55,21.55,21.55,0.0,7.0,7.0,151.4
+Clean overalls - work coveralls - Full service,Textile - Cleaning,CDC,OVWC,EA,2,1.7,24.74,24.74,24.74,24.74,24.74,24.74,0.0,3.0,3.0,148.44
+Clean bench - fabric,Cleaning,CUP,BENS,LF,1,0.9,26.41,26.41,26.41,26.41,26.41,26.41,0.0,5.5,5.5,145.91
+Moving van (14'-15') and equipment (per day),Phase 1:  Inventory & Packout,CPS,TR<,EA,1,0.9,145.26,145.26,145.26,145.26,145.26,145.26,0.0,1.0,1.0,145.26
+Clean table - dining - large - Heavy clean,Tag - Cleaning,CHF,TABD>+,EA,2,1.7,72.2,72.2,72.2,72.2,72.2,72.2,0.0,1.0,1.0,145.0
+Clean night stand contents,Phase 2: Cleaning,CGN,NIT,EA,3,2.6,20.35,20.35,20.35,20.35,20.35,20.35,0.0,2.0,2.3,142.5
+UnpackTV box (labor only),Take Back,CPS,BXTV,EA,2,1.7,35.54,35.54,35.54,35.54,35.54,35.54,0.0,2.0,2.0,142.16
+Clean wall hanging - large,Phase 2: Cleaning,CWH,WH>,EA,1,0.9,15.52,15.52,15.52,15.52,15.52,15.52,0.0,9.0,9.0,139.68
+Clean boots - leather (pair) - Full service,Textiles,CDC,BOOTL,EA,1,0.9,34.0,34.0,34.0,34.0,34.0,34.0,0.0,4.0,4.0,136.0
+Clean desk,Phase 3:Clean,CHF,DESK,EA,2,1.7,33.82,33.82,33.82,33.82,33.82,33.82,0.0,2.0,2.0,135.28
+Clean armoire (wardrobe),Phase 2: Cleaning,CHF,ARM,EA,2,1.7,62.38,62.38,62.38,62.38,62.38,62.38,0.0,1.0,1.0,124.76
+Clean table - dining - large,Phase 3:Clean,CHF,TABD>,EA,2,1.7,62.09,62.09,62.09,62.09,62.09,62.09,0.0,1.0,1.0,124.18
+Clean desk - Heavy clean,Tag - Cleaning,CHF,DESK+,EA,3,2.6,39.01,39.01,39.01,41.36,39.01,43.72,2.72,1.0,1.0,122.95
+Clean gloves - Full service,Textile - Cleaning,CDC,GLOV,EA,3,2.6,8.44,8.44,8.44,8.56,8.44,8.68,0.14,6.0,4.7,118.64
+Clean golf club - Heavy clean,Tag - Cleaning,CGN,GOLFC+,EA,3,2.6,6.74,6.74,6.74,7.2,6.74,7.67,0.54,8.0,5.7,115.53
+Texture drywall - machine - knockdown,Living Room,DRY,TEXMK,SF,1,0.9,1.15,1.15,1.15,1.15,1.15,1.15,0.0,80.0,80.0,115.41
+Clean shirt - Full service,Textiles,CDC,SHIRT,EA,1,0.9,6.68,6.68,6.68,6.68,6.68,6.68,0.0,17.0,17.0,113.56
+Evaluate pack & inventory bric-a-brac - per Med box,Living Room + Formal Dining,CPS,BXBME,EA,3,2.6,20.01,20.01,16.96,20.01,15.95,20.01,2.1,1.0,1.0,113.22
+Clean bric-a-brac - per Med box - Hvy clean,BOXES,CGN,BXBM+,EA,1,0.9,111.6,111.6,111.6,111.6,111.6,111.6,0.0,1.0,1.0,111.72
+Clean dog or cat bed - Full service,Tag - Cleaning,CDC,DCBED,EA,3,2.6,21.05,21.05,21.05,21.34,21.05,21.64,0.34,1.0,1.7,107.02
+Clean lamp shade - cloth - Heavy clean,Tag - Cleaning,CLM,LMSHC+,EA,2,1.7,26.39,26.39,26.39,26.39,26.39,26.39,0.0,2.0,2.0,105.78
+Clean table - coffee - Heavy clean,Tag - Cleaning,CHF,TABC+,EA,2,1.7,25.9,25.9,25.9,25.9,25.9,25.9,0.0,2.0,2.0,104.6
+"Concrete anchor bolt - 1/2"" x 10""",Living Room,CNC,ABT1/2,EA,2,1.7,10.26,10.26,10.26,10.26,10.26,10.26,0.0,4.0,4.0,104.04
+Texture drywall - smooth / skim coat,Living Room,DRY,TEX++,SF,3,2.6,1.77,1.77,1.77,1.77,1.77,1.77,0.0,23.2,15.5,103.56
+Clean bag - tote bag - leather - Full service,Hall Closet,CDC,BAGTL,EA,1,0.9,49.01,49.01,49.01,49.01,49.01,49.01,0.0,2.0,2.0,98.02
+Containment Barrier - tension post (per day),GC,WTR,BARRP,DA,2,1.7,3.63,3.63,3.63,3.63,3.63,3.63,0.0,12.0,12.0,98.01
+Clean pillow - bed - Full service,Bedroom,CDC,PIL,EA,2,1.7,15.92,17.17,15.29,16.54,14.66,17.17,1.77,3.0,3.0,98.0
+Provide box & tape - medium size,Cleaning,CDC,BX,EA,1,0.9,3.58,3.58,3.58,3.58,3.58,3.58,0.0,25.0,25.0,96.66
+Clean curtains - plain - small - Full service,Textiles,CDC,CURP<,EA,1,0.9,13.48,13.48,13.48,13.48,13.48,13.48,0.0,7.0,7.0,94.36
+Brick mold - composite trim,Living Room,FNC,BMC,LF,1,0.9,3.86,3.86,3.86,3.86,3.86,3.86,0.0,18.3,18.3,93.36
+Clean tool box - Heavy clean,Tag - Cleaning,CGN,TBX+,EA,2,1.7,46.32,46.32,46.32,46.32,46.32,46.32,0.0,1.0,1.0,92.78
+Unpack & invent. bric-a-brac - per Lg Wardobe box-high density,Phase3:  Inventory & Packout,CPS,BXBLE>,EA,2,1.7,45.8,45.8,45.8,45.8,45.8,45.8,0.0,1.0,1.0,92.42
+Peel & seal zipper - heavy duty,General Conditions,DMO,BARRZ+,EA,2,1.7,17.14,17.14,17.14,17.14,17.14,17.14,0.0,2.0,2.0,91.42
+"Casing - 4"" - MDF",Living Room,FNC,C4M,LF,1,0.9,1.98,0.61,1.29,2.66,0.61,3.34,1.93,17.2,17.2,91.38
+Clean mirror - triple size - Heavy clean,Tags,CHF,MIRT+,EA,1,0.9,45.29,45.29,45.29,45.29,45.29,45.29,0.0,1.0,1.0,90.88
+Clean toy - stuffed - Full service,Textiles,CDC,TOYS,EA,1,0.9,9.04,9.04,9.04,9.04,9.04,9.04,0.0,10.0,10.0,90.4
+Clean buffet / hutch bottom - Heavy clean,Tag - Cleaning,CHF,BUF+,EA,2,1.7,44.84,44.84,44.84,44.84,44.84,44.84,0.0,1.0,1.0,90.3
+Clean headboard - large size,Phase 3:Clean,CHF,BDHD,EA,2,1.7,22.32,22.32,22.32,22.32,22.32,22.32,0.0,2.0,2.0,89.28
+Clean and deodorize ottoman - plain fabric - Heavy clean,Tag - Cleaning,CUP,OTTO+,LF,2,1.7,44.05,44.05,44.05,44.05,44.05,44.05,0.0,1.0,1.0,88.5
+Clean bicycle - Heavy clean,Tag - Cleaning,CGN,BIKE+,EA,2,1.7,44.16,44.16,44.16,44.16,44.16,44.16,0.0,1.0,1.0,88.4
+Provide mattress box & tape - king size,Packout,CPS,BXMATK,EA,1,0.9,40.47,40.47,40.47,40.47,40.47,40.47,0.0,2.0,2.0,88.31
+Clean television - exterior wipe down,Tag - Cleaning,CEL,TV,EA,2,1.7,21.78,21.78,21.78,21.78,21.78,21.78,0.0,2.0,2.0,87.34
+Clean hall tree - Heavy clean,Tag - Cleaning,CHF,HLTR+,EA,2,1.7,40.83,40.83,40.83,40.83,40.83,40.83,0.0,1.0,1.0,82.26
+Personal protective gloves - Heavy duty (per pair),Cleaning,HMR,PPEGHD,EA,1,0.9,6.84,6.84,6.84,6.84,6.84,6.84,0.0,12.0,12.0,82.08
+Clean footboard - large size,Phase 3:Clean,CHF,BDFT,EA,2,1.7,20.2,20.2,20.2,20.2,20.2,20.2,0.0,2.0,2.0,81.14
+"Inventory. unpack, and reset bric-a-brac - per Lg box-high density",Phase 4: Pack Back,CPS,BXBLE>,EA,1,0.9,39.89,39.89,39.89,39.89,39.89,39.89,0.0,2.0,2.0,79.78
+Clean dresser - double - Heavy clean,Phase 2: Cleaning,CHF,DRES2+,EA,1,0.9,78.94,78.94,78.94,78.94,78.94,78.94,0.0,1.0,1.0,79.27
+Clean blazer/sport coat - silk - linen - wool - Full serv.,Hall Closet,CDC,BLZSL,EA,1,0.9,13.07,13.07,13.07,13.07,13.07,13.07,0.0,6.0,6.0,78.42
+Clean table - typing - small - Heavy clean,Tags,CHF,TABT<+,EA,1,0.9,19.3,19.3,19.3,19.3,19.3,19.3,0.0,2.0,2.0,78.13
+Clean table - dining - Heavy clean,Tag - Cleaning,CHF,TABD+,EA,2,1.7,37.89,37.89,37.89,37.89,37.89,37.89,0.0,1.0,1.0,76.38
+Refrigerator - Remove,"Evaluate, Inventory, Packout, Moving and Handling",APP,RFRS,EA,3,2.6,46.1,46.1,46.1,52.78,46.1,59.47,7.72,0.5,0.5,75.84
+Refrigerator -  Reset,Pack Back and Reset,APP,RFRS,EA,3,2.6,46.1,46.1,46.1,52.78,46.1,59.47,7.72,0.5,0.5,75.84
+Washer/Washing machine - Remove,"Evaluate, Inventory, Packout, Moving and Handling",APP,WSHRS,EA,3,2.6,44.86,44.86,44.86,51.36,44.86,57.87,7.51,0.5,0.5,73.8
+Washer/Washing machine - Reset,Pack Back and Reset,APP,WSHRS,EA,3,2.6,44.86,44.86,44.86,51.36,44.86,57.87,7.51,0.5,0.5,73.8
+Clean throw cover - Full service,"Emergency Pack, Move, Reset",CDC,THRC,EA,1,0.9,19.94,19.94,19.94,19.94,19.94,19.94,0.0,3.0,3.0,71.78
+Clean dresser mirror - Heavy clean,Tag - Cleaning,CHF,DRESM+,EA,3,2.6,22.48,22.48,22.48,24.25,22.48,26.02,2.04,1.0,1.0,71.47
+Clean tights - Full service,Textiles,CDC,TIGHT,EA,1,0.9,2.32,2.32,2.32,2.32,2.32,2.32,0.0,14.5,14.5,67.28
+Provide mattress box & tape - double size,Packout,CPS,BXMATD,EA,1,0.9,30.13,30.13,30.13,30.13,30.13,30.13,0.0,2.0,2.0,65.74
+Clean sewing machine - portable - exterior wipe down,Tag - Cleaning,CEL,SEW,EA,2,1.7,32.32,32.32,32.32,32.32,32.32,32.32,0.0,1.0,1.0,64.76
+Clean headboard - large size - Heavy clean,Tag - Cleaning,CHF,BDHD+,EA,2,1.7,31.98,31.98,31.98,31.98,31.98,31.98,0.0,1.0,1.0,64.46
+Clean table - dining - small - Heavy clean,Tag - Cleaning,CHF,TABD<+,EA,2,1.7,31.98,31.98,31.98,31.98,31.98,31.98,0.0,1.0,1.0,64.38
+Clean bed frame - Heavy clean,Tag - Cleaning,CHF,BDF+,EA,3,2.6,20.17,20.17,20.17,21.64,20.17,23.11,1.7,1.0,1.0,64.23
+House wrap (air/moisture barrier),,SDG,HWRAP,SF,1,0.9,0.37,0.37,0.37,0.37,0.37,0.37,0.0,172.0,172.0,63.64
+Cleaning - Appliances - per hour,Phase 2: Cleaning,CAP,LAB,HR,1,0.9,58.7,58.7,58.7,58.7,58.7,58.7,0.0,1.0,1.0,58.7
+Cleaning - Appliances - Small Oven,Cleaning,CAP,LAB,HR,1,0.9,58.7,58.7,58.7,58.7,58.7,58.7,0.0,1.0,1.0,58.7
+Clean footboard - large size - Heavy clean,Tag - Cleaning,CHF,BDFT+,EA,2,1.7,29.09,29.09,29.09,29.09,29.09,29.09,0.0,1.0,1.0,58.68
+Clean suit - two piece - fancy - Full service,Hall Closet,CDC,SUIT2+,EA,1,0.9,56.92,56.92,56.92,56.92,56.92,56.92,0.0,1.0,1.0,56.92
+Dryer - Remove,"Evaluate, Inventory, Packout, Moving and Handling",APP,DRYRS,EA,3,2.6,34.59,34.59,34.59,39.6,34.59,44.61,5.79,0.5,0.5,56.91
+Dryer - Reset,Pack Back and Reset,APP,DRYRS,EA,3,2.6,34.59,34.59,34.59,39.6,34.59,44.61,5.79,0.5,0.5,56.91
+Clean chair - Heavy clean,Tag - Cleaning,CHF,CH+,EA,2,1.7,28.26,28.26,28.26,28.26,28.26,28.26,0.0,1.0,1.0,56.74
+Provide plastic mattress cover & packing tape - Queen size,Pack-out,CPS,CVMTQ,EA,5,4.3,9.07,9.07,9.07,9.07,9.07,9.07,0.0,1.0,1.2,56.41
+Clean table - coffee - large or ornate,Phase 3:Clean,CHF,TABC>,EA,2,1.7,28.19,28.19,28.19,28.19,28.19,28.19,0.0,1.0,1.0,56.38
+Clean sheet - queen size - satin - Full service,Textiles,CDC,SHTQST,EA,1,0.9,14.04,14.04,14.04,14.04,14.04,14.04,0.0,4.0,4.0,56.16
+Clean basket,Cleaning,CGN,WIKB,EA,1,0.9,27.86,27.86,27.86,27.86,27.86,27.86,0.0,2.0,2.0,55.72
+Clean wicker basket,Textiles,CGN,WIKB,EA,1,0.9,27.07,27.07,27.07,27.07,27.07,27.07,0.0,2.0,2.0,54.26
+Clean desk - large - Heavy clean,Tags,CHF,DESK>+,EA,1,0.9,53.49,53.49,53.49,53.49,53.49,53.49,0.0,1.0,1.0,53.92
+Clean ironing board - Heavy clean,Tag - Cleaning,CHF,IRNBD+,EA,2,1.7,26.39,26.39,26.39,26.39,26.39,26.39,0.0,1.0,1.0,52.9
+Clean stereo - comp. - speakers - small - int. & ext.,Cleaning,CEL,STERS<+,EA,2,1.7,25.6,25.6,25.6,25.6,25.6,25.6,0.0,1.0,1.0,51.39
+Clean bar stool - Heavy clean,Tag - Cleaning,CHF,BARST+,EA,2,1.7,25.25,25.25,25.25,25.25,25.25,25.25,0.0,1.0,1.0,50.94
+Evaluate pack & inventory bric-a-brac - per Lg box,Packout,CPS,BXBLE,EA,1,0.9,25.45,25.45,25.45,25.45,25.45,25.45,0.0,2.0,2.0,50.9
+Clean bookcase,Phase 3:Clean,CLN,BK,SF,2,1.7,1.6,1.6,1.6,1.6,1.6,1.6,0.0,15.0,15.0,48.0
+Clean table - occasional - Heavy clean,Tag - Cleaning,CHF,TABO+,EA,2,1.7,22.94,22.94,22.94,22.94,22.94,22.94,0.0,1.0,1.0,46.28
+Clean comforter - king size - Full service,Bedroom,CDC,CMFK,EA,1,0.9,45.9,45.9,45.9,45.9,45.9,45.9,0.0,1.0,1.0,45.9
+Eval. pack & invent. bric-a-brac -per Med box-low density,Phase 3: Packback,CPS,BXBME<,EA,3,2.6,14.6,14.6,14.6,14.6,14.6,14.6,0.0,1.0,1.0,44.88
+Clean power tool - large - exterior wipe down,Tags,CGN,TP>,EA,1,0.9,44.16,44.16,44.16,44.16,44.16,44.16,0.0,1.0,1.0,44.18
+Clean night stand - large - Heavy clean,Phase 2: Cleaning,CHF,NIT>+,EA,1,0.9,43.75,43.75,43.75,43.75,43.75,43.75,0.0,1.0,1.0,44.08
+Clean file cabinet - four drawer - metal,Cleaning,CHF,FIL4,EA,1,0.9,40.62,40.62,40.62,40.62,40.62,40.62,0.0,1.0,1.0,40.62
+Clean television,Phase 2: Cleaning,CEL,TVLS>,EA,1,0.9,40.46,40.46,40.46,40.46,40.46,40.46,0.0,1.0,1.0,40.46
+"CONT: PACKING,HANDLNG,STORAGE - TAG , FASTENER and PRINTED BAR CODE",Phase 1:  Inventory & Packout,CPS,MISC,EA,5,4.3,0.12,0.12,0.12,0.12,0.12,0.12,0.0,54.0,54.3,39.12
+Clean toy - small - Full service,Tag - Cleaning,CDC,TOY<,EA,2,1.7,9.78,9.78,9.78,9.78,9.78,9.78,0.0,2.0,2.0,39.12
+Brick - Add for column,Living Room,MAS,BRKCOL,SF,2,1.7,3.89,3.89,3.89,3.89,3.89,3.89,0.0,4.0,4.0,39.05
+Padlock/disc lock,On-site Storage,CPS,STOPP,EA,1,0.9,17.66,17.66,17.66,17.66,17.66,17.66,0.0,2.0,2.0,38.53
+Clean chair - large or ornate - Heavy clean,Tags,CHF,CH>+,EA,1,0.9,35.52,35.52,35.52,35.52,35.52,35.52,0.0,1.0,1.0,35.64
+Peel & seal zipper,GC,WTR,BARRZ,EA,2,1.7,14.97,14.97,14.97,14.97,14.97,14.97,0.0,1.0,1.0,35.33
+Clean umbrella - Full service,Tag - Cleaning,CDC,UMB,EA,2,1.7,8.63,8.63,8.63,8.63,8.63,8.63,0.0,2.0,2.0,34.52
+Clean video game accessory - large - ext. wipe down,Tag - Cleaning,CEL,VDOGA>,EA,2,1.7,16.18,16.18,16.18,16.18,16.18,16.18,0.0,1.0,1.0,32.42
+Provide plastic mattress cover & packing tape - Twin size,Pack-out,CPS,CVMTT,EA,5,4.3,6.12,6.12,6.12,6.12,6.12,6.12,0.0,1.0,1.0,32.1
+Clean crib,Cleaning,CHF,CRIB,EA,1,0.9,31.51,31.51,31.51,31.51,31.51,31.51,0.0,1.0,1.0,31.51
+"Casing - 5"" - MDF",Living Room,FNC,C5M,LF,3,2.6,0.61,0.61,0.61,0.61,0.61,0.61,0.0,20.6,13.7,31.38
+"Steel rebar - #4 (1/2"")",Living Room,CNC,RB4,LF,3,2.6,2.27,2.27,2.27,2.27,2.27,2.27,0.0,5.3,3.6,31.1
+Clean sheet - king size - satin - Full service,Bedroom,CDC,SHTKST,EA,1,0.9,15.31,15.31,15.31,15.31,15.31,15.31,0.0,2.0,2.0,30.62
+Clean pillow case - large - Full service,Bedroom,CDC,PILC>,EA,1,0.9,7.47,7.47,7.47,7.47,7.47,7.47,0.0,4.0,4.0,29.88
+Clean futon frame,Cleaning,CHF,FUT,EA,1,0.9,29.69,29.69,29.69,29.69,29.69,29.69,0.0,1.0,1.0,29.69
+"Provide lamp box set, packing paper & tape",Phase 1: Packing,CPS,BXLMP,EA,1,0.9,29.27,29.27,29.27,29.27,29.27,29.27,0.0,1.0,1.0,29.27
+Clean piano bench - Heavy clean,Tag - Cleaning,CHF,PNOB+,EA,2,1.7,14.38,14.38,14.38,14.38,14.38,14.38,0.0,1.0,1.0,29.02
+Clean scarf - Full service,Textile - Cleaning,CDC,SCARF,EA,2,1.7,7.19,7.19,7.19,7.19,7.19,7.19,0.0,2.0,2.0,28.76
+Clean rug - per SF - Full service,Phase 2: Cleaning,CDC,RUGSF,SF,2,1.7,6.3,6.3,6.3,6.3,6.3,6.3,0.0,2.2,2.2,28.36
+Unpack wardrobe box & tape - large size,Phase 1:  Packback,CDC,BXWDR>,EA,1,0.9,28.06,28.06,28.06,28.06,28.06,28.06,0.0,1.0,1.0,28.06
+Clean blanket - twin size - Full service,Living Room,CDC,BLT,EA,1,0.9,26.88,26.88,26.88,26.88,26.88,26.88,0.0,1.0,1.0,26.88
+Clean table - dining,Cleaning,CHF,TABD,EA,1,0.9,25.96,25.96,25.96,25.96,25.96,25.96,0.0,1.0,1.0,25.96
+Clean bag - tote bag - large - Full service,Hall Closet,CDC,BAGT>,EA,1,0.9,25.72,25.72,25.72,25.72,25.72,25.72,0.0,1.0,1.0,25.72
+Clean shorts - child - Full service,Textiles,CDC,SHRTCH,EA,1,0.9,5.0,5.0,5.0,5.0,5.0,5.0,0.0,5.0,5.0,25.0
+Clean countertop appliance - Heavy clean,Tags,CAP,APP+,EA,1,0.9,24.03,24.03,24.03,24.03,24.03,24.03,0.0,1.0,1.0,24.07
+Clean bed frame,Cleaning,CHF,BDF,EA,1,0.9,11.43,11.43,11.43,11.43,11.43,11.43,0.0,2.0,2.0,22.86
+Clean table - end table - Heavy clean,Tags,CHF,TABE+,EA,1,0.9,21.4,21.4,21.4,21.4,21.4,21.4,0.0,1.0,1.0,21.61
+"Provide mirror/picture box, packing paper & tape",Cleaning,CPS,BXMIR,EA,1,0.9,10.53,10.53,10.53,10.53,10.53,10.53,0.0,2.0,2.0,21.06
+Clean table - occasional,Cleaning,CHF,TABO,EA,1,0.9,19.58,19.58,19.58,19.58,19.58,19.58,0.0,1.0,1.0,19.58
+Clean shoes - child (pair) - Full service,Textiles,CDC,SHOECH,EA,1,0.9,9.43,9.43,9.43,9.43,9.43,9.43,0.0,2.0,2.0,18.86
+Provide plastic mattress cover & packing tape - Full size,Pack-out,CPS,CVMTF,EA,2,1.7,8.36,8.36,8.36,8.36,8.36,8.36,0.0,1.0,1.0,18.24
+Clean robe - Full service,Textiles,CDC,ROBE,EA,1,0.9,15.52,15.52,15.52,15.52,15.52,15.52,0.0,1.0,1.0,15.52
+Clean storage bin/tub,Cleaning,CGN,BIN,EA,1,0.9,15.5,15.5,15.5,15.5,15.5,15.5,0.0,1.0,1.0,15.5
+Clean light fixture,Cleaning,CLN,LIT,EA,1,0.9,15.14,15.14,15.14,15.14,15.14,15.14,0.0,1.0,1.0,15.14
+Clean mirror,Phase 3:Clean,CLN,MIR,SF,2,1.7,1.01,1.01,1.01,1.01,1.01,1.01,0.0,6.0,6.0,12.12
+Clean countertop - Heavy,Tag - Cleaning,CLN,CTF+,SF,2,1.7,1.18,1.18,1.18,1.18,1.18,1.18,0.0,1.0,1.0,2.36
+Eval. unpack bric-a-brac - per Lg box-high density,Take Back,CPS,BXBLE>,EA,1,0.9,39.72,39.72,39.72,39.72,39.72,39.72,0.0,0.0,0.0,0.0
+"Dumpster load - Approx. 40 yards, 7-8 tons of debris",Phase 2:Total Loss,DMO,DUMP>>,EA,1,0.9,778.9,778.9,778.9,778.9,778.9,778.9,0.0,0.0,0.0,0.0
+Eval. pack & invent. bric-a-brac -per Sml box-high density,Pack-out,CPS,BXBSE>,EA,1,0.9,29.99,29.99,29.99,29.99,29.99,29.99,0.0,0.0,0.0,0.0
+Disposable coveralls w/hood and boots,Phase 1:  Inventory & Packout,TCR,PPEC,EA,1,0.9,10.04,10.04,10.04,10.04,10.04,10.04,0.0,0.0,0.0,0.0
+"Dumpster load - Approx. 20 yards, 4 tons of debris",Phase 2:Total Loss,DMO,DUMP,EA,1,0.9,617.78,617.78,617.78,617.78,617.78,617.78,0.0,0.0,0.0,0.0
+BID ITEM: On-Site Storage UNITS,Phase 1:  Inventory & Packout,USR,MISC,MO,1,0.9,289.0,289.0,289.0,289.0,289.0,289.0,0.0,0.0,0.0,0.0
+BID ITEM:On-Site Storage UNITS Pick-Up,Phase 1:  Inventory & Packout,USR,MISC,EA,1,0.9,79.0,79.0,79.0,79.0,79.0,79.0,0.0,0.0,0.0,0.0
+BID ITEM: On-Site Storage UNITS Drop,Phase 1:  Inventory & Packout,USR,MISC,EA,1,0.9,79.0,79.0,79.0,79.0,79.0,79.0,0.0,0.0,0.0,0.0
+Eval. unpack  bric-a-brac -per Sml box-high density,Take Back,CPS,BXBSE>,EA,1,0.9,26.47,26.47,26.47,26.47,26.47,26.47,0.0,0.0,0.0,0.0
+Fuel surcharge - Minimum,Pack-out,FEE,FLSRCHG,EA,1,0.9,50.0,50.0,50.0,50.0,50.0,50.0,0.0,0.0,0.0,0.0
+Fuel surcharge - minimum,Take Back,FEE,FLSRCHG,EA,1,0.9,50.0,50.0,50.0,50.0,50.0,50.0,0.0,0.0,0.0,0.0
+Clean bric-a-brac - per Sml box - high density - Lt Clean,Cleaning,CGN,BXBS>-,EA,1,0.9,100.85,100.85,100.85,100.85,100.85,100.85,0.0,0.0,0.0,0.0
+"Provide box, packing paper & tape - small size",Cleaning,CPS,BX<,EA,1,0.9,3.03,3.03,3.03,3.03,3.03,3.03,0.0,0.0,0.0,0.0
+Clean bric-a-brac - per Lg box - high density - Lt Clean,Cleaning,CGN,BXBL>-,EA,1,0.9,151.0,151.0,151.0,151.0,151.0,151.0,0.0,0.0,0.0,0.0
+Welded-wire mesh fence - 4' high - 12 gauge,Living Room,FEN,MESH,LF,1,0.9,13.09,13.09,13.09,13.09,13.09,13.09,0.0,0.0,0.0,0.0
