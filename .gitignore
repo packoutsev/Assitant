@@ -24,3 +24,4 @@ iCloudPhotos/
 
 # Git config
 .config/
+.gitconfig
