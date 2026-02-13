@@ -41,11 +41,101 @@ Key findings from initial analysis of exported Excel estimates:
 - Server credentials: `C:\Users\matth\mcp-gdrive-setup\.gdrive-server-credentials.json`
 - If auth expires, re-run from `C:\Users\matth\mcp-gdrive-setup`: `node node_modules\@modelcontextprotocol\server-gdrive\dist\index.js auth`
 
+## Estimator Tool (Built)
+
+The back half of the pipeline is built and validated:
+- **`estimator/photo_analyzer.py`** — Room-level TAG/box counting (lookup tables + per-room overrides)
+- **`estimator/pricing_engine.py`** — Xactimate line item generation with CPS codes
+- **`estimator/generate_estimate.py`** — Full 5-phase estimate pipeline (Packout → Storage → Pack back)
+- **`estimator/cartage_calculator.py`** — Handling labor hours from drive time, crew, truck loads
+- **Backtest results**: 8.6% MAPE with photo overrides, 13.6% overall (target <20%)
+- **Key insight**: Pricing engine is accurate — the bottleneck is input quality (getting accurate per-room TAG/box counts)
+
+## Architecture — AI Video Pipeline
+
+### Overview
+The video pipeline is the **front half** that replaces manual room entry. It feeds structured room data into the existing estimator.
+
+```
+Encircle video (or direct upload)
+        │
+        ▼
+  ┌─────────────┐
+  │  Video File  │
+  └──────┬──────┘
+         │
+    ┌────┴────┐
+    │         │
+    ▼         ▼
+┌────────┐ ┌──────────────┐
+│ Whisper│ │   Gemini     │
+│ (Audio)│ │  (Visual)    │
+│        │ │              │
+│ Speech │ │ Room IDs,    │
+│ to text│ │ damage type, │
+│        │ │ materials,   │
+│        │ │ progress     │
+└───┬────┘ └──────┬───────┘
+    │              │
+    ▼              ▼
+┌──────────────────────────┐
+│     Combined Context     │
+│  (transcript + visual)   │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│    OpenAI / Claude       │
+│   Structured Summary     │
+│                          │
+│  - Room-by-room JSON     │
+│  - TAG/box counts        │
+│  - Scope notes           │
+│  - Xactimate codes       │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│  Existing Estimator      │
+│  (pricing_engine +       │
+│   generate_estimate)     │
+│                          │
+│  → 5-phase estimate CSV  │
+└──────────────────────────┘
+```
+
+### AI Model Roles
+
+| Model | Role | Why |
+|-------|------|-----|
+| **Whisper** (OpenAI) | Audio transcription | Best-in-class speech-to-text; handles noisy jobsite audio, tech narration, scope notes ("only pack under sink") |
+| **Gemini** (Google) | Video visual analysis | Native video understanding — processes full video files, identifies rooms, damage, materials, counts furniture/boxes |
+| **OpenAI GPT / Claude** | Structured summarization | Combines transcript + visual analysis into structured room JSON that feeds directly into `generate_estimate.py` |
+
+### Pipeline Steps
+
+1. **Ingest** — Poll Encircle API for new videos on a claim, or accept direct upload
+2. **Extract Audio** — Pull audio track from video (ffmpeg)
+3. **Transcribe** — Send audio to Whisper API → raw transcript with scope notes
+4. **Visual Analysis** — Send video to Gemini API → room identification, TAG counts, box estimates, damage types, density
+5. **Merge & Summarize** — Send transcript + visual analysis to OpenAI/Claude → structured rooms JSON with override_tags, override_boxes per room
+6. **Estimate** — Feed rooms JSON into existing `generate_estimate.py` → Xactimate-ready 5-phase CSV
+
+### Data Sources
+
+- **Primary**: Encircle API — techs already document in Encircle (no workflow change needed)
+- **Secondary**: Direct upload fallback for non-Encircle videos (homeowner footage, adjuster clips, drone video)
+- Encircle-first approach: pipeline polls or uses webhooks to trigger video processing
+
 ## Tech Stack
 
 - **Python 3.12**: `C:\Users\matth\AppData\Local\Programs\Python\Python312\python.exe` — pandas, openpyxl installed
 - **Node.js**: Available globally (npx 11.10.0)
 - **Platform**: Windows 11
+- **APIs (planned)**: Encircle REST API, OpenAI Whisper API, Google Gemini API, OpenAI/Claude API
+- **Audio extraction**: ffmpeg
+- **Storage**: Local filesystem for MVP, cloud storage later
+- **Orchestration**: Simple Python scripts for MVP; async job queue later
 
 ## Repository Location Note
 
