@@ -1,0 +1,335 @@
+{
+  "Adler, Jason": {
+    "pdf": "ADLER_J Initial Walk Through Report-Encircle.pdf",
+    "pages": 31,
+    "rooms": [
+      "Exterior",
+      "Laundry Room",
+      "Formal Living Room",
+      "Girls Bedroom",
+      "Girls Bathroom",
+      "Guest Bedroom",
+      "Family/Dining Room",
+      "Kitchen",
+      "Sewing Room",
+      "Downstairs Media Room",
+      "Office",
+      "Guest En-suite",
+      "Powder room",
+      "Primary Bedroom",
+      "Primary Bathroom"
+    ],
+    "room_count": 15,
+    "claim_id": "Date",
+    "loss_type": "Mar 6, 2024 Water",
+    "date_of_loss": "021839388-032 Feb 26, 2024"
+  },
+  "Alexander, Keith": {
+    "pdf": "Initial Walk Through Report-Alexander_K.pdf",
+    "pages": 8,
+    "rooms": [
+      "Kitchen",
+      "Foyer",
+      "Living Room",
+      "Family Room",
+      "Dining Room"
+    ],
+    "room_count": 5,
+    "claim_id": "Date",
+    "loss_type": "Feb 21, 2024 Water",
+    "date_of_loss": "005145552-022 Feb 7, 2024"
+  },
+  "Cash, Christina": {
+    "pdf": "Encircle Initial Walk Through Report.pdf",
+    "pages": 8,
+    "rooms": [
+      "Playroom And Hallways",
+      "Family Room",
+      "Dining Room",
+      "Pantry",
+      "Hallway",
+      "MIL Suite",
+      "Primary Closet"
+    ],
+    "room_count": 7,
+    "claim_id": "Date",
+    "loss_type": "Aug 22, 2024 Water",
+    "date_of_loss": "1430876-240309 Aug 17, 2024"
+  },
+  "Depaz, Yael": {
+    "pdf": "Yael_Depaz_-_Initial_Walk-Thru_-_Photo_Report.pdf",
+    "pages": 8,
+    "rooms": [
+      "Exterior",
+      "Living Room",
+      "Office",
+      "Bedroom - Master",
+      "Promary - closet"
+    ],
+    "room_count": 5,
+    "claim_id": "Date",
+    "loss_type": "",
+    "date_of_loss": "TBD May 12, 2025"
+  },
+  "Dodd, Susan": {
+    "pdf": "Initial_Walk-Through Report.pdf",
+    "pages": 29,
+    "rooms": [
+      "Exterior",
+      "Garage",
+      "Primary Bedroom",
+      "Living Room",
+      "Second Bedroom",
+      "Bathroom/Closet",
+      "Laundry Room",
+      "Hallway",
+      "Kitchen",
+      "Entry/Downstairs Powder Room/closet"
+    ],
+    "room_count": 10,
+    "claim_id": "Date",
+    "loss_type": "Mar 11, 2024 Water",
+    "date_of_loss": "1234 Mar 11, 2024"
+  },
+  "Ezer, Ben Ray": {
+    "pdf": "Ray_Ben_Ezra_-_Walk-Thru_Photo_Report.pdf",
+    "pages": 22,
+    "rooms": [
+      "Exterior",
+      "Entry",
+      "Living Room",
+      "Kitchen",
+      "Dining Room",
+      "Hallway",
+      "Bedroom 3",
+      "Stairs",
+      "Bedroom 2",
+      "Bedroom 1",
+      "Entry bedroom",
+      "Hall bath",
+      "Primary Bedroom",
+      "Primary Bath",
+      "Primary closet",
+      "Basement",
+      "Laundry Room"
+    ],
+    "room_count": 17,
+    "claim_id": "Date",
+    "loss_type": "",
+    "date_of_loss": "May 5, 2025"
+  },
+  "Guss, Michael": {
+    "pdf": "Guss_Residence_-_Estimate_Walk_Photos.pdf",
+    "pages": 4,
+    "rooms": [
+      "Exterior",
+      "Primary",
+      "Bathroom"
+    ],
+    "room_count": 3,
+    "claim_id": "Date",
+    "loss_type": "",
+    "date_of_loss": "PP0020908370 May 7, 2025"
+  },
+  "Harmon, Michael": {
+    "pdf": "Encircle Initial Walk Through report.pdf",
+    "pages": 10,
+    "rooms": [
+      "Foyer",
+      "Office",
+      "Hallway",
+      "Family Room",
+      "Dining Room",
+      "Kitchen",
+      "Pantry",
+      "Foyer 2",
+      "Bathroom"
+    ],
+    "room_count": 9,
+    "claim_id": "Date",
+    "loss_type": "Mar 3, 2025 Water",
+    "date_of_loss": "0782140339 Mar 3, 2025"
+  },
+  "Hill, Tracy": {
+    "pdf": "Initial Walk Photo Report.pdf",
+    "pages": 8,
+    "rooms": [
+      "Primary",
+      "Primary Bath",
+      "Living Room",
+      "Bedroom",
+      "Kitchen",
+      "Trailer",
+      "Exterior"
+    ],
+    "room_count": 7,
+    "claim_id": "Date",
+    "loss_type": "",
+    "date_of_loss": "TBD May 2, 2025"
+  },
+  "Katz Sarah": {
+    "pdf": "Encircle Initital Walk Through-Katz.pdf",
+    "pages": 8,
+    "rooms": [
+      "Entry",
+      "Family Room",
+      "Dining Room",
+      "Hall Bathroom",
+      "Bedroom 1-Personal",
+      "Primary Bedroom-Personal",
+      "Hall Closets",
+      "Daughters Room-personal",
+      "Kitchen"
+    ],
+    "room_count": 9,
+    "claim_id": "Date",
+    "loss_type": "Sep 27, 2024 Water",
+    "date_of_loss": "013400075-807 Sep 27, 2024"
+  },
+  "Kuhn Dale": {
+    "pdf": "Encircle Initial Walk Through.pdf",
+    "pages": 11,
+    "rooms": [
+      "Entry",
+      "Front living room",
+      "Kitchen",
+      "Family Room",
+      "Hall Bath",
+      "Guest Room 1",
+      "Excercise Room",
+      "Hall Closet",
+      "Office",
+      "Primary Bedrrom",
+      "Primary Closet",
+      "Primary Bathroom",
+      "Garage",
+      "Laundry Room"
+    ],
+    "room_count": 14,
+    "claim_id": "Date",
+    "loss_type": "",
+    "date_of_loss": "HO-2024-030608410 Aug 7, 2024"
+  },
+  "Morrison, Heather": {
+    "pdf": "Encircle Initial Walk Through.pdf",
+    "pages": 9,
+    "rooms": [
+      "Vivia Room",
+      "Rylan",
+      "Gage",
+      "Zane",
+      "Hallway",
+      "Primary"
+    ],
+    "room_count": 6,
+    "claim_id": "Date",
+    "loss_type": "Feb 3, 2025 Water",
+    "date_of_loss": "CLM-00152960 Feb 3, 2025"
+  },
+  "Mulvaney, Chad": {
+    "pdf": "Initial Walk Through Photo Report.pdf",
+    "pages": 8,
+    "rooms": [
+      "Living Room",
+      "Dining Room",
+      "Kitchen",
+      "Laundry Room",
+      "Office",
+      "Guest Room",
+      "Hall Bath",
+      "Primary Bedroom",
+      "Primary Bathroom"
+    ],
+    "room_count": 9,
+    "claim_id": "Date",
+    "loss_type": "Apr 1, 2025 Fire",
+    "date_of_loss": "020426015-807 Mar 31, 2025"
+  },
+  "Murphy Kevin": {
+    "pdf": "Encircle Initial Walk Through Report.pdf",
+    "pages": 7,
+    "rooms": [
+      "Living Room",
+      "Kitchen",
+      "Bedroom 1",
+      "Batgroom 1",
+      "Primary bedroom"
+    ],
+    "room_count": 5,
+    "claim_id": "Date",
+    "loss_type": "Aug 1, 2024 Water",
+    "date_of_loss": "0763734738 Aug 1, 2024"
+  },
+  "Qaqish, Mark": {
+    "pdf": "Encircle Intital Walk-Through Report.pdf",
+    "pages": 9,
+    "rooms": [
+      "Front Room",
+      "Living Room",
+      "Kitchen",
+      "Primary Bedroom",
+      "Guest Room",
+      "Guest Room #2",
+      "Guest Bathroom",
+      "Mickey Room",
+      "Laundry Room",
+      "Halll Closet",
+      "Pantry"
+    ],
+    "room_count": 11,
+    "claim_id": "Date",
+    "loss_type": "Jan 15, 2025 Water",
+    "date_of_loss": "azho-00005880 Jan 13, 2025"
+  },
+  "Rogers, Caleb": {
+    "pdf": "Rainbow Restoration Initial Walk Through Report.pdf",
+    "pages": 68,
+    "rooms": [],
+    "room_count": 0,
+    "claim_id": "",
+    "loss_type": "",
+    "date_of_loss": ""
+  },
+  "Stout, Michael": {
+    "pdf": "Encircle Initial Walk-Through-Stout.pdf",
+    "pages": 28,
+    "rooms": [
+      "0 Exterior",
+      "1 Ground Floor Living",
+      "2 Ground Floor Kitchen",
+      "3 Ground Floor Dining Room",
+      "6 Ground Floor Garage",
+      "8 Floor 2 Office",
+      "9 Floor 2 Hallway Bathroom",
+      "10 Floor 2 Bedroom Daughters",
+      "11 Floor 2 Bedroom Son"
+    ],
+    "room_count": 9,
+    "claim_id": "Date",
+    "loss_type": "Feb 26, 2024 Water",
+    "date_of_loss": "24777739-012 Feb 21, 2024"
+  },
+  "Susank, David": {
+    "pdf": "Encinrcle - Contents Report (Initial Walk).pdf",
+    "pages": 7,
+    "rooms": [
+      "Basement - laundry",
+      "Basemeny \u2014 office",
+      "Badement Bedroom",
+      "Basement bar"
+    ],
+    "room_count": 4,
+    "claim_id": "Date",
+    "loss_type": "",
+    "date_of_loss": "May 6, 2025"
+  },
+  "Thompson, Bethany": {
+    "pdf": "Thompson-Initial Walk Through Report.pdf",
+    "pages": 12,
+    "rooms": [],
+    "room_count": 0,
+    "claim_id": "",
+    "loss_type": "",
+    "date_of_loss": ""
+  }
+}

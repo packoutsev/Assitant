@@ -1,0 +1,487 @@
+{
+  "metadata": {
+    "generated": "2026-02-13T01:14:53.879074",
+    "description": "Room type -> expected TAG/box counts based on density",
+    "density_levels": [
+      "light",
+      "medium",
+      "heavy"
+    ],
+    "source_walkthroughs": 19,
+    "source_with_actuals": 18
+  },
+  "room_types": {
+    "kitchen": {
+      "typical_tags": {
+        "light": 3,
+        "medium": 6,
+        "heavy": 10
+      },
+      "typical_boxes": {
+        "light": 5,
+        "medium": 12,
+        "heavy": 25
+      },
+      "common_tags": [
+        "refrigerator",
+        "table",
+        "chairs",
+        "microwave cart",
+        "bar stools",
+        "island"
+      ],
+      "common_box_items": [
+        "dishes",
+        "pots/pans",
+        "small appliances",
+        "utensils",
+        "food items",
+        "glassware"
+      ],
+      "notes": "Kitchen typically has highest box density due to many small items",
+      "actual_data": {
+        "sample_size": 15,
+        "median_tags": 19.9,
+        "mean_tags": 17.8,
+        "p25_tags": 9.0,
+        "p75_tags": 21.2,
+        "median_boxes": 15.6,
+        "mean_boxes": 31.6,
+        "p25_boxes": 10.5,
+        "p75_boxes": 31.3
+      }
+    },
+    "living_room": {
+      "typical_tags": {
+        "light": 4,
+        "medium": 8,
+        "heavy": 15
+      },
+      "typical_boxes": {
+        "light": 3,
+        "medium": 8,
+        "heavy": 15
+      },
+      "common_tags": [
+        "sofa/sectional",
+        "coffee table",
+        "end tables",
+        "TV/entertainment center",
+        "bookshelf",
+        "accent chairs",
+        "floor lamps"
+      ],
+      "common_box_items": [
+        "books",
+        "decorative items",
+        "media/electronics",
+        "throw pillows",
+        "blankets"
+      ],
+      "notes": "Sectionals count as 2-3 TAGs. Entertainment centers vary widely.",
+      "actual_data": {
+        "sample_size": 15,
+        "median_tags": 15.9,
+        "mean_tags": 15.4,
+        "p25_tags": 7.2,
+        "p75_tags": 23.2,
+        "median_boxes": 16.1,
+        "mean_boxes": 26.3,
+        "p25_boxes": 9.0,
+        "p75_boxes": 25.1
+      }
+    },
+    "dining_room": {
+      "typical_tags": {
+        "light": 3,
+        "medium": 6,
+        "heavy": 10
+      },
+      "typical_boxes": {
+        "light": 2,
+        "medium": 5,
+        "heavy": 10
+      },
+      "common_tags": [
+        "dining table",
+        "chairs (4-8)",
+        "hutch/china cabinet",
+        "buffet/sideboard"
+      ],
+      "common_box_items": [
+        "china",
+        "serving pieces",
+        "table linens",
+        "candles/decor"
+      ],
+      "notes": "Each dining chair is a TAG. China cabinets have high box counts.",
+      "actual_data": {
+        "sample_size": 8,
+        "median_tags": 13.9,
+        "mean_tags": 15.5,
+        "p25_tags": 7.2,
+        "p75_tags": 24.2,
+        "median_boxes": 10.2,
+        "mean_boxes": 25.3,
+        "p25_boxes": 3.7,
+        "p75_boxes": 17.1
+      }
+    },
+    "bedroom": {
+      "typical_tags": {
+        "light": 4,
+        "medium": 7,
+        "heavy": 12
+      },
+      "typical_boxes": {
+        "light": 4,
+        "medium": 10,
+        "heavy": 20
+      },
+      "common_tags": [
+        "bed frame/headboard",
+        "mattress",
+        "dresser",
+        "nightstands",
+        "desk",
+        "bookshelf",
+        "mirror"
+      ],
+      "common_box_items": [
+        "clothing",
+        "personal items",
+        "books",
+        "toys (kids room)",
+        "shoes",
+        "accessories"
+      ],
+      "notes": "Kids rooms tend heavy on boxes (toys). Master bedrooms have more TAGs.",
+      "actual_data": {
+        "sample_size": 46,
+        "median_tags": 7.6,
+        "mean_tags": 13.0,
+        "p25_tags": 5.9,
+        "p75_tags": 24.3,
+        "median_boxes": 13.6,
+        "mean_boxes": 33.5,
+        "p25_boxes": 7.5,
+        "p75_boxes": 32.7
+      }
+    },
+    "bathroom": {
+      "typical_tags": {
+        "light": 0,
+        "medium": 1,
+        "heavy": 3
+      },
+      "typical_boxes": {
+        "light": 1,
+        "medium": 3,
+        "heavy": 6
+      },
+      "common_tags": [
+        "vanity (if freestanding)",
+        "linen cabinet",
+        "hamper"
+      ],
+      "common_box_items": [
+        "toiletries",
+        "towels",
+        "under-sink items",
+        "medicine cabinet items"
+      ],
+      "notes": "Usually low scope. Most items are small/consumable.",
+      "actual_data": {
+        "sample_size": 13,
+        "median_tags": 2.3,
+        "mean_tags": 2.5,
+        "p25_tags": 1.8,
+        "p75_tags": 4.0,
+        "median_boxes": 2.3,
+        "mean_boxes": 5.5,
+        "p25_boxes": 1.4,
+        "p75_boxes": 3.1
+      }
+    },
+    "closet": {
+      "typical_tags": {
+        "light": 1,
+        "medium": 3,
+        "heavy": 5
+      },
+      "typical_boxes": {
+        "light": 3,
+        "medium": 8,
+        "heavy": 20
+      },
+      "common_tags": [
+        "freestanding shelving",
+        "shoe rack",
+        "dresser"
+      ],
+      "common_box_items": [
+        "clothing",
+        "shoes",
+        "accessories",
+        "seasonal items",
+        "linens"
+      ],
+      "notes": "Walk-in closets can have very high box counts. Primary closets especially dense.",
+      "actual_data": {
+        "sample_size": 3,
+        "median_tags": 6.0,
+        "mean_tags": 7.3,
+        "p25_tags": 5.4,
+        "p75_tags": 8.5,
+        "median_boxes": 10.9,
+        "mean_boxes": 12.8,
+        "p25_boxes": 5.5,
+        "p75_boxes": 19.2
+      }
+    },
+    "office": {
+      "typical_tags": {
+        "light": 3,
+        "medium": 5,
+        "heavy": 8
+      },
+      "typical_boxes": {
+        "light": 5,
+        "medium": 12,
+        "heavy": 25
+      },
+      "common_tags": [
+        "desk",
+        "office chair",
+        "bookshelf",
+        "filing cabinet",
+        "printer table"
+      ],
+      "common_box_items": [
+        "books",
+        "papers/files",
+        "office supplies",
+        "electronics",
+        "computer equipment"
+      ],
+      "notes": "Paper/books create heavy, dense boxes. High box count relative to room size.",
+      "actual_data": {
+        "sample_size": 6,
+        "median_tags": 9.6,
+        "mean_tags": 10.0,
+        "p25_tags": 5.9,
+        "p75_tags": 14.2,
+        "median_boxes": 10.2,
+        "mean_boxes": 19.1,
+        "p25_boxes": 5.9,
+        "p75_boxes": 12.8
+      }
+    },
+    "garage": {
+      "typical_tags": {
+        "light": 5,
+        "medium": 15,
+        "heavy": 30
+      },
+      "typical_boxes": {
+        "light": 5,
+        "medium": 15,
+        "heavy": 30
+      },
+      "common_tags": [
+        "workbench",
+        "tool chest",
+        "lawn mower",
+        "bicycles",
+        "shelving units",
+        "ladder",
+        "grill"
+      ],
+      "common_box_items": [
+        "tools",
+        "hardware",
+        "sports equipment",
+        "holiday decorations",
+        "camping gear"
+      ],
+      "notes": "Garages vary enormously. Can be nearly empty or packed floor to ceiling.",
+      "actual_data": {
+        "sample_size": 3,
+        "median_tags": 8.9,
+        "mean_tags": 8.3,
+        "p25_tags": 6.7,
+        "p75_tags": 10.2,
+        "median_boxes": 9.9,
+        "mean_boxes": 12.4,
+        "p25_boxes": 8.4,
+        "p75_boxes": 15.2
+      }
+    },
+    "laundry": {
+      "typical_tags": {
+        "light": 0,
+        "medium": 1,
+        "heavy": 3
+      },
+      "typical_boxes": {
+        "light": 1,
+        "medium": 3,
+        "heavy": 6
+      },
+      "common_tags": [
+        "shelving unit",
+        "laundry hamper",
+        "ironing board"
+      ],
+      "common_box_items": [
+        "cleaning supplies",
+        "laundry items",
+        "linens"
+      ],
+      "notes": "Usually low scope unless also used for storage.",
+      "actual_data": {
+        "sample_size": 7,
+        "median_tags": 4.1,
+        "mean_tags": 3.8,
+        "p25_tags": 2.1,
+        "p75_tags": 4.7,
+        "median_boxes": 4.1,
+        "mean_boxes": 11.8,
+        "p25_boxes": 2.5,
+        "p75_boxes": 16.3
+      }
+    },
+    "hallway": {
+      "typical_tags": {
+        "light": 1,
+        "medium": 3,
+        "heavy": 5
+      },
+      "typical_boxes": {
+        "light": 1,
+        "medium": 3,
+        "heavy": 5
+      },
+      "common_tags": [
+        "console table",
+        "hall tree",
+        "bench",
+        "decorative items"
+      ],
+      "common_box_items": [
+        "shoes",
+        "coats",
+        "decor items",
+        "photos/frames"
+      ],
+      "notes": "Entry foyers with display pieces can have more TAGs than expected.",
+      "actual_data": {
+        "sample_size": 13,
+        "median_tags": 9.7,
+        "mean_tags": 7.6,
+        "p25_tags": 5.3,
+        "p75_tags": 9.7,
+        "median_boxes": 5.5,
+        "mean_boxes": 17.0,
+        "p25_boxes": 4.2,
+        "p75_boxes": 11.3
+      }
+    },
+    "exterior": {
+      "typical_tags": {
+        "light": 0,
+        "medium": 2,
+        "heavy": 5
+      },
+      "typical_boxes": {
+        "light": 0,
+        "medium": 1,
+        "heavy": 3
+      },
+      "common_tags": [
+        "patio furniture",
+        "grill",
+        "planters"
+      ],
+      "common_box_items": [
+        "garden items",
+        "outdoor decor"
+      ],
+      "notes": "Usually not included in packout scope unless specifically affected.",
+      "actual_data": {
+        "sample_size": 7,
+        "median_tags": 0.3,
+        "mean_tags": 0.6,
+        "p25_tags": 0.0,
+        "p75_tags": 0.7,
+        "median_boxes": 0.7,
+        "mean_boxes": 2.4,
+        "p25_boxes": 0.6,
+        "p75_boxes": 0.9
+      }
+    },
+    "basement": {
+      "typical_tags": {
+        "light": 5,
+        "medium": 12,
+        "heavy": 25
+      },
+      "typical_boxes": {
+        "light": 5,
+        "medium": 15,
+        "heavy": 35
+      },
+      "common_tags": [
+        "furniture",
+        "exercise equipment",
+        "bar/counter",
+        "pool table"
+      ],
+      "common_box_items": [
+        "storage items",
+        "seasonal items",
+        "tools",
+        "media",
+        "books"
+      ],
+      "notes": "Basements often have accumulated storage. Can rival garage for scope.",
+      "actual_data": {
+        "sample_size": 2,
+        "median_tags": 31.1,
+        "mean_tags": 31.1,
+        "p25_tags": 28.4,
+        "p75_tags": 33.8,
+        "median_boxes": 156.8,
+        "mean_boxes": 156.8,
+        "p25_boxes": 134.5,
+        "p75_boxes": 179.1
+      }
+    },
+    "other": {
+      "typical_tags": {
+        "light": 2,
+        "medium": 5,
+        "heavy": 10
+      },
+      "typical_boxes": {
+        "light": 3,
+        "medium": 8,
+        "heavy": 15
+      },
+      "common_tags": [],
+      "common_box_items": [],
+      "notes": "Varies based on actual room function.",
+      "actual_data": {
+        "sample_size": 2,
+        "median_tags": 3.2,
+        "mean_tags": 3.2,
+        "p25_tags": 2.7,
+        "p75_tags": 3.7,
+        "median_boxes": 5.1,
+        "mean_boxes": 5.1,
+        "p25_boxes": 4.1,
+        "p75_boxes": 6.0
+      }
+    }
+  }
+}

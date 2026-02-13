@@ -1,0 +1,1836 @@
+{
+  "metadata": {
+    "generated": "2026-02-13T01:14:53.868540",
+    "total_walkthroughs": 19,
+    "with_estimates": 18,
+    "post_acquisition": 9
+  },
+  "walkthroughs": [
+    {
+      "customer": "Adler, Jason",
+      "pdf": "ADLER_J Initial Walk Through Report-Encircle.pdf",
+      "page_count": 31,
+      "is_post_acquisition": false,
+      "loss_type": "Mar 6, 2024 Water",
+      "claim_id": "Date",
+      "room_count": 15,
+      "rooms": [
+        {
+          "room_name": "Exterior",
+          "room_category": "exterior",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Laundry Room",
+          "room_category": "laundry",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Formal Living Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Girls Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Girls Bathroom",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Guest Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Family/Dining Room",
+          "room_category": "dining_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Sewing Room",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Downstairs Media Room",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Office",
+          "room_category": "office",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Guest En-suite",
+          "room_category": "other",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Powder room",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bathroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "exterior": 1,
+        "laundry": 1,
+        "living_room": 1,
+        "bedroom": 6,
+        "bathroom": 2,
+        "dining_room": 1,
+        "kitchen": 1,
+        "office": 1,
+        "other": 1
+      },
+      "estimate_file": "ADLER_J_PACKOUT.xlsx",
+      "final_file": "ADLER_FINALPACKOUT.xlsx",
+      "estimate_data": {
+        "tag_count": 51.0,
+        "box_count_med": 236.0,
+        "box_count_lg": 5.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 241.0,
+        "labor_hours": 44.4,
+        "supervisor_hours": 8.9,
+        "storage_months": 296.0,
+        "moving_van_days": 3.0,
+        "furniture_pads": 102.0,
+        "total_rcv": 11867.74,
+        "line_item_count": 14
+      },
+      "final_data": {
+        "tag_count": 75.0,
+        "box_count_med": 124.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 124.0,
+        "labor_hours": 46.0,
+        "supervisor_hours": 9.2,
+        "storage_months": 298.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 150.0,
+        "total_rcv": 11240.63,
+        "line_item_count": 18
+      },
+      "actual_data": {
+        "tag_count": 75.0,
+        "box_count_med": 124.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 124.0,
+        "labor_hours": 46.0,
+        "supervisor_hours": 9.2,
+        "storage_months": 298.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 150.0,
+        "total_rcv": 11240.63,
+        "line_item_count": 18
+      }
+    },
+    {
+      "customer": "Alexander, Keith",
+      "pdf": "Initial Walk Through Report-Alexander_K.pdf",
+      "page_count": 8,
+      "is_post_acquisition": false,
+      "loss_type": "Feb 21, 2024 Water",
+      "claim_id": "Date",
+      "room_count": 5,
+      "rooms": [
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Foyer",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Living Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Family Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Dining Room",
+          "room_category": "dining_room",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "kitchen": 1,
+        "hallway": 1,
+        "living_room": 2,
+        "dining_room": 1
+      },
+      "estimate_file": null,
+      "final_file": "ALEXANDER_FINALPO.xlsx",
+      "estimate_data": null,
+      "final_data": {
+        "tag_count": 128.0,
+        "box_count_med": 71.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 71.0,
+        "labor_hours": 72.1,
+        "supervisor_hours": 12.0,
+        "storage_months": 730.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 150.0,
+        "total_rcv": 12922.9,
+        "line_item_count": 15
+      },
+      "actual_data": {
+        "tag_count": 128.0,
+        "box_count_med": 71.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 71.0,
+        "labor_hours": 72.1,
+        "supervisor_hours": 12.0,
+        "storage_months": 730.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 150.0,
+        "total_rcv": 12922.9,
+        "line_item_count": 15
+      }
+    },
+    {
+      "customer": "Cash, Christina",
+      "pdf": "Encircle Initial Walk Through Report.pdf",
+      "page_count": 8,
+      "is_post_acquisition": false,
+      "loss_type": "Aug 22, 2024 Water",
+      "claim_id": "Date",
+      "room_count": 7,
+      "rooms": [
+        {
+          "room_name": "Playroom And Hallways",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Family Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Dining Room",
+          "room_category": "dining_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Pantry",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hallway",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "MIL Suite",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Closet",
+          "room_category": "bedroom",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "hallway": 2,
+        "living_room": 1,
+        "dining_room": 1,
+        "kitchen": 1,
+        "bedroom": 2
+      },
+      "estimate_file": "CASH_PO_ESTIMATE.xlsx",
+      "final_file": "CASH_PO_FINAL.xlsx",
+      "estimate_data": {
+        "tag_count": 165.0,
+        "box_count_med": 200.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 200.0,
+        "labor_hours": 121.0,
+        "supervisor_hours": 17.3,
+        "storage_months": 226.0,
+        "moving_van_days": 4.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 18892.6,
+        "line_item_count": 14
+      },
+      "final_data": {
+        "tag_count": 202.0,
+        "box_count_med": 183.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 183.0,
+        "labor_hours": 135.4,
+        "supervisor_hours": 19.3,
+        "storage_months": 226.0,
+        "moving_van_days": 4.0,
+        "furniture_pads": 125.0,
+        "total_rcv": 20608.67,
+        "line_item_count": 16
+      },
+      "actual_data": {
+        "tag_count": 202.0,
+        "box_count_med": 183.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 183.0,
+        "labor_hours": 135.4,
+        "supervisor_hours": 19.3,
+        "storage_months": 226.0,
+        "moving_van_days": 4.0,
+        "furniture_pads": 125.0,
+        "total_rcv": 20608.67,
+        "line_item_count": 16
+      }
+    },
+    {
+      "customer": "Depaz, Yael",
+      "pdf": "Yael_Depaz_-_Initial_Walk-Thru_-_Photo_Report.pdf",
+      "page_count": 8,
+      "is_post_acquisition": true,
+      "loss_type": "Unknown",
+      "claim_id": "Date",
+      "room_count": 5,
+      "rooms": [
+        {
+          "room_name": "Exterior",
+          "room_category": "exterior",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Living Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Office",
+          "room_category": "office",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bedroom - Master",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Promary - closet",
+          "room_category": "closet",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "exterior": 1,
+        "living_room": 1,
+        "office": 1,
+        "bedroom": 1,
+        "closet": 1
+      },
+      "estimate_file": null,
+      "final_file": null,
+      "estimate_data": null,
+      "final_data": null,
+      "actual_data": null
+    },
+    {
+      "customer": "Dodd, Susan",
+      "pdf": "Initial_Walk-Through Report.pdf",
+      "page_count": 29,
+      "is_post_acquisition": false,
+      "loss_type": "Mar 11, 2024 Water",
+      "claim_id": "Date",
+      "room_count": 10,
+      "rooms": [
+        {
+          "room_name": "Exterior",
+          "room_category": "exterior",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Garage",
+          "room_category": "garage",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Living Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Second Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bathroom/Closet",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Laundry Room",
+          "room_category": "laundry",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hallway",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Entry/Downstairs Powder Room/closet",
+          "room_category": "bathroom",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "exterior": 1,
+        "garage": 1,
+        "bedroom": 2,
+        "living_room": 1,
+        "bathroom": 2,
+        "laundry": 1,
+        "hallway": 1,
+        "kitchen": 1
+      },
+      "estimate_file": "DODD_SPACKOUT.xlsx",
+      "final_file": "DODD_FINALPACKOUT.xlsx",
+      "estimate_data": {
+        "tag_count": 50.0,
+        "box_count_med": 100.0,
+        "box_count_lg": 5.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 105.0,
+        "labor_hours": 24.9,
+        "supervisor_hours": 6.2,
+        "storage_months": 74.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 6372.42,
+        "line_item_count": 13
+      },
+      "final_data": {
+        "tag_count": 58.0,
+        "box_count_med": 50.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 50.0,
+        "labor_hours": 27.1,
+        "supervisor_hours": 5.4,
+        "storage_months": 80.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 116.0,
+        "total_rcv": 6646.46,
+        "line_item_count": 15
+      },
+      "actual_data": {
+        "tag_count": 58.0,
+        "box_count_med": 50.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 50.0,
+        "labor_hours": 27.1,
+        "supervisor_hours": 5.4,
+        "storage_months": 80.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 116.0,
+        "total_rcv": 6646.46,
+        "line_item_count": 15
+      }
+    },
+    {
+      "customer": "Ezer, Ben Ray",
+      "pdf": "Ray_Ben_Ezra_-_Walk-Thru_Photo_Report.pdf",
+      "page_count": 22,
+      "is_post_acquisition": true,
+      "loss_type": "Unknown",
+      "claim_id": "Date",
+      "room_count": 17,
+      "rooms": [
+        {
+          "room_name": "Exterior",
+          "room_category": "exterior",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Entry",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Living Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Dining Room",
+          "room_category": "dining_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hallway",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bedroom 3",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Stairs",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bedroom 2",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bedroom 1",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Entry bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hall bath",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bath",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary closet",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Basement",
+          "room_category": "basement",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Laundry Room",
+          "room_category": "laundry",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "exterior": 1,
+        "hallway": 3,
+        "living_room": 1,
+        "kitchen": 1,
+        "dining_room": 1,
+        "bedroom": 7,
+        "bathroom": 1,
+        "basement": 1,
+        "laundry": 1
+      },
+      "estimate_file": null,
+      "final_file": "BEN_R_EZER_KUSTOM_V1.xlsx",
+      "estimate_data": null,
+      "final_data": {
+        "tag_count": 343.0,
+        "box_count_med": 1894.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 1894.0,
+        "labor_hours": 357.4,
+        "supervisor_hours": 119.2,
+        "storage_months": 90.0,
+        "moving_van_days": 16.0,
+        "furniture_pads": 117.0,
+        "total_rcv": 127667.9,
+        "line_item_count": 46
+      },
+      "actual_data": {
+        "tag_count": 343.0,
+        "box_count_med": 1894.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 1894.0,
+        "labor_hours": 357.4,
+        "supervisor_hours": 119.2,
+        "storage_months": 90.0,
+        "moving_van_days": 16.0,
+        "furniture_pads": 117.0,
+        "total_rcv": 127667.9,
+        "line_item_count": 46
+      }
+    },
+    {
+      "customer": "Guss, Michael",
+      "pdf": "Guss_Residence_-_Estimate_Walk_Photos.pdf",
+      "page_count": 4,
+      "is_post_acquisition": true,
+      "loss_type": "Unknown",
+      "claim_id": "Date",
+      "room_count": 3,
+      "rooms": [
+        {
+          "room_name": "Exterior",
+          "room_category": "exterior",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bathroom",
+          "room_category": "bathroom",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "exterior": 1,
+        "bedroom": 1,
+        "bathroom": 1
+      },
+      "estimate_file": "MICHAEL_GUSS.xlsx",
+      "final_file": "MICHAEL_GUSS1.xlsx",
+      "estimate_data": {
+        "tag_count": 0.0,
+        "box_count_med": 0.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 0.0,
+        "labor_hours": 100.0,
+        "supervisor_hours": 20.0,
+        "storage_months": 0.0,
+        "moving_van_days": 0.0,
+        "furniture_pads": 50.0,
+        "total_rcv": 12510.65,
+        "line_item_count": 11
+      },
+      "final_data": {
+        "tag_count": 0.0,
+        "box_count_med": 0.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 0.0,
+        "labor_hours": 100.0,
+        "supervisor_hours": 8.0,
+        "storage_months": 0.0,
+        "moving_van_days": 0.0,
+        "furniture_pads": 12.5,
+        "total_rcv": 7925.81,
+        "line_item_count": 11
+      },
+      "actual_data": {
+        "tag_count": 0.0,
+        "box_count_med": 0.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 0.0,
+        "labor_hours": 100.0,
+        "supervisor_hours": 8.0,
+        "storage_months": 0.0,
+        "moving_van_days": 0.0,
+        "furniture_pads": 12.5,
+        "total_rcv": 7925.81,
+        "line_item_count": 11
+      }
+    },
+    {
+      "customer": "Harmon, Michael",
+      "pdf": "Encircle Initial Walk Through report.pdf",
+      "page_count": 10,
+      "is_post_acquisition": true,
+      "loss_type": "Mar 3, 2025 Water",
+      "claim_id": "Date",
+      "room_count": 9,
+      "rooms": [
+        {
+          "room_name": "Foyer",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Office",
+          "room_category": "office",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hallway",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Family Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Dining Room",
+          "room_category": "dining_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Pantry",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Foyer 2",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bathroom",
+          "room_category": "bathroom",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "hallway": 3,
+        "office": 1,
+        "living_room": 1,
+        "dining_room": 1,
+        "kitchen": 2,
+        "bathroom": 1
+      },
+      "estimate_file": "HARMON_ESTIMATE.xlsx",
+      "final_file": "HARMON_FINAL.xlsx",
+      "estimate_data": {
+        "tag_count": 100.0,
+        "box_count_med": 100.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 100.0,
+        "labor_hours": 50.6,
+        "supervisor_hours": 7.2,
+        "storage_months": 150.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 75.0,
+        "total_rcv": 10736.23,
+        "line_item_count": 17
+      },
+      "final_data": {
+        "tag_count": 102.0,
+        "box_count_med": 80.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 80.0,
+        "labor_hours": 95.1,
+        "supervisor_hours": 19.5,
+        "storage_months": 226.0,
+        "moving_van_days": 4.0,
+        "furniture_pads": 65.0,
+        "total_rcv": 7528.81,
+        "line_item_count": 42
+      },
+      "actual_data": {
+        "tag_count": 102.0,
+        "box_count_med": 80.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 80.0,
+        "labor_hours": 95.1,
+        "supervisor_hours": 19.5,
+        "storage_months": 226.0,
+        "moving_van_days": 4.0,
+        "furniture_pads": 65.0,
+        "total_rcv": 7528.81,
+        "line_item_count": 42
+      }
+    },
+    {
+      "customer": "Hill, Tracy",
+      "pdf": "Initial Walk Photo Report.pdf",
+      "page_count": 8,
+      "is_post_acquisition": true,
+      "loss_type": "Unknown",
+      "claim_id": "Date",
+      "room_count": 7,
+      "rooms": [
+        {
+          "room_name": "Primary",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bath",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Living Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Trailer",
+          "room_category": "exterior",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Exterior",
+          "room_category": "exterior",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "bedroom": 3,
+        "living_room": 1,
+        "kitchen": 1,
+        "exterior": 2
+      },
+      "estimate_file": "TRACYHILLCA.xlsx",
+      "final_file": "TRACY_HILL_(25-90-C).xlsx",
+      "estimate_data": {
+        "tag_count": 50.0,
+        "box_count_med": 514.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 514.0,
+        "labor_hours": 116.0,
+        "supervisor_hours": 51.0,
+        "storage_months": 5.0,
+        "moving_van_days": 5.0,
+        "furniture_pads": 200.0,
+        "total_rcv": 61411.02,
+        "line_item_count": 73
+      },
+      "final_data": {
+        "tag_count": 0.0,
+        "box_count_med": 44.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 44.0,
+        "labor_hours": 20.2,
+        "supervisor_hours": 22.2,
+        "storage_months": 0.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 8.0,
+        "total_rcv": 14948.44,
+        "line_item_count": 103
+      },
+      "actual_data": {
+        "tag_count": 0.0,
+        "box_count_med": 44.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 44.0,
+        "labor_hours": 20.2,
+        "supervisor_hours": 22.2,
+        "storage_months": 0.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 8.0,
+        "total_rcv": 14948.44,
+        "line_item_count": 103
+      }
+    },
+    {
+      "customer": "Katz Sarah",
+      "pdf": "Encircle Initital Walk Through-Katz.pdf",
+      "page_count": 8,
+      "is_post_acquisition": false,
+      "loss_type": "Sep 27, 2024 Water",
+      "claim_id": "Date",
+      "room_count": 9,
+      "rooms": [
+        {
+          "room_name": "Entry",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Family Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Dining Room",
+          "room_category": "dining_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hall Bathroom",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bedroom 1-Personal",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bedroom-Personal",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hall Closets",
+          "room_category": "closet",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Daughters Room-personal",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "hallway": 1,
+        "living_room": 1,
+        "dining_room": 1,
+        "bathroom": 1,
+        "bedroom": 3,
+        "closet": 1,
+        "kitchen": 1
+      },
+      "estimate_file": "SARAH_KATZ.xlsx",
+      "final_file": "SARAH_KATZ1412.xlsx",
+      "estimate_data": {
+        "tag_count": 100.0,
+        "box_count_med": 125.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 125.0,
+        "labor_hours": 61.0,
+        "supervisor_hours": 8.7,
+        "storage_months": 300.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 12340.88,
+        "line_item_count": 16
+      },
+      "final_data": {
+        "tag_count": 62.0,
+        "box_count_med": 0.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 0.0,
+        "labor_hours": 55.0,
+        "supervisor_hours": 0.0,
+        "storage_months": 1992.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 45.0,
+        "total_rcv": 7630.83,
+        "line_item_count": 11
+      },
+      "actual_data": {
+        "tag_count": 62.0,
+        "box_count_med": 0.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 0.0,
+        "labor_hours": 55.0,
+        "supervisor_hours": 0.0,
+        "storage_months": 1992.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 45.0,
+        "total_rcv": 7630.83,
+        "line_item_count": 11
+      }
+    },
+    {
+      "customer": "Kuhn Dale",
+      "pdf": "Encircle Initial Walk Through.pdf",
+      "page_count": 11,
+      "is_post_acquisition": false,
+      "loss_type": "Unknown",
+      "claim_id": "Date",
+      "room_count": 14,
+      "rooms": [
+        {
+          "room_name": "Entry",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Front living room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Family Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hall Bath",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Guest Room 1",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Excercise Room",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hall Closet",
+          "room_category": "closet",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Office",
+          "room_category": "office",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bedrrom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Closet",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bathroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Garage",
+          "room_category": "garage",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Laundry Room",
+          "room_category": "laundry",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "hallway": 1,
+        "living_room": 2,
+        "kitchen": 1,
+        "bathroom": 1,
+        "bedroom": 5,
+        "closet": 1,
+        "office": 1,
+        "garage": 1,
+        "laundry": 1
+      },
+      "estimate_file": "KUHN_PB_ESTIMATE.xlsx",
+      "final_file": "KUHN_PO_FINAL.xlsx",
+      "estimate_data": {
+        "tag_count": 0.0,
+        "box_count_med": 0.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 0.0,
+        "labor_hours": 74.7,
+        "supervisor_hours": 10.7,
+        "storage_months": 0.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 0.0,
+        "total_rcv": 8650.24,
+        "line_item_count": 7
+      },
+      "final_data": {
+        "tag_count": 78.0,
+        "box_count_med": 180.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 180.0,
+        "labor_hours": 74.7,
+        "supervisor_hours": 10.7,
+        "storage_months": 160.0,
+        "moving_van_days": 3.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 18965.04,
+        "line_item_count": 23
+      },
+      "actual_data": {
+        "tag_count": 78.0,
+        "box_count_med": 180.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 180.0,
+        "labor_hours": 74.7,
+        "supervisor_hours": 10.7,
+        "storage_months": 160.0,
+        "moving_van_days": 3.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 18965.04,
+        "line_item_count": 23
+      }
+    },
+    {
+      "customer": "Morrison, Heather",
+      "pdf": "Encircle Initial Walk Through.pdf",
+      "page_count": 9,
+      "is_post_acquisition": true,
+      "loss_type": "Feb 3, 2025 Water",
+      "claim_id": "Date",
+      "room_count": 6,
+      "rooms": [
+        {
+          "room_name": "Vivia Room",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Rylan",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Gage",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Zane",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hallway",
+          "room_category": "hallway",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary",
+          "room_category": "bedroom",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "bedroom": 5,
+        "hallway": 1
+      },
+      "estimate_file": "MORRISON_ESTIMATE.xlsx",
+      "final_file": null,
+      "estimate_data": {
+        "tag_count": 150.0,
+        "box_count_med": 150.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 150.0,
+        "labor_hours": 102.7,
+        "supervisor_hours": 14.7,
+        "storage_months": 150.0,
+        "moving_van_days": 4.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 20337.94,
+        "line_item_count": 18
+      },
+      "final_data": null,
+      "actual_data": {
+        "tag_count": 150.0,
+        "box_count_med": 150.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 150.0,
+        "labor_hours": 102.7,
+        "supervisor_hours": 14.7,
+        "storage_months": 150.0,
+        "moving_van_days": 4.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 20337.94,
+        "line_item_count": 18
+      }
+    },
+    {
+      "customer": "Mulvaney, Chad",
+      "pdf": "Initial Walk Through Photo Report.pdf",
+      "page_count": 8,
+      "is_post_acquisition": true,
+      "loss_type": "Apr 1, 2025 Fire",
+      "claim_id": "Date",
+      "room_count": 9,
+      "rooms": [
+        {
+          "room_name": "Living Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Dining Room",
+          "room_category": "dining_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Laundry Room",
+          "room_category": "laundry",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Office",
+          "room_category": "office",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Guest Room",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Hall Bath",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bathroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "living_room": 1,
+        "dining_room": 1,
+        "kitchen": 1,
+        "laundry": 1,
+        "office": 1,
+        "bedroom": 3,
+        "bathroom": 1
+      },
+      "estimate_file": "CHAD_MULVANEY111511.xlsx",
+      "final_file": "CHAD_MULVANEY1115111.xlsx",
+      "estimate_data": {
+        "tag_count": 120.0,
+        "box_count_med": 10.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 10.0,
+        "labor_hours": 70.2,
+        "supervisor_hours": 10.37,
+        "storage_months": 0.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 10034.69,
+        "line_item_count": 35
+      },
+      "final_data": {
+        "tag_count": 120.0,
+        "box_count_med": 10.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 10.0,
+        "labor_hours": 84.99,
+        "supervisor_hours": 9.37,
+        "storage_months": 0.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 10815.72,
+        "line_item_count": 36
+      },
+      "actual_data": {
+        "tag_count": 120.0,
+        "box_count_med": 10.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 10.0,
+        "labor_hours": 84.99,
+        "supervisor_hours": 9.37,
+        "storage_months": 0.0,
+        "moving_van_days": 2.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 10815.72,
+        "line_item_count": 36
+      }
+    },
+    {
+      "customer": "Murphy Kevin",
+      "pdf": "Encircle Initial Walk Through Report.pdf",
+      "page_count": 7,
+      "is_post_acquisition": false,
+      "loss_type": "Aug 1, 2024 Water",
+      "claim_id": "Date",
+      "room_count": 5,
+      "rooms": [
+        {
+          "room_name": "Living Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Bedroom 1",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Batgroom 1",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "living_room": 1,
+        "kitchen": 1,
+        "bedroom": 2,
+        "bathroom": 1
+      },
+      "estimate_file": "MURPHY_PO_ESTIMATE.xlsx",
+      "final_file": "MURPHY_PO_FINAL.xlsx",
+      "estimate_data": {
+        "tag_count": 35.0,
+        "box_count_med": 65.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 65.0,
+        "labor_hours": 29.4,
+        "supervisor_hours": 6.1,
+        "storage_months": 4.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 25.0,
+        "total_rcv": 5592.04,
+        "line_item_count": 20
+      },
+      "final_data": {
+        "tag_count": 0.0,
+        "box_count_med": 38.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 38.0,
+        "labor_hours": 43.0,
+        "supervisor_hours": 6.1,
+        "storage_months": 280.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 0.0,
+        "total_rcv": 4693.92,
+        "line_item_count": 8
+      },
+      "actual_data": {
+        "tag_count": 0.0,
+        "box_count_med": 38.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 38.0,
+        "labor_hours": 43.0,
+        "supervisor_hours": 6.1,
+        "storage_months": 280.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 0.0,
+        "total_rcv": 4693.92,
+        "line_item_count": 8
+      }
+    },
+    {
+      "customer": "Qaqish, Mark",
+      "pdf": "Encircle Intital Walk-Through Report.pdf",
+      "page_count": 9,
+      "is_post_acquisition": true,
+      "loss_type": "Jan 15, 2025 Water",
+      "claim_id": "Date",
+      "room_count": 11,
+      "rooms": [
+        {
+          "room_name": "Front Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Living Room",
+          "room_category": "living_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Primary Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Guest Room",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Guest Room #2",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Guest Bathroom",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Mickey Room",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Laundry Room",
+          "room_category": "laundry",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Halll Closet",
+          "room_category": "closet",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Pantry",
+          "room_category": "kitchen",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "living_room": 2,
+        "kitchen": 2,
+        "bedroom": 4,
+        "bathroom": 1,
+        "laundry": 1,
+        "closet": 1
+      },
+      "estimate_file": "QAQISH_ESTIMATE.xlsx",
+      "final_file": "QAQISH-COMPLETE-FNL.xlsx",
+      "estimate_data": {
+        "tag_count": 125.0,
+        "box_count_med": 150.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 150.0,
+        "labor_hours": 81.6,
+        "supervisor_hours": 17.6,
+        "storage_months": 156.0,
+        "moving_van_days": 3.0,
+        "furniture_pads": 100.0,
+        "total_rcv": 15910.33,
+        "line_item_count": 27
+      },
+      "final_data": {
+        "tag_count": 149.0,
+        "box_count_med": 370.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 370.0,
+        "labor_hours": 206.0,
+        "supervisor_hours": 29.4,
+        "storage_months": 1058.0,
+        "moving_van_days": 7.0,
+        "furniture_pads": 85.0,
+        "total_rcv": 44161.75,
+        "line_item_count": 49
+      },
+      "actual_data": {
+        "tag_count": 149.0,
+        "box_count_med": 370.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 370.0,
+        "labor_hours": 206.0,
+        "supervisor_hours": 29.4,
+        "storage_months": 1058.0,
+        "moving_van_days": 7.0,
+        "furniture_pads": 85.0,
+        "total_rcv": 44161.75,
+        "line_item_count": 49
+      }
+    },
+    {
+      "customer": "Rogers, Caleb",
+      "pdf": "Rainbow Restoration Initial Walk Through Report.pdf",
+      "page_count": 68,
+      "is_post_acquisition": false,
+      "loss_type": "Unknown",
+      "claim_id": "",
+      "room_count": 0,
+      "rooms": [],
+      "room_category_counts": {},
+      "estimate_file": "ROGERS__CPL_CALEB.xlsx",
+      "final_file": "ROGERS__CPL_CALEB12.xlsx",
+      "estimate_data": {
+        "tag_count": 291.0,
+        "box_count_med": 268.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 268.0,
+        "labor_hours": 152.6,
+        "supervisor_hours": 21.8,
+        "storage_months": 1116.0,
+        "moving_van_days": 5.0,
+        "furniture_pads": 225.0,
+        "total_rcv": 33228.93,
+        "line_item_count": 18
+      },
+      "final_data": {
+        "tag_count": 291.0,
+        "box_count_med": 536.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 536.0,
+        "labor_hours": 385.2,
+        "supervisor_hours": 43.6,
+        "storage_months": 2148.0,
+        "moving_van_days": 9.0,
+        "furniture_pads": 225.0,
+        "total_rcv": 54798.02,
+        "line_item_count": 25
+      },
+      "actual_data": {
+        "tag_count": 291.0,
+        "box_count_med": 536.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 536.0,
+        "labor_hours": 385.2,
+        "supervisor_hours": 43.6,
+        "storage_months": 2148.0,
+        "moving_van_days": 9.0,
+        "furniture_pads": 225.0,
+        "total_rcv": 54798.02,
+        "line_item_count": 25
+      }
+    },
+    {
+      "customer": "Stout, Michael",
+      "pdf": "Encircle Initial Walk-Through-Stout.pdf",
+      "page_count": 28,
+      "is_post_acquisition": false,
+      "loss_type": "Feb 26, 2024 Water",
+      "claim_id": "Date",
+      "room_count": 9,
+      "rooms": [
+        {
+          "room_name": "0 Exterior",
+          "room_category": "exterior",
+          "photo_count": 0
+        },
+        {
+          "room_name": "1 Ground Floor Living",
+          "room_category": "other",
+          "photo_count": 0
+        },
+        {
+          "room_name": "2 Ground Floor Kitchen",
+          "room_category": "kitchen",
+          "photo_count": 0
+        },
+        {
+          "room_name": "3 Ground Floor Dining Room",
+          "room_category": "dining_room",
+          "photo_count": 0
+        },
+        {
+          "room_name": "6 Ground Floor Garage",
+          "room_category": "garage",
+          "photo_count": 0
+        },
+        {
+          "room_name": "8 Floor 2 Office",
+          "room_category": "office",
+          "photo_count": 0
+        },
+        {
+          "room_name": "9 Floor 2 Hallway Bathroom",
+          "room_category": "bathroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "10 Floor 2 Bedroom Daughters",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "11 Floor 2 Bedroom Son",
+          "room_category": "bedroom",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "exterior": 1,
+        "other": 1,
+        "kitchen": 1,
+        "dining_room": 1,
+        "garage": 1,
+        "office": 1,
+        "bathroom": 1,
+        "bedroom": 2
+      },
+      "estimate_file": "STOUT_MICAHELPACKOUT.xlsx",
+      "final_file": "STOUT_PACKOUTFINAL.xlsx",
+      "estimate_data": {
+        "tag_count": 51.0,
+        "box_count_med": 100.0,
+        "box_count_lg": 3.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 103.0,
+        "labor_hours": 34.3,
+        "supervisor_hours": 6.9,
+        "storage_months": 6.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 102.0,
+        "total_rcv": 7459.01,
+        "line_item_count": 11
+      },
+      "final_data": {
+        "tag_count": 25.0,
+        "box_count_med": 37.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 37.0,
+        "labor_hours": 15.6,
+        "supervisor_hours": 5.2,
+        "storage_months": 1.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 15.0,
+        "total_rcv": 2873.62,
+        "line_item_count": 10
+      },
+      "actual_data": {
+        "tag_count": 25.0,
+        "box_count_med": 37.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 37.0,
+        "labor_hours": 15.6,
+        "supervisor_hours": 5.2,
+        "storage_months": 1.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 15.0,
+        "total_rcv": 2873.62,
+        "line_item_count": 10
+      }
+    },
+    {
+      "customer": "Susank, David",
+      "pdf": "Encinrcle - Contents Report (Initial Walk).pdf",
+      "page_count": 7,
+      "is_post_acquisition": true,
+      "loss_type": "Unknown",
+      "claim_id": "Date",
+      "room_count": 4,
+      "rooms": [
+        {
+          "room_name": "Basement - laundry",
+          "room_category": "laundry",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Basemeny \u2014 office",
+          "room_category": "office",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Badement Bedroom",
+          "room_category": "bedroom",
+          "photo_count": 0
+        },
+        {
+          "room_name": "Basement bar",
+          "room_category": "basement",
+          "photo_count": 0
+        }
+      ],
+      "room_category_counts": {
+        "laundry": 1,
+        "office": 1,
+        "bedroom": 1,
+        "basement": 1
+      },
+      "estimate_file": "SUSANK-ESTIMATE.xlsx",
+      "final_file": "SUSANK_PO_FNL.xlsx",
+      "estimate_data": {
+        "tag_count": 85.0,
+        "box_count_med": 85.0,
+        "box_count_lg": 85.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 170.0,
+        "labor_hours": 77.5,
+        "supervisor_hours": 9.0,
+        "storage_months": 1.0,
+        "moving_van_days": 4.0,
+        "furniture_pads": 85.0,
+        "total_rcv": 22169.84,
+        "line_item_count": 28
+      },
+      "final_data": {
+        "tag_count": 65.0,
+        "box_count_med": 190.0,
+        "box_count_lg": 92.0,
+        "box_count_xl": 2.0,
+        "total_boxes": 284.0,
+        "labor_hours": 76.25,
+        "supervisor_hours": 4.0,
+        "storage_months": 56.0,
+        "moving_van_days": 5.0,
+        "furniture_pads": 50.0,
+        "total_rcv": 20962.15,
+        "line_item_count": 27
+      },
+      "actual_data": {
+        "tag_count": 65.0,
+        "box_count_med": 190.0,
+        "box_count_lg": 92.0,
+        "box_count_xl": 2.0,
+        "total_boxes": 284.0,
+        "labor_hours": 76.25,
+        "supervisor_hours": 4.0,
+        "storage_months": 56.0,
+        "moving_van_days": 5.0,
+        "furniture_pads": 50.0,
+        "total_rcv": 20962.15,
+        "line_item_count": 27
+      }
+    },
+    {
+      "customer": "Thompson, Bethany",
+      "pdf": "Thompson-Initial Walk Through Report.pdf",
+      "page_count": 12,
+      "is_post_acquisition": false,
+      "loss_type": "Unknown",
+      "claim_id": "",
+      "room_count": 0,
+      "rooms": [],
+      "room_category_counts": {},
+      "estimate_file": "THOMPSON_BPACKOUT.xlsx",
+      "final_file": "THOMPSON_POFINAL.xlsx",
+      "estimate_data": {
+        "tag_count": 27.0,
+        "box_count_med": 30.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 30.0,
+        "labor_hours": 13.5,
+        "supervisor_hours": 3.4,
+        "storage_months": 434.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 54.0,
+        "total_rcv": 3691.27,
+        "line_item_count": 11
+      },
+      "final_data": {
+        "tag_count": 22.0,
+        "box_count_med": 37.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 37.0,
+        "labor_hours": 12.5,
+        "supervisor_hours": 3.1,
+        "storage_months": 436.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 40.0,
+        "total_rcv": 4389.21,
+        "line_item_count": 12
+      },
+      "actual_data": {
+        "tag_count": 22.0,
+        "box_count_med": 37.0,
+        "box_count_lg": 0.0,
+        "box_count_xl": 0.0,
+        "total_boxes": 37.0,
+        "labor_hours": 12.5,
+        "supervisor_hours": 3.1,
+        "storage_months": 436.0,
+        "moving_van_days": 1.0,
+        "furniture_pads": 40.0,
+        "total_rcv": 4389.21,
+        "line_item_count": 12
+      }
+    }
+  ]
+}
