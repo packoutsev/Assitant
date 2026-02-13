@@ -14,3 +14,10 @@ This git repo is initialized in the Windows user home directory (`C:\Users\matth
 
 - No source code, build system, or tests exist yet
 - Only file tracked: `README.md`
+
+## Architecture Decisions
+
+### Video Pipeline — Encircle API Integration
+- **Primary source**: Pull videos from the Encircle API (techs already document in Encircle — no workflow change needed)
+- **Secondary source**: Direct upload as a fallback for non-Encircle videos (homeowner footage, adjuster clips, drone video)
+- Encircle-first approach: pipeline polls or uses webhooks to trigger video processing
