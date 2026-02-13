@@ -1,0 +1,72 @@
+[
+  {
+    "room_name": "Hallway (Entry & Corridors)",
+    "room_category": "hallway",
+    "density": "light",
+    "override_tags": 5,
+    "override_boxes": 1
+  },
+  {
+    "room_name": "Primary Bedroom",
+    "room_category": "bedroom_primary",
+    "density": "medium",
+    "override_tags": 11,
+    "override_boxes": 4
+  },
+  {
+    "room_name": "Primary Closet",
+    "room_category": "closet",
+    "density": "heavy",
+    "override_tags": 2,
+    "override_boxes": 30
+  },
+  {
+    "room_name": "Primary Bathroom",
+    "room_category": "bathroom",
+    "density": "light",
+    "override_tags": 1,
+    "override_boxes": 0
+  },
+  {
+    "room_name": "Great Room (Living & Sitting Areas)",
+    "room_category": "living_room",
+    "density": "heavy",
+    "override_tags": 14,
+    "override_boxes": 5
+  },
+  {
+    "room_name": "Dining Area (Formal & Nook)",
+    "room_category": "dining_room",
+    "density": "medium",
+    "override_tags": 13,
+    "override_boxes": 2
+  },
+  {
+    "room_name": "Kitchen",
+    "room_category": "kitchen",
+    "density": "light",
+    "override_tags": 0,
+    "override_boxes": 1
+  },
+  {
+    "room_name": "AV Closet",
+    "room_category": "closet",
+    "density": "medium",
+    "override_tags": 3,
+    "override_boxes": 1
+  },
+  {
+    "room_name": "Guest Bedroom 1",
+    "room_category": "bedroom_guest",
+    "density": "medium",
+    "override_tags": 11,
+    "override_boxes": 12
+  },
+  {
+    "room_name": "Guest Bedroom 2",
+    "room_category": "bedroom_guest",
+    "density": "heavy",
+    "override_tags": 8,
+    "override_boxes": 20
+  }
+]

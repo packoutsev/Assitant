@@ -1,0 +1,16 @@
+#,Phase,Description,Qty,Unit,Unit Cost,RCV,Cat,Sel
+1,Packout,Eval. pack & invent. misc items - per Med box-high density,74,EA,32.89,2433.86,CPS,BXMME>
+2,Packout,Eval. pack & invent. misc items - per Lg box-high density,4,EA,41.58,166.32,CPS,BXMLE>
+3,Packout,"Evaluate, tag, & inventory miscellaneous - per item",68,EA,11.81,803.08,CPS,TAG
+4,Packout,Provide furniture lightweight blanket/pad,71,EA,9.07,643.97,CPS,PAD
+5,Packout,"Bubble wrap - 48"" wide - Add-on cost for fragile items",518,LF,0.4,207.2,,
+6,Packout,"Provide stretch film/wrap - 20"" x 1000' roll",2,RL,29.83,59.66,CPS,WRAP
+7,Handling to Storage,"Inventory, Packing, Boxing, and Moving charge - per hour",49.73,HR,79.04,3930.66,,
+8,Handling to Storage,Moving van (21'-27') and equipment (per day),3,EA,202.42,607.26,CPS,TR>
+9,Storage,Off-site storage vault (per month),6,MO,195.0,1170.0,CPS,STORV
+10,Handling from Storage,Moving van (21'-27') and equipment (per day),3,EA,202.42,607.26,CPS,TR>
+11,Handling from Storage,"Inventory, Packing, Boxing, and Moving charge - per hour",49.73,HR,79.04,3930.66,,
+12,Pack back,Eval. pack & invent. misc items - per Med box-high density,74,EA,28.29,2093.46,,
+13,Pack back,Eval. pack & invent. misc items - per Lg box-high density,4,EA,35.76,143.04,,
+14,Pack back,"Evaluate, tag, & inventory miscellaneous - per item",68,EA,11.81,803.08,CPS,TAG
+15,Pack back,Haul debris - per pickup truck load - including dump fees,1,EA,162.03,162.03,DMO,PU

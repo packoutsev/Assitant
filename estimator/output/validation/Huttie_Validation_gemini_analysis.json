@@ -1,0 +1,165 @@
+[
+  {
+    "room_name": "Hallway (Entry & Corridors)",
+    "room_category": "hallway",
+    "density": "light",
+    "estimated_tags": 5,
+    "estimated_boxes": 1,
+    "tag_items": [
+      "large ceiling art",
+      "console table",
+      "large framed art",
+      "small framed art",
+      "blue console chest"
+    ],
+    "damage_indicators": [],
+    "scope_notes": "Flooring is being replaced throughout. All art to be handled by a specialized art vendor. Pack decor from built-in hutch."
+  },
+  {
+    "room_name": "Primary Bedroom",
+    "room_category": "bedroom_primary",
+    "density": "medium",
+    "estimated_tags": 11,
+    "estimated_boxes": 4,
+    "tag_items": [
+      "bed frame",
+      "mattress",
+      "2 nightstands",
+      "2 grey armchairs",
+      "small grey sofa",
+      "round coffee table",
+      "2 framed art pieces",
+      "bench at foot of bed",
+      "small side table"
+    ],
+    "damage_indicators": [],
+    "scope_notes": "Flooring is being replaced. Pack all furniture and contents. TV and soundbar are mounted to a tile wall and will likely stay in place."
+  },
+  {
+    "room_name": "Primary Closet",
+    "room_category": "closet",
+    "density": "heavy",
+    "estimated_tags": 2,
+    "estimated_boxes": 30,
+    "tag_items": [
+      "white chair",
+      "grey ottoman"
+    ],
+    "damage_indicators": [],
+    "scope_notes": "Flooring is being replaced. Pack all contents from built-in shelving, hanging rods, and drawers. Note neat organization for pack back. Potential for firearms requires specialized vendor."
+  },
+  {
+    "room_name": "Primary Bathroom",
+    "room_category": "bathroom",
+    "density": "light",
+    "estimated_tags": 1,
+    "estimated_boxes": 0,
+    "tag_items": [
+      "vanity mirror"
+    ],
+    "damage_indicators": [],
+    "scope_notes": "No packout of contents. Flooring is tile and not being replaced. Only mirror needs to be moved."
+  },
+  {
+    "room_name": "Great Room (Living & Sitting Areas)",
+    "room_category": "living_room",
+    "density": "heavy",
+    "estimated_tags": 14,
+    "estimated_boxes": 5,
+    "tag_items": [
+      "white sofa",
+      "white loveseat",
+      "concrete coffee table",
+      "sitting area sofa",
+      "2 sitting area armchairs",
+      "black coffee table",
+      "2 sitting area framed art pieces",
+      "chandelier",
+      "sectional sofa",
+      "wood coffee table",
+      "small side chair",
+      "glass display case with horse sculpture"
+    ],
+    "damage_indicators": [],
+    "scope_notes": "Flooring is being replaced. All art, including the high-value horse sculpture in the glass case, to be handled by a specialized art vendor. Chandelier may require an electrician. Rugs will stay. TVs mounted on marble will stay."
+  },
+  {
+    "room_name": "Dining Area (Formal & Nook)",
+    "room_category": "dining_room",
+    "density": "medium",
+    "estimated_tags": 13,
+    "estimated_boxes": 2,
+    "tag_items": [
+      "large wood dining table",
+      "6 large dining chairs",
+      "glass top table",
+      "4 black chairs",
+      "framed art"
+    ],
+    "damage_indicators": [],
+    "scope_notes": "Flooring is being replaced. Art to be handled by art vendor."
+  },
+  {
+    "room_name": "Kitchen",
+    "room_category": "kitchen",
+    "density": "light",
+    "estimated_tags": 0,
+    "estimated_boxes": 1,
+    "tag_items": [],
+    "damage_indicators": [],
+    "scope_notes": "Limited scope: Pack items on countertops only. Do not pack contents of cabinets or drawers."
+  },
+  {
+    "room_name": "AV Closet",
+    "room_category": "closet",
+    "density": "medium",
+    "estimated_tags": 3,
+    "estimated_boxes": 1,
+    "tag_items": [
+      "AV rack system",
+      "printer",
+      "small filing cabinet"
+    ],
+    "damage_indicators": [],
+    "scope_notes": "AV equipment requires specialist for disconnection/reconnection. Budget for AV vendor coordination."
+  },
+  {
+    "room_name": "Guest Bedroom 1",
+    "room_category": "bedroom_guest",
+    "density": "medium",
+    "estimated_tags": 11,
+    "estimated_boxes": 12,
+    "tag_items": [
+      "bed frame",
+      "mattress",
+      "2 nightstands",
+      "2 armchairs",
+      "round side table",
+      "leather bench",
+      "TV",
+      "3 framed art pieces"
+    ],
+    "damage_indicators": [
+      "Existing damage (scratches/dents) noted on the floor near the bed."
+    ],
+    "scope_notes": "Pack all furniture and contents, including closet with drawers and hanging items."
+  },
+  {
+    "room_name": "Guest Bedroom 2",
+    "room_category": "bedroom_guest",
+    "density": "heavy",
+    "estimated_tags": 8,
+    "estimated_boxes": 20,
+    "tag_items": [
+      "bed frame",
+      "mattress",
+      "armchair",
+      "TV",
+      "wall-mounted bookshelf",
+      "3 framed art pieces",
+      "Pete Rose/Hank Aaron baseball display"
+    ],
+    "damage_indicators": [],
+    "scope_notes": "Pack all furniture and contents. Closet is very full with books, art, and miscellaneous items. Drawers in the closet need to be packed. Baseball display is a high-value collectible."
+  }
+]

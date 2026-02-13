@@ -25,3 +25,16 @@ iCloudPhotos/
 # Git config
 .config/
 .gitconfig
+
+# API keys
+.env
+estimator/.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# MCP / OAuth
+gcp-oauth.keys.json
+mcp-gdrive-setup/
+gdrive_stderr.txt
