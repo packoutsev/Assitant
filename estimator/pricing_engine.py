@@ -140,6 +140,100 @@ class PricingEngine:
 
         return item
 
+    def price_5phase_estimate(self, items: list, packback_box_discount: float = 0.14) -> EstimateResult:
+        """Price a 5-phase estimate, applying packback discount to box items."""
+        result = EstimateResult()
+
+        for item in items:
+            phase = getattr(item, 'phase', '')
+
+            # Apply packback discount to box line items
+            if phase == 'Pack back' and 'box' in item.desc.lower() and item.unit_cost is None:
+                # Look up standard price, then apply discount
+                ref = self.find_price(item.desc)
+                if ref is not None:
+                    full_price = ref['unit_cost_weighted_median']
+                    item.unit_cost = round(full_price * (1 - packback_box_discount), 2)
+                    item.cost_source = 'packback_discount'
+
+            priced = self.price_line_item(item)
+            result.line_items.append(priced)
+
+            if priced.is_flagged:
+                result.flags.append({
+                    'desc': priced.desc,
+                    'reason': priced.flag_reason,
+                    'unit_cost': priced.applied_unit_cost,
+                    'deviation_pct': priced.deviation_pct,
+                })
+            if priced.cost_source == 'not_found':
+                result.missing_items.append(priced.desc)
+
+        result.subtotal_rcv = round(sum(i.rcv for i in result.line_items), 2)
+        result.total_tax = round(sum(i.tax for i in result.line_items), 2)
+        result.total_rcv_with_tax = round(result.subtotal_rcv + result.total_tax, 2)
+
+        return result
+
+    def format_5phase_estimate(self, result: EstimateResult) -> str:
+        """Format estimate grouped by phase."""
+        lines = []
+        lines.append("=" * 95)
+        lines.append("DRAFT ESTIMATE -- 1-800-Packouts of the East Valley")
+        lines.append("(5-Phase Structure with 65% Labor Margin Target)")
+        lines.append("=" * 95)
+
+        current_phase = None
+        item_num = 0
+        phase_totals = {}
+
+        for item in result.line_items:
+            phase = getattr(item, 'phase', 'Other')
+
+            if phase != current_phase:
+                if current_phase is not None:
+                    # Print phase subtotal
+                    lines.append(f"{'':>4} {'Phase subtotal:':>55} {'':>6} {'':>4} {'':>10} "
+                                f"${phase_totals.get(current_phase, 0):>10,.2f}")
+                    lines.append("")
+                current_phase = phase
+                lines.append(f"--- {phase} ---")
+                lines.append(f"{'#':<4} {'Description':<55} {'Qty':>6} {'Unit':>4} {'Cost':>10} {'RCV':>12}")
+                lines.append("-" * 95)
+
+            item_num += 1
+            flag = " *" if item.is_flagged else ""
+            lines.append(
+                f"{item_num:<4} {item.desc[:54]:<55} {item.qty:>6.1f} {item.unit:>4} "
+                f"${item.applied_unit_cost:>8,.2f} ${item.rcv:>10,.2f}{flag}"
+            )
+
+            phase_totals[phase] = phase_totals.get(phase, 0) + item.rcv
+
+        # Final phase subtotal
+        if current_phase:
+            lines.append(f"{'':>4} {'Phase subtotal:':>55} {'':>6} {'':>4} {'':>10} "
+                        f"${phase_totals.get(current_phase, 0):>10,.2f}")
+
+        lines.append("")
+        lines.append("=" * 95)
+
+        # Phase summary
+        lines.append("PHASE SUMMARY:")
+        for phase, total in phase_totals.items():
+            pct = total / result.subtotal_rcv * 100 if result.subtotal_rcv > 0 else 0
+            lines.append(f"  {phase:<30} ${total:>10,.2f}  ({pct:>5.1f}%)")
+        lines.append(f"  {'':->50}")
+        lines.append(f"  {'SUBTOTAL RCV':<30} ${result.subtotal_rcv:>10,.2f}")
+
+        if result.flags:
+            lines.append("")
+            lines.append("FLAGS (* items above):")
+            for flag in result.flags:
+                lines.append(f"  - {flag['reason']}")
+
+        return "\n".join(lines)
+
     def price_estimate(self, items: list[LineItem]) -> EstimateResult:
         """Price all line items and compute totals."""
         result = EstimateResult()
@@ -199,7 +293,7 @@ class PricingEngine:
 
 def build_standard_estimate(tag_count, box_count, cps_lab_hours, cps_labs_hours,
                             storage_months=3, moving_van_days=2, lg_boxes=0, xl_boxes=0):
-    """Build a standard packout estimate from cartage calculator outputs."""
+    """Build a standard packout estimate from cartage calculator outputs (legacy)."""
     items = [
         LineItem(desc="Inventory, Packing, Boxing, and Moving charge - per hour",
                  qty=cps_lab_hours, unit="HR"),
@@ -236,6 +330,141 @@ def build_standard_estimate(tag_count, box_count, cps_lab_hours, cps_labs_hours,
     ])
 
     return items
+
+
+@dataclass
+class PhaseLineItem(LineItem):
+    """A line item with phase grouping."""
+    phase: str = ''  # Packout, Handling to Storage, Storage, Handling from Storage, Pack back
+
+
+def build_5phase_estimate(
+    tag_count: int,
+    box_count: int,
+    handling_hours: float,
+    moving_van_days: int = 2,
+    storage_months: int = 8,
+    storage_vaults: int = 4,
+    lg_boxes: int = 0,
+    xl_boxes: int = 0,
+    pad_count: int = None,
+    handling_rate: float = 79.04,
+    packback_box_discount: float = 0.14,
+    bubble_wrap_width: int = 48,
+) -> list:
+    """
+    Build a full 5-phase estimate matching Diana's structure:
+      1. Packout - boxes, TAGs, pads, materials (labor embedded in per-unit rates)
+      2. Handling to Storage - transport labor + van
+      3. Storage - vault months
+      4. Handling from Storage - transport labor + van (same as #2)
+      5. Pack back - boxes/TAGs at reduced rate (no materials) + debris
+
+    Args:
+        tag_count: Number of tagged large items
+        box_count: Medium boxes
+        handling_hours: Total person-hours for handling (from cartage calculator)
+        moving_van_days: Van days per direction (applied to both handling phases)
+        storage_months: Total vault-months (e.g., 4 vaults x 2 months = 8)
+        storage_vaults: Number of vaults (for documentation, months = vaults * duration)
+        lg_boxes: Large boxes
+        xl_boxes: Extra-large boxes
+        pad_count: Furniture pads (defaults to tag_count if None)
+        handling_rate: Billing rate per hour for handling labor (default $79.04 for 65% margin)
+        packback_box_discount: Fraction discount on box rates for packback (no materials)
+        bubble_wrap_width: 24 or 48 inch bubble wrap
+    """
+    if pad_count is None:
+        # Diana's pad:TAG ratio varies by home value. Schafer (modest): 20/31 = 0.65.
+        # Huttie (luxury): 103/84 = 1.23. Default to 0.65 (most common pattern).
+        # Items that get pads: furniture (chairs, tables, sofas, dressers).
+        # Items that DON'T get pads: art/pictures, lamps, rugs, TVs (get TV boxes).
+        pad_count = max(1, round(tag_count * 0.65))
+
+    items = []
+
+    # ── PHASE 1: PACKOUT ──
+    # Boxes (labor + materials included in per-unit rate)
+    items.append(PhaseLineItem(
+        desc="Eval. pack & invent. misc items - per Med box-high density",
+        qty=box_count, unit="EA", phase="Packout"))
+    if lg_boxes > 0:
+        items.append(PhaseLineItem(
+            desc="Eval. pack & invent. misc items - per Lg box-high density",
+            qty=lg_boxes, unit="EA", phase="Packout"))
+    if xl_boxes > 0:
+        items.append(PhaseLineItem(
+            desc="Eval. pack & invent. misc items - per Xlg box-high density",
+            qty=xl_boxes, unit="EA", phase="Packout"))
+
+    # TAGs
+    items.append(PhaseLineItem(
+        desc="Evaluate, tag, & inventory miscellaneous - per item",
+        qty=tag_count, unit="EA", phase="Packout"))
+
+    # Furniture pads
+    items.append(PhaseLineItem(
+        desc="Provide furniture lightweight blanket/pad",
+        qty=pad_count, unit="EA", phase="Packout"))
+
+    # Materials
+    if bubble_wrap_width == 48:
+        items.append(PhaseLineItem(
+            desc="Bubble wrap - 48\" wide - Add-on cost for fragile items",
+            qty=max(100, box_count * 7), unit="LF",
+            unit_cost=0.40, phase="Packout"))
+    else:
+        items.append(PhaseLineItem(
+            desc="Bubble wrap - 24\" wide - Add-on cost for fragile items",
+            qty=max(50, box_count * 3), unit="LF", phase="Packout"))
+
+    items.append(PhaseLineItem(
+        desc="Provide stretch film/wrap - 20\" x 1000' roll",
+        qty=max(2, box_count // 35), unit="RL", phase="Packout"))
+
+    # ── PHASE 2: HANDLING TO STORAGE ──
+    items.append(PhaseLineItem(
+        desc="Inventory, Packing, Boxing, and Moving charge - per hour",
+        qty=handling_hours, unit="HR",
+        unit_cost=handling_rate, phase="Handling to Storage"))
+    items.append(PhaseLineItem(
+        desc="Moving van (21'-27') and equipment (per day)",
+        qty=moving_van_days, unit="EA", phase="Handling to Storage"))
+
+    # ── PHASE 3: STORAGE ──
+    items.append(PhaseLineItem(
+        desc="Off-site storage vault (per month)",
+        qty=storage_months, unit="MO", phase="Storage"))
+
+    # ── PHASE 4: HANDLING FROM STORAGE ──
+    items.append(PhaseLineItem(
+        desc="Moving van (21'-27') and equipment (per day)",
+        qty=moving_van_days, unit="EA", phase="Handling from Storage"))
+    items.append(PhaseLineItem(
+        desc="Inventory, Packing, Boxing, and Moving charge - per hour",
+        qty=handling_hours, unit="HR",
+        unit_cost=handling_rate, phase="Handling from Storage"))
+
+    # ── PHASE 5: PACK BACK ──
+    # Same box/TAG quantities but at reduced rate (no materials cost)
+    # We use unit_cost override with the discount applied
+    items.append(PhaseLineItem(
+        desc="Eval. pack & invent. misc items - per Med box-high density",
+        qty=box_count, unit="EA", phase="Pack back"))
+    if lg_boxes > 0:
+        items.append(PhaseLineItem(
+            desc="Eval. pack & invent. misc items - per Lg box-high density",
+            qty=lg_boxes, unit="EA", phase="Pack back"))
+
+    items.append(PhaseLineItem(
+        desc="Evaluate, tag, & inventory miscellaneous - per item",
+        qty=tag_count, unit="EA", phase="Pack back"))
+
+    items.append(PhaseLineItem(
+        desc="Haul debris - per pickup truck load - including dump fees",
+        qty=1, unit="EA", phase="Pack back"))
+
+    return items, packback_box_discount
 
 
 if __name__ == '__main__':

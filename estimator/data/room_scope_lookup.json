@@ -1,34 +1,33 @@
 {
   "metadata": {
-    "generated": "2026-02-13T01:14:53.879074",
-    "description": "Room type -> expected TAG/box counts based on density",
+    "generated": "2026-02-13",
+    "description": "Room type -> expected TAG/box counts based on density. Calibrated from Diana's actual room-by-room estimates (Huttie Oct 2025, Schafer Feb 2026).",
     "density_levels": [
       "light",
       "medium",
       "heavy"
     ],
-    "source_walkthroughs": 19,
-    "source_with_actuals": 18
+    "calibration_source": "Visual study of Huttie room-by-room estimate + Schafer walk-through cross-reference",
+    "notes": "TAGs = individual furniture pieces counted one-by-one. Each chair = 1 TAG, each table = 1, etc. Boxes = contents volume in cabinets, drawers, shelves. Scope notes from walk-through can override these defaults."
   },
   "room_types": {
     "kitchen": {
       "typical_tags": {
-        "light": 3,
-        "medium": 6,
-        "heavy": 10
+        "light": 0,
+        "medium": 2,
+        "heavy": 5
       },
       "typical_boxes": {
-        "light": 5,
-        "medium": 12,
-        "heavy": 25
+        "light": 3,
+        "medium": 10,
+        "heavy": 20
       },
       "common_tags": [
-        "refrigerator",
         "table",
         "chairs",
-        "microwave cart",
+        "island/cart",
         "bar stools",
-        "island"
+        "baker's rack"
       ],
       "common_box_items": [
         "dishes",
@@ -38,38 +37,28 @@
         "food items",
         "glassware"
       ],
-      "notes": "Kitchen typically has highest box density due to many small items",
-      "actual_data": {
-        "sample_size": 15,
-        "median_tags": 19.9,
-        "mean_tags": 17.8,
-        "p25_tags": 9.0,
-        "p75_tags": 21.2,
-        "median_boxes": 15.6,
-        "mean_boxes": 31.6,
-        "p25_boxes": 10.5,
-        "p75_boxes": 31.3
-      }
+      "notes": "Huttie kitchen (light): 1 TAG, 1 lg box. Schafer kitchen (under-sink only): 0 TAGs, ~2 boxes. Kitchen TAGs come from freestanding furniture only - not built-in cabinets/appliances."
     },
     "living_room": {
       "typical_tags": {
-        "light": 4,
-        "medium": 8,
-        "heavy": 15
+        "light": 3,
+        "medium": 6,
+        "heavy": 13
       },
       "typical_boxes": {
         "light": 3,
-        "medium": 8,
-        "heavy": 15
+        "medium": 6,
+        "heavy": 10
       },
       "common_tags": [
         "sofa/sectional",
         "coffee table",
         "end tables",
-        "TV/entertainment center",
-        "bookshelf",
+        "TV",
+        "entertainment center",
         "accent chairs",
-        "floor lamps"
+        "floor lamps",
+        "large art"
       ],
       "common_box_items": [
         "books",
@@ -78,33 +67,22 @@
         "throw pillows",
         "blankets"
       ],
-      "notes": "Sectionals count as 2-3 TAGs. Entertainment centers vary widely.",
-      "actual_data": {
-        "sample_size": 15,
-        "median_tags": 15.9,
-        "mean_tags": 15.4,
-        "p25_tags": 7.2,
-        "p75_tags": 23.2,
-        "median_boxes": 16.1,
-        "mean_boxes": 26.3,
-        "p25_boxes": 9.0,
-        "p75_boxes": 25.1
-      }
+      "notes": "Huttie living+formal dining (heavy): 13 TAGs, 8 boxes. Huttie formal living (medium): 4 TAGs, 4 boxes. Sectional = 1 TAG. Each accent chair = 1 TAG."
     },
     "dining_room": {
       "typical_tags": {
         "light": 3,
-        "medium": 6,
-        "heavy": 10
+        "medium": 5,
+        "heavy": 8
       },
       "typical_boxes": {
-        "light": 2,
-        "medium": 5,
-        "heavy": 10
+        "light": 1,
+        "medium": 3,
+        "heavy": 5
       },
       "common_tags": [
         "dining table",
-        "chairs (4-8)",
+        "chairs (each = 1 TAG)",
         "hutch/china cabinet",
         "buffet/sideboard"
       ],
@@ -114,75 +92,52 @@
         "table linens",
         "candles/decor"
       ],
-      "notes": "Each dining chair is a TAG. China cabinets have high box counts.",
-      "actual_data": {
-        "sample_size": 8,
-        "median_tags": 13.9,
-        "mean_tags": 15.5,
-        "p25_tags": 7.2,
-        "p75_tags": 24.2,
-        "median_boxes": 10.2,
-        "mean_boxes": 25.3,
-        "p25_boxes": 3.7,
-        "p75_boxes": 17.1
-      }
+      "notes": "Huttie dining (heavy): 8 TAGs (table + 6 chairs + 1), 2 med boxes. Each dining chair is 1 TAG. Boxes are low unless china cabinet present."
     },
     "bedroom": {
       "typical_tags": {
-        "light": 4,
+        "light": 3,
         "medium": 7,
-        "heavy": 12
+        "heavy": 14
       },
       "typical_boxes": {
-        "light": 4,
-        "medium": 10,
-        "heavy": 20
+        "light": 5,
+        "medium": 12,
+        "heavy": 25
       },
       "common_tags": [
         "bed frame/headboard",
-        "mattress",
+        "nightstands (each = 1)",
         "dresser",
-        "nightstands",
-        "desk",
+        "TV",
+        "accent chair",
         "bookshelf",
-        "mirror"
+        "mirror/large art"
       ],
       "common_box_items": [
         "clothing",
         "personal items",
         "books",
-        "toys (kids room)",
         "shoes",
-        "accessories"
+        "accessories",
+        "drawer contents"
       ],
-      "notes": "Kids rooms tend heavy on boxes (toys). Master bedrooms have more TAGs.",
-      "actual_data": {
-        "sample_size": 46,
-        "median_tags": 7.6,
-        "mean_tags": 13.0,
-        "p25_tags": 5.9,
-        "p75_tags": 24.3,
-        "median_boxes": 13.6,
-        "mean_boxes": 33.5,
-        "p25_boxes": 7.5,
-        "p75_boxes": 32.7
-      }
+      "notes": "Huttie Bed 1 (heavy): 9 TAGs, 20 boxes. Bed 2 (very heavy, massive shelving): 24 TAGs, 33 boxes. Primary (heavy, furniture-heavy): 14 TAGs, 12 boxes. Light bedroom = bed + 1 nightstand."
     },
     "bathroom": {
       "typical_tags": {
         "light": 0,
-        "medium": 1,
-        "heavy": 3
+        "medium": 0,
+        "heavy": 1
       },
       "typical_boxes": {
         "light": 1,
-        "medium": 3,
-        "heavy": 6
+        "medium": 2,
+        "heavy": 4
       },
       "common_tags": [
-        "vanity (if freestanding)",
-        "linen cabinet",
-        "hamper"
+        "freestanding vanity",
+        "linen cabinet"
       ],
       "common_box_items": [
         "toiletries",
@@ -190,65 +145,43 @@
         "under-sink items",
         "medicine cabinet items"
       ],
-      "notes": "Usually low scope. Most items are small/consumable.",
-      "actual_data": {
-        "sample_size": 13,
-        "median_tags": 2.3,
-        "mean_tags": 2.5,
-        "p25_tags": 1.8,
-        "p75_tags": 4.0,
-        "median_boxes": 2.3,
-        "mean_boxes": 5.5,
-        "p25_boxes": 1.4,
-        "p75_boxes": 3.1
-      }
+      "notes": "Bathrooms rarely have TAGs. Most items are small/boxable. Only freestanding furniture gets tagged."
     },
     "closet": {
       "typical_tags": {
-        "light": 1,
-        "medium": 3,
-        "heavy": 5
+        "light": 0,
+        "medium": 0,
+        "heavy": 2
       },
       "typical_boxes": {
         "light": 3,
-        "medium": 8,
-        "heavy": 20
+        "medium": 6,
+        "heavy": 15
       },
       "common_tags": [
         "freestanding shelving",
-        "shoe rack",
-        "dresser"
+        "safe",
+        "large luggage"
       ],
       "common_box_items": [
-        "clothing",
+        "clothing (wardrobe boxes for hanging)",
         "shoes",
         "accessories",
         "seasonal items",
         "linens"
       ],
-      "notes": "Walk-in closets can have very high box counts. Primary closets especially dense.",
-      "actual_data": {
-        "sample_size": 3,
-        "median_tags": 6.0,
-        "mean_tags": 7.3,
-        "p25_tags": 5.4,
-        "p75_tags": 8.5,
-        "median_boxes": 10.9,
-        "mean_boxes": 12.8,
-        "p25_boxes": 5.5,
-        "p75_boxes": 19.2
-      }
+      "notes": "Huttie primary closet (heavy): 2 TAGs, 33 boxes (8 low-density + 8 high-density + 17 wardrobe). Schafer pantry (medium): 0 TAGs, ~8 boxes. Linen closet (medium): 0 TAGs, ~5 boxes. Closets are box-heavy, TAG-light."
     },
     "office": {
       "typical_tags": {
-        "light": 3,
-        "medium": 5,
-        "heavy": 8
+        "light": 2,
+        "medium": 4,
+        "heavy": 7
       },
       "typical_boxes": {
         "light": 5,
-        "medium": 12,
-        "heavy": 25
+        "medium": 10,
+        "heavy": 20
       },
       "common_tags": [
         "desk",
@@ -264,34 +197,22 @@
         "electronics",
         "computer equipment"
       ],
-      "notes": "Paper/books create heavy, dense boxes. High box count relative to room size.",
-      "actual_data": {
-        "sample_size": 6,
-        "median_tags": 9.6,
-        "mean_tags": 10.0,
-        "p25_tags": 5.9,
-        "p75_tags": 14.2,
-        "median_boxes": 10.2,
-        "mean_boxes": 19.1,
-        "p25_boxes": 5.9,
-        "p75_boxes": 12.8
-      }
+      "notes": "Paper/books create heavy, dense boxes. High box count relative to room size."
     },
     "garage": {
       "typical_tags": {
-        "light": 5,
-        "medium": 15,
-        "heavy": 30
+        "light": 3,
+        "medium": 8,
+        "heavy": 18
       },
       "typical_boxes": {
-        "light": 5,
-        "medium": 15,
-        "heavy": 30
+        "light": 4,
+        "medium": 10,
+        "heavy": 25
       },
       "common_tags": [
         "workbench",
         "tool chest",
-        "lawn mower",
         "bicycles",
         "shelving units",
         "ladder",
@@ -304,33 +225,21 @@
         "holiday decorations",
         "camping gear"
       ],
-      "notes": "Garages vary enormously. Can be nearly empty or packed floor to ceiling.",
-      "actual_data": {
-        "sample_size": 3,
-        "median_tags": 8.9,
-        "mean_tags": 8.3,
-        "p25_tags": 6.7,
-        "p75_tags": 10.2,
-        "median_boxes": 9.9,
-        "mean_boxes": 12.4,
-        "p25_boxes": 8.4,
-        "p75_boxes": 15.2
-      }
+      "notes": "Garages vary enormously. Can be nearly empty or packed floor to ceiling."
     },
     "laundry": {
       "typical_tags": {
         "light": 0,
         "medium": 1,
-        "heavy": 3
+        "heavy": 2
       },
       "typical_boxes": {
         "light": 1,
         "medium": 3,
-        "heavy": 6
+        "heavy": 5
       },
       "common_tags": [
         "shelving unit",
-        "laundry hamper",
         "ironing board"
       ],
       "common_box_items": [
@@ -338,18 +247,7 @@
         "laundry items",
         "linens"
       ],
-      "notes": "Usually low scope unless also used for storage.",
-      "actual_data": {
-        "sample_size": 7,
-        "median_tags": 4.1,
-        "mean_tags": 3.8,
-        "p25_tags": 2.1,
-        "p75_tags": 4.7,
-        "median_boxes": 4.1,
-        "mean_boxes": 11.8,
-        "p25_boxes": 2.5,
-        "p75_boxes": 16.3
-      }
+      "notes": "Usually low scope unless also used for storage."
     },
     "hallway": {
       "typical_tags": {
@@ -359,14 +257,15 @@
       },
       "typical_boxes": {
         "light": 1,
-        "medium": 3,
-        "heavy": 5
+        "medium": 2,
+        "heavy": 4
       },
       "common_tags": [
         "console table",
-        "hall tree",
+        "hall tree/coat rack",
         "bench",
-        "decorative items"
+        "cabinet",
+        "large art"
       ],
       "common_box_items": [
         "shoes",
@@ -374,18 +273,7 @@
         "decor items",
         "photos/frames"
       ],
-      "notes": "Entry foyers with display pieces can have more TAGs than expected.",
-      "actual_data": {
-        "sample_size": 13,
-        "median_tags": 9.7,
-        "mean_tags": 7.6,
-        "p25_tags": 5.3,
-        "p75_tags": 9.7,
-        "median_boxes": 5.5,
-        "mean_boxes": 17.0,
-        "p25_boxes": 4.2,
-        "p75_boxes": 11.3
-      }
+      "notes": "Huttie entry+hallway (medium): 3 TAGs (console, cabinet, ottoman), 3 boxes."
     },
     "exterior": {
       "typical_tags": {
@@ -407,35 +295,24 @@
         "garden items",
         "outdoor decor"
       ],
-      "notes": "Usually not included in packout scope unless specifically affected.",
-      "actual_data": {
-        "sample_size": 7,
-        "median_tags": 0.3,
-        "mean_tags": 0.6,
-        "p25_tags": 0.0,
-        "p75_tags": 0.7,
-        "median_boxes": 0.7,
-        "mean_boxes": 2.4,
-        "p25_boxes": 0.6,
-        "p75_boxes": 0.9
-      }
+      "notes": "Usually not included in packout scope unless specifically affected."
     },
     "basement": {
       "typical_tags": {
-        "light": 5,
-        "medium": 12,
-        "heavy": 25
+        "light": 4,
+        "medium": 10,
+        "heavy": 20
       },
       "typical_boxes": {
         "light": 5,
-        "medium": 15,
-        "heavy": 35
+        "medium": 12,
+        "heavy": 30
       },
       "common_tags": [
         "furniture",
         "exercise equipment",
-        "bar/counter",
-        "pool table"
+        "shelving units",
+        "TV/entertainment"
       ],
       "common_box_items": [
         "storage items",
@@ -444,44 +321,22 @@
         "media",
         "books"
       ],
-      "notes": "Basements often have accumulated storage. Can rival garage for scope.",
-      "actual_data": {
-        "sample_size": 2,
-        "median_tags": 31.1,
-        "mean_tags": 31.1,
-        "p25_tags": 28.4,
-        "p75_tags": 33.8,
-        "median_boxes": 156.8,
-        "mean_boxes": 156.8,
-        "p25_boxes": 134.5,
-        "p75_boxes": 179.1
-      }
+      "notes": "Basements often have accumulated storage. Can rival garage for scope."
     },
     "other": {
       "typical_tags": {
         "light": 2,
         "medium": 5,
-        "heavy": 10
+        "heavy": 8
       },
       "typical_boxes": {
         "light": 3,
-        "medium": 8,
-        "heavy": 15
+        "medium": 6,
+        "heavy": 10
       },
       "common_tags": [],
       "common_box_items": [],
-      "notes": "Varies based on actual room function.",
-      "actual_data": {
-        "sample_size": 2,
-        "median_tags": 3.2,
-        "mean_tags": 3.2,
-        "p25_tags": 2.7,
-        "p75_tags": 3.7,
-        "median_boxes": 5.1,
-        "mean_boxes": 5.1,
-        "p25_boxes": 4.1,
-        "p75_boxes": 6.0
-      }
+      "notes": "Huttie sitting area (medium): 6 TAGs, 7 boxes. Varies based on actual room function."
     }
   }
 }

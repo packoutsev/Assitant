@@ -1,0 +1,237 @@
+{
+  "study_metadata": {
+    "study_date": "2026-02-13",
+    "session": "Overnight rebuild - Phase 1 study complete",
+    "estimator": "Diana Ocegueda",
+    "note": "Diana used Matt Roumain's Xactimate login for most estimates. ALL jobs from Oct 2025+ are Diana's counting/estimating work."
+  },
+  "jobs_studied": [
+    {
+      "name": "Schafer, Tyler",
+      "date": "2026-02-09",
+      "estimator": "Diana Ocegueda",
+      "total_rcv": 11872.91,
+      "phases": 5,
+      "rooms": [
+        "Kitchen (under-sink only)",
+        "Dining Room",
+        "Living Room",
+        "Pantry Closet",
+        "Linen Closet"
+      ],
+      "tags": 31,
+      "med_boxes": 74,
+      "lg_boxes": 1,
+      "pads": 20,
+      "pad_tag_ratio": 0.645,
+      "storage_vaults": 4,
+      "storage_months": 2,
+      "vault_rate": 195,
+      "handling_hours_per_direction": 22.4,
+      "handling_rate": 75,
+      "handling_billing": "flat_rate",
+      "van_days": 2,
+      "bubble_wrap": "500 LF of 48-inch",
+      "stretch_film": "2 rolls",
+      "notes": "Most recent estimate. Kitchen scope limited to under-sink per scope note. Living room was extreme density with 20+ TAGs. No O&P markup. Flat rate $75/hr handling.",
+      "visual_study_notes": "Studied all 10 pages of walk-through. Kitchen: 15 photos but scope note says ONLY under sink. Dining: round table + 4 chairs + shelf unit + gallery wall. Living: PACKED - sectional, daybed, 3 cube storage units, TV, entertainment center, side tables, wall art. 50+ boxes of shelf contents. Pantry: packed shelves, all boxable. Linen: 4 shelves of towels/supplies."
+    },
+    {
+      "name": "Huttie/Capitan",
+      "date": "2025-10-27",
+      "estimator": "Diana Ocegueda (under Matt's login)",
+      "total_rcv": 31441.39,
+      "core_5phase_rcv": 19736.35,
+      "specialty_handling": 11705.04,
+      "phases": 5,
+      "rooms_count": 10,
+      "tags": 84,
+      "med_boxes": 101,
+      "lg_boxes": 4,
+      "wardrobe_boxes": 18,
+      "pads": 103,
+      "pad_tag_ratio": 1.226,
+      "storage_vaults": 3,
+      "storage_months": 2,
+      "vault_rate": 250,
+      "handling_billing": "LAB_LABS_split",
+      "lab_hours": 51.5,
+      "labs_hours": 17.2,
+      "lab_rate": 58.7,
+      "labs_rate": 79.31,
+      "van_days": 2,
+      "bubble_wrap": "1000 LF of 48-inch",
+      "notes": "Luxury Scottsdale home. Room-by-room breakdown available. Uses LAB/LABS split billing. Fine art handling $9,000 allowance + firearms $750. O&P markup 10%+10%. Higher pad:TAG ratio due to luxury furniture.",
+      "room_by_room": {
+        "Kitchen": {
+          "tags": 1,
+          "med_boxes": 0,
+          "lg_boxes": 1,
+          "pads": 0
+        },
+        "Kitchen-Dining": {
+          "tags": 8,
+          "med_boxes": 2,
+          "pads": 8
+        },
+        "Living+Formal Dining": {
+          "tags": 13,
+          "med_boxes": 5,
+          "bric_a_brac": 1,
+          "lg_boxes": 2,
+          "pads": 22
+        },
+        "Formal Living": {
+          "tags": 4,
+          "med_boxes": 4,
+          "pads": 4
+        },
+        "Entry & Hallway": {
+          "tags": 3,
+          "med_boxes": 3,
+          "pads": 3
+        },
+        "Bed 1": {
+          "tags": 9,
+          "med_boxes": 19,
+          "wardrobe": 1,
+          "pads": 12,
+          "mattress_cover": 1,
+          "tv_box": 1
+        },
+        "Bed 2": {
+          "tags": 24,
+          "med_boxes": 32,
+          "lg_boxes": 1,
+          "pads": 24,
+          "mattress_cover": 1,
+          "tv_box": 1
+        },
+        "Primary": {
+          "tags": 14,
+          "med_boxes": 12,
+          "pads": 21,
+          "mattress_cover": 1
+        },
+        "Primary Closet": {
+          "tags": 2,
+          "low_density_boxes": 8,
+          "high_density_boxes": 8,
+          "wardrobe": 17
+        },
+        "Sitting Area": {
+          "tags": 6,
+          "med_boxes": 7,
+          "pads": 9
+        }
+      },
+      "visual_study_notes": "Studied all 16 pages of walk-through. Kitchen: ultra-minimalist, only countertops with sparse items. Dining: glass table + 6 modern chairs. Living+Formal: large open space with sectional, multiple tables, art. Formal Living: curved sofa, 2 accent chairs, side table. Bed 2: MASSIVE open shelving units loaded with decorative items (vases, globes, sculptures) = 32 boxes. Primary Closet: huge walk-in with floor-to-ceiling hanging clothes and shelves. Pages 15-16: close-up photos of decorative items on shelving (for inventory documentation)."
+    },
+    {
+      "name": "Clark, Stephen",
+      "date": "2025-07",
+      "estimator": "Diana Ocegueda (under Matt's login)",
+      "total_rcv": 30640.61,
+      "phases": 5,
+      "tags": 145,
+      "med_boxes": 147,
+      "pads": 150,
+      "storage_vaults": 7,
+      "storage_months": 4,
+      "notes": "Large 5-phase job. Farmers insurance. Includes packout report and cartage calculator."
+    },
+    {
+      "name": "Goldman, Mike",
+      "date": "2025-10-13",
+      "estimator": "Diana Ocegueda (under Matt's login)",
+      "total_rcv": 13124.18,
+      "phases": 2,
+      "billing_method": "hourly",
+      "straight_time_hours": 75.51,
+      "straight_time_rate": 85,
+      "overtime_hours": 32.19,
+      "overtime_rate": 127.5,
+      "med_boxes": 79,
+      "wardrobe_boxes": 3,
+      "storage_vaults": 3,
+      "storage_months": 2,
+      "notes": "Basement water loss. Billed hourly (T and M) not per-item. 245-page packout report with 620+ inventoried items. Different billing structure from later per-item estimates."
+    },
+    {
+      "name": "Szymanski",
+      "date": "2025-09 to 2025-10",
+      "estimator": "Diana Ocegueda (under Matt's login)",
+      "notes": "Initial estimate + final. Two versions studied."
+    },
+    {
+      "name": "Proskell/Austin",
+      "date": "2025-11-20",
+      "estimator": "Diana Ocegueda (under Matt's login)",
+      "total_rcv": 15238.87,
+      "notes": "13-page estimate. Studied text extraction."
+    }
+  ],
+  "dianas_counting_method": {
+    "tags": {
+      "definition": "Items too large to fit in a box. Each piece of furniture counted individually.",
+      "examples": "Each chair = 1 TAG, table = 1, sofa = 1, sectional = 1, bed frame = 1, nightstand = 1, TV = 1, dresser = 1, shelving unit = 1, large art = 1",
+      "not_tagged": "Small boxable items, cabinet contents, clothing, linens, toiletries",
+      "confirmed_by": "Visual cross-reference of Huttie walk-through photos with room-by-room TAG counts"
+    },
+    "pads": {
+      "definition": "Furniture pads for items needing protection during transport",
+      "gets_pads": "Chairs, tables, sofas, dressers, nightstands, shelving units",
+      "no_pads": "Art/pictures (get bubble wrap), TVs (get TV boxes), rugs, lamps",
+      "ratio_modest_home": 0.645,
+      "ratio_luxury_home": 1.226,
+      "default_ratio": 0.65,
+      "note": "Luxury homes use extra pads per item. In Huttie, some rooms had more pads than TAGs (Primary: 14 TAGs, 21 pads)."
+    },
+    "boxes": {
+      "definition": "Estimated by contents volume in cabinets, drawers, shelves",
+      "notes": "High-density packing is the default. Low-density used for loosely packed closets. Wardrobe boxes for hanging clothes.",
+      "typical_per_cabinet_section": "2-3 boxes",
+      "typical_per_drawer": "0.5-1 box",
+      "typical_per_shelf_level": "1-2 boxes"
+    },
+    "scope_notes_critical": {
+      "examples": [
+        "ONLY PACK OUT UNDER kitchen SINK - reduces kitchen to near-zero",
+        "Everything to come OFF WALLS - adds wall art to scope",
+        "DO NOT unplug items, H/O needs to unplug devices"
+      ],
+      "impact": "Scope notes can dramatically reduce or expand room estimates. Must be factored in."
+    }
+  },
+  "billing_evolution": {
+    "oct_2025": "LAB/LABS split billing ($58.70 LAB + $79.31 LABS). Gets flagged by insurance for supervisor costs.",
+    "feb_2026": "Flat rate $75/hr handling. Simpler, fewer insurance flags. ~63% margin.",
+    "direction": "Moving toward flat rate or raising base rates for everyone to avoid LABS flags."
+  },
+  "vault_formula": {
+    "box_capacity_per_vault": 60,
+    "dimensions": "7ft tall x 7ft deep x 5ft wide",
+    "furniture_policy": "Do NOT stack furniture - prevents damage and allows billing more vaults",
+    "formula_note": "Vaults driven primarily by box count. Furniture stored unstacked alongside boxes."
+  },
+  "factory_standard_variations": {
+    "what_varies": "Per-TAG and per-box handling times in cartage calculator",
+    "why": "Site access complexity - stairs, distance to vehicle, heat, narrow hallways",
+    "defaults": "pad_wrap=8min, load_tag=3min, unload_tag=3min, move_tag=5min per TAG"
+  },
+  "model_validation": {
+    "schafer_comparison": {
+      "ai_tags": 30,
+      "diana_tags": 31,
+      "tag_error_pct": -3.2,
+      "ai_boxes": 72,
+      "diana_boxes": 74,
+      "box_error_pct": -2.7,
+      "ai_total_rcv": 12270.25,
+      "diana_total_rcv": 11769.25,
+      "total_error_pct": 4.3,
+      "previous_error_pct": 29,
+      "note": "Schafer test uses room-level overrides for extreme living room. Without overrides, lookup-only gives 23 TAGs (-25.8%)."
+    }
+  }
+}

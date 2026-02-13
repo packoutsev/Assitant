@@ -1,0 +1,210 @@
+================================================================================
+5-PHASE PACKOUT ESTIMATE -- Schafer (with overrides)
+Generated: 2026-02-13 09:11
+================================================================================
+
+Home: 5 rooms (small)
+TAGs: 30 (initial: 30)
+Boxes: 72 med + 4 lg + 0 xl (initial: 73)
+Crew: 3 staff, 2 truck load(s)
+Drive time: 35 min one-way
+Handling rate: $79.04/hr (65% margin)
+Storage: 4 vault(s) x 2 months = 8 MO
+
+Handling hours: 24.5 hr per direction (x2 = 49.0 total)
+Total RCV: $12,270.25
+
+ROOM BREAKDOWN:
+  Kitchen                   TAGs:   0  Boxes:   2
+  Dining Room               TAGs:   8  Boxes:   5
+  Living Room               TAGs:  22  Boxes:  54
+  Pantry Closet             TAGs:   0  Boxes:   6
+  Linen Closet              TAGs:   0  Boxes:   6
+
+===============================================================================================
+DRAFT ESTIMATE -- 1-800-Packouts of the East Valley
+(5-Phase Structure with 65% Labor Margin Target)
+===============================================================================================
+--- Packout ---
+#    Description                                                Qty Unit       Cost          RCV
+-----------------------------------------------------------------------------------------------
+1    Eval. pack & invent. misc items - per Med box-high den    72.0   EA $   32.89 $  2,368.08
+2    Eval. pack & invent. misc items - per Lg box-high dens     4.0   EA $   41.58 $    166.32
+3    Evaluate, tag, & inventory miscellaneous - per item       30.0   EA $   11.81 $    354.30
+4    Provide furniture lightweight blanket/pad                 20.0   EA $    9.07 $    181.40
+5    Bubble wrap - 48" wide - Add-on cost for fragile items   504.0   LF $    0.40 $    201.60
+6    Provide stretch film/wrap - 20" x 1000' roll               2.0   RL $   29.83 $     59.66
+                                             Phase subtotal:                        $  3,331.36
+
+--- Handling to Storage ---
+#    Description                                                Qty Unit       Cost          RCV
+-----------------------------------------------------------------------------------------------
+7    Inventory, Packing, Boxing, and Moving charge - per ho    24.5   HR $   79.04 $  1,936.48 *
+8    Moving van (21'-27') and equipment (per day)               2.0   EA $  202.42 $    404.84
+                                             Phase subtotal:                        $  2,341.32
+
+--- Storage ---
+#    Description                                                Qty Unit       Cost          RCV
+-----------------------------------------------------------------------------------------------
+9    Off-site storage vault (per month)                         8.0   MO $  195.00 $  1,560.00
+                                             Phase subtotal:                        $  1,560.00
+
+--- Handling from Storage ---
+#    Description                                                Qty Unit       Cost          RCV
+-----------------------------------------------------------------------------------------------
+10   Moving van (21'-27') and equipment (per day)               2.0   EA $  202.42 $    404.84
+11   Inventory, Packing, Boxing, and Moving charge - per ho    24.5   HR $   79.04 $  1,936.48 *
+                                             Phase subtotal:                        $  2,341.32
+
+--- Pack back ---
+#    Description                                                Qty Unit       Cost          RCV
+-----------------------------------------------------------------------------------------------
+12   Eval. pack & invent. misc items - per Med box-high den    72.0   EA $   28.29 $  2,036.88
+13   Eval. pack & invent. misc items - per Lg box-high dens     4.0   EA $   35.76 $    143.04
+14   Evaluate, tag, & inventory miscellaneous - per item       30.0   EA $   11.81 $    354.30
+15   Haul debris - per pickup truck load - including dump f     1.0   EA $  162.03 $    162.03
+                                             Phase subtotal:                        $  2,696.25
+
+===============================================================================================
+PHASE SUMMARY:
+  Packout                        $  3,331.36  ( 27.1%)
+  Handling to Storage            $  2,341.32  ( 19.1%)
+  Storage                        $  1,560.00  ( 12.7%)
+  Handling from Storage          $  2,341.32  ( 19.1%)
+  Pack back                      $  2,696.25  ( 22.0%)
+  --------------------------------------------------
+  SUBTOTAL RCV                   $ 12,270.25
+
+FLAGS (* items above):
+  - Unit cost $79.04 deviates +34.7% from post-acq median $58.70
+  - Unit cost $79.04 deviates +34.7% from post-acq median $58.70
+
+============================================================
+SCOPE CHECK REPORT — Score: 85/100
+============================================================
+
+CRITICAL (1):
+  [!] Missing supervisor hours (CPS LABS)
+
+INFO (1):
+  [i] No cleaning scope — only 14% of estimates include cleaning (commonly added later as supplement)
+
+MISSING PHASES: cleaning
+
+Scope is mostly complete — review warnings above.
+
+============================================================
+ESTIMATE ADJUSTMENT REPORT (Confidence: 85%)
+============================================================
+
+Metric                  Initial   Adjusted        Low       High
+--------------------------------------------------------------
+TAGs                         30         30         25         35
+Boxes                        73         72         36        115
+
+Notes:
+  - Commonly added in finals: Off-site storage vault (per month); Off-site storage & insur. - climate control. (per ; Provide box & tape - medium size
+
+=================================================================
+LABOR RATE ANALYSIS
+=================================================================
+
+Crew: 2 techs @ $21.00/hr + 1 supervisor @ $24.00/hr
+Total crew: 3 | Base wages: $66.00/hr
+
+Employer Burden:
+  FICA (SS + Medicare):  7.65%
+  SUTA (AZ state):       2.50%
+  FUTA (federal):        0.60%
+  Workers' Comp:         15.0%
+  Total burden:          25.75%
+
+Burdened Hourly Cost:
+  Tech:       $21.00 x 1.2575 = $26.41/hr
+  Supervisor: $24.00 x 1.2575 = $30.18/hr
+  Crew total: $83.00/hr (3 people)
+  Blended:    $27.67/hr per person
+
+Target margin: 65%
+Required billing rate: $79.04/hr per person
+
+Rate Comparison:
+  Xactimate CPS LAB:  $58.70/hr -> 52.9% margin
+  Xactimate CPS LABS: $79.31/hr -> 65.1% margin
+  Diana's flat rate:  $75.00/hr -> 63.1% margin
+  Target rate:        $79.04/hr -> 65% margin
+
+======================================================================
+SIMILAR HISTORICAL JOBS
+======================================================================
+
+#   Customer               Rooms   TAGs  Boxes        RCV  Match
+-----------------------------------------------------------------
+1   Hill, Tracy                5      0     44 $   14,948   95% *
+2   Murphy Kevin               5      0     38 $    4,694   95%
+3   Susank, David              4     65    284 $   20,962   91% *
+4   Stout, Michael             8     25     37 $    2,874   90%
+5   Guss, Michael              2      0      0 $    7,926   88% *
+
+Similar jobs billed: $2,874 - $20,962 (avg $10,281)
+Your estimate ($12,270) is within the range of similar jobs.
+
+* = post-acquisition job
+
+=================================================================
+SUPPLEMENT PREDICTOR
+Based on 23 estimate-to-final comparisons
+=================================================================
+
+LIKELY SUPPLEMENT ITEMS:
+  [!] Off-site storage & insur. - climate control. (per month)
+      Added in 17% of jobs (4/23)
+  [!] Provide box & tape - medium size
+      Added in 17% of jobs (4/23)
+  [?] Provide wardrobe box & tape - large size
+      Added in 9% of jobs (2/23)
+  [?] Telehandler/forklift and operator
+      Added in 9% of jobs (2/23)
+  [?] CONT: PACKING,HANDLNG,STORAGE - TAG , FASTENER and PRINTED BAR CODE
+      Added in 9% of jobs (2/23)
+  [?] Off-site storage & insurance (per month)
+      Added in 9% of jobs (2/23)
+  [?] Evaluate pack & inventory misc items - per Med box
+      Added in 9% of jobs (2/23)
+  [?] Provide wardrobe box & tape - large size
+      Added in 13% of jobs (3/23)
+
+EXPECTED QUANTITY ADJUSTMENTS:
+  TAG count: typically decreases 13% from estimate to final (n=22)
+  Labor hours: typically increases 5% from estimate to final (n=23)
+
+ITEMS SOMETIMES REMOVED:
+  [-] Plastic contractor debris bag (removed in 4 jobs)
+  [-] Telehandler/forklift and operator (removed in 4 jobs)
+  [-] CONT: PACKING,HANDLNG,STORAGE - TAG , FASTENER and PRINTED BAR CODE (removed in 3 jobs)
+  [-] Provide box, packing paper & tape - medium size (removed in 3 jobs)
+  [-] Haul debris - per pickup truck load - including dump fees (removed in 3 jobs)
+  [-] Dumpster load - Approx. 20 yards, 4 tons of debris (removed in 2 jobs)
+  [-] General Laborer - per hour (removed in 2 jobs)
+  [-] Evaluate, tag, & inventory miscellaneous - per item (removed in 2 jobs)
+  [-] Pallet Jack - up to 6000 lb capacity - manual (removed in 2 jobs)
+  [-] Bubble wrap - 24" wide - Add-on cost for fragile items (removed in 2 jobs)
+
+=======================================================
+CREW SIZING RECOMMENDATION
+=======================================================
+
+Job scope: 30 TAGs, 72 boxes
+
+Recommended crew: 5 staff (range: 4-6)
+Truck loads: 1 (range: 1-2)
+Estimated pack time: 1.0 day(s)
+Moving van days: 1
+Confidence: high
+
+Rationale: Small job - 1 truck, 1 day
+
+Historical reference (similar-sized jobs):
+  Stout, Michael: 25 tags, 37 boxes, 1 van days, $2,874 RCV
+  Thompson, Bethany: 22 tags, 37 boxes, 1 van days, $4,389 RCV
+  Dodd, Susan: 58 tags, 50 boxes, 1 van days, $6,646 RCV

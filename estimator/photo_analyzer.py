@@ -138,7 +138,8 @@ class PhotoAnalyzer:
         self.room_lookup = data['room_types']
 
     def analyze_room_local(self, room_name: str, room_category: str,
-                           density: str = 'medium', photo_count: int = 3) -> RoomAnalysis:
+                           density: str = 'medium', photo_count: int = 3,
+                           override_tags: int = None, override_boxes: int = None) -> RoomAnalysis:
         """
         Analyze a room using the local lookup table (no API call).
         Used for batch processing and backtesting when API is not available.
@@ -148,6 +149,8 @@ class PhotoAnalyzer:
             room_category: Classified category (e.g., "kitchen", "bedroom")
             density: Contents density level ("light", "medium", "heavy")
             photo_count: Number of photos taken of this room
+            override_tags: Explicit TAG count (overrides lookup if provided)
+            override_boxes: Explicit box count (overrides lookup if provided)
 
         Returns:
             RoomAnalysis with estimated TAG and box counts
@@ -156,18 +159,10 @@ class PhotoAnalyzer:
         typical_tags = lookup.get('typical_tags', {})
         typical_boxes = lookup.get('typical_boxes', {})
 
-        tags = typical_tags.get(density, typical_tags.get('medium', 5))
-        boxes = typical_boxes.get(density, typical_boxes.get('medium', 8))
+        tags = override_tags if override_tags is not None else typical_tags.get(density, typical_tags.get('medium', 5))
+        boxes = override_boxes if override_boxes is not None else typical_boxes.get(density, typical_boxes.get('medium', 8))
 
-        # Adjust based on actual data if available
-        actual = lookup.get('actual_data', {})
-        if actual.get('sample_size', 0) >= 3:
-            # Blend lookup estimate with actual data
-            actual_tags = actual.get('median_tags', tags)
-            actual_boxes = actual.get('median_boxes', boxes)
-            tags = round(0.5 * tags + 0.5 * actual_tags)
-            boxes = round(0.5 * boxes + 0.5 * actual_boxes)
-
+        source = "override" if (override_tags is not None or override_boxes is not None) else "lookup"
         return RoomAnalysis(
             room_name=room_name,
             room_category=room_category,
@@ -176,8 +171,8 @@ class PhotoAnalyzer:
             estimated_boxes=boxes,
             tag_items=lookup.get('common_tags', []),
             box_items=lookup.get('common_box_items', []),
-            confidence=0.6,  # Lower confidence without vision analysis
-            notes=f"Estimated from lookup table ({density} density)",
+            confidence=0.8 if source == "override" else 0.6,
+            notes=f"Estimated from {source} ({density} density)",
         )
 
     def analyze_walkthrough_local(self, rooms: list,
@@ -201,18 +196,16 @@ class PhotoAnalyzer:
                 room_category=room.get('room_category', 'other'),
                 density=room.get('density', default_density),
                 photo_count=room.get('photo_count', 3),
+                override_tags=room.get('override_tags'),
+                override_boxes=room.get('override_boxes'),
             )
             result.rooms.append(analysis)
 
-        # Sum totals
-        raw_tags = sum(r.estimated_tags for r in result.rooms)
-        raw_boxes = sum(r.estimated_boxes for r in result.rooms)
-
-        # Apply 20% adjustment for items not visible in overview photos
-        # (drawers, cabinets, closet interiors, etc.)
-        adjustment = 1.20
-        result.total_tags = round(raw_tags * adjustment)
-        result.total_boxes = round(raw_boxes * adjustment)
+        # Sum totals — no inflation adjustment needed since lookup values
+        # are calibrated from Diana's actual per-room counts which already
+        # account for items in drawers, cabinets, etc.
+        result.total_tags = sum(r.estimated_tags for r in result.rooms)
+        result.total_boxes = sum(r.estimated_boxes for r in result.rooms)
 
         # Home size classification
         if result.total_rooms <= 5:
