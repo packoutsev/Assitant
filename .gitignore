@@ -1,0 +1,26 @@
+# Windows user profile
+NTUSER.DAT*
+ntuser.dat.*
+ntuser.ini
+AppData/
+Contacts/
+Downloads/
+Favorites/
+Links/
+Music/
+Videos/
+Searches/
+Saved Games/
+OneDrive/
+iCloudPhotos/
+
+# Claude Code
+.claude/
+.claude.json
+.claude.json.backup.*
+
+# SSH
+.ssh/
+
+# Git config
+.config/
