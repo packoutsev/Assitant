@@ -1,0 +1,125 @@
+{
+  "metadata": {
+    "generated": "2026-02-13T01:08:02.404362",
+    "total_pairs": 23,
+    "post_acquisition_pairs": 7
+  },
+  "tag_multiplier": {
+    "value": 1.0,
+    "confidence": 0.85,
+    "all_estimates": {
+      "median": 0.947,
+      "std": 0.376,
+      "n": 21
+    },
+    "post_acquisition": {
+      "median": 1.0,
+      "std": 0.182,
+      "n": 7
+    }
+  },
+  "box_multiplier": {
+    "value": 0.98,
+    "confidence": 0.85,
+    "all_estimates": {
+      "median": 0.948,
+      "std": 0.501,
+      "n": 22
+    },
+    "post_acquisition": {
+      "median": 0.98,
+      "std": 0.591,
+      "n": 7
+    }
+  },
+  "labor_multiplier": {
+    "value": 0.937,
+    "confidence": 0.85,
+    "all_estimates": {
+      "median": 1.0,
+      "std": 0.468,
+      "n": 23
+    },
+    "post_acquisition": {
+      "median": 0.937,
+      "std": 0.745,
+      "n": 7
+    }
+  },
+  "rcv_multiplier": {
+    "value": 0.843,
+    "confidence": 0.85,
+    "all_estimates": {
+      "median": 1.061,
+      "std": 0.394,
+      "n": 23
+    },
+    "post_acquisition": {
+      "median": 0.843,
+      "std": 0.234,
+      "n": 7
+    }
+  },
+  "commonly_added_items": [
+    {
+      "desc": "Off-site storage vault (per month)",
+      "frequency": 5
+    },
+    {
+      "desc": "Off-site storage & insur. - climate control. (per month)",
+      "frequency": 4
+    },
+    {
+      "desc": "Provide box & tape - medium size",
+      "frequency": 4
+    },
+    {
+      "desc": "Provide wardrobe box & tape - large size",
+      "frequency": 2
+    },
+    {
+      "desc": "Haul debris - per pickup truck load - including dump fees",
+      "frequency": 2
+    },
+    {
+      "desc": "Telehandler/forklift and operator",
+      "frequency": 2
+    },
+    {
+      "desc": "CONT: PACKING,HANDLNG,STORAGE - TAG , FASTENER and PRINTED BAR CODE",
+      "frequency": 2
+    },
+    {
+      "desc": "Eval. pack & invent. misc items - per Lg box-high density",
+      "frequency": 2
+    },
+    {
+      "desc": "Eval. pack & invent. misc items - per Med box-high density",
+      "frequency": 2
+    },
+    {
+      "desc": "Off-site storage & insurance (per month)",
+      "frequency": 2
+    },
+    {
+      "desc": "Provide furniture lightweight blanket/pad",
+      "frequency": 2
+    },
+    {
+      "desc": "Evaluate pack & inventory misc items - per Med box",
+      "frequency": 2
+    },
+    {
+      "desc": "Provide box, packing paper & tape - medium size",
+      "frequency": 1
+    },
+    {
+      "desc": "Overpayment",
+      "frequency": 1
+    },
+    {
+      "desc": "Moving van (14'-15') and equipment (per day)",
+      "frequency": 1
+    }
+  ]
+}
