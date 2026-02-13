@@ -1,6 +1,6 @@
 ================================================================================
-PACKOUT ESTIMATE — Draft
-Generated: 2026-02-13 01:26
+PACKOUT ESTIMATE â€” Draft
+Generated: 2026-02-13 01:34
 ================================================================================
 
 Home: 9 rooms (medium)
@@ -24,7 +24,7 @@ ROOM BREAKDOWN:
   Hallway                   TAGs:   5  Boxes:   3
 
 ================================================================================
-DRAFT ESTIMATE — 1-800-Packouts of the East Valley
+DRAFT ESTIMATE â€” 1-800-Packouts of the East Valley
 (Post-Acquisition Pricing as of 2025)
 ================================================================================
 
@@ -46,19 +46,19 @@ DRAFT ESTIMATE — 1-800-Packouts of the East Valley
                                                                SUBTOTAL RCV $ 10,794.10
 
 ============================================================
-SCOPE CHECK REPORT — Score: 100/100
+SCOPE CHECK REPORT â€” Score: 100/100
 ============================================================
 
 INFO (1):
-  [i] No cleaning scope — only 14% of estimates include cleaning (commonly added later as supplement)
+  [i] No cleaning scope â€” only 14% of estimates include cleaning (commonly added later as supplement)
 
 MISSING PHASES: cleaning
 
 SUGGESTED ADDITIONS:
   + Provide wardrobe box & tape - large size (qty: 4)
-    Reason: Large job (89 TAGs) — wardrobe boxes commonly needed
+    Reason: Large job (89 TAGs) â€” wardrobe boxes commonly needed
   + Provide box, packing paper & tape - medium size (qty: 5)
-    Reason: 105 boxes — packing paper commonly needed
+    Reason: 105 boxes â€” packing paper commonly needed
 
 Scope looks complete.
 
@@ -73,3 +73,78 @@ Boxes                       107        105         54        168
 
 Notes:
   - Commonly added in finals: Off-site storage vault (per month); Off-site storage & insur. - climate control. (per ; Provide box & tape - medium size
+
+======================================================================
+SIMILAR HISTORICAL JOBS
+======================================================================
+
+#   Customer               Rooms   TAGs  Boxes        RCV  Match
+-----------------------------------------------------------------
+1   Harmon, Michael            9    102     80 $    7,529   98% *
+2   Katz Sarah                 9     62      0 $    7,631   95%
+3   Dodd, Susan                9     58     50 $    6,646   95%
+4   Mulvaney, Chad             9    120     10 $   10,816   94% *
+5   Stout, Michael             8     25     37 $    2,874   89%
+
+Similar jobs billed: $2,874 - $10,816 (avg $7,099)
+Your estimate ($10,794) is within the range of similar jobs.
+
+* = post-acquisition job
+
+=================================================================
+SUPPLEMENT PREDICTOR
+Based on 23 estimate-to-final comparisons
+=================================================================
+
+LIKELY SUPPLEMENT ITEMS:
+  [!] Off-site storage & insur. - climate control. (per month)
+      Added in 17% of jobs (4/23)
+  [!] Provide box & tape - medium size
+      Added in 17% of jobs (4/23)
+  [?] Provide wardrobe box & tape - large size
+      Added in 9% of jobs (2/23)
+  [?] Telehandler/forklift and operator
+      Added in 9% of jobs (2/23)
+  [?] CONT: PACKING,HANDLNG,STORAGE - TAG , FASTENER and PRINTED BAR CODE
+      Added in 9% of jobs (2/23)
+  [?] Off-site storage & insurance (per month)
+      Added in 9% of jobs (2/23)
+  [?] Evaluate pack & inventory misc items - per Med box
+      Added in 9% of jobs (2/23)
+  [?] Provide wardrobe box & tape - large size
+      Added in 13% of jobs (3/23)
+
+EXPECTED QUANTITY ADJUSTMENTS:
+  TAG count: typically decreases 13% from estimate to final (n=22)
+  Labor hours: typically increases 5% from estimate to final (n=23)
+
+ITEMS SOMETIMES REMOVED:
+  [-] Plastic contractor debris bag (removed in 4 jobs)
+  [-] Telehandler/forklift and operator (removed in 4 jobs)
+  [-] CONT: PACKING,HANDLNG,STORAGE - TAG , FASTENER and PRINTED BAR CODE (removed in 3 jobs)
+  [-] Provide box, packing paper & tape - medium size (removed in 3 jobs)
+  [-] Haul debris - per pickup truck load - including dump fees (removed in 3 jobs)
+  [-] Dumpster load - Approx. 20 yards, 4 tons of debris (removed in 2 jobs)
+  [-] General Laborer - per hour (removed in 2 jobs)
+  [-] Evaluate, tag, & inventory miscellaneous - per item (removed in 2 jobs)
+  [-] Pallet Jack - up to 6000 lb capacity - manual (removed in 2 jobs)
+  [-] Bubble wrap - 24" wide - Add-on cost for fragile items (removed in 2 jobs)
+
+=======================================================
+CREW SIZING RECOMMENDATION
+=======================================================
+
+Job scope: 89 TAGs, 105 boxes
+
+Recommended crew: 6 staff (range: 5-7)
+Truck loads: 2 (range: 1-3)
+Estimated pack time: 1.0 day(s)
+Moving van days: 2
+Confidence: high
+
+Rationale: Medium job - standard 6-person crew
+
+Historical reference (similar-sized jobs):
+  Dodd, Susan: 58 tags, 50 boxes, 1 van days, $6,646 RCV
+  Harmon, Michael: 102 tags, 80 boxes, 4 van days, $7,529 RCV
+  Katz Sarah: 62 tags, 0 boxes, 2 van days, $7,631 RCV

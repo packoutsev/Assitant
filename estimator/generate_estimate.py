@@ -35,6 +35,9 @@ from cartage_calculator import calculate_cartage, FactoryStandards
 from pricing_engine import PricingEngine, LineItem, build_standard_estimate
 from scope_checker import ScopeChecker
 from estimate_adjuster import EstimateAdjuster
+from job_similarity import JobSimilarityEngine
+from supplement_predictor import SupplementPredictor
+from crew_optimizer import CrewOptimizer
 
 DATA_DIR = Path(__file__).parent / 'data'
 
@@ -148,7 +151,37 @@ def generate_estimate(
         'box_count': final_boxes,
     })
 
-    # Step 7: Format outputs
+    # Step 7: Similar jobs lookup
+    similarity_engine = JobSimilarityEngine()
+    similar_jobs = similarity_engine.find_similar(
+        room_count=walkthrough.total_rooms,
+        tag_estimate=final_tags,
+        box_estimate=final_boxes,
+    )
+    similarity_text = similarity_engine.format_similar_jobs(
+        similar_jobs, predicted_rcv=estimate_result.subtotal_rcv)
+
+    # Step 8: Supplement predictions
+    predictor = SupplementPredictor()
+    supplements = predictor.predict(
+        estimate_items=scope_items,
+        tag_count=final_tags,
+        box_count=final_boxes,
+    )
+    supplement_text = predictor.format_prediction(supplements)
+
+    # Step 9: Crew recommendation
+    optimizer = CrewOptimizer()
+    crew_rec = optimizer.recommend(
+        tag_count=final_tags,
+        box_count=final_boxes,
+        room_count=walkthrough.total_rooms,
+        drive_time_min=drive_time_min,
+    )
+    crew_text = optimizer.format_recommendation(
+        crew_rec, tag_count=final_tags, box_count=final_boxes)
+
+    # Step 10: Format outputs
     estimate_text = engine.format_estimate(estimate_result)
     scope_text = checker.format_report(scope_result)
 
@@ -190,12 +223,15 @@ def generate_estimate(
                                 item.applied_unit_cost, item.rcv, item.cat, item.sel])
 
         summary_path = output_dir / f"estimate_{safe_name}_summary.txt"
-        with open(summary_path, 'w') as f:
+        with open(summary_path, 'w', encoding='utf-8') as f:
             f.write(summary + "\n\n")
             f.write(estimate_text + "\n\n")
             f.write(scope_text + "\n\n")
             if adjustment_report:
-                f.write(adjustment_report + "\n")
+                f.write(adjustment_report + "\n\n")
+            f.write(similarity_text + "\n\n")
+            f.write(supplement_text + "\n\n")
+            f.write(crew_text + "\n")
 
     return {
         'customer': customer_name,
@@ -216,6 +252,9 @@ def generate_estimate(
             'desc': i.desc, 'qty': i.qty, 'unit': i.unit,
             'unit_cost': i.applied_unit_cost, 'rcv': i.rcv,
         } for i in estimate_result.line_items],
+        'similarity_text': similarity_text,
+        'supplement_text': supplement_text,
+        'crew_text': crew_text,
     }
 
 
@@ -274,6 +313,12 @@ def main():
     if result['adjustment_report']:
         print()
         print(result['adjustment_report'])
+    print()
+    print(result['similarity_text'])
+    print()
+    print(result['supplement_text'])
+    print()
+    print(result['crew_text'])
 
     if result['csv_path']:
         print(f"\nCSV saved to: {result['csv_path']}")
