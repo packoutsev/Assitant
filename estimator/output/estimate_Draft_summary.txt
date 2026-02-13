@@ -1,0 +1,75 @@
+================================================================================
+PACKOUT ESTIMATE — Draft
+Generated: 2026-02-13 01:26
+================================================================================
+
+Home: 9 rooms (medium)
+TAGs: 89 (initial: 89)
+Boxes: 105 med + 7 lg + 2 xl (initial: 107)
+Crew: 6 staff, 2 truck load(s)
+Drive time: 25 min one-way
+
+Labor: 50.9 hr CPS LAB + 10.2 hr CPS LABS
+Total RCV: $10,794.10
+
+ROOM BREAKDOWN:
+  Kitchen                   TAGs:  13  Boxes:  14
+  Living Room               TAGs:  12  Boxes:  12
+  Dining Room               TAGs:   8  Boxes:   6
+  Primary Bedroom           TAGs:   7  Boxes:  12
+  Guest Bedroom             TAGs:   6  Boxes:   9
+  Primary Bathroom          TAGs:   2  Boxes:   3
+  Office                    TAGs:   9  Boxes:  18
+  Garage                    TAGs:  12  Boxes:  12
+  Hallway                   TAGs:   5  Boxes:   3
+
+================================================================================
+DRAFT ESTIMATE — 1-800-Packouts of the East Valley
+(Post-Acquisition Pricing as of 2025)
+================================================================================
+
+#    Description                                                Qty Unit       Cost          RCV
+-----------------------------------------------------------------------------------------------
+1    Inventory, Packing, Boxing, and Moving charge - per ho    50.9   HR $   58.70 $  2,990.44
+2    Contents Evaluation and/or Supervisor/Admin - per hour    10.2   HR $   79.31 $    808.08
+3    Evaluate, tag, & inventory miscellaneous - per item       89.0   EA $   11.81 $  1,051.09
+4    Eval. pack & invent. misc items - per Med box-high den   105.0   EA $   32.89 $  3,453.45
+5    Eval. pack & invent. misc items - per Lg box-high dens     7.0   EA $   41.58 $    291.06
+6    Eval. pack & invent. misc items - per Xlg box-high den     2.0   EA $   55.96 $    111.92
+7    Provide furniture lightweight blanket/pad                 89.0   EA $    9.07 $    807.23
+8    Moving van (21'-27') and equipment (per day)               2.0   EA $  202.42 $    404.84
+9    Off-site storage vault (per month)                         3.0   MO $  195.00 $    585.00
+10   Provide stretch film/wrap - 20" x 1000' roll               2.0   RL $   29.83 $     59.66
+11   Bubble wrap - 24" wide - Add-on cost for fragile items   315.0   LF $    0.22 $     69.30
+12   Haul debris - per pickup truck load - including dump f     1.0   EA $  162.03 $    162.03
+-----------------------------------------------------------------------------------------------
+                                                               SUBTOTAL RCV $ 10,794.10
+
+============================================================
+SCOPE CHECK REPORT — Score: 100/100
+============================================================
+
+INFO (1):
+  [i] No cleaning scope — only 14% of estimates include cleaning (commonly added later as supplement)
+
+MISSING PHASES: cleaning
+
+SUGGESTED ADDITIONS:
+  + Provide wardrobe box & tape - large size (qty: 4)
+    Reason: Large job (89 TAGs) — wardrobe boxes commonly needed
+  + Provide box, packing paper & tape - medium size (qty: 5)
+    Reason: 105 boxes — packing paper commonly needed
+
+Scope looks complete.
+
+============================================================
+ESTIMATE ADJUSTMENT REPORT (Confidence: 85%)
+============================================================
+
+Metric                  Initial   Adjusted        Low       High
+--------------------------------------------------------------
+TAGs                         89         89         73        105
+Boxes                       107        105         54        168
+
+Notes:
+  - Commonly added in finals: Off-site storage vault (per month); Off-site storage & insur. - climate control. (per ; Provide box & tape - medium size

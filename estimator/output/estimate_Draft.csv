@@ -1,0 +1,13 @@
+#,Group,Description,Qty,Unit,Unit Cost,RCV,Cat,Sel
+1,Bedroom,"Inventory, Packing, Boxing, and Moving charge - per hour",50.9444,HR,58.7,2990.44,CPS,LAB
+2,Phase 2: Moving & Storage,Contents Evaluation and/or Supervisor/Admin - per hour,10.1889,HR,79.31,808.08,CPS,LABS
+3,Packout,"Evaluate, tag, & inventory miscellaneous - per item",89,EA,11.81,1051.09,CPS,TAG
+4,Packout,Eval. pack & invent. misc items - per Med box-high density,105,EA,32.89,3453.45,CPS,BXMME>
+5,Packout,Eval. pack & invent. misc items - per Lg box-high density,7,EA,41.58,291.06,CPS,BXMLE>
+6,Phase 1: Packout,Eval. pack & invent. misc items - per Xlg box-high density,2,EA,55.96,111.92,CPS,BXMXE>
+7,Packout,Provide furniture lightweight blanket/pad,89,EA,9.07,807.23,CPS,PAD
+8,Phase 3: Packback,Moving van (21'-27') and equipment (per day),2,EA,202.42,404.84,CPS,TR>
+9,Storage,Off-site storage vault (per month),3,MO,195.0,585.0,CPS,STORV
+10,Phase 1: Packout,"Provide stretch film/wrap - 20"" x 1000' roll",2,RL,29.83,59.66,CPS,WRAP
+11,Phase 1: Packout,"Bubble wrap - 24"" wide - Add-on cost for fragile items",315,LF,0.22,69.3,CPS,BWRAP
+12,Phase 3: Packback,Haul debris - per pickup truck load - including dump fees,1,EA,162.03,162.03,DMO,PU
