@@ -32,7 +32,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from photo_analyzer import PhotoAnalyzer, WalkthroughAnalysis
 from cartage_calculator import calculate_cartage, FactoryStandards
-from pricing_engine import PricingEngine, LineItem, build_standard_estimate, build_5phase_estimate
+from pricing_engine import PricingEngine, LineItem, build_standard_estimate, build_5phase_estimate, calculate_storage_vaults
 from labor_rates import LaborRateCalculator, DEFAULT_HANDLING_RATE
 from scope_checker import ScopeChecker
 from estimate_adjuster import EstimateAdjuster
@@ -262,7 +262,7 @@ def generate_estimate(
 def generate_5phase_estimate(
     walkthrough: WalkthroughAnalysis,
     drive_time_min: float = 25.0,
-    storage_vaults: int = 4,
+    storage_vaults: int = None,
     storage_duration_months: int = 2,
     customer_name: str = "Draft Estimate",
     apply_corrections: bool = True,
@@ -273,6 +273,7 @@ def generate_5phase_estimate(
     truck_loads: int = None,
     carry_time_min: float = 4.0,
     pad_count: int = None,
+    climate_storage_sf: int = None,
 ) -> dict:
     """
     Generate a 5-phase estimate matching actual submitted estimate structure.
@@ -344,8 +345,17 @@ def generate_5phase_estimate(
     xl_boxes = max(0, final_boxes // 40) if final_boxes > 80 else 0
     moving_van_days = _truck_loads
 
-    # Step 6: Storage months
+    # Step 6: Auto-derive vaults if not specified
+    vault_breakdown = None
+    if storage_vaults is None:
+        vault_breakdown = calculate_storage_vaults(final_tags, final_boxes)
+        storage_vaults = vault_breakdown['total']
     storage_months = storage_vaults * storage_duration_months
+
+    # Climate storage: multiply SF by duration months
+    climate_sf_total = None
+    if climate_storage_sf is not None and climate_storage_sf > 0:
+        climate_sf_total = climate_storage_sf * storage_duration_months
 
     # Step 7: Build 5-phase line items
     items, packback_discount = build_5phase_estimate(
@@ -359,6 +369,7 @@ def generate_5phase_estimate(
         xl_boxes=xl_boxes,
         pad_count=pad_count,
         handling_rate=handling_rate,
+        climate_storage_sf=climate_sf_total,
     )
 
     # Step 8: Price everything
@@ -424,7 +435,12 @@ def generate_5phase_estimate(
     summary_lines.append(f"Crew: {_crew_size} staff, {_truck_loads} truck load(s)")
     summary_lines.append(f"Drive time: {drive_time_min:.0f} min one-way")
     summary_lines.append(f"Handling rate: ${handling_rate:.2f}/hr ({target_margin*100:.0f}% margin)")
-    summary_lines.append(f"Storage: {storage_vaults} vault(s) x {storage_duration_months} months = {storage_months} MO")
+    if vault_breakdown:
+        summary_lines.append(f"Storage: {storage_vaults} vault(s) [AUTO: {vault_breakdown['box_vaults']} box + {vault_breakdown['tag_vaults']} TAG = {vault_breakdown['box_vaults'] + vault_breakdown['tag_vaults']} component, {vault_breakdown['capacity_vaults']} capacity, used {vault_breakdown['method']}] x {storage_duration_months} months = {storage_months} MO")
+    else:
+        summary_lines.append(f"Storage: {storage_vaults} vault(s) x {storage_duration_months} months = {storage_months} MO")
+    if climate_storage_sf is not None:
+        summary_lines.append(f"Climate storage: {climate_storage_sf} SF x {storage_duration_months} months = {climate_sf_total} SF-months")
     summary_lines.append(f"")
     summary_lines.append(f"Handling hours: {handling_hours:.1f} hr per direction (x2 = {handling_hours*2:.1f} total)")
     summary_lines.append(f"Total RCV: ${estimate_result.subtotal_rcv:,.2f}")
@@ -473,6 +489,8 @@ def generate_5phase_estimate(
         'handling_hours': handling_hours,
         'handling_rate': handling_rate,
         'storage_months': storage_months,
+        'storage_vaults': storage_vaults,
+        'vault_breakdown': vault_breakdown,
         'total_rcv': estimate_result.subtotal_rcv,
         'scope_score': scope_result.score,
         'summary': summary,
@@ -499,7 +517,7 @@ def main():
     parser.add_argument('--drive-time', type=float, default=25, help='One-way drive time in minutes')
     parser.add_argument('--storage-months', type=int, default=3, help='Storage months to include')
     parser.add_argument('--customer', type=str, default='Draft', help='Customer name')
-    parser.add_argument('--density', type=str, default='medium', choices=['light', 'medium', 'heavy'])
+    parser.add_argument('--density', type=str, default='medium', choices=['light', 'medium', 'heavy', 'very_heavy'])
     parser.add_argument('--output-dir', type=str, default=None, help='Output directory for CSV/summary')
     parser.add_argument('--no-corrections', action='store_true', help='Skip correction factor adjustments')
     args = parser.parse_args()

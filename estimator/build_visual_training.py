@@ -76,14 +76,15 @@ COL_NAMES = {
 # Room type classification
 ROOM_CATEGORIES = {
     'kitchen': ['kitchen', 'pantry'],
-    'living_room': ['living room', 'family room', 'front room', 'great room', 'den'],
+    'living_room': ['living room', 'family room', 'front room', 'great room', 'den',
+                    'sitting room', 'formal living', 'living area'],
     'dining_room': ['dining room', 'dining'],
     'bedroom': ['bedroom', 'primary bedroom', 'master bedroom', 'guest room',
-                'primary', 'girls bedroom', 'sons room', 'daughters room',
+                'primary bed', 'girls bedroom', 'sons room', 'daughters room',
                 'guest bedroom', 'second bedroom', 'mickey room', 'vivia room',
                 'rylan', 'gage', 'zane', 'entry bedroom', 'mil suite',
                 'excercise room', 'sewing room', 'media room', 'bedroom 1',
-                'bedroom 2', 'bedroom 3', 'primary bedrrom'],
+                'bedroom 2', 'bedroom 3', 'primary bedrrom', 'bed 1', 'bed 2', 'bed 3'],
     'bathroom': ['bathroom', 'bath', 'powder room', 'hall bath', 'guest bathroom',
                 'primary bath', 'primary bathroom', 'batgroom', 'hall bathroom'],
     'closet': ['closet', 'primary closet', 'hall closet', 'hall closets'],

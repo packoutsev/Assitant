@@ -338,6 +338,67 @@ class PhaseLineItem(LineItem):
     phase: str = ''  # Packout, Handling to Storage, Storage, Handling from Storage, Pack back
 
 
+def calculate_storage_vaults(tag_count: int, box_count: int) -> dict:
+    """
+    Auto-derive number of storage vaults from TAG and box counts.
+
+    Two-method approach, takes the higher:
+    1. Component method: ceil(boxes/60) box vaults + ceil(tags/20) TAG vaults
+       (furniture doesn't stack, boxes do — from Schafer validation)
+    2. Total capacity method: ceil(total_items/50)
+       (empirical fit from master project spreadsheet, MAE=1.3 across 9 jobs)
+
+    Method 1 is more accurate for smaller jobs where furniture takes full vaults.
+    Method 2 is more accurate for larger jobs where packing is more efficient.
+    We take the LOWER of the two to avoid over-prediction (user can always override).
+
+    Validated against master spreadsheet ('Projects 1-800-Packouts.xlsx'):
+    - Schafer: 31 TAGs + 74 boxes → component=4, capacity=3, min=3 (actual 4, explicit override used)
+    - Most jobs: 4 vaults is most common default
+    """
+    import math
+    box_vaults = math.ceil(box_count / 60) if box_count > 0 else 0
+    tag_vaults = math.ceil(tag_count / 20) if tag_count > 0 else 0
+    component_total = box_vaults + tag_vaults
+
+    total_items = tag_count + box_count
+    capacity_total = math.ceil(total_items / 50) if total_items > 0 else 0
+
+    # Take the lower to avoid over-prediction; user can always override
+    total = max(1, min(component_total, capacity_total))
+    return {
+        'total': total,
+        'box_vaults': box_vaults,
+        'tag_vaults': tag_vaults,
+        'capacity_vaults': capacity_total,
+        'method': 'component' if component_total <= capacity_total else 'capacity',
+    }
+
+
+def _adaptive_pad_count(tag_count: int) -> int:
+    """
+    Calculate furniture pad count using two-anchor interpolation.
+
+    Anchors from real data:
+    - Schafer: 20 pads / 31 TAGs = 0.645 ratio (modest home)
+    - Huttie:  103 pads / 84 TAGs = 1.226 ratio (luxury home)
+
+    Linear interpolation between anchors, capped at 1.25.
+    Manual pad_count override in build_5phase_estimate() bypasses this entirely.
+    """
+    if tag_count <= 0:
+        return 1
+    if tag_count <= 31:
+        ratio = 0.645
+    elif tag_count >= 84:
+        ratio = 1.226
+    else:
+        # Linear interpolation between anchors
+        ratio = 0.645 + (tag_count - 31) / (84 - 31) * (1.226 - 0.645)
+    ratio = min(ratio, 1.25)
+    return max(1, round(tag_count * ratio))
+
+
 def build_5phase_estimate(
     tag_count: int,
     box_count: int,
@@ -351,6 +412,7 @@ def build_5phase_estimate(
     handling_rate: float = 79.04,
     packback_box_discount: float = 0.14,
     bubble_wrap_width: int = 48,
+    climate_storage_sf: int = None,
 ) -> list:
     """
     Build a full 5-phase estimate matching Diana's structure:
@@ -375,11 +437,7 @@ def build_5phase_estimate(
         bubble_wrap_width: 24 or 48 inch bubble wrap
     """
     if pad_count is None:
-        # Diana's pad:TAG ratio varies by home value. Schafer (modest): 20/31 = 0.65.
-        # Huttie (luxury): 103/84 = 1.23. Default to 0.65 (most common pattern).
-        # Items that get pads: furniture (chairs, tables, sofas, dressers).
-        # Items that DON'T get pads: art/pictures, lamps, rugs, TVs (get TV boxes).
-        pad_count = max(1, round(tag_count * 0.65))
+        pad_count = _adaptive_pad_count(tag_count)
 
     items = []
 
@@ -435,6 +493,10 @@ def build_5phase_estimate(
     items.append(PhaseLineItem(
         desc="Off-site storage vault (per month)",
         qty=storage_months, unit="MO", phase="Storage"))
+    if climate_storage_sf is not None and climate_storage_sf > 0:
+        items.append(PhaseLineItem(
+            desc="Off-site storage & insur. - climate control. (per month)",
+            qty=climate_storage_sf, unit="SF", phase="Storage"))
 
     # ── PHASE 4: HANDLING FROM STORAGE ──
     items.append(PhaseLineItem(

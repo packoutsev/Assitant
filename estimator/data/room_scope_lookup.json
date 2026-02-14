@@ -5,22 +5,25 @@
     "density_levels": [
       "light",
       "medium",
-      "heavy"
+      "heavy",
+      "very_heavy"
     ],
     "calibration_source": "Visual study of Huttie room-by-room estimate + Schafer walk-through cross-reference",
-    "notes": "TAGs = individual furniture pieces counted one-by-one. Each chair = 1 TAG, each table = 1, etc. Boxes = contents volume in cabinets, drawers, shelves. Scope notes from walk-through can override these defaults."
+    "notes": "TAGs = individual furniture pieces counted one-by-one. Each chair = 1 TAG, each table = 1, etc. Boxes = contents volume in cabinets, drawers, shelves. Scope notes from walk-through can override these defaults. very_heavy tier anchored from Schafer living room (22 TAGs, 54 boxes) and Huttie Bed 2 (24 TAGs, 33 boxes)."
   },
   "room_types": {
     "kitchen": {
       "typical_tags": {
         "light": 0,
         "medium": 2,
-        "heavy": 5
+        "heavy": 5,
+        "very_heavy": 8
       },
       "typical_boxes": {
         "light": 3,
         "medium": 10,
-        "heavy": 20
+        "heavy": 20,
+        "very_heavy": 30
       },
       "common_tags": [
         "table",
@@ -43,12 +46,14 @@
       "typical_tags": {
         "light": 3,
         "medium": 6,
-        "heavy": 13
+        "heavy": 13,
+        "very_heavy": 22
       },
       "typical_boxes": {
         "light": 3,
         "medium": 6,
-        "heavy": 10
+        "heavy": 10,
+        "very_heavy": 54
       },
       "common_tags": [
         "sofa/sectional",
@@ -67,18 +72,20 @@
         "throw pillows",
         "blankets"
       ],
-      "notes": "Huttie living+formal dining (heavy): 13 TAGs, 8 boxes. Huttie formal living (medium): 4 TAGs, 4 boxes. Sectional = 1 TAG. Each accent chair = 1 TAG."
+      "notes": "Huttie living+formal dining (heavy): 13 TAGs, 8 boxes. Schafer living (very_heavy): 22 TAGs, 54 boxes - sectional, daybed, 3 cube storage units, TV, entertainment center, extensive wall art + 50+ boxes. Sectional = 1 TAG. Each accent chair = 1 TAG."
     },
     "dining_room": {
       "typical_tags": {
         "light": 3,
         "medium": 5,
-        "heavy": 8
+        "heavy": 8,
+        "very_heavy": 12
       },
       "typical_boxes": {
         "light": 1,
         "medium": 3,
-        "heavy": 5
+        "heavy": 5,
+        "very_heavy": 8
       },
       "common_tags": [
         "dining table",
@@ -98,12 +105,14 @@
       "typical_tags": {
         "light": 3,
         "medium": 7,
-        "heavy": 14
+        "heavy": 14,
+        "very_heavy": 24
       },
       "typical_boxes": {
         "light": 5,
         "medium": 12,
-        "heavy": 25
+        "heavy": 25,
+        "very_heavy": 40
       },
       "common_tags": [
         "bed frame/headboard",
@@ -124,16 +133,113 @@
       ],
       "notes": "Huttie Bed 1 (heavy): 9 TAGs, 20 boxes. Bed 2 (very heavy, massive shelving): 24 TAGs, 33 boxes. Primary (heavy, furniture-heavy): 14 TAGs, 12 boxes. Light bedroom = bed + 1 nightstand."
     },
+    "bedroom_primary": {
+      "typical_tags": {
+        "light": 3,
+        "medium": 8,
+        "heavy": 14,
+        "very_heavy": 20
+      },
+      "typical_boxes": {
+        "light": 5,
+        "medium": 15,
+        "heavy": 25,
+        "very_heavy": 35
+      },
+      "common_tags": [
+        "bed frame/headboard",
+        "mattress",
+        "nightstands (each = 1)",
+        "dresser",
+        "chest of drawers",
+        "TV",
+        "accent chair",
+        "vanity/mirror",
+        "bench"
+      ],
+      "common_box_items": [
+        "clothing",
+        "personal items",
+        "books",
+        "shoes",
+        "accessories",
+        "drawer contents",
+        "bedding"
+      ],
+      "notes": "Huttie Primary (heavy): 14 TAGs, 12 med boxes, 21 pads, mattress cover. Primary bedrooms tend to be furniture-heavy with more TAGs relative to boxes."
+    },
+    "bedroom_guest": {
+      "typical_tags": {
+        "light": 2,
+        "medium": 5,
+        "heavy": 9,
+        "very_heavy": 14
+      },
+      "typical_boxes": {
+        "light": 3,
+        "medium": 8,
+        "heavy": 15,
+        "very_heavy": 22
+      },
+      "common_tags": [
+        "bed frame/headboard",
+        "nightstand",
+        "dresser",
+        "bookshelf",
+        "mirror/large art"
+      ],
+      "common_box_items": [
+        "clothing",
+        "personal items",
+        "books",
+        "guest linens"
+      ],
+      "notes": "Huttie Bed 1 (heavy): 9 TAGs, 19 med + 1 wardrobe, 12 pads. Guest bedrooms are typically smaller with fewer furnishings than primary."
+    },
+    "bedroom_kids": {
+      "typical_tags": {
+        "light": 3,
+        "medium": 7,
+        "heavy": 12,
+        "very_heavy": 18
+      },
+      "typical_boxes": {
+        "light": 5,
+        "medium": 14,
+        "heavy": 25,
+        "very_heavy": 35
+      },
+      "common_tags": [
+        "bed frame/headboard",
+        "nightstand",
+        "dresser",
+        "bookshelf",
+        "desk",
+        "toy chest",
+        "shelving unit"
+      ],
+      "common_box_items": [
+        "toys",
+        "books",
+        "clothing",
+        "school supplies",
+        "stuffed animals",
+        "games"
+      ],
+      "notes": "Kids rooms tend to be box-heavy due to toys, books, and accumulated items. Shelving units with toys/collectibles drive both TAG and box counts."
+    },
     "bathroom": {
       "typical_tags": {
         "light": 0,
         "medium": 0,
-        "heavy": 1
+        "heavy": 1,
+        "very_heavy": 2
       },
       "typical_boxes": {
         "light": 1,
         "medium": 2,
-        "heavy": 4
+        "heavy": 4,
+        "very_heavy": 6
       },
       "common_tags": [
         "freestanding vanity",
@@ -151,12 +257,14 @@
       "typical_tags": {
         "light": 0,
         "medium": 0,
-        "heavy": 2
+        "heavy": 2,
+        "very_heavy": 4
       },
       "typical_boxes": {
         "light": 3,
         "medium": 6,
-        "heavy": 15
+        "heavy": 15,
+        "very_heavy": 25
       },
       "common_tags": [
         "freestanding shelving",
@@ -176,12 +284,14 @@
       "typical_tags": {
         "light": 2,
         "medium": 4,
-        "heavy": 7
+        "heavy": 7,
+        "very_heavy": 10
       },
       "typical_boxes": {
         "light": 5,
         "medium": 10,
-        "heavy": 20
+        "heavy": 20,
+        "very_heavy": 30
       },
       "common_tags": [
         "desk",
@@ -203,12 +313,14 @@
       "typical_tags": {
         "light": 3,
         "medium": 8,
-        "heavy": 18
+        "heavy": 18,
+        "very_heavy": 28
       },
       "typical_boxes": {
         "light": 4,
         "medium": 10,
-        "heavy": 25
+        "heavy": 25,
+        "very_heavy": 40
       },
       "common_tags": [
         "workbench",
@@ -231,12 +343,14 @@
       "typical_tags": {
         "light": 0,
         "medium": 1,
-        "heavy": 2
+        "heavy": 2,
+        "very_heavy": 3
       },
       "typical_boxes": {
         "light": 1,
         "medium": 3,
-        "heavy": 5
+        "heavy": 5,
+        "very_heavy": 8
       },
       "common_tags": [
         "shelving unit",
@@ -253,12 +367,14 @@
       "typical_tags": {
         "light": 1,
         "medium": 3,
-        "heavy": 5
+        "heavy": 5,
+        "very_heavy": 8
       },
       "typical_boxes": {
         "light": 1,
         "medium": 2,
-        "heavy": 4
+        "heavy": 4,
+        "very_heavy": 6
       },
       "common_tags": [
         "console table",
@@ -279,12 +395,14 @@
       "typical_tags": {
         "light": 0,
         "medium": 2,
-        "heavy": 5
+        "heavy": 5,
+        "very_heavy": 8
       },
       "typical_boxes": {
         "light": 0,
         "medium": 1,
-        "heavy": 3
+        "heavy": 3,
+        "very_heavy": 5
       },
       "common_tags": [
         "patio furniture",
@@ -301,12 +419,14 @@
       "typical_tags": {
         "light": 4,
         "medium": 10,
-        "heavy": 20
+        "heavy": 20,
+        "very_heavy": 30
       },
       "typical_boxes": {
         "light": 5,
         "medium": 12,
-        "heavy": 30
+        "heavy": 30,
+        "very_heavy": 45
       },
       "common_tags": [
         "furniture",
@@ -327,12 +447,14 @@
       "typical_tags": {
         "light": 2,
         "medium": 5,
-        "heavy": 8
+        "heavy": 8,
+        "very_heavy": 12
       },
       "typical_boxes": {
         "light": 3,
         "medium": 6,
-        "heavy": 10
+        "heavy": 10,
+        "very_heavy": 15
       },
       "common_tags": [],
       "common_box_items": [],

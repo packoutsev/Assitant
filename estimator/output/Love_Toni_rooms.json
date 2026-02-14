@@ -1,0 +1,72 @@
+[
+  {
+    "room_name": "Arizona Room",
+    "room_category": "other",
+    "density": "medium",
+    "override_tags": 8,
+    "override_boxes": 3
+  },
+  {
+    "room_name": "Bathroom",
+    "room_category": "bathroom",
+    "density": "medium",
+    "override_tags": 3,
+    "override_boxes": 2
+  },
+  {
+    "room_name": "Bathroom 2",
+    "room_category": "bathroom",
+    "density": "medium",
+    "override_tags": 3,
+    "override_boxes": 8
+  },
+  {
+    "room_name": "Bedroom - Master",
+    "room_category": "bedroom",
+    "density": "medium",
+    "override_tags": 15,
+    "override_boxes": 8
+  },
+  {
+    "room_name": "Bedroom 1",
+    "room_category": "bedroom",
+    "density": "medium",
+    "override_tags": 10,
+    "override_boxes": 3
+  },
+  {
+    "room_name": "Bedroom 2",
+    "room_category": "bedroom",
+    "density": "medium",
+    "override_tags": 15,
+    "override_boxes": 8
+  },
+  {
+    "room_name": "Dining Room",
+    "room_category": "dining_room",
+    "density": "medium",
+    "override_tags": 9,
+    "override_boxes": 8
+  },
+  {
+    "room_name": "Kitchen",
+    "room_category": "kitchen",
+    "density": "medium",
+    "override_tags": 3,
+    "override_boxes": 15
+  },
+  {
+    "room_name": "Laundry Room",
+    "room_category": "laundry",
+    "density": "medium",
+    "override_tags": 2,
+    "override_boxes": 3
+  },
+  {
+    "room_name": "Living Room",
+    "room_category": "living_room",
+    "density": "medium",
+    "override_tags": 8,
+    "override_boxes": 3
+  }
+]

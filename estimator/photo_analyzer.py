@@ -137,6 +137,47 @@ class PhotoAnalyzer:
             data = json.load(f)
         self.room_lookup = data['room_types']
 
+    # Fallback chains for subtypes that may not exist in lookup
+    FALLBACK_CHAINS = {
+        'bedroom_primary': ['bedroom_primary', 'bedroom', 'other'],
+        'bedroom_guest': ['bedroom_guest', 'bedroom', 'other'],
+        'bedroom_kids': ['bedroom_kids', 'bedroom', 'other'],
+    }
+
+    def _resolve_room_lookup(self, room_category: str) -> dict:
+        """Resolve room category with fallback chain for subtypes."""
+        chain = self.FALLBACK_CHAINS.get(room_category, [room_category, 'other'])
+        for cat in chain:
+            if cat in self.room_lookup:
+                return self.room_lookup[cat]
+        return self.room_lookup.get('other', {})
+
+    def suggest_density(self, room_category: str, override_tags: int = None,
+                        override_boxes: int = None) -> str:
+        """
+        Auto-detect density tier when overrides exceed heavy by >50%.
+        Returns suggested density string.
+        """
+        if override_tags is None and override_boxes is None:
+            return 'medium'
+        lookup = self._resolve_room_lookup(room_category)
+        heavy_tags = lookup.get('typical_tags', {}).get('heavy', 0)
+        heavy_boxes = lookup.get('typical_boxes', {}).get('heavy', 0)
+
+        tag_exceeds = (override_tags is not None and heavy_tags > 0
+                       and override_tags > heavy_tags * 1.5)
+        box_exceeds = (override_boxes is not None and heavy_boxes > 0
+                       and override_boxes > heavy_boxes * 1.5)
+
+        if tag_exceeds or box_exceeds:
+            return 'very_heavy'
+        elif override_tags is not None and heavy_tags > 0 and override_tags > heavy_tags * 0.8:
+            return 'heavy'
+        elif override_tags is not None and heavy_tags > 0 and override_tags > heavy_tags * 0.4:
+            return 'medium'
+        else:
+            return 'light'
+
     def analyze_room_local(self, room_name: str, room_category: str,
                            density: str = 'medium', photo_count: int = 3,
                            override_tags: int = None, override_boxes: int = None) -> RoomAnalysis:
@@ -146,8 +187,8 @@ class PhotoAnalyzer:
 
         Args:
             room_name: Name of the room (e.g., "Kitchen", "Primary Bedroom")
-            room_category: Classified category (e.g., "kitchen", "bedroom")
-            density: Contents density level ("light", "medium", "heavy")
+            room_category: Classified category (e.g., "kitchen", "bedroom", "bedroom_primary", etc.)
+            density: Contents density level ("light", "medium", "heavy", "very_heavy")
             photo_count: Number of photos taken of this room
             override_tags: Explicit TAG count (overrides lookup if provided)
             override_boxes: Explicit box count (overrides lookup if provided)
@@ -155,7 +196,7 @@ class PhotoAnalyzer:
         Returns:
             RoomAnalysis with estimated TAG and box counts
         """
-        lookup = self.room_lookup.get(room_category, self.room_lookup.get('other', {}))
+        lookup = self._resolve_room_lookup(room_category)
         typical_tags = lookup.get('typical_tags', {})
         typical_boxes = lookup.get('typical_boxes', {})
 

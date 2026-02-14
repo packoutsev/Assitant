@@ -1,6 +1,6 @@
 ================================================================================
 5-PHASE PACKOUT ESTIMATE -- Schafer (with overrides)
-Generated: 2026-02-13 09:11
+Generated: 2026-02-13 11:30
 ================================================================================
 
 Home: 5 rooms (small)
@@ -12,7 +12,7 @@ Handling rate: $79.04/hr (65% margin)
 Storage: 4 vault(s) x 2 months = 8 MO
 
 Handling hours: 24.5 hr per direction (x2 = 49.0 total)
-Total RCV: $12,270.25
+Total RCV: $12,261.18
 
 ROOM BREAKDOWN:
   Kitchen                   TAGs:   0  Boxes:   2
@@ -31,10 +31,10 @@ DRAFT ESTIMATE -- 1-800-Packouts of the East Valley
 1    Eval. pack & invent. misc items - per Med box-high den    72.0   EA $   32.89 $  2,368.08
 2    Eval. pack & invent. misc items - per Lg box-high dens     4.0   EA $   41.58 $    166.32
 3    Evaluate, tag, & inventory miscellaneous - per item       30.0   EA $   11.81 $    354.30
-4    Provide furniture lightweight blanket/pad                 20.0   EA $    9.07 $    181.40
+4    Provide furniture lightweight blanket/pad                 19.0   EA $    9.07 $    172.33
 5    Bubble wrap - 48" wide - Add-on cost for fragile items   504.0   LF $    0.40 $    201.60
 6    Provide stretch film/wrap - 20" x 1000' roll               2.0   RL $   29.83 $     59.66
-                                             Phase subtotal:                        $  3,331.36
+                                             Phase subtotal:                        $  3,322.29
 
 --- Handling to Storage ---
 #    Description                                                Qty Unit       Cost          RCV
@@ -67,13 +67,13 @@ DRAFT ESTIMATE -- 1-800-Packouts of the East Valley
 
 ===============================================================================================
 PHASE SUMMARY:
-  Packout                        $  3,331.36  ( 27.1%)
+  Packout                        $  3,322.29  ( 27.1%)
   Handling to Storage            $  2,341.32  ( 19.1%)
   Storage                        $  1,560.00  ( 12.7%)
   Handling from Storage          $  2,341.32  ( 19.1%)
   Pack back                      $  2,696.25  ( 22.0%)
   --------------------------------------------------
-  SUBTOTAL RCV                   $ 12,270.25
+  SUBTOTAL RCV                   $ 12,261.18
 
 FLAGS (* items above):
   - Unit cost $79.04 deviates +34.7% from post-acq median $58.70
@@ -147,7 +147,7 @@ SIMILAR HISTORICAL JOBS
 5   Guss, Michael              2      0      0 $    7,926   88% *
 
 Similar jobs billed: $2,874 - $20,962 (avg $10,281)
-Your estimate ($12,270) is within the range of similar jobs.
+Your estimate ($12,261) is within the range of similar jobs.
 
 * = post-acquisition job
 

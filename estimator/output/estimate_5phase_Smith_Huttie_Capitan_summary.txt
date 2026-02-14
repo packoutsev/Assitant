@@ -1,30 +1,30 @@
 ================================================================================
-5-PHASE PACKOUT ESTIMATE -- Huttie (with overrides)
-Generated: 2026-02-13 11:30
+5-PHASE PACKOUT ESTIMATE -- Smith Huttie Capitan
+Generated: 2026-02-13 22:39
 ================================================================================
 
 Home: 10 rooms (large)
-TAGs: 86 (initial: 86)
-Boxes: 136 med + 9 lg + 3 xl (initial: 136)
-Crew: 3 staff, 2 truck load(s)
-Drive time: 30 min one-way
+TAGs: 87 (initial: 87)
+Boxes: 88 med + 5 lg + 2 xl (initial: 88)
+Crew: 4 staff, 2 truck load(s)
+Drive time: 25 min one-way
 Handling rate: $79.04/hr (65% margin)
-Storage: 3 vault(s) x 2 months = 6 MO
+Storage: 6 vault(s) x 3 months = 18 MO
 
-Handling hours: 50.3 hr per direction (x2 = 100.6 total)
-Total RCV: $22,731.51
+Handling hours: 47.4 hr per direction (x2 = 94.7 total)
+Total RCV: $21,180.74
 
 ROOM BREAKDOWN:
-  Kitchen                   TAGs:   1  Boxes:   0
-  Kitchen-Dining            TAGs:   8  Boxes:   2
-  Living+Formal Dining      TAGs:  13  Boxes:   8
-  Formal Living             TAGs:   6  Boxes:   6
-  Entry & Hallway           TAGs:   3  Boxes:   2
-  Bed 1                     TAGs:   9  Boxes:  20
-  Bed 2                     TAGs:  24  Boxes:  33
-  Primary                   TAGs:  14  Boxes:  25
-  Primary Closet            TAGs:   2  Boxes:  33
-  Sitting Area              TAGs:   6  Boxes:   7
+  Hallway to Primary Bedroom TAGs:  10  Boxes:   3
+  Primary Bedroom           TAGs:  12  Boxes:   8
+  Primary Closet            TAGs:   2  Boxes:  30
+  Formal Sitting Room       TAGs:   7  Boxes:   2
+  Entry & Hallways          TAGs:   7  Boxes:   1
+  Main Living Room          TAGs:   8  Boxes:   4
+  AV Closet                 TAGs:   3  Boxes:   5
+  Dining Areas              TAGs:  14  Boxes:   2
+  Guest Bedroom 1           TAGs:  15  Boxes:   8
+  Guest Bedroom 2           TAGs:   9  Boxes:  25
 
 ===============================================================================================
 DRAFT ESTIMATE -- 1-800-Packouts of the East Valley
@@ -33,53 +33,53 @@ DRAFT ESTIMATE -- 1-800-Packouts of the East Valley
 --- Packout ---
 #    Description                                                Qty Unit       Cost          RCV
 -----------------------------------------------------------------------------------------------
-1    Eval. pack & invent. misc items - per Med box-high den   136.0   EA $   32.89 $  4,473.04
-2    Eval. pack & invent. misc items - per Lg box-high dens     9.0   EA $   41.58 $    374.22
-3    Eval. pack & invent. misc items - per Xlg box-high den     3.0   EA $   55.96 $    167.88
-4    Evaluate, tag, & inventory miscellaneous - per item       86.0   EA $   11.81 $  1,015.66
-5    Provide furniture lightweight blanket/pad                105.0   EA $    9.07 $    952.35
-6    Bubble wrap - 48" wide - Add-on cost for fragile items   952.0   LF $    0.40 $    380.80
-7    Provide stretch film/wrap - 20" x 1000' roll               3.0   RL $   29.83 $     89.49
-                                             Phase subtotal:                        $  7,453.44
+1    Eval. pack & invent. misc items - per Med box-high den    88.0   EA $   32.89 $  2,894.32
+2    Eval. pack & invent. misc items - per Lg box-high dens     5.0   EA $   41.58 $    207.90
+3    Eval. pack & invent. misc items - per Xlg box-high den     2.0   EA $   55.96 $    111.92
+4    Evaluate, tag, & inventory miscellaneous - per item       87.0   EA $   11.81 $  1,027.47
+5    Provide furniture lightweight blanket/pad                107.0   EA $    9.07 $    970.49
+6    Bubble wrap - 48" wide - Add-on cost for fragile items   616.0   LF $    0.40 $    246.40
+7    Provide stretch film/wrap - 20" x 1000' roll               2.0   RL $   29.83 $     59.66
+                                             Phase subtotal:                        $  5,518.16
 
 --- Handling to Storage ---
 #    Description                                                Qty Unit       Cost          RCV
 -----------------------------------------------------------------------------------------------
-8    Inventory, Packing, Boxing, and Moving charge - per ho    50.3   HR $   79.04 $  3,975.71 *
+8    Inventory, Packing, Boxing, and Moving charge - per ho    47.4   HR $   79.04 $  3,742.54 *
 9    Moving van (21'-27') and equipment (per day)               2.0   EA $  202.42 $    404.84
-                                             Phase subtotal:                        $  4,380.55
+                                             Phase subtotal:                        $  4,147.38
 
 --- Storage ---
 #    Description                                                Qty Unit       Cost          RCV
 -----------------------------------------------------------------------------------------------
-10   Off-site storage vault (per month)                         6.0   MO $  195.00 $  1,170.00
-                                             Phase subtotal:                        $  1,170.00
+10   Off-site storage vault (per month)                        18.0   MO $  195.00 $  3,510.00
+                                             Phase subtotal:                        $  3,510.00
 
 --- Handling from Storage ---
 #    Description                                                Qty Unit       Cost          RCV
 -----------------------------------------------------------------------------------------------
 11   Moving van (21'-27') and equipment (per day)               2.0   EA $  202.42 $    404.84
-12   Inventory, Packing, Boxing, and Moving charge - per ho    50.3   HR $   79.04 $  3,975.71 *
-                                             Phase subtotal:                        $  4,380.55
+12   Inventory, Packing, Boxing, and Moving charge - per ho    47.4   HR $   79.04 $  3,742.54 *
+                                             Phase subtotal:                        $  4,147.38
 
 --- Pack back ---
 #    Description                                                Qty Unit       Cost          RCV
 -----------------------------------------------------------------------------------------------
-13   Eval. pack & invent. misc items - per Med box-high den   136.0   EA $   28.29 $  3,847.44
-14   Eval. pack & invent. misc items - per Lg box-high dens     9.0   EA $   35.76 $    321.84
-15   Evaluate, tag, & inventory miscellaneous - per item       86.0   EA $   11.81 $  1,015.66
+13   Eval. pack & invent. misc items - per Med box-high den    88.0   EA $   28.29 $  2,489.52
+14   Eval. pack & invent. misc items - per Lg box-high dens     5.0   EA $   35.76 $    178.80
+15   Evaluate, tag, & inventory miscellaneous - per item       87.0   EA $   11.81 $  1,027.47
 16   Haul debris - per pickup truck load - including dump f     1.0   EA $  162.03 $    162.03
-                                             Phase subtotal:                        $  5,346.97
+                                             Phase subtotal:                        $  3,857.82
 
 ===============================================================================================
 PHASE SUMMARY:
-  Packout                        $  7,453.44  ( 32.8%)
-  Handling to Storage            $  4,380.55  ( 19.3%)
-  Storage                        $  1,170.00  (  5.1%)
-  Handling from Storage          $  4,380.55  ( 19.3%)
-  Pack back                      $  5,346.97  ( 23.5%)
+  Packout                        $  5,518.16  ( 26.1%)
+  Handling to Storage            $  4,147.38  ( 19.6%)
+  Storage                        $  3,510.00  ( 16.6%)
+  Handling from Storage          $  4,147.38  ( 19.6%)
+  Pack back                      $  3,857.82  ( 18.2%)
   --------------------------------------------------
-  SUBTOTAL RCV                   $ 22,731.51
+  SUBTOTAL RCV                   $ 21,180.74
 
 FLAGS (* items above):
   - Unit cost $79.04 deviates +34.7% from post-acq median $58.70
@@ -99,9 +99,7 @@ MISSING PHASES: cleaning
 
 SUGGESTED ADDITIONS:
   + Provide wardrobe box & tape - large size (qty: 4)
-    Reason: Large job (86 TAGs) — wardrobe boxes commonly needed
-  + Provide box, packing paper & tape - medium size (qty: 6)
-    Reason: 136 boxes — packing paper commonly needed
+    Reason: Large job (87 TAGs) — wardrobe boxes commonly needed
 
 Scope is mostly complete — review warnings above.
 
@@ -141,13 +139,13 @@ SIMILAR HISTORICAL JOBS
 #   Customer               Rooms   TAGs  Boxes        RCV  Match
 -----------------------------------------------------------------
 1   Harmon, Michael            9    102     80 $    7,529   96% *
-2   Dodd, Susan                9     58     50 $    6,646   94%
-3   Katz Sarah                 9     62      0 $    7,631   94%
+2   Katz Sarah                 9     62      0 $    7,631   94%
+3   Dodd, Susan                9     58     50 $    6,646   94%
 4   Mulvaney, Chad             9    120     10 $   10,816   93% *
 5   Stout, Michael             8     25     37 $    2,874   88%
 
 Similar jobs billed: $2,874 - $10,816 (avg $7,099)
-WARNING: Your estimate ($22,732) is significantly above similar jobs.
+WARNING: Your estimate ($21,181) is significantly above similar jobs.
 
 * = post-acquisition job
 
@@ -194,7 +192,7 @@ ITEMS SOMETIMES REMOVED:
 CREW SIZING RECOMMENDATION
 =======================================================
 
-Job scope: 86 TAGs, 136 boxes
+Job scope: 87 TAGs, 88 boxes
 
 Recommended crew: 6 staff (range: 5-7)
 Truck loads: 2 (range: 1-3)

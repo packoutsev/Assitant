@@ -1,0 +1,72 @@
+[
+  {
+    "room_name": "Laundry Room",
+    "room_category": "laundry",
+    "density": "light",
+    "override_tags": 3,
+    "override_boxes": 8
+  },
+  {
+    "room_name": "Mudroom Nook",
+    "room_category": "other",
+    "density": "heavy",
+    "override_tags": 0,
+    "override_boxes": 5
+  },
+  {
+    "room_name": "Family Room",
+    "room_category": "living_room",
+    "density": "medium",
+    "override_tags": 10,
+    "override_boxes": 3
+  },
+  {
+    "room_name": "Dining Area",
+    "room_category": "dining_room",
+    "density": "medium",
+    "override_tags": 7,
+    "override_boxes": 1
+  },
+  {
+    "room_name": "Kitchen",
+    "room_category": "kitchen",
+    "density": "light",
+    "override_tags": 10,
+    "override_boxes": 8
+  },
+  {
+    "room_name": "Pantry",
+    "room_category": "other",
+    "density": "heavy",
+    "override_tags": 0,
+    "override_boxes": 6
+  },
+  {
+    "room_name": "Formal Living Room",
+    "room_category": "living_room",
+    "density": "heavy",
+    "override_tags": 11,
+    "override_boxes": 4
+  },
+  {
+    "room_name": "Foyer",
+    "room_category": "hallway",
+    "density": "light",
+    "override_tags": 2,
+    "override_boxes": 0
+  },
+  {
+    "room_name": "Downstairs Bedroom",
+    "room_category": "bedroom",
+    "density": "medium",
+    "override_tags": 17,
+    "override_boxes": 6
+  },
+  {
+    "room_name": "Exterior Access",
+    "room_category": "exterior",
+    "density": "light",
+    "override_tags": 0,
+    "override_boxes": 0
+  }
+]
