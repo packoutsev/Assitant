@@ -1,0 +1,13 @@
+{
+  "name": "mcp-qbo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MCP server for QuickBooks Online — exposes QBO data to Claude Code",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/storage": "^7.15.0",
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "express": "^4.21.0"
+  }
+}
