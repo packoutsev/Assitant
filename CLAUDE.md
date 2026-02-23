@@ -33,13 +33,39 @@ Key findings from initial analysis of exported Excel estimates:
 - **Downloads organized into**: PDFs/, Images/, Spreadsheets/, Documents/, Videos/, Archives/, Installers/, Emails/, ESX/
 - **Xactimate PDF reports & Encircle photo reports**: Available via Google Drive MCP server
 
-## Google Drive MCP Server
+## MCP Servers
 
-- Configured in `.claude.json` under `mcpServers.gdrive`
-- Server code (patched for Windows path bug): `C:\Users\matth\mcp-gdrive-setup\`
-- OAuth credentials: `C:\Users\matth\.config\mcp-gdrive\gcp-oauth.keys.json`
-- Server credentials: `C:\Users\matth\mcp-gdrive-setup\.gdrive-server-credentials.json`
-- If auth expires, re-run from `C:\Users\matth\mcp-gdrive-setup`: `node node_modules\@modelcontextprotocol\server-gdrive\dist\index.js auth`
+Four MCP servers provide tool access to external systems. Three are deployed to **Google Cloud Run** (project `packouts-assistant-1800`, region `us-central1`) for use as custom connectors in claude.ai. Each has two entry points: `index.js` (stdio for Claude Code) and `server.js` (Streamable HTTP for Cloud Run).
+
+### Cloud Run Deployments
+
+| Server | URL | Tools |
+|--------|-----|-------|
+| **mcp-encircle** | `https://mcp-encircle-326811155221.us-central1.run.app/mcp` | Claims, photos, rooms, moisture readings, media, equipment, notes |
+| **mcp-qbo** | `https://mcp-qbo-326811155221.us-central1.run.app/mcp` | Invoices, A/R aging, P&L, balance sheet, customers, QBO SQL |
+| **mcp-xcelerate** | `https://xceleratewebhook-326811155221.us-central1.run.app/mcp` | Jobs, schedule, notes, status (Zapier webhook → Firestore + MCP) |
+
+**Transport**: Streamable HTTP (`POST /mcp`) via MCP SDK v1.26.0 `StreamableHTTPServerTransport`. Legacy SSE not supported — claude.ai requires Streamable HTTP for custom connectors.
+
+**Auth**: No bearer token required (claude.ai custom connectors don't support simple bearer tokens — only OAuth or no-auth). API credentials (Encircle API token, QBO OAuth) are server-side env vars on Cloud Run.
+
+**Deploying updates**: From each `mcp-*/` directory:
+```bash
+gcloud run deploy <service-name> --source . --region us-central1 --no-invoker-iam-check --quiet
+```
+The `--no-invoker-iam-check` flag bypasses the GCP org policy that blocks `allUsers` IAM binding.
+
+### Local-Only MCP Servers
+
+| Server | Location | Notes |
+|--------|----------|-------|
+| **mcp-gdrive** | `C:\Users\matth\mcp-gdrive-setup\` | Google Drive file search (patched for Windows). If auth expires, re-run: `node node_modules\@modelcontextprotocol\server-gdrive\dist\index.js auth` |
+
+### Google Cloud CLI
+
+- Installed at `C:\Users\matth\google-cloud-sdk\` (v557.0.0)
+- Authenticated as `matt@encantobuilders.com`
+- Added to Windows PATH permanently
 
 ## Estimator Tool (Built)
 
