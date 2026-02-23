@@ -35,7 +35,7 @@ Key findings from initial analysis of exported Excel estimates:
 
 ## MCP Servers
 
-Four MCP servers provide tool access to external systems. Three are deployed to **Google Cloud Run** (project `packouts-assistant-1800`, region `us-central1`) for use as custom connectors in claude.ai. Each has two entry points: `index.js` (stdio for Claude Code) and `server.js` (Streamable HTTP for Cloud Run).
+Five MCP servers provide tool access to external systems. Four are deployed to **Google Cloud Run** (project `packouts-assistant-1800`, region `us-central1`) for use as custom connectors in claude.ai. Each has two entry points: `index.js` (stdio for Claude Code) and `server.js` (Streamable HTTP for Cloud Run).
 
 ### Cloud Run Deployments
 
@@ -44,10 +44,11 @@ Four MCP servers provide tool access to external systems. Three are deployed to 
 | **mcp-encircle** | `https://mcp-encircle-326811155221.us-central1.run.app/mcp` | Claims, photos, rooms, moisture readings, media, equipment, notes |
 | **mcp-qbo** | `https://mcp-qbo-326811155221.us-central1.run.app/mcp` | Invoices, A/R aging, P&L, balance sheet, customers, QBO SQL |
 | **mcp-xcelerate** | `https://xceleratewebhook-326811155221.us-central1.run.app/mcp` | Jobs, schedule, notes, status (Zapier webhook → Firestore + MCP) |
+| **mcp-gchat** | `https://mcp-gchat-326811155221.us-central1.run.app/mcp` | Google Chat spaces, messages, threads, search, send messages (read+write) |
 
 **Transport**: Streamable HTTP (`POST /mcp`) via MCP SDK v1.26.0 `StreamableHTTPServerTransport`. Legacy SSE not supported — claude.ai requires Streamable HTTP for custom connectors.
 
-**Auth**: No bearer token required (claude.ai custom connectors don't support simple bearer tokens — only OAuth or no-auth). API credentials (Encircle API token, QBO OAuth) are server-side env vars on Cloud Run.
+**Auth**: No bearer token required (claude.ai custom connectors don't support simple bearer tokens — only OAuth or no-auth). API credentials (Encircle API token, QBO OAuth, Google Chat OAuth) are server-side env vars on Cloud Run. Google Chat tokens stored in GCS bucket `packouts-gchat-tokens`.
 
 **Deploying updates**: From each `mcp-*/` directory:
 ```bash
