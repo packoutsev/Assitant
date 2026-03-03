@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CalloutBox from '../components/CalloutBox.astro';
+import CTABlock from '../components/CTABlock.astro';
+
+const title = "What to Expect During Contents Restoration | Full Process & Timeline";
+const description = "Step-by-step guide to the contents restoration process — pack-out, cleaning, storage, and pack-back. Know what to expect at every stage and how long each phase takes.";
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "What to Expect" },
+];
+
+const faqLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does a contents pack-out take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A typical pack-out takes 1-3 days depending on home size and the amount of contents. A standard 3-bedroom home with a full pack-out usually takes 1-2 days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long are my belongings stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Storage duration depends on how long structural repairs take. Fire damage repairs typically take 3-6 months. Water damage repairs take 4-12 weeks. Your belongings are stored safely the entire time, and storage is covered by your insurance."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} jsonLD={faqLD}>
+  <div class="max-w-reading mx-auto px-4 py-10">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+      What to Expect During Contents Restoration
+    </h1>
+
+    <p class="text-lg text-gray-600 mb-8">
+      When your home is damaged, the contents restoration process runs parallel to structural repairs. Here's exactly what happens at each stage so you know what to expect.
+    </p>
+
+    <!-- Before We Arrive -->
+    <h2 class="text-2xl font-bold text-navy mb-4">Before we arrive</h2>
+    <p class="mb-4">
+      After you file your insurance claim, your adjuster will assess the damage and determine the scope of work needed. You (or your adjuster) contacts a contents restoration company — that's us. Here's what helps before we arrive:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Document the damage</strong> — photos and video of every room before anything is moved.</li>
+      <li><strong>Note high-priority items</strong> — anything especially valuable, fragile, or sentimental that needs special attention.</li>
+      <li><strong>Provide access</strong> — keys, garage codes, or arrangements for someone to let us in.</li>
+      <li><strong>Share your insurance info</strong> — claim number, adjuster name, and policy details so we can coordinate directly.</li>
+    </ul>
+
+    <!-- Phase 1: Pack-Out -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Phase 1: Pack-Out & Inventory (Days 1-3)</h2>
+    <p class="mb-4">
+      This is the most visible part of the process. Our team comes to your home and methodically removes all contents from affected areas.
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Room-by-room approach</strong> — we work one room at a time, keeping everything organized by origin.</li>
+      <li><strong>Photo documentation</strong> — every item is photographed in place, then again as it's packed. This creates a detailed record for your insurance claim.</li>
+      <li><strong>Unique tagging</strong> — each box and large item gets a tag with a unique ID, room of origin, and contents list.</li>
+      <li><strong>Packing materials</strong> — we use professional packing supplies. Fragile items get bubble wrap, dish packs, and custom padding.</li>
+      <li><strong>Load and transport</strong> — everything goes on our trucks to our facility. Nothing goes to a third-party storage unit.</li>
+    </ul>
+
+    <CalloutBox type="tip">
+      <p class="font-semibold mb-1">What about items I need right away?</p>
+      <p>Tell us at the start of the pack-out. We can set aside clothing, medications, important documents, children's items, and anything else you need immediate access to. These items get priority cleaning and can often be returned within days.</p>
+    </CalloutBox>
+
+    <!-- Phase 2: Cleaning -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Phase 2: Cleaning & Restoration (Weeks 1-4)</h2>
+    <p class="mb-4">
+      At our facility, items are sorted by type and cleaning method. Different damage types require different approaches:
+    </p>
+
+    <h3 class="text-lg font-bold text-navy mb-2">For fire/smoke damage:</h3>
+    <ul class="space-y-2 mb-4">
+      <li>Ozone treatment for odor removal</li>
+      <li>Ultrasonic cleaning for electronics, glassware, and small items</li>
+      <li>Dry cleaning for smoke-damaged clothing and textiles</li>
+      <li>Hand wiping and deodorizing for furniture and hard surfaces</li>
+      <li>Specialized treatment for artwork, photos, and documents</li>
+    </ul>
+
+    <h3 class="text-lg font-bold text-navy mb-2">For water damage:</h3>
+    <ul class="space-y-2 mb-4">
+      <li>Dehumidification and controlled drying for wood furniture</li>
+      <li>Antimicrobial treatment to prevent mold</li>
+      <li>Professional laundering for clothing and linens</li>
+      <li>Corrosion removal and testing for electronics</li>
+      <li>Freeze-drying for documents and photographs</li>
+    </ul>
+
+    <p class="mb-6">
+      Items that can't be restored are documented with photos, descriptions, and current replacement cost estimates. This documentation goes to your insurance company so you can be reimbursed.
+    </p>
+
+    <!-- Phase 3: Storage -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Phase 3: Storage</h2>
+    <p class="mb-4">
+      Cleaned items are stored in our secure, climate-controlled facility while your home is being repaired. How long storage lasts depends on the type of damage:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Water damage repairs:</strong> typically 4-12 weeks</li>
+      <li><strong>Fire damage repairs:</strong> typically 3-6 months</li>
+      <li><strong>Major reconstruction:</strong> can extend to 6-12 months</li>
+    </ul>
+    <p class="mb-6">
+      Storage is covered by your insurance as part of the contents claim. Your belongings stay organized by room throughout storage so pack-back goes smoothly.
+    </p>
+
+    <!-- Phase 4: Pack-Back -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Phase 4: Pack-Back & Placement (Days 1-2)</h2>
+    <p class="mb-4">
+      This is the best part — getting your stuff back. When your contractor confirms the home is ready, we schedule the pack-back.
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Delivery</strong> — everything is loaded and transported back to your home.</li>
+      <li><strong>Room placement</strong> — furniture goes in the right rooms based on original inventory tags.</li>
+      <li><strong>Unpacking</strong> — boxes are unpacked and contents placed. You don't have to do this yourself.</li>
+      <li><strong>Assembly</strong> — beds, desks, shelving units, and other furniture assembled and placed.</li>
+      <li><strong>Walk-through</strong> — we go through the home with you to confirm everything is accounted for and placed correctly.</li>
+    </ul>
+
+    <CalloutBox type="right">
+      <p class="font-semibold mb-1">The goal of pack-back:</p>
+      <p>You walk into your repaired home and it feels like yours again. Not a construction zone with boxes stacked in every room. We handle the placement so you can focus on settling back in.</p>
+    </CalloutBox>
+
+    <!-- Timeline Summary -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Full Timeline Summary</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="border-b-2 border-navy">
+            <th class="py-2 pr-4 text-navy">Phase</th>
+            <th class="py-2 pr-4 text-navy">Duration</th>
+          </tr>
+        </thead>
+        <tbody class="text-base">
+          <tr class="border-b border-gray-200">
+            <td class="py-2 pr-4">Pack-Out & Inventory</td>
+            <td class="py-2 pr-4">1-3 days</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2 pr-4">Contents Cleaning</td>
+            <td class="py-2 pr-4">1-4 weeks</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2 pr-4">Storage (during repairs)</td>
+            <td class="py-2 pr-4">4 weeks - 6 months</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2 pr-4">Pack-Back & Placement</td>
+            <td class="py-2 pr-4">1-2 days</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <CTABlock message="Want to know what to expect for your specific situation? Call us and we'll walk you through it." />
+  </div>
+</BaseLayout>

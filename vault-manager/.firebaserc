@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "packouts-assistant-1800"
+  },
+  "targets": {
+    "packouts-assistant-1800": {
+      "hosting": {
+        "packouts-vault": [
+          "packouts-vault"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="GTD Universal Capture - Capture thoughts quickly and process them using the Getting Things Done methodology">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GTD Capture">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="GTD Capture">
+  <meta name="msapplication-TileColor" content="#6366f1">
+  <meta name="msapplication-TileImage" content="/icons/icon-144.png">
+  <title>GTD Capture</title>
+  <link rel="stylesheet" href="styles.css?v=16">
+  <link rel="stylesheet" href="ai-styles.css">
+  <link rel="stylesheet" href="features.css?v=17">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192.png">
+</head>
+<body>
+  <!-- Loading Screen with Flowing Water Animation -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="water-container">
+      <div class="water-wave wave1"></div>
+      <div class="water-wave wave2"></div>
+      <div class="water-wave wave3"></div>
+    </div>
+    <div class="loading-content">
+      <div class="loading-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="64" height="64">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h1 class="loading-title">GTD Capture</h1>
+      <p class="loading-tagline">Your mind like water</p>
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+
+  <!-- Authentication Screen -->
+  <div class="auth-screen" id="authScreen">
+    <div class="auth-container">
+      <div class="auth-header">
+        <div class="auth-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h1 class="auth-title">GTD Capture</h1>
+        <p class="auth-tagline">Your mind like water</p>
+      </div>
+
+      <!-- Login Form -->
+      <div class="auth-form" id="loginForm">
+        <button class="btn btn-google" onclick="app.signInWithGoogle()">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          Sign in with Google
+        </button>
+
+        <div class="auth-divider">
+          <span>or</span>
+        </div>
+
+        <div class="auth-field">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" class="auth-input" placeholder="you@example.com">
+        </div>
+
+        <div class="auth-field">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="auth-input" placeholder="Enter your password">
+        </div>
+
+        <button class="btn btn-primary auth-submit" onclick="app.signInWithEmail()">
+          Sign In
+        </button>
+
+        <div class="auth-links">
+          <p>Don't have an account? <a href="#" onclick="app.showSignUp()">Sign Up</a></p>
+          <p><a href="#" onclick="app.showForgotPassword()">Forgot Password?</a></p>
+        </div>
+      </div>
+
+      <!-- Sign Up Form -->
+      <div class="auth-form" id="signUpForm" style="display: none;">
+        <h2 class="auth-form-title">Create Your Account</h2>
+
+        <div class="auth-field">
+          <label for="signUpName">Full Name</label>
+          <input type="text" id="signUpName" class="auth-input" placeholder="Your name">
+        </div>
+
+        <div class="auth-field">
+          <label for="signUpEmail">Email</label>
+          <input type="email" id="signUpEmail" class="auth-input" placeholder="you@example.com">
+        </div>
+
+        <div class="auth-field">
+          <label for="signUpPassword">Password</label>
+          <input type="password" id="signUpPassword" class="auth-input" placeholder="At least 6 characters">
+        </div>
+
+        <div class="auth-field">
+          <label for="signUpConfirm">Confirm Password</label>
+          <input type="password" id="signUpConfirm" class="auth-input" placeholder="Confirm your password">
+        </div>
+
+        <button class="btn btn-primary auth-submit" onclick="app.signUpWithEmail()">
+          Create Account
+        </button>
+
+        <div class="auth-links">
+          <p>Already have an account? <a href="#" onclick="app.showLogin()">Sign In</a></p>
+        </div>
+      </div>
+
+      <!-- Forgot Password Form -->
+      <div class="auth-form" id="forgotPasswordForm" style="display: none;">
+        <h2 class="auth-form-title">Reset Password</h2>
+        <p class="auth-form-desc">Enter your email and we'll send you a reset link.</p>
+
+        <div class="auth-field">
+          <label for="resetEmail">Email</label>
+          <input type="email" id="resetEmail" class="auth-input" placeholder="you@example.com">
+        </div>
+
+        <button class="btn btn-primary auth-submit" onclick="app.resetPassword()">
+          Send Reset Link
+        </button>
+
+        <div class="auth-links">
+          <p><a href="#" onclick="app.showLogin()">Back to Sign In</a></p>
+        </div>
+      </div>
+
+      <div class="auth-error" id="authError" style="display: none;"></div>
+    </div>
+  </div>
+
+  <div class="app" id="mainApp" style="display: none;">
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>GTD Capture</h1>
+        <p>Mind like water</p>
+      </div>
+
+      <!-- Sidebar Search -->
+      <div class="sidebar-search">
+        <div class="sidebar-search-wrapper">
+          <svg class="sidebar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="M21 21l-4.35-4.35"></path>
+          </svg>
+          <input
+            type="text"
+            id="sidebarSearchInput"
+            class="sidebar-search-input"
+            placeholder="Search..."
+          >
+          <span class="sidebar-search-shortcut">&#8984;F</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- PERSONAL Section -->
+        <div class="nav-section-label">PERSONAL</div>
+
+        <div class="nav-item" data-view="today">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </span>
+            <span class="nav-label">Today</span>
+          </div>
+          <span class="nav-count" id="todayCount">0</span>
+        </div>
+
+        <div class="nav-item active" data-view="inbox">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Inbox</span>
+          </div>
+          <span class="nav-count" id="inboxCount">0</span>
+        </div>
+
+        <div class="nav-item" data-view="nextActions">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">Next Actions</span>
+          </div>
+          <span class="nav-count" id="actionsCount">0</span>
+        </div>
+
+        <div class="context-counts" id="contextBreakdown" style="display: none;"></div>
+
+        <div class="nav-item" data-view="waitingFor">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">Waiting For</span>
+          </div>
+          <span class="nav-count" id="waitingCount">0</span>
+        </div>
+
+        <div class="nav-item" data-view="projects">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Projects</span>
+          </div>
+          <span class="nav-count" id="projectsCount">0</span>
+        </div>
+
+        <div class="nav-item" data-view="somedayMaybe">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </span>
+            <span class="nav-label">Someday/Maybe</span>
+          </div>
+          <span class="nav-count" id="somedayCount">0</span>
+        </div>
+
+        <div class="nav-item" data-view="reference">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Reference</span>
+          </div>
+          <span class="nav-count" id="referenceCount">0</span>
+        </div>
+
+        <div class="nav-item" data-view="weeklyReview">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">Weekly Review</span>
+          </div>
+        </div>
+
+        <div class="nav-divider"></div>
+
+        <!-- Areas, Archive, Trash -->
+        <div class="nav-item" data-view="areas">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </span>
+            <span class="nav-label">Areas</span>
+          </div>
+        </div>
+
+        <div class="nav-item" data-view="archive"
+             ondragover="app.handleNavDragOver(event)"
+             ondragleave="app.handleNavDragLeave(event)"
+             ondrop="app.handleArchiveDrop(event)">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                <rect x="1" y="3" width="22" height="5"></rect>
+                <line x1="10" y1="12" x2="14" y2="12"></line>
+              </svg>
+            </span>
+            <span class="nav-label">Archive</span>
+          </div>
+          <span class="nav-count" id="archiveCount">0</span>
+        </div>
+
+        <div class="nav-item" data-view="trash"
+             ondragover="app.handleNavDragOver(event)"
+             ondragleave="app.handleNavDragLeave(event)"
+             ondrop="app.handleTrashDrop(event); app.handleFolderTrashDrop(event)">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Trash</span>
+          </div>
+          <span class="nav-count" id="trashCount">0</span>
+        </div>
+
+        <!-- FEATURES Section -->
+        <div class="nav-section-label features-label">FEATURES</div>
+
+        <div class="nav-item" data-view="dashboard">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </span>
+            <span class="nav-label">Dashboard</span>
+          </div>
+        </div>
+
+        <div class="nav-item" data-view="habits">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </span>
+            <span class="nav-label">Habits</span>
+          </div>
+        </div>
+
+        <div class="nav-item" data-view="timeline">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+                <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+            </span>
+            <span class="nav-label">Timeline</span>
+          </div>
+        </div>
+
+        <div class="nav-item" data-view="achievements">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+              </svg>
+            </span>
+            <span class="nav-label">Achievements</span>
+          </div>
+        </div>
+
+        <div class="nav-divider" id="adminNavDivider" style="display: none;"></div>
+
+        <div class="nav-item" data-view="adminUsers" id="adminViewNav" style="display: none;">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Admin</span>
+          </div>
+        </div>
+
+        <div class="nav-divider"></div>
+
+        <div class="nav-item" data-view="settings">
+          <div class="nav-item-left">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Settings</span>
+          </div>
+        </div>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="data-actions">
+          <button class="btn-small" id="exportBtn" title="Export data as JSON">
+            Export
+          </button>
+          <button class="btn-small" id="importBtn" title="Import data from JSON">
+            Import
+          </button>
+          <button class="btn-small danger" id="clearBtn" title="Clear all data">
+            Clear
+          </button>
+          <input type="file" id="importInput" class="hidden-input" accept=".json">
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Mobile Header -->
+      <header class="mobile-header">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <span class="mobile-title" id="mobileTitle">Inbox</span>
+        <!-- Help Button -->
+        <button class="help-btn" id="helpBtn" onclick="app.openHelpPanel()" title="Help & Documentation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </button>
+        <!-- User Menu -->
+        <div class="user-menu" id="userMenu">
+          <button class="user-menu-trigger" onclick="app.toggleUserMenu()">
+            <div class="user-avatar" id="userAvatar">
+              <span id="userInitials">?</span>
+            </div>
+          </button>
+          <div class="user-menu-dropdown" id="userMenuDropdown">
+            <div class="user-menu-header">
+              <div class="user-name" id="userDisplayName">User</div>
+              <div class="user-email" id="userEmail">user@example.com</div>
+            </div>
+            <div class="user-menu-divider"></div>
+            <button class="user-menu-item" onclick="app.navigateTo('settings'); app.toggleUserMenu();">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+              Settings
+            </button>
+            <div class="user-menu-divider"></div>
+            <button class="user-menu-item danger" onclick="app.signOut()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              Sign Out
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Quick Capture -->
+      <section class="quick-capture">
+        <div class="capture-container">
+          <label class="capture-label">
+            Quick Capture
+            <span class="shortcut-hint">Cmd/Ctrl + K</span>
+          </label>
+          <div class="capture-input-wrapper">
+            <textarea
+              id="captureInput"
+              class="capture-input"
+              placeholder="What's on your mind? Press Enter to capture..."
+              rows="1"
+            ></textarea>
+            <div class="capture-buttons">
+              <button id="uploadBtn" class="upload-btn" title="Upload file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </button>
+              <button id="submitBtn" class="submit-btn" title="Submit (Enter)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 10 4 15 9 20"></polyline>
+                  <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
+                </svg>
+              </button>
+              <button id="voiceBtn" class="voice-btn" title="Voice capture">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  <line x1="12" y1="19" x2="12" y2="23"></line>
+                  <line x1="8" y1="23" x2="16" y2="23"></line>
+                </svg>
+              </button>
+              <button id="receiptBtn" class="receipt-btn" onclick="app.scanReceipt()" title="Scan receipt">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1z"></path>
+                  <path d="M8 8h8"></path>
+                  <path d="M8 12h8"></path>
+                  <path d="M8 16h4"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="voice-status" id="voiceStatus" style="display: none;"></div>
+        </div>
+      </section>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Search Results View -->
+        <div class="view" id="searchResultsView">
+          <div class="content-header">
+            <h2>Search Results</h2>
+            <p id="searchResultsCount">Searching...</p>
+          </div>
+          <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <!-- Today View -->
+        <div class="view" id="todayView">
+          <div class="today-content" id="todayContent">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Weekly Review View -->
+        <div class="view" id="weeklyReviewView">
+          <div class="review-container">
+            <div class="review-header">
+              <h2>Weekly Review</h2>
+              <div class="review-progress">
+                <span class="review-step-label">Step <span id="reviewCurrentStep">1</span> of <span id="reviewTotalSteps">7</span></span>
+                <div class="review-progress-bar">
+                  <div class="review-progress-fill" id="reviewProgressFill" style="width: 14%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="review-content" id="reviewContent">
+              <!-- Steps populated by JS -->
+            </div>
+            <div class="ai-insights-section">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                AI Insights
+              </h3>
+              <div id="aiReviewInsights">
+                <button class="btn btn-secondary btn-sm" onclick="app.generateAIReviewInsights()">Generate Insights</button>
+              </div>
+            </div>
+            <div class="review-footer">
+              <div class="review-stats" id="reviewStats"></div>
+              <div class="review-actions">
+                <button class="btn btn-secondary" id="reviewBackBtn" style="display: none;">Back</button>
+                <button class="btn btn-secondary" id="reviewSkipBtn">Skip</button>
+                <button class="btn btn-primary" id="reviewNextBtn">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inbox View -->
+        <div class="view active" id="inboxView">
+          <div class="content-header">
+            <div class="content-header-main">
+              <h2>Inbox</h2>
+              <p>Items waiting to be processed</p>
+            </div>
+            <div class="inbox-sort-options">
+              <label class="sort-label">Sort:</label>
+              <select id="inboxSortSelect" onchange="app.changeInboxSort(this.value)">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="type">By Type</option>
+              </select>
+            </div>
+          </div>
+          <div class="inbox-list" id="inboxList"></div>
+        </div>
+
+        <!-- Next Actions View -->
+        <div class="view" id="nextActionsView">
+          <div class="content-header">
+            <div style="display:flex;align-items:center;justify-content:space-between;width:100%">
+              <div>
+                <h2>Next Actions</h2>
+                <p>Organized by context</p>
+              </div>
+              <div style="display:flex;gap:8px">
+                <button class="kanban-toggle" id="kanbanToggle" onclick="app.toggleKanbanView()" title="Toggle Kanban view">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="5" height="15" rx="1"/>
+                  </svg>
+                  Board
+                </button>
+                <button class="kanban-toggle" onclick="app.enterZenMode()" title="Zen Mode capture">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                    <path d="M12 6v6l4 2"/>
+                  </svg>
+                  Zen
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="filters-bar" id="contextFilters"></div>
+          <div id="nextActionsList"></div>
+        </div>
+
+        <!-- Waiting For View -->
+        <div class="view" id="waitingForView">
+          <div class="content-header">
+            <div style="display:flex;align-items:center;justify-content:space-between;width:100%">
+              <div>
+                <h2>Waiting For</h2>
+                <p>Items delegated to others</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="app.showQuickWaitingFor()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Quick Add
+              </button>
+            </div>
+          </div>
+          <div class="waiting-list" id="waitingList"></div>
+        </div>
+
+        <!-- Assigned to Me View removed (team feature) -->
+
+        <!-- Projects View -->
+        <div class="view" id="projectsView">
+          <div class="content-header">
+            <div class="header-with-actions">
+              <div>
+                <h2>Projects</h2>
+                <p>Multi-step outcomes you're committed to</p>
+              </div>
+              <div class="header-buttons">
+                <button class="btn btn-secondary" onclick="app.showTemplatesModal()">From Template</button>
+                <button class="btn btn-primary" onclick="app.showAddProjectModal()">New Project</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Stats Dashboard -->
+          <div class="projects-dashboard" id="projectsDashboard">
+            <div class="dashboard-stat">
+              <span class="stat-value" id="activeProjectsCount">0</span>
+              <span class="stat-label">Active</span>
+            </div>
+            <div class="dashboard-stat">
+              <span class="stat-value" id="onHoldProjectsCount">0</span>
+              <span class="stat-label">On Hold</span>
+            </div>
+            <div class="dashboard-stat">
+              <span class="stat-value" id="completedProjectsCount">0</span>
+              <span class="stat-label">Completed</span>
+            </div>
+          </div>
+
+          <!-- Project Filters -->
+          <div class="filters-bar" id="projectFilters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="on-hold">On Hold</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+          </div>
+
+          <!-- Add Project Button -->
+          <div class="add-project-bar">
+            <button class="btn btn-primary" id="addProjectBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              New Project
+            </button>
+          </div>
+
+          <!-- Projects List -->
+          <div class="projects-list" id="projectsList"></div>
+        </div>
+
+        <!-- Areas View -->
+        <div class="view" id="areasView">
+          <div class="content-header">
+            <div class="header-with-actions">
+              <div>
+                <h2>Areas of Responsibility</h2>
+                <p>Key areas of your life to maintain balance</p>
+              </div>
+              <button class="btn btn-primary" onclick="app.showAddAreaModal()">New Area</button>
+            </div>
+          </div>
+
+          <!-- Areas Grid -->
+          <div class="areas-grid" id="areasGrid"></div>
+        </div>
+
+        <!-- Someday/Maybe View -->
+        <div class="view" id="somedayMaybeView">
+          <div class="content-header">
+            <div class="header-with-actions">
+              <div>
+                <h2>Someday/Maybe</h2>
+                <p>Ideas and possibilities for the future</p>
+              </div>
+              <button class="btn btn-primary" onclick="app.showAddSomedayModal()">Add Idea</button>
+            </div>
+          </div>
+          <div class="someday-filter-bar" id="somedayFilterBar"></div>
+          <div class="someday-list" id="somedayList"></div>
+        </div>
+
+        <!-- Reference View -->
+        <div class="view" id="referenceView">
+          <div class="content-header">
+            <h2>Reference</h2>
+            <p>Information for future reference</p>
+          </div>
+
+          <div class="reference-layout">
+            <!-- Folder Sidebar -->
+            <aside class="folder-sidebar">
+              <div class="folder-header">
+                <span>Folders</span>
+                <button class="btn-icon small" id="addFolderBtn" title="Add folder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- All Items -->
+              <div class="folder-item active" data-folder="all"
+                   ondragover="app.handleNavDragOver(event)"
+                   ondragleave="app.handleNavDragLeave(event)"
+                   ondrop="app.handleFolderDrop(event, null)">
+                <span class="folder-icon">📋</span>
+                <span class="folder-name">All Items</span>
+                <span class="folder-count" id="allRefCount">0</span>
+              </div>
+
+              <!-- Unfiled -->
+              <div class="folder-item" data-folder="unfiled"
+                   ondragover="app.handleNavDragOver(event)"
+                   ondragleave="app.handleNavDragLeave(event)"
+                   ondrop="app.handleFolderDrop(event, null)">
+                <span class="folder-icon">📥</span>
+                <span class="folder-name">Unfiled</span>
+                <span class="folder-count" id="unfiledCount">0</span>
+              </div>
+
+              <div class="folder-divider"></div>
+
+              <!-- Dynamic Folders -->
+              <div class="folder-tree" id="folderTree"></div>
+            </aside>
+
+            <!-- Reference Content -->
+            <div class="reference-content">
+              <div class="search-bar">
+                <input
+                  type="text"
+                  id="referenceSearch"
+                  class="search-input"
+                  placeholder="Search references..."
+                >
+              </div>
+              <div class="current-folder-header" id="currentFolderHeader">
+                <h3 id="currentFolderName">All Items</h3>
+                <div class="reference-header-actions">
+                  <button class="btn btn-secondary btn-sm" onclick="app.uploadPhotoToReference()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                    Upload Photo
+                  </button>
+                  <button class="btn btn-primary btn-sm" onclick="app.showNewReferenceModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    New Reference
+                  </button>
+                </div>
+              </div>
+              <div class="reference-list" id="referenceList"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Archive View -->
+        <div class="view" id="archiveView">
+          <div class="content-header">
+            <h2>Archive</h2>
+            <p>Completed items and inactive projects</p>
+          </div>
+
+          <!-- Archive Filters -->
+          <div class="filters-bar" id="archiveFilters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="actions">Actions</button>
+            <button class="filter-btn" data-filter="projects">Projects</button>
+            <button class="filter-btn" data-filter="waiting">Waiting For</button>
+          </div>
+
+          <div class="search-bar">
+            <input
+              type="text"
+              id="archiveSearch"
+              class="search-input"
+              placeholder="Search archived items..."
+            >
+          </div>
+
+          <div class="archive-list" id="archiveList"></div>
+        </div>
+
+        <!-- Trash View -->
+        <div class="view" id="trashView">
+          <div class="content-header">
+            <h2>Trash</h2>
+            <p>Deleted items - auto-cleared after 30 days</p>
+          </div>
+
+          <div class="trash-actions">
+            <button class="btn btn-secondary" id="emptyTrashBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+              Empty Trash
+            </button>
+          </div>
+
+          <div class="trash-list" id="trashList"></div>
+        </div>
+
+        <!-- Dashboard View -->
+        <div class="view" id="dashboardView">
+          <div class="content-header">
+            <h2>Dashboard</h2>
+            <p>Your productivity at a glance</p>
+          </div>
+          <div id="dashboardContent"></div>
+        </div>
+
+        <!-- Habits View -->
+        <div class="view" id="habitsView">
+          <div class="content-header">
+            <h2>Habits</h2>
+            <p>Build powerful daily routines</p>
+          </div>
+          <div id="habitsContent"></div>
+        </div>
+
+        <!-- Timeline View -->
+        <div class="view" id="timelineView">
+          <div class="content-header">
+            <h2>Timeline</h2>
+            <p>Project timeline overview</p>
+          </div>
+          <div id="timelineContent"></div>
+        </div>
+
+        <!-- Achievements View -->
+        <div class="view" id="achievementsView">
+          <div class="content-header">
+            <h2>Achievements</h2>
+            <p>Track your GTD milestones</p>
+          </div>
+          <div id="achievementsContent"></div>
+        </div>
+
+        <!-- Settings View -->
+        <div class="view" id="settingsView">
+          <div class="content-header">
+            <h2>Settings</h2>
+            <p>Customize your GTD experience</p>
+          </div>
+          <div class="settings-content">
+            <!-- Team Collaboration Section (Cloud) -->
+            <div class="settings-section" id="teamCollabSection" style="display: none;">
+              <div class="section-header">
+                <div>
+                  <h3>Team Collaboration</h3>
+                  <p class="settings-description">Collaborate with others in real-time</p>
+                </div>
+              </div>
+
+              <!-- No team state -->
+              <div id="noTeamState">
+                <p class="empty-state-text">You're not part of any team yet.</p>
+                <div class="team-actions-row">
+                  <button class="btn btn-primary" onclick="app.showCreateTeamModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Create Team
+                  </button>
+                  <span class="or-divider">or</span>
+                  <button class="btn btn-secondary" onclick="app.showJoinTeamModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="8.5" cy="7" r="4"></circle>
+                      <line x1="20" y1="8" x2="20" y2="14"></line>
+                      <line x1="23" y1="11" x2="17" y2="11"></line>
+                    </svg>
+                    Join with Invite Link
+                  </button>
+                </div>
+              </div>
+
+              <!-- Team exists state -->
+              <div id="teamExistsState" style="display: none;">
+                <div class="team-info-card">
+                  <div class="team-name-row">
+                    <h4 id="teamNameDisplay">Team Name</h4>
+                    <span class="team-role-badge" id="teamRoleBadge">owner</span>
+                  </div>
+                  <p class="team-member-count"><span id="teamMemberCount">1</span> member(s)</p>
+                </div>
+
+                <h4 class="subsection-title">Members</h4>
+                <div class="team-members-cloud-list" id="teamMembersCloudList">
+                  <!-- Dynamic team members -->
+                </div>
+
+                <!-- Owner actions -->
+                <div id="ownerActions" style="display: none;">
+                  <h4 class="subsection-title">Invite Members</h4>
+                  <div class="invite-section">
+                    <button class="btn btn-primary" id="generateInviteBtn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                      </svg>
+                      Generate Invite Link
+                    </button>
+                  </div>
+                  <div id="inviteLinkDisplay" style="display: none;">
+                    <div class="invite-link-box">
+                      <input type="text" id="inviteLinkInput" readonly class="invite-link-input">
+                      <button class="btn btn-secondary" id="copyInviteLinkBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy
+                      </button>
+                    </div>
+                    <p class="invite-link-hint">Link expires in 7 days</p>
+                  </div>
+
+                  <h4 class="subsection-title">Pending Invites</h4>
+                  <div class="pending-invites-list" id="pendingInvitesList">
+                    <p class="empty-hint">No pending invites</p>
+                  </div>
+                </div>
+
+                <h4 class="subsection-title">Recent Activity</h4>
+                <div class="team-activity-feed" id="teamActivityFeed">
+                  <p class="empty-hint">No recent activity</p>
+                </div>
+
+                <div class="team-danger-zone">
+                  <button class="btn btn-danger-outline" id="leaveTeamBtn">Leave Team</button>
+                  <button class="btn btn-danger" id="deleteTeamBtn" style="display: none;">Delete Team</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Google Integrations Section -->
+            <div class="settings-section" id="integrationsSection">
+              <div class="section-header">
+                <div>
+                  <h3>Google Integrations</h3>
+                  <p class="settings-description">Connect Google Drive and Gmail for enhanced functionality</p>
+                </div>
+              </div>
+
+              <!-- API Configuration -->
+              <div class="integration-config" id="integrationConfig">
+                <div class="config-notice">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>To enable Google integrations, you need to configure your Google Cloud credentials.</span>
+                </div>
+                <button class="btn btn-secondary" onclick="app.showGoogleConfigModal()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  </svg>
+                  Configure API Credentials
+                </button>
+              </div>
+
+              <!-- Google Drive Integration -->
+              <div class="integration-item" id="driveIntegration">
+                <div class="integration-icon drive">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="#4285F4" d="M12 11L6 2H18L12 11Z"/>
+                    <path fill="#FBBC05" d="M6 2L0 12L6 22L12 11L6 2Z"/>
+                    <path fill="#34A853" d="M18 2L12 11L18 22L24 12L18 2Z"/>
+                    <path fill="#EA4335" d="M6 22H18L24 12H0L6 22Z"/>
+                  </svg>
+                </div>
+                <div class="integration-info">
+                  <h4>Google Drive</h4>
+                  <p class="integration-desc">Link files from Drive to Reference items and Actions</p>
+                  <div class="integration-status" id="driveStatus">
+                    <span class="status-indicator disconnected"></span>
+                    <span class="status-text">Not connected</span>
+                  </div>
+                </div>
+                <div class="integration-action">
+                  <button class="btn btn-primary" id="connectDriveBtn" onclick="app.connectGoogleDrive()">
+                    Connect
+                  </button>
+                  <button class="btn btn-danger-outline" id="disconnectDriveBtn" onclick="app.disconnectGoogleDrive()" style="display: none;">
+                    Disconnect
+                  </button>
+                </div>
+              </div>
+
+              <!-- Gmail Integration -->
+              <div class="integration-item" id="gmailIntegration">
+                <div class="integration-icon gmail">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                  </svg>
+                </div>
+                <div class="integration-info">
+                  <h4>Gmail</h4>
+                  <p class="integration-desc">Send emails via Gmail and track replies on Waiting For items</p>
+                  <div class="integration-status" id="gmailStatus">
+                    <span class="status-indicator disconnected"></span>
+                    <span class="status-text">Not connected</span>
+                  </div>
+                </div>
+                <div class="integration-action">
+                  <button class="btn btn-primary" id="connectGmailBtn" onclick="app.connectGmail()">
+                    Connect
+                  </button>
+                  <button class="btn btn-danger-outline" id="disconnectGmailBtn" onclick="app.disconnectGmail()" style="display: none;">
+                    Disconnect
+                  </button>
+                </div>
+              </div>
+
+              <!-- Gmail Import Settings (shown when connected) -->
+              <div class="gmail-import-settings" id="gmailImportSettings" style="display: none;">
+                <h4 class="subsection-title">Email Import</h4>
+                <p class="settings-description">Import emails from Gmail labels as inbox items</p>
+                <button class="btn btn-secondary" onclick="app.showGmailImportModal()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Import from Gmail
+                </button>
+              </div>
+
+              <!-- Google Calendar Integration -->
+              <div class="integration-item" id="calendarIntegration">
+                <div class="integration-icon calendar">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" fill="#4285F4"/>
+                    <rect x="3" y="4" width="18" height="5" fill="#1967D2"/>
+                    <line x1="7" y1="2" x2="7" y2="6" stroke="#1967D2" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="17" y1="2" x2="17" y2="6" stroke="#1967D2" stroke-width="2" stroke-linecap="round"/>
+                    <rect x="6" y="11" width="3" height="3" fill="white"/>
+                    <rect x="10.5" y="11" width="3" height="3" fill="white"/>
+                    <rect x="15" y="11" width="3" height="3" fill="white"/>
+                    <rect x="6" y="15.5" width="3" height="3" fill="white"/>
+                    <rect x="10.5" y="15.5" width="3" height="3" fill="white"/>
+                  </svg>
+                </div>
+                <div class="integration-info">
+                  <h4>Google Calendar</h4>
+                  <p class="integration-desc">View events in Today, block focus time, and sync deadlines</p>
+                  <div class="integration-status" id="calendarStatus">
+                    <span class="status-indicator disconnected"></span>
+                    <span class="status-text">Not connected</span>
+                  </div>
+                </div>
+                <div class="integration-action">
+                  <button class="btn btn-primary" id="connectCalendarBtn" onclick="app.connectGoogleCalendar()">
+                    Connect
+                  </button>
+                  <button class="btn btn-danger-outline" id="disconnectCalendarBtn" onclick="app.disconnectGoogleCalendar()" style="display: none;">
+                    Disconnect
+                  </button>
+                </div>
+              </div>
+
+              <!-- Calendar Settings (shown when connected) -->
+              <div class="calendar-settings" id="calendarSettings" style="display: none;">
+                <h4 class="subsection-title">Calendar Display</h4>
+
+                <div class="setting-item compact">
+                  <div class="setting-info">
+                    <span class="setting-label">Show calendar events in Today view</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="calShowInToday" checked onchange="app.updateCalendarSetting('showInToday', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-item compact">
+                  <div class="setting-info">
+                    <span class="setting-label">Show calendar events in Weekly Review</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="calShowInWeeklyReview" checked onchange="app.updateCalendarSetting('showInWeeklyReview', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-item compact">
+                  <div class="setting-info">
+                    <span class="setting-label">Show availability when scheduling actions</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="calShowAvailability" checked onchange="app.updateCalendarSetting('showAvailability', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <h4 class="subsection-title">Sync to Calendar</h4>
+
+                <div class="setting-item compact">
+                  <div class="setting-info">
+                    <span class="setting-label">Create calendar events for actions with due dates</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="calCreateEventsForActions" onchange="app.updateCalendarSetting('createEventsForActions', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-item compact">
+                  <div class="setting-info">
+                    <span class="setting-label">Sync project deadlines to calendar</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="calSyncProjectDeadlines" onchange="app.updateCalendarSetting('syncProjectDeadlines', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <h4 class="subsection-title">Focus Time</h4>
+
+                <div class="setting-item compact">
+                  <div class="setting-info">
+                    <span class="setting-label">Enable Focus Time blocking</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="calEnableFocusTime" checked onchange="app.updateCalendarSetting('enableFocusTime', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-item compact">
+                  <div class="setting-info">
+                    <span class="setting-label">Default focus time duration</span>
+                  </div>
+                  <select class="settings-select small" id="calDefaultFocusDuration" onchange="app.updateCalendarSetting('defaultFocusDuration', parseInt(this.value))">
+                    <option value="30">30 min</option>
+                    <option value="60" selected>60 min</option>
+                    <option value="90">90 min</option>
+                    <option value="120">2 hours</option>
+                  </select>
+                </div>
+
+                <h4 class="subsection-title">Calendars to Display</h4>
+                <div class="calendar-list" id="calendarListContainer">
+                  <p class="empty-hint">Loading calendars...</p>
+                </div>
+
+                <div class="calendar-actions">
+                  <button class="btn btn-secondary" onclick="app.refreshCalendarList()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                      <path d="M1 4v6h6"></path>
+                      <path d="M23 20v-6h-6"></path>
+                      <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                    </svg>
+                    Refresh Calendars
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- AI Assistant Section -->
+            <div class="settings-section ai-settings-section" id="aiSettingsSection">
+              <div class="ai-settings-header">
+                <div class="ai-settings-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10a10 10 0 0 1-4.83-1.24L2 22l1.24-5.17A10 10 0 0 1 12 2z"/>
+                    <circle cx="12" cy="12" r="1"/>
+                    <circle cx="8" cy="12" r="1"/>
+                    <circle cx="16" cy="12" r="1"/>
+                  </svg>
+                </div>
+                <div class="ai-settings-title">
+                  <h3>AI Assistant</h3>
+                  <p>Powered by Claude - Smart inbox processing and natural language interaction</p>
+                </div>
+              </div>
+
+              <h4 class="subsection-title">API Configuration</h4>
+              <div class="ai-api-key-input">
+                <input type="password" id="aiApiKeyInput" placeholder="sk-ant-api03-..." value="">
+                <button class="btn btn-secondary" onclick="app.saveAIApiKey()">Save</button>
+                <button class="btn btn-secondary" onclick="app.testAIConnection()">Test</button>
+              </div>
+              <p class="ai-api-link">Get your API key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a></p>
+
+              <h4 class="subsection-title">AI Features</h4>
+              <div class="ai-features-grid">
+                <div class="ai-feature-toggle">
+                  <span class="ai-feature-label">Smart inbox processing suggestions</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="aiProcessingSuggestions" checked onchange="app.updateAISetting('enableProcessingSuggestions', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="ai-feature-toggle">
+                  <span class="ai-feature-label">AI Assistant chatbot</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="aiChatbot" checked onchange="app.updateAISetting('enableChatbot', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <h4 class="subsection-title">Model Preferences</h4>
+              <div class="ai-model-select">
+                <label>Processing suggestions:</label>
+                <select id="aiProcessingModel" onchange="app.updateAISetting('processingModel', this.value)">
+                  <option value="fast">Haiku (fast, cheap)</option>
+                  <option value="balanced">Sonnet (balanced)</option>
+                </select>
+              </div>
+              <div class="ai-model-select">
+                <label>Chat assistant:</label>
+                <select id="aiChatModel" onchange="app.updateAISetting('chatModel', this.value)">
+                  <option value="fast">Haiku (fast, cheap)</option>
+                  <option value="balanced" selected>Sonnet (balanced)</option>
+                </select>
+              </div>
+
+              <h4 class="subsection-title">Usage This Month</h4>
+              <div class="ai-usage-stats" id="aiUsageStats">
+                <div class="ai-usage-stat">
+                  <div class="ai-usage-value" id="aiUsageCalls">0</div>
+                  <div class="ai-usage-label">API calls</div>
+                </div>
+                <div class="ai-usage-stat">
+                  <div class="ai-usage-value" id="aiUsageCost">$0.00</div>
+                  <div class="ai-usage-label">Estimated cost</div>
+                </div>
+              </div>
+
+              <h4 class="subsection-title">AI Learning Preferences</h4>
+              <p class="ai-prefs-description">Help the AI learn your preferences for better suggestions</p>
+
+              <!-- Project Mappings -->
+              <div class="ai-prefs-section">
+                <div class="ai-prefs-header">
+                  <span class="ai-prefs-label">Project Keywords</span>
+                  <button class="btn btn-sm btn-secondary" onclick="app.showAddProjectMappingModal()">+ Add</button>
+                </div>
+                <div class="ai-prefs-list" id="projectMappingsList">
+                  <!-- Dynamic content -->
+                </div>
+              </div>
+
+              <!-- Context Mappings -->
+              <div class="ai-prefs-section">
+                <div class="ai-prefs-header">
+                  <span class="ai-prefs-label">Context Keywords</span>
+                  <button class="btn btn-sm btn-secondary" onclick="app.showAddContextMappingModal()">+ Add</button>
+                </div>
+                <div class="ai-prefs-list" id="contextMappingsList">
+                  <!-- Dynamic content -->
+                </div>
+              </div>
+
+              <!-- Person Aliases -->
+              <div class="ai-prefs-section">
+                <div class="ai-prefs-header">
+                  <span class="ai-prefs-label">Person Nicknames</span>
+                  <button class="btn btn-sm btn-secondary" onclick="app.showAddPersonAliasModal()">+ Add</button>
+                </div>
+                <div class="ai-prefs-list" id="personAliasesList">
+                  <!-- Dynamic content -->
+                </div>
+              </div>
+
+              <!-- AI Feedback Stats -->
+              <h4 class="subsection-title">AI Learning Progress</h4>
+              <div class="ai-feedback-stats" id="aiFeedbackStats">
+                <div class="ai-feedback-stat">
+                  <div class="ai-feedback-value" id="aiFeedbackAccepted">0</div>
+                  <div class="ai-feedback-stat-label">Accepted</div>
+                </div>
+                <div class="ai-feedback-stat">
+                  <div class="ai-feedback-value" id="aiFeedbackModified">0</div>
+                  <div class="ai-feedback-stat-label">Modified</div>
+                </div>
+                <div class="ai-feedback-stat">
+                  <div class="ai-feedback-value" id="aiFeedbackRejected">0</div>
+                  <div class="ai-feedback-stat-label">Rejected</div>
+                </div>
+                <div class="ai-feedback-stat">
+                  <div class="ai-feedback-value" id="aiFeedbackAccuracy">-</div>
+                  <div class="ai-feedback-stat-label">Accuracy</div>
+                </div>
+              </div>
+              <button class="btn btn-sm btn-secondary ai-analytics-btn" onclick="app.showAIAnalyticsModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                  <path d="M18 20V10M12 20V4M6 20v-6"/>
+                </svg>
+                View Learning Details
+              </button>
+            </div>
+
+            <!-- Team Members Section -->
+            <div class="settings-section">
+              <div class="section-header">
+                <div>
+                  <h3>Team Members</h3>
+                  <p class="settings-description">People you delegate work to regularly</p>
+                </div>
+                <button class="btn btn-primary" onclick="app.showAddTeamMemberModal()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  Add Team Member
+                </button>
+              </div>
+              <div class="team-member-list" id="teamMemberList">
+                <!-- Dynamic content -->
+              </div>
+            </div>
+
+            <!-- External Contacts Section -->
+            <div class="settings-section">
+              <div class="section-header">
+                <div>
+                  <h3>External Contacts</h3>
+                  <p class="settings-description">Adjusters, vendors, clients you work with</p>
+                </div>
+                <button class="btn btn-primary" onclick="app.showAddContactModal()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  Add Contact
+                </button>
+              </div>
+              <div class="contact-filter-bar" id="contactFilterBar">
+                <button class="filter-btn active" data-filter="all">All</button>
+              </div>
+              <div class="contact-list" id="contactList">
+                <!-- Dynamic content -->
+              </div>
+            </div>
+
+            <!-- Contexts Section -->
+            <div class="settings-section">
+              <h3>Contexts</h3>
+              <p class="settings-description">Manage your available contexts for next actions</p>
+              <div class="context-manager" id="contextManager">
+                <div class="context-list" id="contextList"></div>
+                <div class="add-context">
+                  <input type="text" id="newContextInput" class="settings-input" placeholder="New context name...">
+                  <button id="addContextBtn" class="btn btn-primary">Add Context</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projects Settings -->
+            <div class="settings-section">
+              <h3>Projects</h3>
+              <p class="settings-description">Configure project behavior and action modes</p>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span class="setting-label">Default Action Mode</span>
+                  <span class="setting-desc">How actions are displayed for new projects</span>
+                </div>
+                <select class="settings-select" id="defaultActionMode" onchange="app.saveSetting('defaultActionMode', this.value)">
+                  <option value="sequential">Sequential (unlock as you go)</option>
+                  <option value="parallel">Parallel (all visible)</option>
+                  <option value="ask">Ask each time</option>
+                </select>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span class="setting-label">Show On Deck Section</span>
+                  <span class="setting-desc">Display blocked actions in Next Actions view</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="showOnDeck" checked onchange="app.saveSetting('showOnDeck', this.checked)">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span class="setting-label">Enable Step Suggestions</span>
+                  <span class="setting-desc">Show AI-suggested steps when creating projects</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="enableStepSuggestions" checked onchange="app.saveSetting('enableStepSuggestions', this.checked)">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Capture Settings -->
+            <div class="settings-section">
+              <h3>Capture</h3>
+              <p class="settings-description">Configure file capture and preview options</p>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span class="setting-label">Maximum File Size</span>
+                  <span class="setting-desc">Limit for drag & drop file uploads</span>
+                </div>
+                <select class="settings-select" id="maxFileSize" onchange="app.saveSetting('maxFileSize', this.value)">
+                  <option value="10">10 MB</option>
+                  <option value="25">25 MB</option>
+                  <option value="50" selected>50 MB</option>
+                  <option value="100">100 MB</option>
+                </select>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span class="setting-label">Show File Previews</span>
+                  <span class="setting-desc">Display image and PDF previews in inbox</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="showFilePreviews" checked onchange="app.saveSetting('showFilePreviews', this.checked)">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span class="setting-label">Enable NLP Parsing</span>
+                  <span class="setting-desc">Parse dates, contexts, and people from capture text</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="enableNLP" checked onchange="app.saveSetting('enableNLP', this.checked)">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Run Setup Wizard Again -->
+            <div class="settings-section">
+              <h3>Setup Wizard</h3>
+              <p class="settings-description">Re-run the initial setup to update your team and preferences</p>
+              <button class="btn btn-secondary" id="runSetupWizardBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M1 4v6h6"></path>
+                  <path d="M23 20v-6h-6"></path>
+                  <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                </svg>
+                Run Setup Wizard Again
+              </button>
+            </div>
+
+            <div class="settings-section">
+              <h3>Appearance</h3>
+              <p class="settings-description">Customize the look and feel</p>
+
+              <div class="theme-selector">
+                <h4>Theme</h4>
+                <div class="theme-options">
+                  <label class="theme-option">
+                    <input type="radio" name="theme" value="system" checked>
+                    <div class="theme-option-content">
+                      <span class="theme-icon">🌓</span>
+                      <span class="theme-label">System</span>
+                      <span class="theme-desc">Follow OS preference</span>
+                    </div>
+                  </label>
+                  <label class="theme-option">
+                    <input type="radio" name="theme" value="light">
+                    <div class="theme-option-content">
+                      <span class="theme-icon">☀️</span>
+                      <span class="theme-label">Light</span>
+                      <span class="theme-desc">Always light mode</span>
+                    </div>
+                  </label>
+                  <label class="theme-option">
+                    <input type="radio" name="theme" value="dark">
+                    <div class="theme-option-content">
+                      <span class="theme-icon">🌙</span>
+                      <span class="theme-label">Dark</span>
+                      <span class="theme-desc">Always dark mode</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <h3>Data Management</h3>
+              <p class="settings-description">Export, import, or reset your data</p>
+
+              <div class="data-management-grid">
+                <div class="data-card">
+                  <div class="data-card-icon">📤</div>
+                  <h4>Export</h4>
+                  <p>Download your data as a backup file</p>
+                  <div class="data-card-actions">
+                    <button class="btn btn-secondary" id="exportJsonBtn">Export JSON</button>
+                    <button class="btn btn-secondary" id="exportCsvBtn">Export CSV</button>
+                  </div>
+                </div>
+
+                <div class="data-card">
+                  <div class="data-card-icon">📥</div>
+                  <h4>Import</h4>
+                  <p>Restore from a backup file</p>
+                  <div class="data-card-actions">
+                    <button class="btn btn-secondary" id="importJsonBtn">Import JSON</button>
+                    <input type="file" id="importFileInput" class="hidden-input" accept=".json">
+                  </div>
+                </div>
+
+                <div class="data-card danger">
+                  <div class="data-card-icon">🗑️</div>
+                  <h4>Reset</h4>
+                  <p>Delete all data and start fresh</p>
+                  <div class="data-card-actions">
+                    <button class="btn btn-danger" id="resetDataBtn">Reset All Data</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backup-info" id="backupInfo">
+                <span class="backup-label">Last export:</span>
+                <span class="backup-date" id="lastBackupDate">Never</span>
+              </div>
+            </div>
+
+            <!-- Version Info -->
+            <div class="settings-footer">
+              <div class="version-info">
+                <span class="version-label">GTD Capture</span>
+                <span class="version-number" id="appVersion">v1.0.0</span>
+              </div>
+              <a href="CHANGELOG.md" target="_blank" class="changelog-link">View Changelog</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team views removed -->
+        <div class="view" id="teamDashboardView" style="display:none">
+          <div class="content-header">
+            <div class="header-main">
+              <h2>Team Dashboard</h2>
+              <span class="team-name-subtitle" id="dashboardTeamName">Encanto Builders</span>
+            </div>
+            <div class="header-actions">
+              <button class="btn btn-primary" onclick="app.showQuickDelegateModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="8.5" cy="7" r="4"></circle>
+                  <polyline points="17 11 19 13 23 9"></polyline>
+                </svg>
+                Quick Delegate
+              </button>
+            </div>
+          </div>
+
+          <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <div class="dashboard-stats">
+              <div class="stat-card">
+                <div class="stat-label">Active Tasks</div>
+                <div class="stat-value" id="dashboardActiveTasks">0</div>
+                <div class="stat-change positive" id="dashboardActiveChange">+0 from last week</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Delegated This Week</div>
+                <div class="stat-value" id="dashboardDelegated">0</div>
+                <div class="stat-change" id="dashboardDelegatedChange"></div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Completed This Week</div>
+                <div class="stat-value" id="dashboardCompleted">0</div>
+                <div class="stat-change positive" id="dashboardCompletedChange"></div>
+              </div>
+              <div class="stat-card warning">
+                <div class="stat-label">Overdue</div>
+                <div class="stat-value" id="dashboardOverdue">0</div>
+                <div class="stat-subtitle" id="dashboardOverdueSubtitle">Needs attention</div>
+              </div>
+            </div>
+
+            <!-- Team Workload -->
+            <div class="dashboard-section">
+              <div class="section-header">
+                <h3>Team Workload</h3>
+              </div>
+              <div class="team-workload-list" id="teamWorkloadList">
+                <!-- Dynamic workload bars -->
+              </div>
+            </div>
+
+            <!-- Shared Projects -->
+            <div class="dashboard-section">
+              <div class="section-header">
+                <h3>Shared Projects</h3>
+                <button class="btn btn-text" onclick="app.navigateTo('sharedProjects')">View All</button>
+              </div>
+              <div class="shared-projects-grid" id="dashboardSharedProjects">
+                <!-- Dynamic project cards -->
+              </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="dashboard-section">
+              <div class="section-header">
+                <h3>Recent Activity</h3>
+                <button class="btn btn-text" onclick="app.navigateTo('teamActivity')">View All</button>
+              </div>
+              <div class="activity-feed" id="dashboardActivityFeed">
+                <!-- Dynamic activity items -->
+              </div>
+            </div>
+
+            <!-- Needs Attention -->
+            <div class="dashboard-section attention-section">
+              <div class="section-header">
+                <h3>Needs Attention</h3>
+              </div>
+              <div class="attention-items" id="dashboardAttentionItems">
+                <!-- Dynamic attention items -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Members View -->
+        <div class="view" id="teamMembersView">
+          <div class="content-header">
+            <div class="header-main">
+              <h2>Team Members</h2>
+              <p>Manage your team</p>
+            </div>
+            <div class="header-actions">
+              <button class="btn btn-secondary" onclick="app.showInviteMemberModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                Invite Link
+              </button>
+              <button class="btn btn-primary" onclick="app.showAddTeamMemberManualModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="8.5" cy="7" r="4"></circle>
+                  <line x1="20" y1="8" x2="20" y2="14"></line>
+                  <line x1="23" y1="11" x2="17" y2="11"></line>
+                </svg>
+                Add Member
+              </button>
+            </div>
+          </div>
+          <div class="team-members-content" id="teamMembersContent">
+            <!-- Dynamic team member cards -->
+          </div>
+        </div>
+
+        <!-- Shared Projects View -->
+        <div class="view" id="sharedProjectsView">
+          <div class="content-header">
+            <div class="header-main">
+              <h2>Shared Projects</h2>
+            </div>
+            <div class="header-actions">
+              <button class="btn btn-primary" onclick="app.showNewSharedProjectModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                New Project
+              </button>
+            </div>
+          </div>
+          <div class="shared-projects-filters">
+            <select id="sharedProjectsAreaFilter" class="filter-select">
+              <option value="all">All Areas</option>
+            </select>
+            <select id="sharedProjectsMemberFilter" class="filter-select">
+              <option value="all">All Members</option>
+            </select>
+            <select id="sharedProjectsStatusFilter" class="filter-select">
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+              <option value="all">All</option>
+            </select>
+          </div>
+          <div class="shared-projects-list" id="sharedProjectsList">
+            <!-- Dynamic shared project cards -->
+          </div>
+        </div>
+
+        <!-- Shared Project Detail View -->
+        <div class="view" id="sharedProjectDetailView">
+          <div class="content-header">
+            <button class="btn btn-text back-btn" onclick="app.navigateTo('sharedProjects')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              Back to Shared Projects
+            </button>
+            <div class="project-header-content">
+              <h2 id="sharedProjectDetailName">Project Name</h2>
+              <p id="sharedProjectDetailDesc" class="project-description"></p>
+            </div>
+            <div class="header-actions">
+              <button class="btn btn-secondary" onclick="app.editSharedProject()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+                Edit
+              </button>
+              <button class="btn btn-primary" onclick="app.showAddActionToSharedProjectModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add Action
+              </button>
+            </div>
+          </div>
+
+          <div class="shared-project-detail-content">
+            <div class="project-meta">
+              <div class="project-meta-item">
+                <span class="meta-label">Owner:</span>
+                <span id="sharedProjectOwner">-</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="meta-label">Team:</span>
+                <span id="sharedProjectTeam">-</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="meta-label">Deadline:</span>
+                <span id="sharedProjectDeadline">-</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="meta-label">Progress:</span>
+                <span id="sharedProjectProgress">0%</span>
+              </div>
+            </div>
+
+            <div class="project-progress-bar large">
+              <div class="project-progress-fill" id="sharedProjectProgressBar" style="width: 0%"></div>
+            </div>
+
+            <h3>Actions</h3>
+            <div class="shared-project-actions-list" id="sharedProjectActionsList">
+              <!-- Dynamic action items -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Activity View -->
+        <div class="view" id="teamActivityView">
+          <div class="content-header">
+            <h2>Team Activity</h2>
+            <p>See what your team has been up to</p>
+          </div>
+          <div class="activity-filters">
+            <select id="activityTypeFilter" class="filter-select">
+              <option value="all">All Activity</option>
+              <option value="completed">Completed</option>
+              <option value="delegated">Delegated</option>
+              <option value="created">Created</option>
+              <option value="commented">Comments</option>
+            </select>
+            <select id="activityMemberFilter" class="filter-select">
+              <option value="all">All Members</option>
+            </select>
+            <select id="activityTimeFilter" class="filter-select">
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="all">All Time</option>
+            </select>
+          </div>
+          <div class="full-activity-feed" id="fullActivityFeed">
+            <!-- Dynamic activity items grouped by date -->
+          </div>
+        </div>
+
+        <!-- Team Settings View -->
+        <div class="view" id="teamSettingsView">
+          <div class="content-header">
+            <h2>Team Settings</h2>
+            <p>Manage your team</p>
+          </div>
+          <div class="team-settings-content">
+            <!-- Team Info -->
+            <div class="settings-section">
+              <h3>Team Info</h3>
+              <div class="form-group">
+                <label>Team Name</label>
+                <div class="input-with-button">
+                  <input type="text" id="teamSettingsName" class="form-input" placeholder="Enter team name...">
+                  <button class="btn btn-primary" onclick="app.saveTeamName()">Save</button>
+                </div>
+              </div>
+              <div class="team-info-row">
+                <span>Created: <strong id="teamSettingsCreated">-</strong></span>
+                <span>Owner: <strong id="teamSettingsOwner">-</strong></span>
+              </div>
+            </div>
+
+            <!-- Members Section -->
+            <div class="settings-section">
+              <div class="section-header">
+                <h3>Members</h3>
+                <div class="section-header-actions">
+                  <button class="btn btn-secondary btn-sm" onclick="app.showInviteMemberModal()">Invite Link</button>
+                  <button class="btn btn-primary btn-sm" onclick="app.showAddTeamMemberManualModal()">+ Add Member</button>
+                </div>
+              </div>
+              <div class="team-settings-members-list" id="teamSettingsMembersList">
+                <!-- Dynamic member cards with role management -->
+              </div>
+            </div>
+
+            <!-- Pending Invitations -->
+            <div class="settings-section" id="pendingInvitationsSection" style="display: none;">
+              <h3>Pending Invitations</h3>
+              <div class="pending-invitations-list" id="pendingInvitationsList">
+                <!-- Dynamic pending invitations -->
+              </div>
+            </div>
+
+            <!-- Team Preferences -->
+            <div class="settings-section">
+              <h3>Team Preferences</h3>
+              <div class="settings-options">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="teamPrefEmailNotifications" checked>
+                  Send email notifications for delegations
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="teamPrefShowActivity" checked>
+                  Show activity feed to all members
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="teamPrefMembersInvite">
+                  Allow members to invite others
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="teamPrefMembersCreateProjects" checked>
+                  Allow members to create shared projects
+                </label>
+              </div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="settings-section danger-zone">
+              <h3>Danger Zone</h3>
+              <p class="danger-text">Deleting the team will remove all shared data and cannot be undone.</p>
+              <button class="btn btn-danger" onclick="app.confirmDeleteTeam()">Delete Team</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Assigned To Me View (Enhanced) -->
+        <div class="view" id="assignedToMeView">
+          <div class="content-header">
+            <h2>Assigned to Me</h2>
+            <p id="assignedToMeSubtitle">Tasks delegated to you</p>
+          </div>
+
+          <div class="assigned-sections">
+            <!-- Overdue Section -->
+            <div class="assigned-section overdue-section" id="assignedOverdueSection" style="display: none;">
+              <h3 class="section-title danger">Overdue</h3>
+              <div class="assigned-list" id="assignedOverdueList">
+                <!-- Dynamic overdue items -->
+              </div>
+            </div>
+
+            <!-- Due Today Section -->
+            <div class="assigned-section today-section" id="assignedTodaySection" style="display: none;">
+              <h3 class="section-title warning">Due Today</h3>
+              <div class="assigned-list" id="assignedTodayList">
+                <!-- Dynamic due today items -->
+              </div>
+            </div>
+
+            <!-- Upcoming Section -->
+            <div class="assigned-section upcoming-section" id="assignedUpcomingSection" style="display: none;">
+              <h3 class="section-title">Upcoming</h3>
+              <div class="assigned-list" id="assignedUpcomingList">
+                <!-- Dynamic upcoming items -->
+              </div>
+            </div>
+
+            <!-- No Due Date Section -->
+            <div class="assigned-section no-date-section" id="assignedNoDateSection" style="display: none;">
+              <h3 class="section-title muted">No Due Date</h3>
+              <div class="assigned-list" id="assignedNoDateList">
+                <!-- Dynamic no date items -->
+              </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="assignedEmptyState">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <polyline points="17 11 19 13 23 9"></polyline>
+              </svg>
+              <p>No tasks assigned to you</p>
+            </div>
+
+            <!-- Recently Completed -->
+            <div class="assigned-section completed-section" id="assignedCompletedSection" style="display: none;">
+              <div class="section-header collapsible" onclick="app.toggleAssignedCompleted()">
+                <h3 class="section-title muted">Recently Completed</h3>
+                <span class="collapse-icon" id="assignedCompletedIcon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </div>
+              <div class="assigned-list" id="assignedCompletedList" style="display: none;">
+                <!-- Dynamic completed items -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member Detail View -->
+        <div class="view" id="teamMemberDetailView">
+          <div class="content-header">
+            <button class="btn btn-text back-btn" onclick="app.navigateTo('teamMembers')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              Back to Team
+            </button>
+            <div class="member-header-content">
+              <div class="member-avatar" id="memberDetailAvatar">U</div>
+              <div class="member-header-info">
+                <h2 id="memberDetailName">Member Name</h2>
+                <p id="memberDetailTitle">Role</p>
+              </div>
+              <div class="member-header-actions">
+                <button class="btn btn-secondary" onclick="app.showDelegateToMemberModal()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7" r="4"></circle>
+                    <polyline points="17 11 19 13 23 9"></polyline>
+                  </svg>
+                  Delegate
+                </button>
+                <button class="btn btn-icon" id="memberDetailMore">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="12" cy="5" r="1"></circle>
+                    <circle cx="12" cy="19" r="1"></circle>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="member-detail-content">
+            <div class="member-contact-info">
+              <span id="memberDetailEmail">email@example.com</span>
+              <span id="memberDetailPhone"></span>
+              <span id="memberDetailJoined">Member since -</span>
+              <span class="member-role-badge" id="memberDetailRole">Member</span>
+            </div>
+
+            <!-- Member Stats -->
+            <div class="member-stats">
+              <div class="stat-card small">
+                <div class="stat-label">Assigned</div>
+                <div class="stat-value" id="memberStatAssigned">0</div>
+                <div class="stat-subtitle">active</div>
+              </div>
+              <div class="stat-card small">
+                <div class="stat-label">Completed</div>
+                <div class="stat-value" id="memberStatCompleted">0</div>
+                <div class="stat-subtitle">this month</div>
+              </div>
+              <div class="stat-card small">
+                <div class="stat-label">Avg Time</div>
+                <div class="stat-value" id="memberStatAvgTime">-</div>
+                <div class="stat-subtitle">to complete</div>
+              </div>
+              <div class="stat-card small">
+                <div class="stat-label">On-Time</div>
+                <div class="stat-value" id="memberStatOnTime">-</div>
+                <div class="stat-subtitle"></div>
+              </div>
+            </div>
+
+            <!-- Current Assignments -->
+            <div class="member-section">
+              <div class="section-header">
+                <h3>Current Assignments</h3>
+                <button class="btn btn-primary btn-sm" onclick="app.showDelegateToMemberModal()">+ Delegate New</button>
+              </div>
+              <div class="member-assignments-list" id="memberAssignmentsList">
+                <!-- Dynamic assignment cards -->
+              </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="member-section">
+              <h3>Recent Activity</h3>
+              <div class="member-activity-list" id="memberActivityList">
+                <!-- Dynamic activity items -->
+              </div>
+            </div>
+
+            <!-- Shared Projects -->
+            <div class="member-section">
+              <h3>Shared Projects</h3>
+              <div class="member-projects-list" id="memberProjectsList">
+                <!-- Dynamic project list -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Users View -->
+        <div class="view" id="adminUsersView">
+          <div class="content-header">
+            <div class="content-header-main">
+              <h2>Admin View</h2>
+              <p>All app users and their activity</p>
+            </div>
+          </div>
+          <div id="adminUsersContent">
+            <!-- Dynamic user list -->
+          </div>
+        </div>
+
+        <!-- Admin User Detail View -->
+        <div class="view" id="adminUserDetailView">
+          <div class="content-header">
+            <button class="btn btn-text back-btn" onclick="app.navigateTo('adminUsers')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              Back to Users
+            </button>
+            <div class="content-header-main">
+              <h2 id="adminUserDetailName">User</h2>
+              <p>GTD Overview (read-only)</p>
+            </div>
+          </div>
+          <div id="adminUserDetailContent">
+            <!-- Dynamic user detail -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Processing Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div id="modalContent">
+        <!-- Dynamic content inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Help Panel -->
+  <div class="help-panel-overlay" id="helpPanelOverlay">
+    <div class="help-panel">
+      <div class="help-panel-header">
+        <h2>Help & Documentation</h2>
+        <button class="help-panel-close" onclick="app.closeHelpPanel()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="help-search-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="helpSearchInput" class="help-search-input" placeholder="Search help articles..." oninput="app.searchHelp(this.value)">
+      </div>
+      <div class="help-panel-content" id="helpPanelContent">
+        <!-- Dynamic help content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Onboarding Tour -->
+  <div class="onboarding-overlay" id="onboardingOverlay">
+    <div class="onboarding-spotlight" id="onboardingSpotlight"></div>
+    <div class="onboarding-tooltip" id="onboardingTooltip">
+      <div class="onboarding-content" id="onboardingContent"></div>
+      <div class="onboarding-footer">
+        <div class="onboarding-progress" id="onboardingProgress"></div>
+        <div class="onboarding-actions">
+          <button class="btn btn-secondary btn-sm" id="onboardingSkip" onclick="app.skipOnboarding()">Skip</button>
+          <button class="btn btn-primary btn-sm" id="onboardingNext" onclick="app.nextOnboardingStep()">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Command Palette -->
+  <div class="command-palette-overlay" id="commandPaletteOverlay">
+    <div class="command-palette">
+      <div class="command-palette-header">
+        <div class="command-palette-input-wrap">
+          <svg class="command-palette-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="commandPaletteInput" class="command-palette-input" placeholder="Type a command or search..." autocomplete="off">
+          <span class="command-palette-hint">esc to close</span>
+        </div>
+      </div>
+      <div class="command-palette-results" id="commandPaletteResults">
+        <!-- Dynamic results inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Drop Zone Overlay -->
+  <div class="drop-zone-overlay" id="dropZoneOverlay">
+    <div class="drop-zone-content">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="64" height="64">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+      <h3>Drop files here</h3>
+      <p>Documents, images, audio, video (max 100MB)</p>
+    </div>
+  </div>
+
+  <!-- Hidden file input for upload button -->
+  <input type="file" id="fileUploadInput" style="display: none"
+    accept=".png,.jpg,.jpeg,.gif,.webp,.svg,.bmp,.heic,.heif,.pdf,.docx,.doc,.xlsx,.xls,.pptx,.ppt,.txt,.rtf,.odt,.ods,.odp,.csv,.json,.xml,.esx,.mp3,.wav,.ogg,.m4a,.aac,.flac,.wma,.mp4,.mov,.avi,.mkv,.webm,.wmv,.m4v,.zip,.rar,.7z,.tar,.gz,.html,.css,.js,.ts,.py,.java,.md"
+    multiple />
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- PWA Install Banner -->
+  <div class="pwa-install-banner" id="pwaInstallBanner" style="display: none;">
+    <div class="pwa-banner-content">
+      <div class="pwa-banner-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      </div>
+      <div class="pwa-banner-text">
+        <strong>Install GTD Capture</strong>
+        <span>Add to home screen for offline access</span>
+      </div>
+    </div>
+    <div class="pwa-banner-actions">
+      <button class="pwa-dismiss-btn" id="pwaDismissBtn">Not now</button>
+      <button class="pwa-install-btn" id="pwaInstallBtn">Install</button>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+
+  <!-- Google APIs for Drive and Gmail Integration -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://apis.google.com/js/api.js" async defer></script>
+
+  <!-- Firebase Initialization -->
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBHCDcmBV8vq13bTkc9ql-HwsaHlXZoFMg",
+      authDomain: "gtd-capture.firebaseapp.com",
+      projectId: "gtd-capture",
+      storageBucket: "gtd-capture.firebasestorage.app",
+      messagingSenderId: "822477877262",
+      appId: "1:822477877262:web:53bb7784e0ceee09d04c5f",
+      measurementId: "G-0F8X1ZG8ZG"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const firebaseAuth = firebase.auth();
+    const firebaseDB = firebase.firestore();
+    const firebaseStorage = firebase.storage();
+
+    console.log('Firebase initialized');
+  </script>
+
+  <!-- Scripts (v=2 for cache busting) -->
+  <script>console.log('Script loading started...');</script>
+  <script src="db.js?v=10"></script>
+  <script>console.log('db.js loaded');</script>
+  <script src="firestore-db.js?v=13"></script>
+  <script>console.log('firestore-db.js loaded');</script>
+  <script src="speech.js?v=10"></script>
+  <script>console.log('speech.js loaded');</script>
+  <script src="geo.js?v=10"></script>
+  <script>console.log('geo.js loaded');</script>
+  <script src="nlp.js?v=10"></script>
+  <script>console.log('nlp.js loaded');</script>
+  <script src="google-integration.js?v=10"></script>
+  <script>console.log('google-integration.js loaded');</script>
+  <script src="wiki-content.js?v=10"></script>
+  <script>console.log('wiki-content.js loaded');</script>
+
+  <!-- Document Generation Libraries -->
+  <script src="https://unpkg.com/docx@8.2.3/build/index.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+  <!-- AI Integration -->
+  <script src="ai-service.js"></script>
+  <script src="ai-chat.js"></script>
+
+  <script src="app.js?v=31"></script>
+  <script src="features.js?v=18"></script>
+  <script src="evernote-features.js?v=2"></script>
+  <script src="power-features.js?v=6"></script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', async () => {
+        try {
+          const registration = await navigator.serviceWorker.register('service-worker.js');
+          console.log('ServiceWorker registered:', registration.scope);
+
+          // Check for updates
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // New version available
+                if (confirm('A new version of GTD Capture is available. Reload to update?')) {
+                  newWorker.postMessage({ type: 'SKIP_WAITING' });
+                  window.location.reload();
+                }
+              }
+            });
+          });
+        } catch (error) {
+          console.log('ServiceWorker registration failed:', error);
+        }
+      });
+
+      // Handle controller change (when new SW takes over)
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        window.location.reload();
+      });
+    }
+
+    // PWA Install Prompt
+    let deferredPrompt;
+    const installBanner = document.getElementById('pwaInstallBanner');
+    const installBtn = document.getElementById('pwaInstallBtn');
+    const dismissBtn = document.getElementById('pwaDismissBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+
+      // Check if user has dismissed before
+      const dismissed = localStorage.getItem('pwa-install-dismissed');
+      const dismissedTime = dismissed ? parseInt(dismissed) : 0;
+      const oneWeek = 7 * 24 * 60 * 60 * 1000;
+
+      // Show banner if not dismissed or dismissed more than a week ago
+      if (!dismissed || (Date.now() - dismissedTime > oneWeek)) {
+        setTimeout(() => {
+          installBanner.style.display = 'flex';
+        }, 3000); // Show after 3 seconds
+      }
+    });
+
+    if (installBtn) {
+      installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log('Install prompt outcome:', outcome);
+
+        deferredPrompt = null;
+        installBanner.style.display = 'none';
+
+        if (outcome === 'accepted') {
+          localStorage.removeItem('pwa-install-dismissed');
+        }
+      });
+    }
+
+    if (dismissBtn) {
+      dismissBtn.addEventListener('click', () => {
+        installBanner.style.display = 'none';
+        localStorage.setItem('pwa-install-dismissed', Date.now().toString());
+      });
+    }
+
+    // Hide banner if app is installed
+    window.addEventListener('appinstalled', () => {
+      installBanner.style.display = 'none';
+      deferredPrompt = null;
+      console.log('PWA installed successfully');
+    });
+  </script>
+</body>
+</html>

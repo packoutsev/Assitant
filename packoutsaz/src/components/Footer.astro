@@ -1,0 +1,66 @@
+---
+import { site } from '../config/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-navy text-white mt-16 no-print">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-lg font-bold text-white mb-3">{site.company}</h3>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">
+          {site.description}
+        </p>
+        <a href={site.phoneHref} class="text-amber no-underline text-lg font-bold hover:text-amber/80">
+          {site.phone}
+        </a>
+        <p class="text-gray-400 text-sm mt-1">Available 24/7</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold text-white mb-3">Services</h3>
+        <ul class="space-y-1">
+          {site.services.map((service) => (
+            <li class="text-gray-300 text-sm">{service}</li>
+          ))}
+        </ul>
+        <p class="text-amber text-sm mt-3 font-medium">Covered by your insurance</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold text-white mb-3">Service Area</h3>
+        <ul class="space-y-1">
+          {site.serviceAreas.map((city) => (
+            <li>
+              <a href={`/${city.toLowerCase()}`} class="text-gray-300 no-underline text-sm hover:text-white">
+                {city}, AZ
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="text-gray-400 text-sm mt-2">& the greater East Valley</p>
+      </div>
+    </div>
+
+    <!-- Related Sites -->
+    <div class="border-t border-white/10 mt-8 pt-6">
+      <p class="text-gray-400 text-sm mb-2">More resources from {site.company}:</p>
+      <div class="flex flex-wrap gap-4 text-sm">
+        <a href="https://azfirehelp.com" class="text-gray-300 no-underline hover:text-white">Fire Damage Help</a>
+        <a href="https://azfloodhelp.com" class="text-gray-300 no-underline hover:text-white">Water Damage Help</a>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-400 text-sm">
+        &copy; {currentYear} {site.company}. All rights reserved.
+      </p>
+      <div class="flex gap-6 text-sm">
+        {site.footerLinks.map((link) => (
+          <a href={link.href} class="text-gray-400 no-underline hover:text-white">{link.label}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

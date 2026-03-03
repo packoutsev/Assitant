@@ -1,0 +1,68 @@
+---
+import { site } from '../config/site';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+  ogImage?: string;
+  ogType?: string;
+  jsonLD?: object | object[];
+}
+
+const {
+  title,
+  description,
+  canonicalURL = Astro.url.href,
+  ogImage = '/og-image.jpg',
+  ogType = 'website',
+  jsonLD,
+} = Astro.props;
+
+const fullOgImage = new URL(ogImage, Astro.site).href;
+
+const jsonLDArray = jsonLD
+  ? Array.isArray(jsonLD) ? jsonLD : [jsonLD]
+  : [];
+---
+
+<meta charset="UTF-8" />
+<meta name="google-site-verification" content="2eY88QB-LzIOMLvXu6lELHVOIUlr5mpk_I6FWzsqG9g" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullOgImage} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={site.name} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullOgImage} />
+
+<!-- Google Analytics (GA4) -->
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${site.gaId}`}></script>
+<script is:inline define:vars={{ gaId: site.gaId }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', gaId);
+</script>
+
+<!-- Preload fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- JSON-LD Structured Data -->
+{jsonLDArray.map((ld) => (
+  <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+))}

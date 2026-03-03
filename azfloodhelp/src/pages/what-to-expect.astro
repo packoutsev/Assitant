@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CalloutBox from '../components/CalloutBox.astro';
+import CTABlock from '../components/CTABlock.astro';
+
+const title = "What to Expect After Water Damage | Timeline & Process";
+const description = "Step-by-step breakdown of what happens after water damage — from mitigation through pack-out, drying, cleaning, and pack-back. Know what to expect at every stage.";
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "What to Expect" },
+];
+
+const faqLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does water damage restoration take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The full process — from water extraction through pack-back — typically takes 4 to 12 weeks depending on the severity of the damage and scope of structural repairs needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a contents pack-out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A contents pack-out is the process of professionally removing, inventorying, and packing all personal belongings from a water-damaged home so they can be cleaned, stored, and returned after repairs are complete."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When can I move back into my home after water damage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most families can move back in within 4-12 weeks, depending on the extent of damage. Minor water damage may allow you to stay in the home during repairs, while major losses may require temporary housing."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} jsonLD={faqLD}>
+  <div class="max-w-reading mx-auto px-4 py-10">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+      What to Expect After Water Damage
+    </h1>
+
+    <p class="text-lg text-gray-600 mb-8">
+      Water damage restoration follows a predictable process. Knowing what happens at each stage — and when — helps you stay ahead and reduces surprises. Here's the full timeline from the moment water hits your home through the day you get your belongings back.
+    </p>
+
+    <!-- Phase 1: Emergency Response -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Phase 1: Emergency Response (Hours 0-24)</h2>
+    <p class="mb-4">
+      The first day is about stopping the damage and stabilizing the situation.
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Stop the water source</strong> — shut off the main valve, the appliance supply, or the fixture.</li>
+      <li><strong>Call your insurance company</strong> — file the claim immediately. They'll assign an adjuster.</li>
+      <li><strong>Document the damage</strong> — photos and video of every affected room before anything is moved.</li>
+      <li><strong>Mitigation company arrives</strong> — they extract standing water, set up drying equipment, and assess structural damage.</li>
+      <li><strong>Assess your contents</strong> — determine which areas have affected belongings that need professional attention.</li>
+    </ul>
+
+    <CalloutBox type="important">
+      <p class="font-semibold mb-1">Speed matters:</p>
+      <p>Water damage gets worse every hour. Wood swells and warps, electronics corrode, fabrics absorb moisture and develop mold. The faster the response, the more belongings can be saved — and the lower the overall claim cost.</p>
+    </CalloutBox>
+
+    <!-- Phase 2: Pack-Out -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Phase 2: Contents Pack-Out (Days 1-3)</h2>
+    <p class="mb-4">
+      Once the emergency is stabilized, the contents team (that's us) comes in to remove your belongings from the affected areas.
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Room-by-room inventory</strong> — every item is photographed, cataloged, and tagged with a unique ID.</li>
+      <li><strong>Careful packing</strong> — items are packed in labeled boxes organized by room. Fragile items get special packaging.</li>
+      <li><strong>Load and transport</strong> — belongings are loaded onto our trucks and transported to our cleaning and storage facility.</li>
+      <li><strong>Clear the space</strong> — removing contents allows the mitigation team to access walls, floors, and cavities for proper drying.</li>
+    </ul>
+
+    <p class="mb-6">
+      The pack-out process typically takes 1-3 days depending on the size of the home and the number of affected rooms. You'll receive a copy of the full inventory for your records and your insurance claim.
+    </p>
+
+    <!-- Phase 3: Drying & Structural Repair -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Phase 3: Drying & Structural Repairs (Weeks 1-8)</h2>
+    <p class="mb-4">
+      This is the longest phase and is handled by the mitigation company and general contractor — not the contents team. While your home is being dried and repaired, your belongings are safe in our facility being cleaned.
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Structural drying</strong> — industrial fans, dehumidifiers, and air movers run until moisture readings return to normal (typically 3-5 days).</li>
+      <li><strong>Demolition</strong> — wet drywall, baseboards, flooring, and insulation are removed as needed.</li>
+      <li><strong>Mold remediation</strong> — if mold is found, it's treated and removed before reconstruction.</li>
+      <li><strong>Reconstruction</strong> — new drywall, flooring, paint, and finishes are installed to restore your home.</li>
+    </ul>
+
+    <CalloutBox type="tip">
+      <p class="font-semibold mb-1">During this time:</p>
+      <p>Your insurance's Additional Living Expenses (ALE) coverage pays for temporary housing if you can't stay in your home. This includes hotel, rental, meals, and other reasonable expenses. Keep all receipts.</p>
+    </CalloutBox>
+
+    <!-- Phase 4: Contents Cleaning -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Phase 4: Contents Cleaning (Parallel with Phase 3)</h2>
+    <p class="mb-4">
+      While your home is being repaired, we're cleaning your belongings at our facility. Different items require different techniques:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Furniture</strong> — dehumidification, antimicrobial treatment, wood reconditioning, upholstery cleaning.</li>
+      <li><strong>Electronics</strong> — ultrasonic cleaning, corrosion removal, testing to confirm function.</li>
+      <li><strong>Clothing & textiles</strong> — professional laundering, dry cleaning, ozone treatment for odor.</li>
+      <li><strong>Documents & photos</strong> — freeze-drying to prevent further damage, scanning for digital backup.</li>
+      <li><strong>Kitchenware</strong> — sanitization, hand cleaning, inspection for damage.</li>
+    </ul>
+
+    <p class="mb-6">
+      Items that can't be restored are documented and reported to your insurance for replacement value. You'll receive a list of non-restorable items with replacement costs.
+    </p>
+
+    <!-- Phase 5: Pack-Back -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Phase 5: Pack-Back (Days 1-2)</h2>
+    <p class="mb-4">
+      Once your home is repaired and ready, we bring everything back.
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Delivery</strong> — cleaned belongings are loaded and transported back to your home.</li>
+      <li><strong>Placement</strong> — furniture goes in the right rooms, artwork rehung, items placed where they belong.</li>
+      <li><strong>Unpacking</strong> — boxes are unpacked and contents placed. You don't have to do this yourself.</li>
+      <li><strong>Walk-through</strong> — we walk through the home with you to confirm everything is accounted for and placed correctly.</li>
+    </ul>
+
+    <p class="mb-6">
+      The goal is for you to walk into a home that feels like yours again — not a construction zone with boxes stacked everywhere.
+    </p>
+
+    <!-- Timeline Summary -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Typical Timeline</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="border-b-2 border-navy">
+            <th class="py-2 pr-4 text-navy">Phase</th>
+            <th class="py-2 pr-4 text-navy">Duration</th>
+            <th class="py-2 text-navy">Who</th>
+          </tr>
+        </thead>
+        <tbody class="text-base">
+          <tr class="border-b border-gray-200">
+            <td class="py-2 pr-4">Emergency Response</td>
+            <td class="py-2 pr-4">0-24 hours</td>
+            <td class="py-2">You + Insurance + Mitigation</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2 pr-4">Contents Pack-Out</td>
+            <td class="py-2 pr-4">1-3 days</td>
+            <td class="py-2">Contents Team (us)</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2 pr-4">Drying & Structural Repair</td>
+            <td class="py-2 pr-4">2-8 weeks</td>
+            <td class="py-2">Mitigation + General Contractor</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2 pr-4">Contents Cleaning</td>
+            <td class="py-2 pr-4">2-4 weeks</td>
+            <td class="py-2">Contents Team (us)</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2 pr-4">Pack-Back</td>
+            <td class="py-2 pr-4">1-2 days</td>
+            <td class="py-2">Contents Team (us)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <CTABlock message="Need help understanding the process for your situation? Call us — we'll walk you through exactly what to expect." />
+  </div>
+</BaseLayout>

@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CalloutBox from '../components/CalloutBox.astro';
+import CTABlock from '../components/CTABlock.astro';
+import { site } from '../config/site';
+
+const title = "Water Damage in Your Arizona Home? Here's What to Do | AZ Flood Help";
+const description = "Dealing with water damage from a burst pipe, supply line failure, or water heater leak? Free step-by-step guide and expert help from a local Arizona contents restoration team.";
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "1-800-Packouts of the East Valley",
+  "description": "Arizona contents restoration company specializing in water damage pack-out, cleaning, storage, and pack-back services for homeowners.",
+  "telephone": "+1-623-400-8711",
+  "url": "https://azfloodhelp.com",
+  "areaServed": [
+    { "@type": "City", "name": "Mesa" },
+    { "@type": "City", "name": "Gilbert" },
+    { "@type": "City", "name": "Chandler" },
+    { "@type": "City", "name": "Scottsdale" },
+    { "@type": "City", "name": "Tempe" },
+    { "@type": "City", "name": "Phoenix" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mesa",
+    "addressRegion": "AZ",
+    "addressCountry": "US"
+  },
+  "openingHours": "Mo-Su 00:00-23:59",
+  "priceRange": "Covered by insurance"
+};
+
+const steps = [
+  {
+    number: 1,
+    title: "Stop the Water",
+    description: "Turn off the water supply to the affected area or the main shut-off valve. If the source is a water heater, turn off the power supply too. Don't touch standing water near electrical outlets.",
+  },
+  {
+    number: 2,
+    title: "Call Your Insurance Company",
+    description: "File your claim as soon as possible. Water damage to your home and belongings is covered under standard homeowner's insurance. The sooner you file, the sooner the process moves.",
+    link: "/insurance",
+    linkText: "Read the insurance guide",
+  },
+  {
+    number: 3,
+    title: "Document Everything",
+    description: "Before anything is moved, take photos and video of every affected room. Capture the water source, the spread, and the condition of your belongings. This protects your claim.",
+  },
+  {
+    number: 4,
+    title: "Get Your Belongings Out",
+    description: "Contents sitting in a wet environment continue to deteriorate. Professional pack-out removes your belongings so the space can be dried and your items can be properly cleaned.",
+    link: "/what-to-expect",
+    linkText: "See the full process",
+  },
+  {
+    number: 5,
+    title: "Start Drying Immediately",
+    description: "Your mitigation company will set up fans, dehumidifiers, and air movers. Mold can start growing within 48 hours, so speed matters. Contents need to be out of the way for drying to work.",
+  },
+  {
+    number: 6,
+    title: "Know Your Rights",
+    description: "You choose who handles your belongings. Your insurance adjuster may suggest a company, but the decision is yours. You don't pay out of pocket — your insurance covers contents restoration.",
+    link: "/insurance",
+    linkText: "Learn about coverage",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} jsonLD={jsonLD}>
+
+  <!-- Hero Section -->
+  <section class="bg-navy text-white">
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+        Water damage in your home?<br class="hidden md:block" />
+        Here's what to do right now.
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+        A free guide built by an Arizona contents restoration team that helps families recover their belongings after pipe bursts, supply line failures, and water heater leaks.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={site.phoneHref}
+          class="inline-flex items-center justify-center gap-2 bg-amber text-navy no-underline font-bold px-8 py-4 rounded-lg text-lg hover:bg-amber/90 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          Call Us Now: {site.phone}
+        </a>
+        <a
+          href="#guide"
+          class="inline-flex items-center justify-center gap-2 bg-white/10 text-white no-underline font-bold px-8 py-4 rounded-lg text-lg hover:bg-white/20 transition-colors border border-white/20"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+          Read the Guide
+        </a>
+      </div>
+      <p class="text-sm text-gray-400 mt-6">Available 24/7 &middot; All services covered by your homeowner's insurance</p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="max-w-reading mx-auto px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl mb-6">Water damage is more common than you think.</h2>
+    <p class="mb-4">
+      Water damage is the most common homeowner's insurance claim in the United States. In Arizona, the extreme heat accelerates plumbing failures — copper pipes fatigue, water heater tanks corrode, supply lines to appliances dry out and crack. When a failure happens, it can flood your home with hundreds of gallons of water in minutes.
+    </p>
+    <p class="mb-4">
+      The water itself is only part of the problem. Your belongings — furniture, electronics, clothing, documents, keepsakes — absorb that water and continue to deteriorate the longer they sit in a wet environment. Mold can start growing within 48 hours. The sooner your contents are removed, cleaned, and stored properly, the more can be saved.
+    </p>
+    <p class="mb-4">
+      That's what our team does. We're a local Arizona contents restoration company that specializes in packing out, cleaning, storing, and returning your belongings after water damage. <a href="/insurance">Your insurance covers it</a>, and you choose who handles your stuff.
+    </p>
+
+    <CalloutBox type="important">
+      <p class="font-semibold mb-1">Time matters with water damage:</p>
+      <p>The first 24-48 hours are critical. Contents sitting in standing water or high humidity deteriorate rapidly — wood furniture warps, electronics corrode, fabrics develop mold. If you're in this window, <a href="tel:+16234008711">call us now</a>. The sooner we start, the more we can save.</p>
+    </CalloutBox>
+  </section>
+
+  <!-- 6-Step Guide -->
+  <section id="guide" class="bg-warm py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="max-w-reading mx-auto text-center mb-10">
+        <h2 class="text-2xl md:text-3xl mb-4">6 Steps After Water Damage</h2>
+        <p class="text-charcoal/70">
+          Whether it's a burst pipe, a water heater failure, or an appliance leak, the response is the same. These steps will get you from the initial disaster through full recovery.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {steps.map((step) => (
+          <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="flex-shrink-0 w-10 h-10 bg-navy text-white rounded-full flex items-center justify-center font-bold text-lg">
+                {step.number}
+              </span>
+              <h3 class="text-lg font-bold text-navy m-0">{step.title}</h3>
+            </div>
+            <p class="text-charcoal/80 text-base mb-4 leading-relaxed">{step.description}</p>
+            {step.link && (
+              <a
+                href={step.link}
+                class="inline-flex items-center gap-1 text-navy font-semibold text-sm no-underline hover:text-amber transition-colors"
+              >
+                {step.linkText}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Causes -->
+  <section class="max-w-reading mx-auto px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl mb-6">Common causes of water damage in Arizona</h2>
+    <p class="mb-4">
+      Arizona's desert climate creates unique plumbing risks. Here are the most common water damage scenarios we see:
+    </p>
+    <ul class="space-y-3 mb-6">
+      <li>
+        <strong>Supply line failures.</strong> The braided steel or rubber hoses connecting your appliances (dishwasher, washing machine, refrigerator ice maker) to the water supply are the #1 cause of water damage in homes. They dry out and crack in Arizona's heat.
+      </li>
+      <li>
+        <strong>Water heater failures.</strong> Tank water heaters have a lifespan of 8-12 years — less in Arizona due to hard water and heat stress. When a tank fails, it releases 40-80 gallons of water at once, often in a garage or closet where the damage goes unnoticed for hours.
+      </li>
+      <li>
+        <strong>Pipe bursts and pinhole leaks.</strong> Copper pipes develop pinhole leaks from corrosion. PEX and CPVC connections can fail at joints. A full pipe burst can dump water at the rate of 4-8 gallons per minute.
+      </li>
+      <li>
+        <strong>Toilet and plumbing fixture failures.</strong> Wax ring failures, tank cracks, and supply line connections at toilets cause significant damage — especially on second floors where water travels down through ceilings and walls.
+      </li>
+      <li>
+        <strong>AC condensate line backups.</strong> Your air conditioner produces significant condensation in Arizona's monsoon season. When the drain line clogs, water backs up into your home — often into the attic or ceiling space.
+      </li>
+    </ul>
+
+    <CalloutBox type="right">
+      <p class="font-semibold mb-1">All of these are covered by homeowner's insurance.</p>
+      <p>Standard homeowner's policies cover sudden and accidental water damage — which includes all of the scenarios above. The key word is "sudden." A pipe that bursts is covered. Gradual damage from a slow leak you ignored is typically not. <a href="/insurance">Read the full insurance guide</a>.</p>
+    </CalloutBox>
+  </section>
+
+  <!-- What We Do -->
+  <section class="bg-warm py-12 md:py-16">
+    <div class="max-w-reading mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl mb-6">How we help after water damage</h2>
+      <p class="mb-6">
+        When water floods your home, the mitigation company handles the structure — drying walls, pulling flooring, running dehumidifiers. We handle your stuff. Here's the process:
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4 my-8">
+        <div class="bg-white rounded-lg p-5 border border-gray-100">
+          <h3 class="text-base font-bold text-navy mb-2">Pack-Out & Inventory</h3>
+          <p class="text-sm text-charcoal/80">We remove all contents from the affected areas, photographing and inventorying every item. This also clears the space so structural drying can happen effectively.</p>
+        </div>
+        <div class="bg-white rounded-lg p-5 border border-gray-100">
+          <h3 class="text-base font-bold text-navy mb-2">Contents Cleaning</h3>
+          <p class="text-sm text-charcoal/80">Water-damaged items need different cleaning methods — dehumidification for wood furniture, antimicrobial treatment for upholstery, ultrasonic cleaning for electronics, and specialized care for documents and photos.</p>
+        </div>
+        <div class="bg-white rounded-lg p-5 border border-gray-100">
+          <h3 class="text-base font-bold text-navy mb-2">Secure Storage</h3>
+          <p class="text-sm text-charcoal/80">While your home is being dried and repaired, your cleaned belongings are stored in our secure, climate-controlled facility. Repairs can take weeks to months — your items stay safe the entire time.</p>
+        </div>
+        <div class="bg-white rounded-lg p-5 border border-gray-100">
+          <h3 class="text-base font-bold text-navy mb-2">Pack-Back</h3>
+          <p class="text-sm text-charcoal/80">When your home is ready, we bring everything back and put it where it belongs. Furniture in the right rooms, boxes unpacked — your home feels like home again.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="max-w-reading mx-auto px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl mb-6">Questions families ask us</h2>
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-lg font-bold text-navy mb-2">Do I really need a pack-out for water damage?</h3>
+        <p>If water has reached your belongings, yes. Items left in a wet environment continue to absorb moisture, warp, and grow mold. A pack-out removes your belongings so the space can be properly dried and your items can be professionally cleaned. It also protects items from accidental damage during structural repairs.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-navy mb-2">Does my insurance cover this?</h3>
+        <p>Yes. Contents restoration — pack-out, cleaning, storage, and pack-back — is a standard line item on water damage insurance claims. You don't pay us directly; your insurance company does. <a href="/insurance">Read more about coverage</a>.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-navy mb-2">How fast do you respond?</h3>
+        <p>We typically begin the pack-out process within 24-48 hours of your call. For emergency situations where water is actively damaging contents, we can often be on-site the same day.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-navy mb-2">What about the water itself?</h3>
+        <p>We handle contents (your belongings). The structural drying — extracting water, running dehumidifiers, pulling wet flooring — is handled by a water mitigation company. They handle the house; we handle your stuff. Both are covered by your insurance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <CTABlock message="Dealing with water damage right now? Call us. We'll walk you through the process and can typically start the pack-out within 24-48 hours." />
+
+</BaseLayout>

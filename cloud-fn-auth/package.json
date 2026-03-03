@@ -1,0 +1,17 @@
+{
+  "name": "cloud-fn-auth",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Email code auth service for 1-800-Packouts Hub",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.19.0",
+    "express": "^4.21.0",
+    "firebase-admin": "^13.0.0",
+    "googleapis": "^144.0.0"
+  }
+}

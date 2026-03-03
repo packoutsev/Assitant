@@ -257,11 +257,23 @@ async function handleNotesAdded(jobId, payload) {
 const app = express();
 app.use(express.json());
 
-// --- CORS for claude.ai browser client ---
+// --- CORS ---
+const ALLOWED_ORIGINS = [
+  "https://packouts-hub.web.app",
+  "https://sdr-onboard.web.app",
+  "https://packouts-vault.web.app",
+  "http://localhost:5173",
+  "http://localhost:5174",
+];
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  const origin = req.headers.origin;
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  } else if (!origin) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  }
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Mcp-Session-Id, X-Webhook-Secret");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Mcp-Session-Id, X-Webhook-Secret, X-API-Key");
   res.setHeader("Access-Control-Expose-Headers", "Mcp-Session-Id");
   if (req.method === "OPTIONS") {
     return res.status(204).end();
@@ -330,27 +342,22 @@ app.post("/webhook", async (req, res) => {
   }
 });
 
-// --- Bearer token auth middleware (for MCP) ---
+// --- Auth middleware (Bearer token OR X-API-Key) ---
+const API_KEY = process.env.API_KEY;
 function requireAuth(req, res, next) {
-  if (!AUTH_TOKEN) return next();
-
-  let token;
-  const authHeader = req.headers.authorization;
-  if (authHeader && authHeader.startsWith("Bearer ")) {
-    token = authHeader.slice(7);
-  } else if (req.query.token) {
-    token = req.query.token;
+  if (API_KEY && req.headers["x-api-key"] === API_KEY) return next();
+  if (AUTH_TOKEN) {
+    let token;
+    const authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      token = authHeader.slice(7);
+    } else if (req.query.token) {
+      token = req.query.token;
+    }
+    if (token === AUTH_TOKEN) return next();
   }
-
-  if (!token) {
-    return res.status(401).json({ error: "Missing Authorization header or token parameter" });
-  }
-
-  if (token !== AUTH_TOKEN) {
-    return res.status(403).json({ error: "Invalid bearer token" });
-  }
-
-  next();
+  if (!API_KEY && !AUTH_TOKEN) return next();
+  return res.status(401).json({ error: "Unauthorized" });
 }
 
 // --- Session tracking ---

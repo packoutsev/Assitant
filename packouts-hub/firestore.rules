@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // authorized_users — users can read their own doc, owners/admins can read/write all
+    match /authorized_users/{email} {
+      allow read: if request.auth != null && request.auth.token.email == email;
+      allow read, write: if request.auth != null &&
+        exists(/databases/$(database)/documents/authorized_users/$(request.auth.token.email)) &&
+        get(/databases/$(database)/documents/authorized_users/$(request.auth.token.email)).data.role in ['owner', 'admin'];
+      // Allow authenticated users to update their own last_login_at
+      allow update: if request.auth != null &&
+        request.auth.token.email == email &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['last_login_at']);
+    }
+
+    // call_trainer_sessions — users can CRUD their own, admins can read all
+    match /call_trainer_sessions/{sessionId} {
+      // Anyone authenticated can create
+      allow create: if request.auth != null &&
+        request.resource.data.userId == request.auth.uid;
+      // Users can read/delete their own sessions
+      allow read, delete: if request.auth != null &&
+        resource.data.userId == request.auth.uid;
+      // Admins/owners can read all sessions
+      allow read: if request.auth != null &&
+        exists(/databases/$(database)/documents/authorized_users/$(request.auth.token.email)) &&
+        get(/databases/$(database)/documents/authorized_users/$(request.auth.token.email)).data.role in ['owner', 'admin'];
+    }
+
+    // cleaning_sheets — any authenticated user can CRUD
+    match /cleaning_sheets/{sheetId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Default deny all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

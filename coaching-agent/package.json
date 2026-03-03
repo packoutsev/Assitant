@@ -1,0 +1,12 @@
+{
+  "name": "coaching-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Daily AI sales coaching review — posts to Google Chat",
+  "type": "module",
+  "main": "server.js",
+  "dependencies": {
+    "@google-cloud/storage": "^7.15.0",
+    "express": "^4.21.0"
+  }
+}

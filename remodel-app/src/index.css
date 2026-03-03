@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-dark: #1e293b;
+  --color-slate-mid: #334155;
+  --color-slate-light: #475569;
+  --color-copper: #C27840;
+  --color-copper-light: #d4935e;
+  --color-copper-dark: #a5632e;
+  --color-warm: #FAFAF8;
+  --color-warm-dark: #F0EDE8;
+  --color-sage: #6b8f71;
+  --color-sage-light: #e8f0e9;
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #FAFAF8;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Brief view styles */
+.brief-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.brief-section {
+  page-break-inside: avoid;
+}
+
+/* Print styles — hide app chrome, full-width brief */
+@media print {
+  aside, nav, .md\:pl-56 {
+    display: none !important;
+    padding-left: 0 !important;
+  }
+
+  body {
+    background: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .brief-view {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .brief-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

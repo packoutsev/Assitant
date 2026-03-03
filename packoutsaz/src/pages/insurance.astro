@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CalloutBox from '../components/CalloutBox.astro';
+import CTABlock from '../components/CTABlock.astro';
+
+const title = "Contents Restoration Insurance Coverage | What's Covered";
+const description = "Your homeowner's insurance covers contents restoration — pack-out, cleaning, storage, and pack-back. Here's how coverage works and what you need to know.";
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Insurance" },
+];
+
+const faqLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does insurance cover contents pack-out and restoration?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Contents restoration — including pack-out, cleaning, storage, and pack-back — is covered under standard homeowner's insurance for fire, water, and storm damage claims. The contents company bills your insurance directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does contents restoration cost out of pocket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nothing beyond your standard claim deductible. Contents restoration is billed to your insurance company as part of the overall damage claim. Your deductible (typically $1,000-$2,500) applies to the entire claim, not separately to structure and contents."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} jsonLD={faqLD}>
+  <div class="max-w-reading mx-auto px-4 py-10">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+      Insurance Coverage for Contents Restoration
+    </h1>
+
+    <p class="text-lg text-gray-600 mb-8">
+      One of the first questions families ask us: "Does insurance cover this?" The short answer is yes. Here's the full picture of how contents restoration coverage works.
+    </p>
+
+    <!-- What's Covered -->
+    <h2 class="text-2xl font-bold text-navy mb-4">What your policy covers</h2>
+    <p class="mb-4">
+      Your homeowner's insurance policy has two main components relevant to damage events:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Dwelling coverage (Coverage A)</strong> — pays for structural repairs to your home (walls, floors, roof, built-in appliances).</li>
+      <li><strong>Personal property coverage (Coverage C)</strong> — pays for damage to your belongings (furniture, clothing, electronics, and everything else you own).</li>
+    </ul>
+    <p class="mb-4">
+      Contents restoration — pack-out, cleaning, storage, and pack-back — falls under Coverage C. It's a standard line item on damage claims and uses industry-standard pricing (Xactimate). Your insurance company is familiar with the process and the costs involved.
+    </p>
+
+    <CalloutBox type="right">
+      <p class="font-semibold mb-1">Your contents coverage is significant:</p>
+      <p>Most policies set Coverage C at 50-70% of your dwelling coverage. If your home is insured for $400,000, you likely have $200,000-$280,000 in contents coverage. This covers both restoration of salvageable items and replacement of items that can't be saved.</p>
+    </CalloutBox>
+
+    <!-- What You Pay -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">What you actually pay</h2>
+    <p class="mb-4">
+      <strong>Just your deductible.</strong> Your homeowner's deductible (typically $1,000-$2,500) applies once to the entire claim. It's not charged separately for structure and contents. After you meet your deductible, your insurance covers:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li>Professional pack-out and inventory documentation</li>
+      <li>Transportation to and from our facility</li>
+      <li>All cleaning and restoration services</li>
+      <li>Secure, climate-controlled storage for the duration of repairs</li>
+      <li>Pack-back and placement in your home</li>
+      <li>Replacement cost for items that can't be restored</li>
+    </ul>
+    <p class="mb-6">
+      We bill your insurance company directly. You don't pay us and wait for reimbursement — it goes straight to your insurer.
+    </p>
+
+    <!-- Your Right to Choose -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">You choose who handles your belongings</h2>
+    <p class="mb-4">
+      This is one of the most important things to know: <strong>you have the right to choose your own contents restoration company.</strong>
+    </p>
+    <p class="mb-4">
+      Your insurance adjuster may recommend a company. Some adjusters work with "preferred vendors" — companies that have contracts with the insurer, often at negotiated rates. These companies may be perfectly fine. But you're not required to use them.
+    </p>
+    <p class="mb-4">
+      Under Arizona law, you select who handles your personal property. Your insurance company must work with the company you choose, and they cannot deny coverage because you didn't use a preferred vendor.
+    </p>
+
+    <CalloutBox type="important">
+      <p class="font-semibold mb-1">Questions to ask any contents company:</p>
+      <ul class="mt-2 space-y-1 text-sm">
+        <li>Do you have your own cleaning facility, or do you outsource?</li>
+        <li>How do you handle high-value or sentimental items?</li>
+        <li>What does your inventory and documentation process look like?</li>
+        <li>How long is the typical pack-back turnaround once the home is ready?</li>
+        <li>Can I access my belongings during storage if I need something?</li>
+      </ul>
+    </CalloutBox>
+
+    <!-- How the Claim Process Works -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">How the claim process works</h2>
+    <ol class="space-y-3 mb-6 list-decimal list-inside">
+      <li><strong>You file a claim</strong> with your insurance company.</li>
+      <li><strong>An adjuster is assigned</strong> and inspects the damage.</li>
+      <li><strong>You choose a contents company</strong> — tell your adjuster you want to use us (or any company you prefer).</li>
+      <li><strong>We submit a scope</strong> — a detailed estimate of services needed, using Xactimate industry-standard pricing.</li>
+      <li><strong>Adjuster reviews and approves</strong> — there may be some back-and-forth on specific line items, but the process is standardized.</li>
+      <li><strong>We perform the work</strong> — pack-out, clean, store, and pack-back.</li>
+      <li><strong>We bill insurance directly</strong> — you don't receive a bill from us.</li>
+    </ol>
+
+    <!-- RCV vs ACV -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Replacement cost vs. actual cash value</h2>
+    <p class="mb-4">
+      For items that can't be restored, your insurance pays to replace them. But there are two ways they calculate the amount:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Replacement Cost Value (RCV)</strong> — what it costs to buy a new, equivalent item today. A 5-year-old TV is replaced at today's price for a comparable TV.</li>
+      <li><strong>Actual Cash Value (ACV)</strong> — replacement cost minus depreciation. That same 5-year-old TV might be valued at 50% of its original price.</li>
+    </ul>
+    <p class="mb-4">
+      Most modern policies are RCV policies — they pay full replacement cost. Some older or economy policies are ACV. Check your declarations page or ask your agent. If you have an RCV policy, here's how it typically works:
+    </p>
+    <ol class="space-y-2 mb-6 list-decimal list-inside">
+      <li>Insurance pays ACV first (replacement cost minus depreciation).</li>
+      <li>You purchase the replacement item.</li>
+      <li>You submit the receipt, and insurance pays the remaining depreciation (called "recoverable depreciation").</li>
+    </ol>
+
+    <CalloutBox type="tip">
+      <p class="font-semibold mb-1">Keep everything documented:</p>
+      <p>We provide detailed documentation of all non-restorable items including photos, descriptions, and current replacement costs. This is the documentation your insurance company needs to process the replacement portion of your claim.</p>
+    </CalloutBox>
+
+    <!-- ALE Coverage -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Additional living expenses (ALE)</h2>
+    <p class="mb-4">
+      If you can't live in your home during repairs, your insurance's ALE coverage (Coverage D) pays for:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li>Hotel or temporary rental housing</li>
+      <li>Meals (above your normal food budget)</li>
+      <li>Laundry services</li>
+      <li>Pet boarding if needed</li>
+      <li>Storage of items not included in the contents claim</li>
+      <li>Other reasonable expenses caused by displacement</li>
+    </ul>
+    <p class="mb-6">
+      Keep all receipts. ALE is typically limited to a percentage of your dwelling coverage or a time period (usually 12-24 months).
+    </p>
+
+    <CTABlock message="Have questions about your coverage or how the process works? Call us — we deal with insurance companies every day and can help you understand your options." />
+  </div>
+</BaseLayout>

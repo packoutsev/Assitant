@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CalloutBox from '../components/CalloutBox.astro';
+import CTABlock from '../components/CTABlock.astro';
+
+const title = "Water Damage Insurance Coverage | What's Covered & How It Works";
+const description = "Your homeowner's insurance covers water damage restoration including contents pack-out, cleaning, and storage. Here's what you need to know about your coverage.";
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Insurance" },
+];
+
+const faqLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does homeowner's insurance cover water damage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Standard homeowner's insurance covers sudden and accidental water damage such as burst pipes, water heater failures, and appliance leaks. It typically does not cover gradual damage from neglected maintenance or external flooding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to pay for contents restoration out of pocket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Contents restoration — including pack-out, cleaning, storage, and pack-back — is covered under your homeowner's policy. The contents restoration company bills your insurance directly. You are responsible only for your deductible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I choose my own contents restoration company?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Under Arizona law, you have the right to choose any licensed restoration company for your contents. Your insurance adjuster may recommend a company, but the decision is yours."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} jsonLD={faqLD}>
+  <div class="max-w-reading mx-auto px-4 py-10">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+      Water Damage Insurance: What's Covered
+    </h1>
+
+    <p class="text-lg text-gray-600 mb-8">
+      Most homeowners don't realize how much their insurance actually covers after water damage. Here's a plain-English breakdown of your coverage, your rights, and how the process works.
+    </p>
+
+    <!-- What's Covered -->
+    <h2 class="text-2xl font-bold text-navy mb-4">What your homeowner's policy covers</h2>
+    <p class="mb-4">
+      Standard homeowner's insurance (HO-3 policy) covers <strong>sudden and accidental</strong> water damage. This includes:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Burst pipes</strong> — including copper pipe failures, joint separations, and pinhole leaks that cause sudden water release.</li>
+      <li><strong>Water heater failures</strong> — tank ruptures, valve failures, and connection leaks.</li>
+      <li><strong>Appliance leaks</strong> — dishwasher, washing machine, refrigerator ice maker, and other supply line failures.</li>
+      <li><strong>Toilet and plumbing fixture failures</strong> — supply line breaks, tank cracks, wax ring failures.</li>
+      <li><strong>AC condensate overflow</strong> — backed up drain lines that flood interior spaces.</li>
+      <li><strong>Accidental overflow</strong> — bathtub or sink left running.</li>
+    </ul>
+
+    <CalloutBox type="right">
+      <p class="font-semibold mb-1">Your coverage includes more than just structure:</p>
+      <p>Your policy covers both <strong>dwelling</strong> (the house itself) and <strong>contents</strong> (your belongings). Contents coverage typically equals 50-70% of your dwelling coverage. A home insured for $400K often has $200-280K in contents coverage.</p>
+    </CalloutBox>
+
+    <!-- What's NOT Covered -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">What's typically NOT covered</h2>
+    <p class="mb-4">
+      There are specific exclusions to be aware of:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li><strong>Gradual damage</strong> — a slow leak under a sink that you knew about but didn't fix is not covered. The key is "sudden and accidental."</li>
+      <li><strong>External flooding</strong> — water that enters your home from outside (monsoon flooding, rising groundwater) requires separate flood insurance. Standard policies exclude this.</li>
+      <li><strong>Sewer backup</strong> — water backing up through drains requires a separate endorsement. Many policies offer this as an add-on, but it's not included by default.</li>
+      <li><strong>Neglected maintenance</strong> — if your insurer determines the damage resulted from failure to maintain your plumbing, they may deny the claim.</li>
+    </ul>
+
+    <CalloutBox type="important">
+      <p class="font-semibold mb-1">Arizona-specific note:</p>
+      <p>Arizona doesn't get traditional flooding, but monsoon season can cause water intrusion. If external water enters your home through doors, windows, or foundation cracks during a monsoon, that's typically NOT covered by standard homeowner's insurance. You'd need a separate FEMA flood policy for that. However, if a monsoon causes a pipe to burst, that IS covered as a sudden event.</p>
+    </CalloutBox>
+
+    <!-- Your Rights -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Your right to choose</h2>
+    <p class="mb-4">
+      This is one of the most important things to understand: <strong>you choose who handles your belongings</strong>.
+    </p>
+    <p class="mb-4">
+      When you file a water damage claim, your insurance adjuster may recommend or suggest a restoration company. Some adjusters work with "preferred vendors" or have existing relationships with specific companies. While these companies may be fine, you are under no obligation to use them.
+    </p>
+    <p class="mb-4">
+      Under Arizona law, you have the right to select any licensed restoration company for your contents. Your insurance company must work with the company you choose. They cannot deny coverage because you selected a non-preferred vendor.
+    </p>
+
+    <CalloutBox type="right">
+      <p class="font-semibold mb-1">Why this matters:</p>
+      <p>Preferred vendor programs often benefit the insurance company (lower costs, faster processing). Your choice should be based on who will take the best care of your belongings. Ask about their process, facility, and how they handle the items that matter most to you.</p>
+    </CalloutBox>
+
+    <!-- How Contents Coverage Works -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">How contents restoration coverage works</h2>
+    <p class="mb-4">
+      Here's the typical flow for the contents portion of a water damage claim:
+    </p>
+    <ol class="space-y-3 mb-6 list-decimal list-inside">
+      <li><strong>You file your claim</strong> — your insurer assigns an adjuster who inspects the damage.</li>
+      <li><strong>You choose a contents company</strong> — tell your adjuster who you'd like to handle your belongings.</li>
+      <li><strong>We submit a scope of work</strong> — a detailed estimate of the pack-out, cleaning, storage, and pack-back services needed. This uses industry-standard Xactimate pricing.</li>
+      <li><strong>Adjuster approves the scope</strong> — they may negotiate line items, but the process is standardized.</li>
+      <li><strong>We do the work</strong> — pack-out, clean, store, and return your belongings.</li>
+      <li><strong>Insurance pays us directly</strong> — you don't pay us out of pocket. You're only responsible for your deductible on the overall claim.</li>
+    </ol>
+
+    <p class="mb-6">
+      The contents portion of your claim is separate from the structural portion. Different companies typically handle each part, and each submits their own scope and invoice to your insurance.
+    </p>
+
+    <!-- What You Pay -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">What you actually pay</h2>
+    <p class="mb-4">
+      <strong>Your deductible — and that's it.</strong> Your homeowner's deductible (typically $1,000-$2,500) applies to the entire claim, not separately to structure and contents. After you meet your deductible, your insurance pays for:
+    </p>
+    <ul class="space-y-2 mb-6">
+      <li>Water extraction and structural drying (mitigation)</li>
+      <li>Structural repairs and reconstruction (general contractor)</li>
+      <li>Contents pack-out, cleaning, storage, and pack-back (us)</li>
+      <li>Temporary housing if you can't stay in your home (ALE coverage)</li>
+      <li>Replacement of items that can't be restored</li>
+    </ul>
+
+    <p class="mb-6">
+      For items that can't be restored, your insurance pays the replacement cost value (RCV) — what it would cost to buy a new, equivalent item today. Some policies pay actual cash value (ACV) first, then release the depreciation when you actually replace the item. Check your policy for details.
+    </p>
+
+    <!-- Tips -->
+    <h2 class="text-2xl font-bold text-navy mb-4 mt-10">Tips for a smooth claim</h2>
+    <ul class="space-y-3 mb-6">
+      <li>
+        <strong>Document everything before it's moved.</strong> Photos and video of every room, every item, from multiple angles. This is your evidence.
+      </li>
+      <li>
+        <strong>Don't throw anything away.</strong> Let professionals assess what can be saved. Items that look ruined often can be restored.
+      </li>
+      <li>
+        <strong>Keep receipts for everything.</strong> Meals, hotels, gas, laundry — if you're displaced, your ALE coverage reimburses reasonable living expenses.
+      </li>
+      <li>
+        <strong>Respond to your adjuster promptly.</strong> Delays in providing information slow down the entire claim process.
+      </li>
+      <li>
+        <strong>Get your own estimate.</strong> You can hire a public adjuster if you feel your insurance company's estimate is too low. They work on your behalf for a percentage of the settlement.
+      </li>
+    </ul>
+
+    <CTABlock message="Have questions about your coverage or the claims process? Call us — we work with insurance companies every day and can help you understand your options." />
+  </div>
+</BaseLayout>

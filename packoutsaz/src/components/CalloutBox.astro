@@ -1,0 +1,17 @@
+---
+export interface Props {
+  type?: 'tip' | 'important' | 'right';
+}
+
+const { type = 'tip' } = Astro.props;
+
+const styles = {
+  tip: 'bg-amber/10 border-amber',
+  important: 'bg-blue-50 border-navy',
+  right: 'bg-green-50 border-check',
+};
+---
+
+<div class={`border-l-4 p-5 rounded-r-lg my-6 ${styles[type]}`}>
+  <slot />
+</div>

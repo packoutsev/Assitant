@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "packouts-assistant-1800"
+  },
+  "targets": {
+    "packouts-assistant-1800": {
+      "hosting": {
+        "packoutsaz": [
+          "packoutsaz"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

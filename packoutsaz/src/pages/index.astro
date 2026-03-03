@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CalloutBox from '../components/CalloutBox.astro';
+import CTABlock from '../components/CTABlock.astro';
+import { site } from '../config/site';
+
+const title = "What Happens to Your Stuff After a Disaster? | Packouts AZ";
+const description = "When fire, water, or storm damage hits your Arizona home, your belongings need professional care. Learn about contents pack-out, cleaning, storage, and pack-back — all covered by your insurance.";
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "1-800-Packouts of the East Valley",
+  "description": "Arizona contents restoration company specializing in pack-out, cleaning, storage, and pack-back services for homeowners after fire, water, and storm damage.",
+  "telephone": "+1-623-400-8711",
+  "url": "https://packoutsaz.com",
+  "areaServed": [
+    { "@type": "City", "name": "Mesa" },
+    { "@type": "City", "name": "Gilbert" },
+    { "@type": "City", "name": "Chandler" },
+    { "@type": "City", "name": "Scottsdale" },
+    { "@type": "City", "name": "Tempe" },
+    { "@type": "City", "name": "Phoenix" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mesa",
+    "addressRegion": "AZ",
+    "addressCountry": "US"
+  },
+  "openingHours": "Mo-Su 00:00-23:59",
+  "priceRange": "Covered by insurance"
+};
+---
+
+<BaseLayout title={title} description={description} jsonLD={jsonLD}>
+
+  <!-- Hero Section -->
+  <section class="bg-navy text-white">
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+        What happens to your stuff<br class="hidden md:block" />
+        after your home is damaged?
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+        When fire, water, or storm damage hits your Arizona home, the general contractor fixes the structure. But your belongings — furniture, clothing, electronics, family keepsakes — need professional care too. That's what we do.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={site.phoneHref}
+          class="inline-flex items-center justify-center gap-2 bg-amber text-navy no-underline font-bold px-8 py-4 rounded-lg text-lg hover:bg-amber/90 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          Call Us: {site.phone}
+        </a>
+        <a
+          href="#how-it-works"
+          class="inline-flex items-center justify-center gap-2 bg-white/10 text-white no-underline font-bold px-8 py-4 rounded-lg text-lg hover:bg-white/20 transition-colors border border-white/20"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+          How It Works
+        </a>
+      </div>
+      <p class="text-sm text-gray-400 mt-6">Available 24/7 &middot; All services covered by your homeowner's insurance</p>
+    </div>
+  </section>
+
+  <!-- What Is Contents Restoration -->
+  <section class="max-w-reading mx-auto px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl mb-6">Your house gets repaired. But what about everything inside it?</h2>
+    <p class="mb-4">
+      After a fire, flood, or major water event, most homeowners know that their house needs to be repaired. A general contractor handles the structure — drywall, flooring, paint. A mitigation company handles drying and cleanup. But there's a third piece that most people don't think about until they're in the middle of it: <strong>what happens to your stuff?</strong>
+    </p>
+    <p class="mb-4">
+      That's where contents restoration comes in. Your furniture, clothing, electronics, kitchenware, documents, photos, toys, books — everything you own — needs to come out of the house before structural work can happen. Those items need to be cleaned, stored safely, and eventually returned to your home.
+    </p>
+    <p class="mb-4">
+      We're a contents restoration company. That means we handle everything that isn't nailed down. We pack it up, clean it, store it, and bring it back. Your insurance covers the whole process.
+    </p>
+
+    <CalloutBox type="tip">
+      <p class="font-semibold mb-1">Most people have never heard of "contents restoration"</p>
+      <p>That's normal. It's an industry term. What it means in plain English: we take care of your belongings while your house is being fixed. Think of it as professional moving + cleaning + storage + returning everything to exactly where it belongs.</p>
+    </CalloutBox>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="bg-warm py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="max-w-reading mx-auto text-center mb-10">
+        <h2 class="text-2xl md:text-3xl mb-4">How contents restoration works</h2>
+        <p class="text-charcoal/70">
+          The process follows the same pattern regardless of whether the damage came from fire, water, or storms. Here's what happens, step by step.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-navy text-white rounded-full flex items-center justify-center font-bold text-lg">1</span>
+            <h3 class="text-lg font-bold text-navy m-0">Pack-Out & Inventory</h3>
+          </div>
+          <p class="text-charcoal/80 text-base leading-relaxed">We go room by room, photographing and cataloging every item. Each piece gets a unique tag. Everything is carefully packed in labeled boxes and transported to our facility. You get a full inventory list for your records and insurance claim.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-navy text-white rounded-full flex items-center justify-center font-bold text-lg">2</span>
+            <h3 class="text-lg font-bold text-navy m-0">Professional Cleaning</h3>
+          </div>
+          <p class="text-charcoal/80 text-base leading-relaxed">Different items need different cleaning methods. Smoke-damaged clothing gets ozone treatment. Electronics get ultrasonic cleaning. Wood furniture gets deodorized and reconditioned. We match the right technique to each item type.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-navy text-white rounded-full flex items-center justify-center font-bold text-lg">3</span>
+            <h3 class="text-lg font-bold text-navy m-0">Secure Storage</h3>
+          </div>
+          <p class="text-charcoal/80 text-base leading-relaxed">Your cleaned belongings are stored in our secure, climate-controlled facility while your home is being repaired. Repairs can take weeks to months. Your items stay organized, safe, and ready for return the entire time.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="flex-shrink-0 w-10 h-10 bg-navy text-white rounded-full flex items-center justify-center font-bold text-lg">4</span>
+            <h3 class="text-lg font-bold text-navy m-0">Pack-Back & Placement</h3>
+          </div>
+          <p class="text-charcoal/80 text-base leading-relaxed">When your home is ready, we bring everything back. Furniture goes in the right rooms, boxes are unpacked, artwork is rehung. The goal: you walk into a home that feels like yours again, not a construction zone with boxes everywhere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- When You Need It -->
+  <section class="max-w-reading mx-auto px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl mb-6">When do you need a pack-out?</h2>
+    <p class="mb-4">
+      Any time your home is damaged enough to require significant repairs, your belongings likely need professional attention. Common scenarios include:
+    </p>
+    <ul class="space-y-3 mb-6">
+      <li>
+        <strong>After a fire.</strong> Even rooms that didn't burn are affected by smoke and soot. Every item in the house needs to be cleaned — smoke damage doesn't stay in one room. <a href="https://azfirehelp.com">Learn more about fire recovery</a>.
+      </li>
+      <li>
+        <strong>After water damage.</strong> Burst pipes, water heater failures, and appliance leaks can flood your home. Contents absorb moisture and need to be removed so the space can dry and your items can be properly treated. <a href="https://azfloodhelp.com">Learn more about water damage recovery</a>.
+      </li>
+      <li>
+        <strong>After storm damage.</strong> Monsoon damage, roof leaks, and wind damage can expose your home and belongings to water and debris. Contents may need to come out for structural repairs.
+      </li>
+      <li>
+        <strong>During major renovations.</strong> Sometimes structural damage is severe enough that the entire house needs to be emptied. A professional pack-out is more efficient and safer than trying to store everything in your garage.
+      </li>
+    </ul>
+
+    <CalloutBox type="right">
+      <p class="font-semibold mb-1">Don't throw anything away.</p>
+      <p>Items that look ruined — smoke-stained clothing, water-soaked furniture, soot-covered electronics — can often be professionally restored. Let a contents restoration team assess everything before you dispose of anything. What looks destroyed may be salvageable.</p>
+    </CalloutBox>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-warm py-12 md:py-16">
+    <div class="max-w-reading mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl mb-6">Common questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-2">Does my insurance cover this?</h3>
+          <p>Yes. Contents restoration is a standard part of homeowner's insurance claims for fire, water, and storm damage. We bill your insurance directly — you don't pay us out of pocket. You're only responsible for your claim deductible. <a href="/insurance">Read more about coverage</a>.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-2">Can I choose who handles my belongings?</h3>
+          <p>Absolutely. You have the right to choose any licensed contents restoration company. Your insurance adjuster may recommend one, but the decision is yours. We encourage you to ask about the process, the facility, and how they handle the items that matter most to you.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-2">How long does the whole process take?</h3>
+          <p>The pack-out takes 1-3 days depending on home size. Contents cleaning happens while your home is being repaired (typically 2-8 weeks). Pack-back takes 1-2 days. <a href="/what-to-expect">See the full timeline</a>.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-2">What if some items can't be saved?</h3>
+          <p>We document non-restorable items with photos, descriptions, and replacement cost estimates. This documentation goes to your insurance company, and they reimburse you at replacement cost value so you can purchase new items.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-navy mb-2">Do I need to be home during the pack-out?</h3>
+          <p>We recommend being present at the start so you can point out anything especially important or fragile. But you don't need to be there the entire time. Many families are displaced during damage events and aren't able to be on-site. We handle it either way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <CTABlock message="Have questions about what happens to your belongings after damage? Call us — we'll explain the process and help you understand your options." />
+
+</BaseLayout>

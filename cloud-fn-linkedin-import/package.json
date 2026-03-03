@@ -1,0 +1,15 @@
+{
+  "name": "cloud-fn-linkedin-import",
+  "version": "1.0.0",
+  "description": "LinkedIn Sales Navigator CSV import to HubSpot — watch Drive folder, dedupe, create companies+contacts, notify Chat",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @google-cloud/functions-framework --target=linkedinImport --port=8082",
+    "test": "curl -s -X POST http://localhost:8082"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.4.0",
+    "googleapis": "^140.0.0"
+  }
+}

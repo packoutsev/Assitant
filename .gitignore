@@ -34,7 +34,57 @@ estimator/.env
 __pycache__/
 *.pyc
 
-# MCP / OAuth
+# MCP / OAuth credentials & tokens
 gcp-oauth.keys.json
 mcp-gdrive-setup/
 gdrive_stderr.txt
+.*_credentials.json
+.*_tokens.json
+.gh.json
+
+# Node
+node_modules/
+package-lock.json
+dist/
+
+# Build caches
+.firebase/
+.astro/
+
+# Estimator output & temp
+estimator/output/
+estimator/temp_*/
+
+# Data dumps & logs
+quo_*.json
+xcelerate_jobs.json
+.fireleads_processed.json
+fire-leads-processor.log
+qbo_aging.log
+nul
+
+# Google Cloud SDK
+google-cloud-sdk/
+.gsutil/
+
+# Shell profile / system
+.bash_profile
+.bashrc
+.local/
+.cache/
+
+# Misc docs (not code)
+sdr-onboarding.md
+sdr-playbook.md
+
+# Temp directories
+tmp_mcp/
+
+# Test output / debug dumps (may contain API keys)
+coaching-agent/test-*.json
+coaching-agent/test-*.txt
+coaching-agent/today-*.json
+coaching-agent/today-*.txt
+
+# One-time auth helper scripts (contain OAuth secrets)
+**/auth-ga4.js

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "packouts-assistant-1800"
+  },
+  "targets": {
+    "packouts-assistant-1800": {
+      "hosting": {
+        "remodel": [
+          "remodel-1800"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

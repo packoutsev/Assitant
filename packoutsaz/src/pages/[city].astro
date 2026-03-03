@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CalloutBox from '../components/CalloutBox.astro';
+import CTABlock from '../components/CTABlock.astro';
+import cities from '../data/cities.json';
+
+export function getStaticPaths() {
+  return cities.map((city) => ({
+    params: { city: city.slug },
+    props: { city },
+  }));
+}
+
+const { city } = Astro.props;
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: city.name },
+];
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "1-800-Packouts of the East Valley",
+  "description": city.description,
+  "url": `https://packoutsaz.com/${city.slug}`,
+  "telephone": "+1-623-400-8711",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mesa",
+    "addressRegion": "AZ",
+    "addressCountry": "US",
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": city.name,
+    "containedInPlace": {
+      "@type": "State",
+      "name": "Arizona",
+    },
+  },
+  "openingHours": "Mo-Su 00:00-23:59",
+  "priceRange": "Insurance-covered",
+};
+---
+
+<BaseLayout title={city.title} description={city.description} jsonLD={jsonLD}>
+  <div class="max-w-3xl mx-auto px-4 py-10">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+      Contents Restoration in {city.name}, AZ
+    </h1>
+
+    <p class="text-lg text-gray-600 mb-6">
+      {city.intro}
+    </p>
+
+    <p class="text-gray-600 mb-10">
+      {city.detail}
+    </p>
+
+    <!-- Services -->
+    <h2 class="text-2xl font-bold text-navy mb-4">
+      What We Do for {city.name} Homeowners
+    </h2>
+
+    <p class="text-gray-600 mb-6">
+      When your home is damaged, the general contractor handles the structure. We handle
+      everything inside it. Here's our process:
+    </p>
+
+    <div class="space-y-4 mb-10">
+      <div class="flex gap-4 items-start">
+        <div class="flex-shrink-0 w-8 h-8 bg-navy rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
+        <div>
+          <h3 class="font-bold text-navy mb-1">Pack-Out & Inventory</h3>
+          <p class="text-gray-600">
+            We go room by room through your {city.name} home, photographing and cataloging
+            every item. Each piece is carefully packed and transported to our facility.
+            You receive a full inventory for your records and insurance claim.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <div class="flex-shrink-0 w-8 h-8 bg-navy rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
+        <div>
+          <h3 class="font-bold text-navy mb-1">Professional Cleaning</h3>
+          <p class="text-gray-600">
+            Different items need different cleaning methods — ozone for odors,
+            ultrasonic for electronics, dry cleaning for textiles, hand cleaning for
+            furniture. We match the right technique to each item.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <div class="flex-shrink-0 w-8 h-8 bg-navy rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+        <div>
+          <h3 class="font-bold text-navy mb-1">Secure Storage</h3>
+          <p class="text-gray-600">
+            While your {city.name} home is being repaired, your cleaned
+            belongings are stored in our secure, climate-controlled facility.
+            Repairs can take weeks to months — your items stay safe the entire time.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <div class="flex-shrink-0 w-8 h-8 bg-navy rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
+        <div>
+          <h3 class="font-bold text-navy mb-1">Pack-Back & Placement</h3>
+          <p class="text-gray-600">
+            When your home is ready, we bring everything back and put it where it belongs.
+            Furniture in the right rooms, boxes unpacked — your home feels like home again.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <div class="flex-shrink-0 w-8 h-8 bg-navy rounded-full flex items-center justify-center text-white font-bold text-sm">5</div>
+        <div>
+          <h3 class="font-bold text-navy mb-1">Insurance Documentation</h3>
+          <p class="text-gray-600">
+            We create the detailed, photo-documented inventory your insurance company
+            requires. Every item is photographed, categorized, and priced for your
+            adjuster.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right to Choose -->
+    <CalloutBox type="right">
+      <p class="font-bold text-green-900 mb-1">You Choose Your Contents Company</p>
+      <p class="text-green-900">
+        Contents restoration is a standard part of your insurance claim. And you have the
+        <strong>right to choose</strong> who handles your belongings. Your adjuster or
+        contractor may suggest a company, but the decision is yours. You don't pay us
+        directly — your insurance company does.
+      </p>
+    </CalloutBox>
+
+    <!-- Resources -->
+    <div class="border-t border-gray-200 pt-8 mt-10 mb-8">
+      <h2 class="text-2xl font-bold text-navy mb-4">
+        Learn More
+      </h2>
+      <ul class="space-y-3 mb-8">
+        <li>
+          <a href="/what-to-expect" class="text-navy font-semibold underline hover:text-navy/80">
+            What to Expect During Contents Restoration
+          </a>
+          <span class="text-gray-500"> — Full process walkthrough and timeline</span>
+        </li>
+        <li>
+          <a href="/insurance" class="text-navy font-semibold underline hover:text-navy/80">
+            Insurance Coverage Guide
+          </a>
+          <span class="text-gray-500"> — What's covered, your rights, and how the claim works</span>
+        </li>
+      </ul>
+    </div>
+
+    <CTABlock message={`Need contents restoration in ${city.name}? Call us — we'll explain the process and help you understand your options.`} />
+  </div>
+</BaseLayout>

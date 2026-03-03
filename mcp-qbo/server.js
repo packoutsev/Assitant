@@ -292,6 +292,66 @@ async function toolGetArAging() {
   return { as_of: today.toISOString().slice(0, 10), summary, buckets };
 }
 
+async function toolGetCollections() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // Date boundaries
+  const d7 = new Date(today);
+  d7.setDate(d7.getDate() - 7);
+  const d30 = new Date(today);
+  d30.setDate(d30.getDate() - 30);
+
+  // Last calendar month
+  const lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0); // last day of prev month
+  const lastMonthStart = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+
+  // YTD start
+  const ytdStart = new Date(today.getFullYear(), 0, 1);
+
+  // Query payments from YTD start (covers all windows)
+  const fmt = (d) => d.toISOString().slice(0, 10);
+  const earliest = [lastMonthStart, d30, ytdStart].reduce((a, b) => a < b ? a : b);
+  const payments = await qboQuery(
+    `SELECT * FROM Payment WHERE TxnDate >= '${fmt(earliest)}' ORDERBY TxnDate DESC`
+  );
+
+  let total7 = 0, total30 = 0, totalLastMonth = 0, totalYtd = 0;
+  const recentPayments = [];
+
+  for (const p of payments) {
+    const amt = parseFloat(p.TotalAmt || 0);
+    const txnDate = new Date(p.TxnDate + "T00:00:00");
+
+    if (txnDate >= d7) total7 += amt;
+    if (txnDate >= d30) total30 += amt;
+    if (txnDate >= lastMonthStart && txnDate <= lastMonthEnd) totalLastMonth += amt;
+    if (txnDate >= ytdStart) totalYtd += amt;
+
+    // Include recent payments (last 30 days) for detail
+    if (txnDate >= d30) {
+      recentPayments.push({
+        customer: p.CustomerRef?.name || "Unknown",
+        amount: amt,
+        date: p.TxnDate,
+        method: p.PaymentMethodRef?.name || null,
+      });
+    }
+  }
+
+  return {
+    as_of: fmt(today),
+    last_7_days: Math.round(total7 * 100) / 100,
+    last_30_days: Math.round(total30 * 100) / 100,
+    last_month: {
+      period: `${fmt(lastMonthStart)} to ${fmt(lastMonthEnd)}`,
+      total: Math.round(totalLastMonth * 100) / 100,
+    },
+    ytd: Math.round(totalYtd * 100) / 100,
+    recent_payments: recentPayments,
+  };
+}
+
 async function toolGetProfitAndLoss({ start_date, end_date, accounting_method }) {
   const params = {};
   if (start_date) params.start_date = start_date;
@@ -428,6 +488,20 @@ function registerTools(server) {
   );
 
   server.tool(
+    "get_collections",
+    "Collections summary: $ collected in last 7 days, 30 days, and last calendar month. Includes recent payment detail.",
+    {},
+    async () => {
+      try {
+        const result = await toolGetCollections();
+        return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+      } catch (e) {
+        return { content: [{ type: "text", text: `Error: ${e.message}` }], isError: true };
+      }
+    }
+  );
+
+  server.tool(
     "get_profit_and_loss",
     "Profit & Loss report for a date range. Defaults to current fiscal year if no dates provided.",
     {
@@ -552,11 +626,23 @@ function registerTools(server) {
 const app = express();
 app.use(express.json());
 
-// --- CORS for claude.ai browser client ---
+// --- CORS ---
+const ALLOWED_ORIGINS = [
+  "https://packouts-hub.web.app",
+  "https://sdr-onboard.web.app",
+  "https://packouts-vault.web.app",
+  "http://localhost:5173",
+  "http://localhost:5174",
+];
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  const origin = req.headers.origin;
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  } else if (!origin) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  }
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Mcp-Session-Id");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Mcp-Session-Id, X-API-Key");
   res.setHeader("Access-Control-Expose-Headers", "Mcp-Session-Id");
   if (req.method === "OPTIONS") {
     return res.status(204).end();
@@ -569,29 +655,22 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok", service: "mcp-qbo" });
 });
 
-// --- Bearer token auth middleware ---
+// --- Auth middleware (Bearer token OR X-API-Key) ---
+const API_KEY = process.env.API_KEY;
 function requireAuth(req, res, next) {
-  if (!AUTH_TOKEN) {
-    return next();
+  if (API_KEY && req.headers["x-api-key"] === API_KEY) return next();
+  if (AUTH_TOKEN) {
+    let token;
+    const authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      token = authHeader.slice(7);
+    } else if (req.query.token) {
+      token = req.query.token;
+    }
+    if (token === AUTH_TOKEN) return next();
   }
-
-  let token;
-  const authHeader = req.headers.authorization;
-  if (authHeader && authHeader.startsWith("Bearer ")) {
-    token = authHeader.slice(7);
-  } else if (req.query.token) {
-    token = req.query.token;
-  }
-
-  if (!token) {
-    return res.status(401).json({ error: "Missing Authorization header or token parameter" });
-  }
-
-  if (token !== AUTH_TOKEN) {
-    return res.status(403).json({ error: "Invalid bearer token" });
-  }
-
-  next();
+  if (!API_KEY && !AUTH_TOKEN) return next();
+  return res.status(401).json({ error: "Unauthorized" });
 }
 
 // --- Session tracking ---

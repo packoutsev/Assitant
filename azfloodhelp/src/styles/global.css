@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply text-charcoal bg-white text-lg leading-relaxed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-sans font-bold text-navy;
+  }
+
+  a {
+    @apply text-navy underline decoration-amber/50 underline-offset-2 hover:decoration-amber transition-colors;
+  }
+}
+
+@layer components {
+  .callout {
+    @apply bg-amber/10 border-l-4 border-amber p-5 rounded-r-lg my-6;
+  }
+}
+
+@media print {
+  header, footer, .mobile-cta, .no-print, nav {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  a[href]::after {
+    content: none;
+  }
+}

@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1B365D;
+  --color-navy-light: #264a80;
+  --color-gold: #D4A853;
+  --color-gold-light: #e8c97a;
+  --color-warm: #F5F3F0;
+  --animate-shake: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes waveform {
+  0%, 100% { height: 8px; }
+  50% { height: 32px; }
+}
+
+/* Wiki markdown content styles */
+.wiki-content h1 { font-size: 1.75rem; font-weight: 800; color: var(--color-navy); margin-bottom: 0.5rem; line-height: 1.2; }
+.wiki-content h2 { font-size: 1.25rem; font-weight: 700; color: var(--color-navy); margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.375rem; border-bottom: 2px solid #e5e7eb; }
+.wiki-content h3 { font-size: 1.05rem; font-weight: 600; color: #374151; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+.wiki-content h4 { font-size: 0.9rem; font-weight: 600; color: #4b5563; margin-top: 1.25rem; margin-bottom: 0.375rem; }
+.wiki-content p { font-size: 0.875rem; line-height: 1.65; color: #374151; margin-bottom: 0.75rem; }
+.wiki-content > blockquote { background: #f0f4ff; border-left: 3px solid var(--color-navy); padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 0 0.375rem 0.375rem 0; }
+.wiki-content > blockquote p { margin-bottom: 0.25rem; font-size: 0.8rem; color: #4b5563; }
+.wiki-content > blockquote strong { color: var(--color-navy); }
+.wiki-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+.wiki-content ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+.wiki-content li { font-size: 0.875rem; line-height: 1.65; color: #374151; margin-bottom: 0.25rem; }
+.wiki-content li ul { margin-top: 0.25rem; margin-bottom: 0; }
+.wiki-content code { font-size: 0.8rem; background: #f3f4f6; color: #b91c1c; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: 'Consolas', 'Monaco', monospace; }
+.wiki-content pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1rem; font-size: 0.775rem; line-height: 1.6; }
+.wiki-content pre code { background: transparent; color: inherit; padding: 0; font-size: inherit; }
+.wiki-content table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.8rem; }
+.wiki-content thead th { background: #f9fafb; padding: 0.5rem 0.75rem; text-align: left; font-weight: 600; color: #374151; border-bottom: 2px solid #e5e7eb; white-space: nowrap; }
+.wiki-content tbody td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+.wiki-content tbody tr:hover { background: #f9fafb; }
+.wiki-content a { color: var(--color-navy); text-decoration: underline; text-underline-offset: 2px; }
+.wiki-content a:hover { color: var(--color-navy-light); }
+.wiki-content hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+.wiki-content strong { font-weight: 600; color: #111827; }

@@ -565,17 +565,37 @@ function registerTools(server) {
 const app = express();
 app.use(express.json());
 
-// --- CORS for claude.ai browser client ---
+// --- CORS ---
+const ALLOWED_ORIGINS = [
+  "https://packouts-hub.web.app",
+  "https://sdr-onboard.web.app",
+  "https://packouts-vault.web.app",
+  "http://localhost:5173",
+  "http://localhost:5174",
+];
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  const origin = req.headers.origin;
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  } else if (!origin) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  }
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Mcp-Session-Id");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Mcp-Session-Id, X-API-Key");
   res.setHeader("Access-Control-Expose-Headers", "Mcp-Session-Id");
   if (req.method === "OPTIONS") {
     return res.status(204).end();
   }
   next();
 });
+
+// --- Auth middleware (X-API-Key) ---
+const API_KEY = process.env.API_KEY;
+function requireAuth(req, res, next) {
+  if (API_KEY && req.headers["x-api-key"] === API_KEY) return next();
+  if (!API_KEY) return next(); // backward compat if API_KEY not set
+  return res.status(401).json({ error: "Unauthorized" });
+}
 
 // --- Health check (no auth required) ---
 app.get("/health", (_req, res) => {
@@ -586,7 +606,7 @@ app.get("/health", (_req, res) => {
 const sessions = new Map();
 
 // --- Streamable HTTP endpoint (handles POST, GET, DELETE) ---
-app.all("/mcp", async (req, res) => {
+app.all("/mcp", requireAuth, async (req, res) => {
   const sessionId = req.headers["mcp-session-id"];
 
   if (sessionId && sessions.has(sessionId)) {
