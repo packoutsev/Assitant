@@ -88,3 +88,10 @@ coaching-agent/today-*.txt
 
 # One-time auth helper scripts (contain OAuth secrets)
 **/auth-ga4.js
+
+# Standalone HTML/CSS/JS app files (contain Firebase API keys)
+gtd-capture-index.html
+gtd-capture-styles.css
+gtd-capture-features.css
+gtd-capture-app.js
+gtd-capture/

@@ -20,7 +20,7 @@ const app = express();
 // CORS
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  const allowed = ['https://packouts-hub.web.app', 'http://localhost:5173'];
+  const allowed = ['https://packouts-hub.web.app', 'https://packoutsaz.com', 'https://packoutsaz.web.app', 'https://sdr-onboard.web.app', 'https://packouts-vault.web.app', 'http://localhost:5173', 'http://localhost:5174'];
   if (allowed.includes(origin)) res.setHeader('Access-Control-Allow-Origin', origin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');

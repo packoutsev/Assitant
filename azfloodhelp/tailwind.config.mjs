@@ -4,7 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: '#1B365D',
+        navy: '#0F5A7F',
+        brand: '#1080C4',
+        'brand-light': '#82CBE8',
+        'brand-50': '#CFE6F3',
         amber: '#D4A853',
         warm: '#F5F3F0',
         charcoal: '#2D2D2D',

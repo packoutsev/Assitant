@@ -17,7 +17,7 @@
   }
 
   a {
-    @apply text-navy underline decoration-amber/50 underline-offset-2 hover:decoration-amber transition-colors;
+    @apply text-brand underline decoration-brand/30 underline-offset-2 hover:decoration-brand transition-colors;
   }
 }
 

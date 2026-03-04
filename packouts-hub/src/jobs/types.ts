@@ -182,6 +182,7 @@ export interface FireLead {
   services?: string[];
   status: FireLeadStatus;
   assigned_to?: string;
+  assigned_team?: string;
   source_email_id?: string;
   received_at?: string;
   updated_at?: string;

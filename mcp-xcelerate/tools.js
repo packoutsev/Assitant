@@ -318,6 +318,7 @@ function formatFireLead(doc) {
     services: d.services || [],
     status: d.status || "new",
     assigned_to: d.assigned_to || null,
+    assigned_team: d.assigned_team || null,
     source_email_id: d.source_email_id || null,
     received_at: d.received_at?.toDate?.().toISOString() || d.received_at || null,
     updated_at: d.updated_at?.toDate?.().toISOString() || d.updated_at || null,
@@ -330,10 +331,11 @@ function formatFireLead(doc) {
   };
 }
 
-async function toolListFireLeads(db, { limit, status, assigned_to }) {
+async function toolListFireLeads(db, { limit, status, assigned_to, assigned_team }) {
   let query = db.collection("fireleads").orderBy("received_at", "desc");
   if (status) query = query.where("status", "==", status);
   if (assigned_to) query = query.where("assigned_to", "==", assigned_to);
+  if (assigned_team) query = query.where("assigned_team", "==", assigned_team);
   query = query.limit(limit || 50);
   const snap = await query.get();
   return snap.docs.map(formatFireLead);
@@ -345,7 +347,7 @@ async function toolGetFireLead(db, { lead_id }) {
   return formatFireLead(doc);
 }
 
-async function toolUpdateFireLeadStatus(db, { lead_id, status, notes, assigned_to, add_note }) {
+async function toolUpdateFireLeadStatus(db, { lead_id, status, notes, assigned_to, assigned_team, add_note }) {
   const ref = db.collection("fireleads").doc(lead_id);
   const doc = await ref.get();
   if (!doc.exists) throw new Error(`Fire lead ${lead_id} not found`);
@@ -360,6 +362,7 @@ async function toolUpdateFireLeadStatus(db, { lead_id, status, notes, assigned_t
   }
   if (notes !== undefined) update.notes = notes;
   if (assigned_to !== undefined) update.assigned_to = assigned_to;
+  if (assigned_team !== undefined) update.assigned_team = assigned_team;
 
   // Append a timestamped note to call_notes array
   if (add_note && add_note.text) {
@@ -1076,6 +1079,7 @@ export function registerTools(server, db) {
       limit: z.number().optional().describe("Max results (default 50)."),
       status: z.enum(["new", "contacted", "pursuing", "not_interested", "converted", "no_answer"]).optional().describe("Filter by lead status."),
       assigned_to: z.string().optional().describe("Filter by assigned SDR name."),
+      assigned_team: z.string().optional().describe("Filter by assigned team ID (e.g., 'team-1')."),
     },
     async (args) => {
       try {
@@ -1111,6 +1115,7 @@ export function registerTools(server, db) {
       status: z.enum(["new", "contacted", "pursuing", "not_interested", "converted", "no_answer"]).optional().describe("New status."),
       notes: z.string().optional().describe("Update the incident notes field."),
       assigned_to: z.string().optional().describe("Assign to an SDR (e.g., 'Vanessa', 'Diana', 'Matt')."),
+      assigned_team: z.string().optional().describe("Assign to a team (e.g., 'team-1', 'team-2', 'team-3')."),
       add_note: z.object({
         text: z.string().describe("The note text."),
         author: z.string().optional().describe("Who wrote the note (e.g., 'Matt', 'Vanessa')."),

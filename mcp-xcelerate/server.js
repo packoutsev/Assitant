@@ -260,6 +260,8 @@ app.use(express.json());
 // --- CORS ---
 const ALLOWED_ORIGINS = [
   "https://packouts-hub.web.app",
+  "https://packoutsaz.com",
+  "https://packoutsaz.web.app",
   "https://sdr-onboard.web.app",
   "https://packouts-vault.web.app",
   "http://localhost:5173",

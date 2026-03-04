@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /hub
+
+Sitemap: https://packoutsaz.com/sitemap-index.xml

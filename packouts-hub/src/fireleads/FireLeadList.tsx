@@ -4,12 +4,14 @@ import {
   ArrowLeft, Flame, MapPin, Phone, User, Building2, ChevronDown, ChevronUp,
   Loader2, Clock, Search, ArrowUpDown, GraduationCap, ExternalLink,
   Home, DollarSign, Lightbulb, MessageSquare, Send, BarChart3, TrendingUp,
-  Users as UsersIcon,
+  Users as UsersIcon, Globe, FileDown, LogOut, Shield, Navigation,
 } from 'lucide-react';
 import { getMcpClient } from '../jobs/McpClient';
 import type { FireLead, FireLeadStatus, CallNote } from '../jobs/types';
+import { useTeamAuth, type TeamConfig } from './useTeamAuth';
+import TeamPinGate from './TeamPinGate';
 
-const MAPS_API_KEY = 'AIzaSyA1-a7nzhu2C9PtEgtFUTu6yRZe3tWfpsg';
+const MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
 
 const STATUS_OPTIONS: { value: FireLeadStatus; label: string; color: string }[] = [
   { value: 'new', label: 'New', color: 'bg-blue-100 text-blue-700' },
@@ -20,11 +22,11 @@ const STATUS_OPTIONS: { value: FireLeadStatus; label: string; color: string }[] 
   { value: 'not_interested', label: 'Not Interested', color: 'bg-red-100 text-red-600' },
 ];
 
-const ASSIGNEES = ['Matt', 'Vanessa', 'Diana'];
+// Team config is loaded dynamically from Firestore via useTeamAuth
 
 type FilterValue = 'all' | FireLeadStatus;
 type SortKey = 'newest' | 'oldest' | 'city_az' | 'city_za';
-type ViewTab = 'leads' | 'metrics' | 'training';
+type ViewTab = 'leads' | 'metrics' | 'training' | 'azfirehelp';
 
 const SORT_OPTIONS: { value: SortKey; label: string }[] = [
   { value: 'newest', label: 'Newest First' },
@@ -173,9 +175,9 @@ function PhoneLink({ number, label }: { number?: string; label: string }) {
   );
 }
 
-function NoteSection({ lead, onNoteAdded }: { lead: FireLead; onNoteAdded: (note: CallNote) => void }) {
+function NoteSection({ lead, onNoteAdded, members }: { lead: FireLead; onNoteAdded: (note: CallNote) => void; members: string[] }) {
   const [text, setText] = useState('');
-  const [author, setAuthor] = useState('Matt');
+  const [author, setAuthor] = useState(members[0] || 'Unknown');
   const [saving, setSaving] = useState(false);
 
   const handleSubmit = async () => {
@@ -223,7 +225,7 @@ function NoteSection({ lead, onNoteAdded }: { lead: FireLead; onNoteAdded: (note
           onChange={(e) => setAuthor(e.target.value)}
           className="text-xs rounded-lg border border-gray-200 px-2 py-1.5 bg-white text-gray-700"
         >
-          {ASSIGNEES.map((a) => (
+          {members.map((a) => (
             <option key={a} value={a}>{a}</option>
           ))}
         </select>
@@ -251,7 +253,7 @@ function NoteSection({ lead, onNoteAdded }: { lead: FireLead; onNoteAdded: (note
   );
 }
 
-function LeadCard({ lead, onUpdate }: { lead: FireLead; onUpdate: (id: string, patch: Partial<FireLead>) => void }) {
+function LeadCard({ lead, onUpdate, isAdmin, teams, members }: { lead: FireLead; onUpdate: (id: string, patch: Partial<FireLead>) => void; isAdmin: boolean; teams: TeamConfig[]; members: string[] }) {
   const [expanded, setExpanded] = useState(false);
   const [saving, setSaving] = useState(false);
 
@@ -269,7 +271,21 @@ function LeadCard({ lead, onUpdate }: { lead: FireLead; onUpdate: (id: string, p
     setSaving(false);
   };
 
-  const handleAssignChange = async (assignee: string) => {
+  const handleTeamAssign = async (teamId: string) => {
+    setSaving(true);
+    try {
+      await getMcpClient('xcelerate').callTool('update_firelead_status', {
+        lead_id: lead.id,
+        assigned_team: teamId || undefined,
+      });
+      onUpdate(lead.id, { assigned_team: teamId || undefined });
+    } catch (e) {
+      console.error('Team assignment failed:', e);
+    }
+    setSaving(false);
+  };
+
+  const handleMemberAssign = async (assignee: string) => {
     setSaving(true);
     try {
       await getMcpClient('xcelerate').callTool('update_firelead_status', {
@@ -393,18 +409,43 @@ function LeadCard({ lead, onUpdate }: { lead: FireLead; onUpdate: (id: string, p
       {/* Assignment + expand */}
       <div className="flex items-center justify-between pt-3 border-t border-gray-100">
         <div className="flex items-center gap-2">
-          <label className="text-xs text-gray-400">Assigned:</label>
-          <select
-            value={lead.assigned_to || ''}
-            onChange={(e) => handleAssignChange(e.target.value)}
-            disabled={saving}
-            className="text-xs rounded-lg border border-gray-200 px-2 py-1 bg-white text-gray-700 cursor-pointer"
-          >
-            <option value="">Unassigned</option>
-            {ASSIGNEES.map((a) => (
-              <option key={a} value={a}>{a}</option>
-            ))}
-          </select>
+          {isAdmin ? (
+            <>
+              <label className="text-xs text-gray-400">Team:</label>
+              <select
+                value={lead.assigned_team || ''}
+                onChange={(e) => handleTeamAssign(e.target.value)}
+                disabled={saving}
+                className="text-xs rounded-lg border border-gray-200 px-2 py-1 bg-white text-gray-700 cursor-pointer"
+              >
+                <option value="">Unassigned</option>
+                {teams.filter((t) => t.id !== 'admin' && t.active).map((t) => (
+                  <option key={t.id} value={t.id}>{t.name}</option>
+                ))}
+              </select>
+              <select
+                value={lead.assigned_to || ''}
+                onChange={(e) => handleMemberAssign(e.target.value)}
+                disabled={saving}
+                className="text-xs rounded-lg border border-gray-200 px-2 py-1 bg-white text-gray-700 cursor-pointer"
+              >
+                <option value="">No individual</option>
+                {members.map((m) => (
+                  <option key={m} value={m}>{m}</option>
+                ))}
+              </select>
+            </>
+          ) : (
+            <>
+              <label className="text-xs text-gray-400">Team:</label>
+              <span className="text-xs font-medium text-navy bg-navy/5 px-2 py-1 rounded-lg">
+                {teams.find((t) => t.id === lead.assigned_team)?.name || 'Unassigned'}
+              </span>
+              {lead.assigned_to && (
+                <span className="text-xs text-gray-500">{lead.assigned_to}</span>
+              )}
+            </>
+          )}
         </div>
         <button
           onClick={() => setExpanded(!expanded)}
@@ -453,6 +494,7 @@ function LeadCard({ lead, onUpdate }: { lead: FireLead; onUpdate: (id: string, p
           {/* Call notes */}
           <NoteSection
             lead={lead}
+            members={members}
             onNoteAdded={(note) => onUpdate(lead.id, { call_notes: [...(lead.call_notes || []), note] })}
           />
 
@@ -493,13 +535,14 @@ function LeadCard({ lead, onUpdate }: { lead: FireLead; onUpdate: (id: string, p
   );
 }
 
-function MetricsTab({ leads }: { leads: FireLead[] }) {
+function MetricsTab({ leads, teams }: { leads: FireLead[]; teams: TeamConfig[] }) {
   const metrics = useMemo(() => {
     const total = leads.length;
     const byStatus: Record<string, number> = {};
     const byCity: Record<string, number> = {};
     const byMonth: Record<string, number> = {};
     const byAssignee: Record<string, number> = {};
+    const byTeam: Record<string, number> = {};
     let withPhone = 0;
     let totalNotes = 0;
 
@@ -507,6 +550,7 @@ function MetricsTab({ leads }: { leads: FireLead[] }) {
       byStatus[l.status] = (byStatus[l.status] || 0) + 1;
       if (l.city) byCity[l.city] = (byCity[l.city] || 0) + 1;
       if (l.assigned_to) byAssignee[l.assigned_to] = (byAssignee[l.assigned_to] || 0) + 1;
+      if (l.assigned_team) byTeam[l.assigned_team] = (byTeam[l.assigned_team] || 0) + 1;
       if (l.owner_phone || l.renter_phone || l.commercial_phone) withPhone++;
       totalNotes += (l.call_notes || []).length;
 
@@ -523,7 +567,7 @@ function MetricsTab({ leads }: { leads: FireLead[] }) {
     const topCities = Object.entries(byCity).sort((a, b) => b[1] - a[1]).slice(0, 8);
     const months = Object.entries(byMonth).sort((a, b) => a[0].localeCompare(b[0]));
 
-    return { total, byStatus, contactRate, conversionRate, pursuitRate, contacted, withPhone, totalNotes, topCities, months, byAssignee };
+    return { total, byStatus, contactRate, conversionRate, pursuitRate, contacted, withPhone, totalNotes, topCities, months, byAssignee, byTeam };
   }, [leads]);
 
   const funnelSteps = [
@@ -599,18 +643,23 @@ function MetricsTab({ leads }: { leads: FireLead[] }) {
         <div className="bg-white rounded-2xl border border-gray-200 p-6">
           <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-1.5">
             <UsersIcon className="w-4 h-4" />
-            By Assignee
+            By Team
           </h2>
           <div className="space-y-2">
-            {ASSIGNEES.map((a) => (
-              <div key={a} className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">{a}</span>
-                <span className="text-sm font-medium text-gray-700">{metrics.byAssignee[a] || 0}</span>
+            {teams.filter((t) => t.id !== 'admin' && t.active).map((t) => (
+              <div key={t.id} className="flex items-center justify-between">
+                <div>
+                  <span className="text-sm text-gray-600">{t.name}</span>
+                  {t.members.length > 0 && (
+                    <span className="text-[10px] text-gray-400 ml-1.5">({t.members.join(', ')})</span>
+                  )}
+                </div>
+                <span className="text-sm font-medium text-gray-700">{metrics.byTeam[t.id] || 0}</span>
               </div>
             ))}
             <div className="flex items-center justify-between pt-2 border-t border-gray-100">
               <span className="text-sm text-gray-400">Unassigned</span>
-              <span className="text-sm font-medium text-gray-700">{metrics.total - Object.values(metrics.byAssignee).reduce((a, b) => a + b, 0)}</span>
+              <span className="text-sm font-medium text-gray-700">{metrics.total - Object.values(metrics.byTeam).reduce((a, b) => a + b, 0)}</span>
             </div>
           </div>
         </div>
@@ -850,23 +899,131 @@ function TrainingTab() {
   );
 }
 
+// ---------------------------------------------------------------------------
+// AZ Fire Help tab — marketing materials & resources
+// ---------------------------------------------------------------------------
+
+const fireHelpResources = [
+  {
+    title: 'AZ Fire Help Website',
+    description: 'Public resource site — fire recovery guide, insurance claim walkthrough, checklists, and free tools for Arizona homeowners.',
+    url: 'https://azfirehelp.com',
+    icon: Globe,
+    action: 'Visit Site',
+    external: true,
+  },
+  {
+    title: 'Door-Drop Trifold Brochure',
+    description: 'Double-sided trifold (11x8.5 landscape) — covers our services, 6 recovery steps, insurance tips, and contact info. Print-ready PDF.',
+    url: '/AZ-Fire-Help-Brochure.pdf',
+    icon: FileDown,
+    action: 'Download PDF',
+    external: false,
+  },
+];
+
+function AZFireHelpTab() {
+  return (
+    <div className="space-y-6">
+      {/* Quick info bar */}
+      <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-wrap items-center gap-6">
+        <div className="flex items-center gap-2 text-sm">
+          <Globe className="w-4 h-4 text-gray-400" />
+          <a href="https://azfirehelp.com" target="_blank" rel="noopener noreferrer" className="text-navy font-semibold hover:underline">
+            azfirehelp.com
+          </a>
+        </div>
+        <div className="flex items-center gap-2 text-sm">
+          <Phone className="w-4 h-4 text-gray-400" />
+          <span className="text-gray-700 font-mono">623-400-8711</span>
+        </div>
+        <div className="text-xs text-gray-400">
+          Mesa, AZ &middot; Available 24/7 &middot; Insurance-covered services
+        </div>
+      </div>
+
+      {/* Resource cards */}
+      <div className="space-y-4">
+        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Resources</h2>
+        {fireHelpResources.map((item) => {
+          const Icon = item.icon;
+          return (
+            <a
+              key={item.title}
+              href={item.url}
+              target={item.external ? '_blank' : '_self'}
+              rel={item.external ? 'noopener noreferrer' : undefined}
+              download={!item.external ? true : undefined}
+              className="group flex items-start gap-5 bg-white rounded-xl border border-gray-200 p-5 hover:border-navy/30 hover:shadow-md transition-all"
+            >
+              <div className="w-11 h-11 rounded-lg bg-navy/5 flex items-center justify-center flex-shrink-0 group-hover:bg-navy/10 transition-colors">
+                <Icon className="w-5 h-5 text-navy" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base font-bold text-gray-800 group-hover:text-navy transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+              <div className="flex items-center gap-1.5 text-sm font-semibold text-navy opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-1">
+                {item.action}
+                {item.external && <ExternalLink className="w-3.5 h-3.5" />}
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      {/* Print instructions */}
+      <div className="bg-orange-50 border border-orange-200 rounded-xl p-5">
+        <h3 className="text-sm font-bold text-orange-800 mb-2">Brochure Print Instructions</h3>
+        <ul className="text-sm text-orange-700 space-y-1.5 leading-relaxed">
+          <li>&bull; Print double-sided on letter paper (8.5&times;11)</li>
+          <li>&bull; PDF is already landscape-formatted &mdash; no printer settings to change</li>
+          <li>&bull; Fold into thirds: right panel in first, then left panel over it</li>
+          <li>&bull; Front cover faces out, inside flap is first thing seen when opened</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Main component
+// ---------------------------------------------------------------------------
+
 export default function FireLeadList() {
+  const { session, loading: teamLoading, authenticate, logout: teamLogout, teams } = useTeamAuth();
   const [leads, setLeads] = useState<FireLead[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<FilterValue>('all');
+  const [teamFilter, setTeamFilter] = useState<string>('all');
   const [assigneeFilter, setAssigneeFilter] = useState<string>('all');
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState<SortKey>('newest');
   const [viewTab, setViewTab] = useState<ViewTab>('leads');
 
+  // Gather all unique member names across teams for admin view
+  const allMembers = useMemo(() => {
+    const set = new Set<string>();
+    teams.forEach((t) => t.members.forEach((m) => set.add(m)));
+    return Array.from(set);
+  }, [teams]);
+
+  // Members for current session
+  const sessionMembers = session?.isAdmin ? allMembers : (session?.members || []);
+
   useEffect(() => {
+    if (!session) return;
     getMcpClient('xcelerate')
       .callTool<FireLead[]>('list_fireleads', { limit: 200 })
       .then(setLeads)
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [session]);
 
   const handleUpdate = (id: string, patch: Partial<FireLead>) => {
     setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
@@ -885,7 +1042,18 @@ export default function FireLeadList() {
 
   const filtered = useMemo(() => {
     let result = deduped.filter((lead) => {
+      // Team visibility: non-admin users only see their team's leads
+      if (session && !session.isAdmin && lead.assigned_team !== session.teamId) return false;
       if (filter !== 'all' && lead.status !== filter) return false;
+      // Admin team filter
+      if (session?.isAdmin && teamFilter !== 'all') {
+        if (teamFilter === 'unassigned') {
+          if (lead.assigned_team) return false;
+        } else {
+          if (lead.assigned_team !== teamFilter) return false;
+        }
+      }
+      // Individual assignee filter
       if (assigneeFilter !== 'all') {
         if (assigneeFilter === 'unassigned') {
           if (lead.assigned_to) return false;
@@ -923,7 +1091,17 @@ export default function FireLeadList() {
     });
 
     return result;
-  }, [deduped, filter, assigneeFilter, search, sort]);
+  }, [deduped, filter, teamFilter, assigneeFilter, search, sort, session]);
+
+  // Show PIN gate if not authenticated (after all hooks)
+  if (teamLoading) {
+    return (
+      <div className="min-h-screen bg-warm flex items-center justify-center">
+        <Loader2 className="w-6 h-6 text-navy animate-spin" />
+      </div>
+    );
+  }
+  if (!session) return <TeamPinGate onSubmit={authenticate} />;
 
   // Count per status for badges (use deduped)
   const counts: Record<string, number> = { all: deduped.length };
@@ -935,17 +1113,34 @@ export default function FireLeadList() {
     <div className="min-h-screen bg-warm">
       <header className="bg-navy text-white">
         <div className="max-w-5xl mx-auto px-6 py-6">
-          <Link to="/" className="inline-flex items-center gap-1 text-white/60 hover:text-white text-sm mb-3 transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            Back to Hub
-          </Link>
+          <div className="flex items-center justify-between mb-3">
+            <Link to="/" className="inline-flex items-center gap-1 text-white/60 hover:text-white text-sm transition-colors">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Hub
+            </Link>
+            <button
+              onClick={teamLogout}
+              className="inline-flex items-center gap-1.5 text-white/50 hover:text-white text-xs transition-colors"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              Switch Team
+            </button>
+          </div>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-red-600 flex items-center justify-center">
               <Flame className="w-5 h-5 text-white" />
             </div>
-            <div>
+            <div className="flex-1">
               <h1 className="text-2xl font-bold">Fire Leads</h1>
               <p className="text-sm text-white/60">Live leads from fireleads.com</p>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 rounded-lg px-3 py-1.5">
+              {session.isAdmin ? (
+                <Shield className="w-3.5 h-3.5 text-gold" />
+              ) : (
+                <UsersIcon className="w-3.5 h-3.5 text-white/60" />
+              )}
+              <span className="text-sm font-medium">{session.teamName}</span>
             </div>
           </div>
         </div>
@@ -996,13 +1191,27 @@ export default function FireLeadList() {
                 Training
               </span>
             </button>
+            <button
+              onClick={() => setViewTab('azfirehelp')}
+              className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+                viewTab === 'azfirehelp'
+                  ? 'border-orange-500 text-orange-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              <span className="flex items-center gap-1">
+                <Flame className="w-3.5 h-3.5" />
+                AZ Fire Help
+              </span>
+            </button>
           </div>
         </div>
       </div>
 
       <main className="max-w-5xl mx-auto px-6 py-6">
-        {viewTab === 'metrics' && <MetricsTab leads={deduped} />}
+        {viewTab === 'metrics' && <MetricsTab leads={session.isAdmin ? deduped : deduped.filter((l) => l.assigned_team === session.teamId)} teams={teams} />}
         {viewTab === 'training' && <TrainingTab />}
+        {viewTab === 'azfirehelp' && <AZFireHelpTab />}
 
         {viewTab === 'leads' && (
           <>
@@ -1019,14 +1228,27 @@ export default function FireLeadList() {
                 />
               </div>
               <div className="flex items-center gap-2">
+                {session.isAdmin && (
+                  <select
+                    value={teamFilter}
+                    onChange={(e) => setTeamFilter(e.target.value)}
+                    className="text-sm rounded-lg border border-gray-200 px-3 py-2 bg-white text-gray-700 cursor-pointer"
+                  >
+                    <option value="all">All Teams</option>
+                    {teams.filter((t) => t.id !== 'admin' && t.active).map((t) => (
+                      <option key={t.id} value={t.id}>{t.name}</option>
+                    ))}
+                    <option value="unassigned">Unassigned</option>
+                  </select>
+                )}
                 <select
                   value={assigneeFilter}
                   onChange={(e) => setAssigneeFilter(e.target.value)}
                   className="text-sm rounded-lg border border-gray-200 px-3 py-2 bg-white text-gray-700 cursor-pointer"
                 >
                   <option value="all">All Assignees</option>
-                  {ASSIGNEES.map((a) => (
-                    <option key={a} value={a}>{a}</option>
+                  {sessionMembers.map((m) => (
+                    <option key={m} value={m}>{m}</option>
                   ))}
                   <option value="unassigned">Unassigned</option>
                 </select>
@@ -1043,8 +1265,8 @@ export default function FireLeadList() {
               </div>
             </div>
 
-            {/* Filter chips */}
-            <div className="flex gap-2 flex-wrap mb-6">
+            {/* Filter chips + route button */}
+            <div className="flex gap-2 flex-wrap mb-6 items-center">
               <button
                 onClick={() => setFilter('all')}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
@@ -1064,6 +1286,29 @@ export default function FireLeadList() {
                   {o.label} {counts[o.value] ? <span className="ml-1 text-xs opacity-60">{counts[o.value]}</span> : null}
                 </button>
               ))}
+
+              {/* Route optimization button */}
+              {(() => {
+                const routableLeads = filtered.filter((l) => l.address && ['new', 'contacted', 'pursuing', 'no_answer'].includes(l.status));
+                if (routableLeads.length === 0) return null;
+                const waypoints = routableLeads.slice(0, 25).map((l) => encodeURIComponent(l.address!));
+                // Google Maps directions URL: first address as origin, last as destination, rest as optimized waypoints
+                const origin = waypoints[0];
+                const destination = waypoints.length > 1 ? waypoints[waypoints.length - 1] : origin;
+                const middle = waypoints.length > 2 ? waypoints.slice(1, -1).join('|') : '';
+                const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}${middle ? `&waypoints=${middle}&optimize_waypoints=true` : ''}`;
+                return (
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-emerald-600 text-white hover:bg-emerald-700 transition-colors"
+                  >
+                    <Navigation className="w-3.5 h-3.5" />
+                    Route {routableLeads.length > 25 ? '25' : routableLeads.length} Stops
+                  </a>
+                );
+              })()}
             </div>
 
             {/* States */}
@@ -1092,7 +1337,7 @@ export default function FireLeadList() {
             {!loading && !error && filtered.length > 0 && (
               <div className="grid gap-4">
                 {filtered.map((lead) => (
-                  <LeadCard key={lead.id} lead={lead} onUpdate={handleUpdate} />
+                  <LeadCard key={lead.id} lead={lead} onUpdate={handleUpdate} isAdmin={session.isAdmin} teams={teams} members={sessionMembers} />
                 ))}
               </div>
             )}

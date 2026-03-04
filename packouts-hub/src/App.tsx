@@ -45,7 +45,6 @@ const ALL_SECTIONS: { label: string; apps: AppItem[]; ownerOnly?: boolean }[] = 
   {
     label: 'Marketing',
     apps: [
-      { id: 'az-fire-help', title: 'AZ Fire Help', desc: 'Homeowner resource site', url: '/az-fire-help', icon: Flame, color: 'bg-orange-500', internal: true },
       { id: 'websites', title: 'Websites', desc: 'Analytics & Search Console', url: '/websites', icon: Globe, color: 'bg-teal-500', internal: true },
     ],
   },

@@ -133,6 +133,7 @@ export function AuthProvider({ children, appId = 'hub' }: { children: ReactNode;
     setUser(null);
     setProfile(null);
     setError(null);
+    localStorage.removeItem('fireleads_team_pin');
   };
 
   return (
