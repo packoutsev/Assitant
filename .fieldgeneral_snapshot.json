@@ -1,0 +1,382 @@
+{
+  "2": {
+    "total": 9050,
+    "customer": "Distinctive Construction Group  LLC",
+    "doc": "1001"
+  },
+  "6": {
+    "total": 7629.04,
+    "customer": "Phillips Packout, Storage, and Packback",
+    "doc": "1002"
+  },
+  "10": {
+    "total": 10382.56,
+    "customer": "Mulvaney Packout, Packback, and Cleaning",
+    "doc": "1005"
+  },
+  "41": {
+    "total": 16114.92,
+    "customer": "Aburaab Residence Packout & Storage",
+    "doc": "1006"
+  },
+  "44": {
+    "total": 15654.11,
+    "customer": "Emily Kout Packback",
+    "doc": "1008"
+  },
+  "46": {
+    "total": 3408.13,
+    "customer": "25-77-C",
+    "doc": "1009"
+  },
+  "79": {
+    "total": 5742.89,
+    "customer": "Purofirst - Rodriguez",
+    "doc": "1010"
+  },
+  "93": {
+    "total": 7560.26,
+    "customer": "Harmon Garage & Packback",
+    "doc": "1011"
+  },
+  "96": {
+    "total": 19130.73,
+    "customer": "Joseph Pier - Luis - Packout and Storage",
+    "doc": "1012"
+  },
+  "98": {
+    "total": 10038.37,
+    "customer": "Aburaad - Pack Back",
+    "doc": "1013"
+  },
+  "101": {
+    "total": 3110.35,
+    "customer": "25-81-C",
+    "doc": "1014"
+  },
+  "102": {
+    "total": 0,
+    "customer": "25-80-C",
+    "doc": "1015"
+  },
+  "115": {
+    "total": 2300,
+    "customer": "Jaclyn Sanders Packback and Additional Storage",
+    "doc": "1016"
+  },
+  "271": {
+    "total": 9502.52,
+    "customer": "Janice Strapoli - Packout and Storage",
+    "doc": "1017"
+  },
+  "289": {
+    "total": 4548.25,
+    "customer": "Kevin Murphy Pack Back & Final Storage",
+    "doc": "1018"
+  },
+  "291": {
+    "total": 2475,
+    "customer": "Strong - Pack Back and Storage",
+    "doc": "1019"
+  },
+  "292": {
+    "total": 3118.4,
+    "customer": "McKenzie Oliver - Content Manipulation and Storage",
+    "doc": "1020"
+  },
+  "294": {
+    "total": 11923.26,
+    "customer": "Tucson National - Unit 1101 - Packout and Storage",
+    "doc": "1021"
+  },
+  "303": {
+    "total": 20312.23,
+    "customer": "Susank Packout",
+    "doc": "1022"
+  },
+  "340": {
+    "total": 3754.55,
+    "customer": "Kafora - Pack to Onsite Storage and Pack Back",
+    "doc": "1023"
+  },
+  "341": {
+    "total": 2800,
+    "customer": "Haskew - Pack Back",
+    "doc": "1024"
+  },
+  "342": {
+    "total": 4024.65,
+    "customer": "25-86-C",
+    "doc": "1025"
+  },
+  "368": {
+    "total": 293.5,
+    "customer": "Citrine 1009 - Packing, Tagging, & Content Manipulation",
+    "doc": "1026"
+  },
+  "379": {
+    "total": 5160.27,
+    "customer": "Odeum -  Cleaning, Storage, Pack Back",
+    "doc": "1028"
+  },
+  "387": {
+    "total": 25885.93,
+    "customer": "Stephen Clark Residence",
+    "doc": "1029"
+  },
+  "389": {
+    "total": 54458.49,
+    "customer": "Souther Residence",
+    "doc": "1031"
+  },
+  "451": {
+    "total": 3368.56,
+    "customer": "Strong - Pack Back and Storage",
+    "doc": "1032"
+  },
+  "469": {
+    "total": 10081.19,
+    "customer": "Citrine 123049",
+    "doc": "1033"
+  },
+  "487": {
+    "total": 13373.7,
+    "customer": "Bernice Heller",
+    "doc": "1035"
+  },
+  "488": {
+    "total": 4355.46,
+    "customer": "Stephen Clark Residence",
+    "doc": "1036"
+  },
+  "537": {
+    "total": 5117.17,
+    "customer": "Janice Strapoli - Packout and Storage",
+    "doc": "1038"
+  },
+  "540": {
+    "total": 10122.12,
+    "customer": "Cheryl Hupalo",
+    "doc": "1039"
+  },
+  "542": {
+    "total": 3525,
+    "customer": "25-86-C",
+    "doc": "1040"
+  },
+  "549": {
+    "total": 20993.9,
+    "customer": "Tracy Hill Packout, Cleaning, Return (25-90-C)",
+    "doc": "1042"
+  },
+  "551": {
+    "total": 60907.53,
+    "customer": "25-91-C",
+    "doc": "1043"
+  },
+  "794": {
+    "total": 9147.2,
+    "customer": "25-95-C",
+    "doc": "1045"
+  },
+  "824": {
+    "total": 3931.69,
+    "customer": "25-96-C",
+    "doc": "1046"
+  },
+  "825": {
+    "total": 4625.4,
+    "customer": "25-98-C",
+    "doc": "1047"
+  },
+  "826": {
+    "total": 9868.06,
+    "customer": "McKenzie Oliver",
+    "doc": "1048"
+  },
+  "828": {
+    "total": 10992.02,
+    "customer": "Qaqish - Packback & Storage",
+    "doc": "1049"
+  },
+  "829": {
+    "total": 8537.48,
+    "customer": "ATI Restoration",
+    "doc": "1050"
+  },
+  "932": {
+    "total": 20462.92,
+    "customer": "25-102-C",
+    "doc": "1051"
+  },
+  "934": {
+    "total": 6633.72,
+    "customer": "25-103-C",
+    "doc": "1052"
+  },
+  "960": {
+    "total": 11362.17,
+    "customer": "25-106-C",
+    "doc": "1053"
+  },
+  "971": {
+    "total": 6426.14,
+    "customer": "25-100-C",
+    "doc": "1054"
+  },
+  "972": {
+    "total": 1780,
+    "customer": "25-107-C",
+    "doc": "1055"
+  },
+  "973": {
+    "total": 8000,
+    "customer": "25-76-C",
+    "doc": "1056"
+  },
+  "974": {
+    "total": 3475,
+    "customer": "25-105-C",
+    "doc": "1057"
+  },
+  "1013": {
+    "total": 10477.54,
+    "customer": "Tracy Hill",
+    "doc": "1058"
+  },
+  "1041": {
+    "total": 20132.19,
+    "customer": "25-108-C",
+    "doc": "1059"
+  },
+  "1042": {
+    "total": 10166.39,
+    "customer": "25-102-C",
+    "doc": "1060"
+  },
+  "1043": {
+    "total": 9406.35,
+    "customer": "25-109-C",
+    "doc": "1061"
+  },
+  "1083": {
+    "total": 7899.66,
+    "customer": "Jose Torres - Flow State",
+    "doc": "1063"
+  },
+  "1084": {
+    "total": 0,
+    "customer": "25-100-C",
+    "doc": "1064"
+  },
+  "1087": {
+    "total": 2454.75,
+    "customer": "25-93-C",
+    "doc": "1065"
+  },
+  "1161": {
+    "total": 1636.5,
+    "customer": "25-106-C",
+    "doc": "1066"
+  },
+  "1275": {
+    "total": 11948.45,
+    "customer": "25-93-C",
+    "doc": "1067"
+  },
+  "1322": {
+    "total": 13556.58,
+    "customer": "25-116-C",
+    "doc": "1068"
+  },
+  "1323": {
+    "total": 3773.03,
+    "customer": "25-115-C",
+    "doc": "1069"
+  },
+  "1326": {
+    "total": 10753.6,
+    "customer": "25-93-C",
+    "doc": "1070"
+  },
+  "1350": {
+    "total": 4012.47,
+    "customer": "25-98-C",
+    "doc": "1071"
+  },
+  "1368": {
+    "total": 1881.41,
+    "customer": "25-93-C",
+    "doc": "1072"
+  },
+  "1370": {
+    "total": 8458.76,
+    "customer": "25-108-C",
+    "doc": "1073"
+  },
+  "1423": {
+    "total": 3600,
+    "customer": "Laila Modi",
+    "doc": "1074"
+  },
+  "1512": {
+    "total": 25000,
+    "customer": "25-117-C",
+    "doc": "1076"
+  },
+  "1517": {
+    "total": 29760.31,
+    "customer": "26-119-W",
+    "doc": "1077"
+  },
+  "1523": {
+    "total": 1187.9,
+    "customer": "Laila Modi",
+    "doc": "1078"
+  },
+  "1577": {
+    "total": 1740.11,
+    "customer": "Nora Reveles -Flow State",
+    "doc": "1079"
+  },
+  "1621": {
+    "total": 14349.53,
+    "customer": "26-121-W",
+    "doc": "1080"
+  },
+  "1623": {
+    "total": 6488.25,
+    "customer": "25-100-C",
+    "doc": "1081"
+  },
+  "1649": {
+    "total": 4754.07,
+    "customer": "Stephen Clark Residence",
+    "doc": "1083"
+  },
+  "1746": {
+    "total": 11300.78,
+    "customer": "26-123-C",
+    "doc": "1084"
+  },
+  "1813": {
+    "total": 3809.6,
+    "customer": "25-91-C",
+    "doc": "1085"
+  },
+  "1852": {
+    "total": 11300,
+    "customer": "Stephen Clark Residence",
+    "doc": "1086"
+  },
+  "1860": {
+    "total": 1497.73,
+    "customer": "25-116-C",
+    "doc": "1087"
+  },
+  "1875": {
+    "total": 11134.96,
+    "customer": "26-125-C",
+    "doc": "1088"
+  }
+}

@@ -1,0 +1,16 @@
+[Unit]
+Description=Phoenix Fire Dispatch Scanner
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=matth
+WorkingDirectory=/home/matth
+ExecStart=/home/matth/scanner-env/bin/python /home/matth/scanner.py
+Restart=always
+RestartSec=10
+Environment=HOME=/home/matth
+
+[Install]
+WantedBy=multi-user.target

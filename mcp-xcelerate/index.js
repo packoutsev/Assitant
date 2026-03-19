@@ -39,7 +39,7 @@ function initFirestore() {
 
   // Fall back to Application Default Credentials
   log("No service account key found, using Application Default Credentials");
-  return new Firestore();
+  return new Firestore({ projectId: process.env.GOOGLE_CLOUD_PROJECT || "packouts-assistant-1800" });
 }
 
 // ---------------------------------------------------------------------------

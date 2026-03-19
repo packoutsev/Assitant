@@ -1,4 +1,4 @@
-import { GraduationCap, Warehouse, ListChecks, Flame, Briefcase, Globe, ExternalLink, ChevronRight, BookOpen, BookMarked, DollarSign, LogOut, Users, Phone, Home, ClipboardCheck, CalendarDays } from 'lucide-react';
+import { GraduationCap, Warehouse, ListChecks, Flame, Briefcase, Globe, ExternalLink, ChevronRight, BookOpen, BookMarked, DollarSign, LogOut, Users, Phone, Home, ClipboardCheck, CalendarDays, NotebookPen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { LucideIcon } from 'lucide-react';
 import { useAuth } from './auth/AuthContext';
@@ -23,6 +23,7 @@ const ALL_SECTIONS: { label: string; apps: AppItem[]; ownerOnly?: boolean }[] = 
       { id: 'ar', title: 'A/R', desc: 'Aging & collections', url: '/ar', icon: DollarSign, color: 'bg-emerald-600', internal: true },
       { id: 'wiki', title: 'Wiki', desc: 'Technical docs & architecture', url: '/wiki', icon: BookOpen, color: 'bg-gray-700', internal: true },
       { id: 'journal', title: 'Build Journal', desc: 'Daily build log', url: '/journal', icon: BookMarked, color: 'bg-amber-600', internal: true },
+      { id: 'workbook', title: 'Workbook', desc: 'Daily field notes', url: '/workbook', icon: NotebookPen, color: 'bg-orange-500', internal: true },
       { id: 'calendar', title: 'Calendar', desc: 'Schedule & appointments', url: '/calendar', icon: CalendarDays, color: 'bg-sky-600', internal: true },
       { id: 'team', title: 'Team', desc: 'Manage users & roles', url: '/users', icon: Users, color: 'bg-indigo-500', internal: true },
     ],

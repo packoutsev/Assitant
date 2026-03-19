@@ -120,10 +120,19 @@ export function AuthProvider({ children, appId = 'hub' }: { children: ReactNode;
         setError(data.error || 'Verification failed.');
         return false;
       }
-      await signInWithCustomToken(auth, data.token);
+      try {
+        await signInWithCustomToken(auth, data.token);
+      } catch (authErr: unknown) {
+        const msg = authErr instanceof Error ? authErr.message : String(authErr);
+        console.error('signInWithCustomToken failed:', msg);
+        setError(`Sign-in failed: ${msg}`);
+        return false;
+      }
       return true;
-    } catch {
-      setError('Verification failed. Please try again.');
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error('verifyCode error:', msg);
+      setError(`Verification failed: ${msg}`);
       return false;
     }
   };

@@ -16,6 +16,7 @@ import UserManagement from './users/UserManagement'
 import CallTrainer from './call-trainer/CallTrainer'
 import CleaningTickSheet from './tick-sheet/CleaningTickSheet'
 import CalendarPage from './calendar/CalendarPage'
+import Workbook from './workbook/Workbook'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -41,6 +42,7 @@ createRoot(document.getElementById('root')!).render(
                 <Route path="/call-trainer/*" element={<CallTrainer />} />
                 <Route path="/tick-sheet" element={<CleaningTickSheet />} />
                 <Route path="/calendar" element={<CalendarPage />} />
+                <Route path="/workbook" element={<Workbook />} />
               </Routes>
             </ProtectedRoute>
           } />

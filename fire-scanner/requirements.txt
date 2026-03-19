@@ -1,0 +1,4 @@
+faster-whisper
+webrtcvad
+requests
+python-dotenv

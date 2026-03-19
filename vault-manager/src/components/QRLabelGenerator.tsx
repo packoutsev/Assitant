@@ -1,7 +1,5 @@
 import { useState, useRef, useCallback } from 'react';
-import { QRCodeSVG } from 'qrcode.react';
 import { X, Printer, Plus, Trash2, Package, Tag } from 'lucide-react';
-import { encodeQRPayload } from '../types';
 import { useWarehouse } from '../contexts/WarehouseContext';
 
 interface LabelItem {
@@ -13,13 +11,9 @@ interface LabelItem {
   packoutDate: string;
 }
 
-/** Brother QL label: 62mm wide continuous roll.
- *  62mm x 40mm label (landscape) for each box/tag sticker. */
-const LABEL_W_MM = 62;
-const LABEL_H_MM = 40;
-
-const TAG_BG = '#dc2626';
-const BOX_BG = '#16a34a';
+/** Label size: 2.4" x 3.9" */
+const LABEL_W_IN = 3.9;
+const LABEL_H_IN = 2.4;
 
 export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
   const { customers } = useWarehouse();
@@ -39,7 +33,6 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
 
   const allCustomerNames = customers.map(c => c.name).sort();
 
-  // Always auto-fill project number when a customer is selected
   const handleCustomerChange = (name: string) => {
     setCustomer(name);
     const match = customers.find(c => c.name === name || c.aliases.includes(name));
@@ -101,41 +94,27 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
     printWindow.document.write(`<!DOCTYPE html>
 <html><head><title>Labels - 1-800-Packouts</title>
 <style>
-  @page { size: ${LABEL_W_MM}mm ${LABEL_H_MM}mm; margin: 0; }
+  @page { size: ${LABEL_W_IN}in ${LABEL_H_IN}in; margin: 0; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: Arial, Helvetica, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: Arial, Helvetica, sans-serif; }
   .label {
-    width: ${LABEL_W_MM}mm;
-    height: ${LABEL_H_MM}mm;
+    width: ${LABEL_W_IN}in;
+    height: ${LABEL_H_IN}in;
     page-break-after: always;
     display: flex;
-    align-items: center;
-    gap: 2mm;
-    padding: 2mm;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.15in 0.2in;
     overflow: hidden;
     color: #000;
+    background: #fff;
   }
   .label:last-child { page-break-after: auto; }
-  .tag-label { background: ${TAG_BG}; }
-  .box-label { background: ${BOX_BG}; }
-  .qr-wrap {
-    flex-shrink: 0;
-    padding: 1mm;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .qr-wrap svg { width: 24mm; height: 24mm; }
-  .info {
-    flex: 1;
-    min-width: 0;
-    color: #000;
-  }
-  .info .type-num { font-size: 18pt; font-weight: 900; line-height: 1; }
-  .info .project { font-size: 9pt; font-weight: 800; margin-top: 1mm; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .info .project-id { font-size: 8pt; font-weight: 700; margin-top: 0.5mm; }
-  .info .date { font-size: 7pt; font-weight: 600; margin-top: 0.5mm; }
-  .info .brand { font-size: 5pt; margin-top: 1.5mm; opacity: 0.7; }
+  .type-num { font-size: 32pt; font-weight: 900; line-height: 1; letter-spacing: -0.5pt; }
+  .customer { font-size: 14pt; font-weight: 800; margin-top: 0.06in; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .project-id { font-size: 11pt; font-weight: 700; margin-top: 0.03in; }
+  .date { font-size: 9pt; font-weight: 600; margin-top: 0.03in; color: #333; }
+  .brand { font-size: 7pt; margin-top: 0.08in; color: #999; }
 </style>
 </head><body>`);
 
@@ -154,8 +133,6 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
     return `${m}/${day}/${y}`;
   };
 
-  const labelBg = (item: LabelItem) => item.type === 'tag' ? TAG_BG : BOX_BG;
-
   const totalQueued = items.length;
   const boxesQueued = items.filter(i => i.type === 'box').length;
   const tagsQueued = items.filter(i => i.type === 'tag').length;
@@ -169,7 +146,7 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
           <div className="flex items-center gap-2">
             <Printer className="w-5 h-5 text-gray-400" />
             <h2 className="text-lg font-bold text-gray-100">Print Job Labels</h2>
-            <span className="text-xs text-gray-500">Brother QL — 62mm</span>
+            <span className="text-xs text-gray-500">2.4" x 3.9"</span>
           </div>
           <button onClick={onClose} className="p-1.5 rounded hover:bg-gray-800 text-gray-400 hover:text-gray-200">
             <X className="w-5 h-5" />
@@ -218,11 +195,11 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
               />
             </div>
 
-            {/* Boxes — green */}
-            <div className="border border-green-800/50 rounded-lg p-3 space-y-2" style={{ background: 'rgba(22,163,74,0.08)' }}>
+            {/* Boxes */}
+            <div className="border border-gray-700 rounded-lg p-3 space-y-2">
               <div className="flex items-center gap-1.5">
-                <Package className="w-4 h-4 text-green-400" />
-                <span className="text-sm font-bold text-green-400">Boxes</span>
+                <Package className="w-4 h-4 text-gray-400" />
+                <span className="text-sm font-bold text-gray-300">Boxes</span>
               </div>
               <div className="flex gap-2">
                 <div className="flex-1">
@@ -233,7 +210,7 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
                     onChange={e => setBoxCount(e.target.value)}
                     min="0"
                     max="200"
-                    className="w-full bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-sm text-gray-100 focus:outline-none focus:border-green-500"
+                    className="w-full bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-sm text-gray-100 focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div className="flex-1">
@@ -243,17 +220,17 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
                     value={boxStart}
                     onChange={e => setBoxStart(e.target.value)}
                     min="1"
-                    className="w-full bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-sm text-gray-100 focus:outline-none focus:border-green-500"
+                    className="w-full bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-sm text-gray-100 focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
             </div>
 
-            {/* TAGs — red */}
-            <div className="border border-red-800/50 rounded-lg p-3 space-y-2" style={{ background: 'rgba(220,38,38,0.08)' }}>
+            {/* TAGs */}
+            <div className="border border-gray-700 rounded-lg p-3 space-y-2">
               <div className="flex items-center gap-1.5">
-                <Tag className="w-4 h-4 text-red-400" />
-                <span className="text-sm font-bold text-red-400">TAGs</span>
+                <Tag className="w-4 h-4 text-gray-400" />
+                <span className="text-sm font-bold text-gray-300">TAGs</span>
               </div>
               <div className="flex gap-2">
                 <div className="flex-1">
@@ -264,7 +241,7 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
                     onChange={e => setTagCount(e.target.value)}
                     min="0"
                     max="500"
-                    className="w-full bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-sm text-gray-100 focus:outline-none focus:border-red-500"
+                    className="w-full bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-sm text-gray-100 focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div className="flex-1">
@@ -274,7 +251,7 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
                     value={tagStart}
                     onChange={e => setTagStart(e.target.value)}
                     min="1"
-                    className="w-full bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-sm text-gray-100 focus:outline-none focus:border-red-500"
+                    className="w-full bg-gray-800 border border-gray-600 rounded px-2.5 py-1.5 text-sm text-gray-100 focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
@@ -297,19 +274,16 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
                   <span className="text-xs font-medium text-gray-400">
                     {totalQueued} label{totalQueued !== 1 ? 's' : ''}
                     <span className="text-gray-600"> — </span>
-                    {boxesQueued > 0 && <span className="text-green-400">{boxesQueued} box{boxesQueued !== 1 ? 'es' : ''}</span>}
+                    {boxesQueued > 0 && <span className="text-gray-300">{boxesQueued} box{boxesQueued !== 1 ? 'es' : ''}</span>}
                     {boxesQueued > 0 && tagsQueued > 0 && <span className="text-gray-600">, </span>}
-                    {tagsQueued > 0 && <span className="text-red-400">{tagsQueued} TAG{tagsQueued !== 1 ? 's' : ''}</span>}
+                    {tagsQueued > 0 && <span className="text-gray-300">{tagsQueued} TAG{tagsQueued !== 1 ? 's' : ''}</span>}
                   </span>
                   <button onClick={() => setItems([])} className="text-xs text-red-400 hover:text-red-300">Clear</button>
                 </div>
                 <div className="space-y-1 max-h-48 overflow-y-auto">
                   {items.map(item => (
                     <div key={item.id} className="flex items-center gap-2 px-2 py-1 bg-gray-800 rounded text-xs">
-                      <span
-                        className="font-bold px-1.5 py-0.5 rounded text-[10px] text-white"
-                        style={{ backgroundColor: labelBg(item) }}
-                      >
+                      <span className="font-bold px-1.5 py-0.5 rounded text-[10px] text-gray-200 bg-gray-700">
                         {item.type === 'tag' ? 'TAG' : 'BOX'}
                       </span>
                       <span className="font-mono font-bold text-gray-200">#{item.itemNumber}</span>
@@ -329,49 +303,35 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
             {items.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-gray-600 text-sm gap-2">
                 <p>Set up your job details, then generate labels</p>
-                <p className="text-[10px] text-gray-700">
-                  <span className="inline-block w-2.5 h-2.5 rounded" style={{ background: BOX_BG }} /> = Box (green) &nbsp;
-                  <span className="inline-block w-2.5 h-2.5 rounded" style={{ background: TAG_BG }} /> = TAG (red)
-                </p>
+                <p className="text-[10px] text-gray-700">Labels print black text on your colored label stock</p>
               </div>
             ) : (
               <div className="space-y-3">
-                {items.map(item => {
-                  const bg = labelBg(item);
-                  const payload = encodeQRPayload(item);
-                  return (
-                    <div
-                      key={item.id}
-                      className="rounded-lg shadow-lg mx-auto flex overflow-hidden"
-                      style={{ width: `${LABEL_W_MM}mm`, height: `${LABEL_H_MM}mm`, backgroundColor: bg, padding: '2mm' }}
-                    >
-                      {/* QR — white modules on colored bg need inverted colors for scanning */}
-                      <div className="flex-shrink-0 flex items-center justify-center">
-                        <QRCodeSVG value={payload} size={96} level="M" bgColor="transparent" fgColor="#000000" />
-                      </div>
-                      {/* Info — black text on colored background */}
-                      <div className="flex-1 min-w-0 overflow-hidden flex flex-col justify-center pl-[2mm]" style={{ color: '#000' }}>
-                        <div className="font-black leading-none" style={{ fontSize: '18pt' }}>
-                          {item.type === 'tag' ? 'TAG' : 'BOX'} {item.itemNumber}
-                        </div>
-                        <div className="font-extrabold mt-[1mm] truncate" style={{ fontSize: '9pt' }}>
-                          {item.customer}
-                        </div>
-                        {item.projectNumber && (
-                          <div className="font-bold mt-[0.5mm]" style={{ fontSize: '8pt' }}>
-                            #{item.projectNumber}
-                          </div>
-                        )}
-                        <div className="font-semibold mt-[0.5mm]" style={{ fontSize: '7pt' }}>
-                          Packout: {formatDate(item.packoutDate)}
-                        </div>
-                        <div className="mt-[1mm]" style={{ fontSize: '5pt', opacity: 0.7 }}>
-                          1-800-PACKOUTS East Valley
-                        </div>
-                      </div>
+                {items.map(item => (
+                  <div
+                    key={item.id}
+                    className="rounded border border-gray-700 mx-auto flex flex-col justify-center bg-white"
+                    style={{ width: `${LABEL_W_IN}in`, height: `${LABEL_H_IN}in`, padding: '0.15in 0.2in' }}
+                  >
+                    <div className="font-black leading-none text-black" style={{ fontSize: '32pt', letterSpacing: '-0.5pt' }}>
+                      {item.type === 'tag' ? 'TAG' : 'BOX'} {item.itemNumber}
                     </div>
-                  );
-                })}
+                    <div className="font-extrabold text-black truncate" style={{ fontSize: '14pt', marginTop: '0.06in' }}>
+                      {item.customer}
+                    </div>
+                    {item.projectNumber && (
+                      <div className="font-bold text-black" style={{ fontSize: '11pt', marginTop: '0.03in' }}>
+                        #{item.projectNumber}
+                      </div>
+                    )}
+                    <div className="font-semibold" style={{ fontSize: '9pt', marginTop: '0.03in', color: '#333' }}>
+                      Packout: {formatDate(item.packoutDate)}
+                    </div>
+                    <div style={{ fontSize: '7pt', marginTop: '0.08in', color: '#999' }}>
+                      1-800-PACKOUTS East Valley
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -379,33 +339,25 @@ export default function QRLabelGenerator({ onClose }: { onClose: () => void }) {
 
         {/* Print-ready HTML (hidden) */}
         <div ref={printRef} className="hidden">
-          {items.map(item => {
-            const payload = encodeQRPayload(item);
-            return (
-              <div key={item.id} className={`label ${item.type === 'tag' ? 'tag-label' : 'box-label'}`}>
-                <div className="qr-wrap">
-                  <QRCodeSVG value={payload} size={200} level="M" bgColor="transparent" fgColor="#000000" />
-                </div>
-                <div className="info">
-                  <div className="type-num">
-                    {item.type === 'tag' ? 'TAG' : 'BOX'} {item.itemNumber}
-                  </div>
-                  <div className="project">{item.customer}</div>
-                  {item.projectNumber && (
-                    <div className="project-id">#{item.projectNumber}</div>
-                  )}
-                  <div className="date">Packout: {formatDate(item.packoutDate)}</div>
-                  <div className="brand">1-800-PACKOUTS East Valley</div>
-                </div>
+          {items.map(item => (
+            <div key={item.id} className="label">
+              <div className="type-num">
+                {item.type === 'tag' ? 'TAG' : 'BOX'} {item.itemNumber}
               </div>
-            );
-          })}
+              <div className="customer">{item.customer}</div>
+              {item.projectNumber && (
+                <div className="project-id">#{item.projectNumber}</div>
+              )}
+              <div className="date">Packout: {formatDate(item.packoutDate)}</div>
+              <div className="brand">1-800-PACKOUTS East Valley</div>
+            </div>
+          ))}
         </div>
 
         {/* Footer */}
         <div className="border-t border-gray-700 px-4 py-3 flex items-center justify-between">
           <span className="text-xs text-gray-500">
-            62mm x 40mm for Brother QL continuous roll
+            2.4" x 3.9" — black text only (color from label stock)
           </span>
           <button
             onClick={handlePrint}

@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdxeditor/editor": "^3.52.4",
     "firebase": "^12.10.0",
     "lucide-react": "^0.511.0",
     "marked": "^17.0.3",

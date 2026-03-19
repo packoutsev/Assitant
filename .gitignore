@@ -95,3 +95,6 @@ gtd-capture-styles.css
 gtd-capture-features.css
 gtd-capture-app.js
 gtd-capture/
+
+# Separate projects (own git repos)
+fieldgeneral/

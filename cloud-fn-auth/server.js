@@ -155,11 +155,15 @@ app.post('/verify-code', async (req, res) => {
   try {
     const email = (req.body.email || '').trim().toLowerCase();
     const code = (req.body.code || '').trim();
+    console.log(`verify-code: email=${email}, code_length=${code.length}`);
     if (!email || !code) return res.status(400).json({ error: 'Email and code required.' });
 
     const codeRef = db.collection('login_codes').doc(email);
     const codeSnap = await codeRef.get();
-    if (!codeSnap.exists) return res.status(400).json({ error: 'No code found. Request a new one.' });
+    if (!codeSnap.exists) {
+      console.log(`verify-code: NO DOC for ${email}`);
+      return res.status(400).json({ error: 'No code found. Request a new one.' });
+    }
 
     const data = codeSnap.data();
 
@@ -230,6 +234,21 @@ app.post('/send-invite', async (req, res) => {
 // ---------------------------------------------------------------------------
 // Health
 // ---------------------------------------------------------------------------
+
+// Debug: check if a code exists (does NOT consume it)
+app.get('/debug-code/:email', async (req, res) => {
+  const email = req.params.email.toLowerCase();
+  const snap = await db.collection('login_codes').doc(email).get();
+  if (!snap.exists) return res.json({ exists: false });
+  const data = snap.data();
+  res.json({
+    exists: true,
+    attempts: data.attempts,
+    created_at: data.created_at?.toDate?.() || data.created_at,
+    expires_at: data.expires_at?.toDate?.() || data.expires_at,
+    expired: new Date() > (data.expires_at?.toDate?.() || new Date(data.expires_at)),
+  });
+});
 
 app.get('/health', (_req, res) => res.json({ ok: true }));
 

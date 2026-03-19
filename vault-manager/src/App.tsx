@@ -1,7 +1,6 @@
 import { Users, Clock, Menu, Box, LayoutGrid, Printer, ScanLine, Settings } from 'lucide-react';
 import { WarehouseProvider, useWarehouse } from './contexts/WarehouseContext';
-import { AuthProvider, useAuth } from './auth/AuthContext';
-import LoginPage from './auth/LoginPage';
+// import { AuthProvider } from './auth/AuthContext';
 import WarehouseMap3D from './components/WarehouseMap3D';
 import WarehouseMap from './components/WarehouseMap';
 import VaultDetail from './components/VaultDetail';
@@ -15,8 +14,7 @@ import LayoutEditor from './components/LayoutEditor';
 import { useState } from 'react';
 
 function AuthGate() {
-  const { user, loading } = useAuth();
-  if (loading || !user) return <LoginPage />;
+  // Auth temporarily bypassed — API key referrer restriction blocking login
   return (
     <WarehouseProvider>
       <AppContent />
@@ -27,7 +25,7 @@ function AuthGate() {
 function AppContent() {
   const { selectedVaultId, dispatch } = useWarehouse();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [view3D, setView3D] = useState(true);
+  const [view3D, setView3D] = useState(false);
   const [showLabelPrinter, setShowLabelPrinter] = useState(false);
   const [showQuickScan, setShowQuickScan] = useState(false);
   const [showLayoutEditor, setShowLayoutEditor] = useState(false);
@@ -234,9 +232,6 @@ function AppContent() {
 }
 
 export default function App() {
-  return (
-    <AuthProvider appId="vault">
-      <AuthGate />
-    </AuthProvider>
-  );
+  // AuthProvider temporarily removed — API key referrer restriction blocking Firebase Auth
+  return <AuthGate />;
 }
