@@ -6,6 +6,7 @@ import StatusBadge from './components/StatusBadge';
 import PhotoGrid from './components/PhotoGrid';
 import InvoiceTable from './components/InvoiceTable';
 import NoteTimeline from './components/NoteTimeline';
+import { formatDate } from '../lib/format';
 import type {
   XcelerateJob, ScheduleEntry, EncircleClaim, EncircleRoom, EncircleNote,
   EncircleClaimDetail, MoistureReading, EncircleEquipment, QBOInvoice, JobTab,
@@ -925,10 +926,6 @@ function Field({ label, value, mono, icon }: { label: string; value: string; mon
       </dd>
     </div>
   );
-}
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
 function DriveFileIcon({ mimeType }: { mimeType: string }) {

@@ -2,21 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, DollarSign, Loader2, Search, ChevronDown, ChevronUp, AlertTriangle, ExternalLink, CheckCircle } from 'lucide-react';
 import { getMcpClient } from '../jobs/McpClient';
+import { formatDate, formatCurrency } from '../lib/format';
 import type { AgingData, AgingInvoice, XcelerateJob, CollectionsData } from '../jobs/types';
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-function formatCurrency(amount?: number): string {
-  if (amount == null) return '—';
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
-}
-
-function formatDate(dateStr?: string): string {
-  if (!dateStr) return '—';
-  return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-}
 
 function formatPct(value: number, total: number): string {
   if (total === 0) return '0%';

@@ -148,7 +148,13 @@ export interface EncircleNote {
 }
 
 // Fire Leads
-export type FireLeadStatus = 'new' | 'contacted' | 'pursuing' | 'not_interested' | 'converted' | 'no_answer';
+export type FireLeadStatus = 'new' | 'attempted' | 'contacted' | 'waiting_on_adjuster' | 'pursuing' | 'converted' | 'lost';
+
+// Keep legacy values for backward compat with existing Firestore docs
+export type FireLeadStatusLegacy = 'no_answer' | 'not_interested';
+export type FireLeadStatusAny = FireLeadStatus | FireLeadStatusLegacy;
+
+export type LostReason = 'has_contractor' | 'homeowner_declined' | 'no_response' | 'bad_lead' | 'bad_data' | 'not_a_fit';
 
 export interface CallNote {
   text: string;
@@ -180,14 +186,23 @@ export interface FireLead {
   property_details?: string;
   property_value?: string;
   services?: string[];
-  status: FireLeadStatus;
+  status: FireLeadStatusAny;
+  lost_reason?: LostReason;
   assigned_to?: string;
   assigned_team?: string;
   source_email_id?: string;
   received_at?: string;
   updated_at?: string;
   contacted_at?: string;
+  follow_up_date?: string;
   call_notes?: CallNote[];
+  // Intel fields — captured during discovery calls
+  insurance_carrier?: string;
+  adjuster_name?: string;
+  adjuster_phone?: string;
+  competitor_name?: string;
+  gc_name?: string;
+  property_type_override?: string;
 }
 
 // Collections

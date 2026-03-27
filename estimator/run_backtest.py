@@ -117,6 +117,98 @@ JOBS = [
         },
         'diana': {'tags': 84, 'med_boxes': 101, 'pads': 103, 'total_rcv': 19736.35},
     },
+    # ── CROOK (Mar 2026, Tucson, 3 rooms — kitchen cabinets excluded from scope) ──
+    # Walkthrough estimated 5 rooms (106 TAGs, 197 boxes) but laundry+hallway excluded from final.
+    # Kitchen cabinets excluded from scope → 76 est boxes → 0 actual boxes.
+    # Family Room walkthrough was "best guess" on full room → TAGs dropped 78→41, boxes rose 10→26.
+    {
+        'name': 'Crook (with overrides)',
+        'date': '2026-03-25',
+        'mode': 'override',
+        'rooms': [
+            {'room_name': 'Kitchen', 'room_category': 'kitchen', 'density': 'light',
+             'override_tags': 7, 'override_boxes': 0},
+            {'room_name': 'Living Room', 'room_category': 'living_room', 'density': 'medium',
+             'override_tags': 9, 'override_boxes': 9},
+            {'room_name': 'Family Room', 'room_category': 'living_room', 'density': 'heavy',
+             'override_tags': 41, 'override_boxes': 26},
+        ],
+        'params': {
+            'drive_time_min': 120.0, 'storage_vaults': 5, 'storage_duration_months': 1,
+            'crew_size': 4, 'truck_loads': 2, 'carry_time_min': 5.0,
+            'target_margin': 0.65, 'apply_corrections': True,
+        },
+        'diana': {'tags': 57, 'med_boxes': 25, 'pads': 55, 'total_rcv': 10627.77},
+    },
+    {
+        'name': 'Crook (lookup only)',
+        'date': '2026-03-25',
+        'mode': 'lookup',
+        'rooms': [
+            {'room_name': 'Kitchen', 'room_category': 'kitchen', 'density': 'light'},
+            {'room_name': 'Living Room', 'room_category': 'living_room', 'density': 'medium'},
+            {'room_name': 'Family Room', 'room_category': 'living_room', 'density': 'heavy'},
+        ],
+        'params': {
+            'drive_time_min': 120.0, 'storage_vaults': 5, 'storage_duration_months': 1,
+            'crew_size': 4, 'truck_loads': 2, 'carry_time_min': 5.0,
+            'target_margin': 0.65, 'apply_corrections': True,
+        },
+        'diana': {'tags': 57, 'med_boxes': 25, 'pads': 55, 'total_rcv': 10627.77},
+    },
+    # ── HOLM (Feb-Mar 2026, Casa Grande, water loss, 5 rooms) ──
+    # IWT estimate: 74 TAGs, 142 boxes (140 med + 2 lg), 46 pads, 7 vaults x 2 mo = $21,832.69
+    # Final PO: 88 TAGs, 101 boxes (100 med + 1 lg), 72 pads, 7 vaults x 1 mo + 14 SF rack = $11,201.88
+    # Final is packout + handling + storage ONLY (no packback — billed separately per carrier).
+    # TAGs went UP 74→88 (+19%), boxes DOWN 142→101 (-29%), pads UP 46→72 (+57%).
+    # Cartage spreadsheet: 57 min drive, 1 truck load, crew 4, carry 4 min, pad_wrap 4 min.
+    # Rooms: Laundry, Kitchen, Living Room, Dining Room, Bathroom.
+    # Living Room was massive: 294 inventoried items + 97 stay items in Encircle.
+    {
+        'name': 'Holm (with overrides)',
+        'date': '2026-03-06',
+        'mode': 'override',
+        # Per-room actuals from Encircle Box Report (box__957940.xlsx).
+        # Med boxes = single med + (dbl med × 2). TAGs from TAG column. Stay boxes excluded.
+        'rooms': [
+            {'room_name': 'Laundry Room', 'room_category': 'laundry', 'density': 'light',
+             'override_tags': 0, 'override_boxes': 5},
+            {'room_name': 'Kitchen', 'room_category': 'kitchen', 'density': 'medium',
+             'override_tags': 4, 'override_boxes': 9},
+            {'room_name': 'Living Room', 'room_category': 'living_room', 'density': 'heavy',
+             'override_tags': 55, 'override_boxes': 53},
+            {'room_name': 'Dining Room', 'room_category': 'dining_room', 'density': 'heavy',
+             'override_tags': 28, 'override_boxes': 24},
+            {'room_name': 'Bathroom', 'room_category': 'bathroom', 'density': 'light',
+             'override_tags': 0, 'override_boxes': 1},
+        ],
+        'params': {
+            'drive_time_min': 57.0, 'storage_vaults': 7, 'storage_duration_months': 1,
+            'crew_size': 4, 'truck_loads': 1, 'carry_time_min': 4.0,
+            'target_margin': 0.65, 'apply_corrections': True,
+        },
+        # Combined PO ($11,201.88) + PB ($8,831.89) = $20,033.77 for full 5-phase comparison.
+        # PB had 15 lg boxes (vs 1 in PO) — items consolidated into larger boxes on return.
+        'diana': {'tags': 88, 'med_boxes': 100, 'pads': 72, 'total_rcv': 20033.77},
+    },
+    {
+        'name': 'Holm (lookup only)',
+        'date': '2026-03-06',
+        'mode': 'lookup',
+        'rooms': [
+            {'room_name': 'Laundry Room', 'room_category': 'laundry', 'density': 'light'},
+            {'room_name': 'Kitchen', 'room_category': 'kitchen', 'density': 'medium'},
+            {'room_name': 'Living Room', 'room_category': 'living_room', 'density': 'heavy'},
+            {'room_name': 'Dining Room', 'room_category': 'dining_room', 'density': 'heavy'},
+            {'room_name': 'Bathroom', 'room_category': 'bathroom', 'density': 'light'},
+        ],
+        'params': {
+            'drive_time_min': 57.0, 'storage_vaults': 7, 'storage_duration_months': 1,
+            'crew_size': 4, 'truck_loads': 1, 'carry_time_min': 4.0,
+            'target_margin': 0.65, 'apply_corrections': True,
+        },
+        'diana': {'tags': 88, 'med_boxes': 100, 'pads': 72, 'total_rcv': 20033.77},
+    },
 ]
 
 

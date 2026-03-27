@@ -77,6 +77,10 @@ async function sendEmail(to, subject, html) {
 // Email templates
 // ---------------------------------------------------------------------------
 
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
 function codeEmailHtml(name, code) {
   return `
 <div style="font-family:-apple-system,BlinkMacSystemFont,sans-serif;max-width:400px;margin:0 auto;padding:20px;">
@@ -85,7 +89,7 @@ function codeEmailHtml(name, code) {
       <span style="color:#f5c542;font-weight:900;font-size:24px;">P</span>
     </div>
   </div>
-  ${name ? `<p style="color:#64748b;font-size:14px;">Hi ${name},</p>` : ''}
+  ${name ? `<p style="color:#64748b;font-size:14px;">Hi ${escapeHtml(name)},</p>` : ''}
   <p style="color:#334155;font-size:14px;">Your sign-in code for 1-800-Packouts Hub:</p>
   <div style="text-align:center;margin:24px 0;">
     <span style="font-size:32px;font-weight:700;letter-spacing:8px;color:#1e293b;">${code}</span>
@@ -102,14 +106,14 @@ function inviteEmailHtml(name, email) {
       <span style="color:#f5c542;font-weight:900;font-size:24px;">P</span>
     </div>
   </div>
-  ${name ? `<p style="color:#334155;font-size:14px;">Hi ${name},</p>` : ''}
+  ${name ? `<p style="color:#334155;font-size:14px;">Hi ${escapeHtml(name)},</p>` : ''}
   <p style="color:#334155;font-size:14px;">You've been invited to the <strong>1-800-Packouts Hub</strong>.</p>
   <div style="text-align:center;margin:24px 0;">
-    <a href="https://packouts-hub.web.app" style="display:inline-block;background:#f5c542;color:#1e293b;font-weight:700;padding:12px 24px;border-radius:8px;text-decoration:none;font-size:14px;">
+    <a href="https://packoutsaz.com/hub/" style="display:inline-block;background:#f5c542;color:#1e293b;font-weight:700;padding:12px 24px;border-radius:8px;text-decoration:none;font-size:14px;">
       Sign in to Hub
     </a>
   </div>
-  <p style="color:#94a3b8;font-size:12px;text-align:center;">Sign in with this email address: <strong>${email}</strong></p>
+  <p style="color:#94a3b8;font-size:12px;text-align:center;">Sign in with this email address: <strong>${escapeHtml(email)}</strong></p>
 </div>`;
 }
 

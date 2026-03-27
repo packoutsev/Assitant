@@ -118,12 +118,12 @@ async function toolGetJob(db, { job_id }) {
 
   const job = formatJobFull(jobDoc);
 
-  // Fetch notes
-  const notesSnap = await jobRef.collection("notes").orderBy("created_at", "desc").get();
+  // Fetch notes + schedule in parallel
+  const [notesSnap, scheduleSnap] = await Promise.all([
+    jobRef.collection("notes").orderBy("created_at", "desc").get(),
+    jobRef.collection("schedule").orderBy("scheduled_date", "desc").get(),
+  ]);
   job.notes = notesSnap.docs.map(formatNote);
-
-  // Fetch schedule
-  const scheduleSnap = await jobRef.collection("schedule").orderBy("scheduled_date", "desc").get();
   job.schedule = scheduleSnap.docs.map((d) => formatSchedule(d));
 
   return job;
@@ -229,28 +229,34 @@ async function toolGetSchedule(db, { job_id, start_date, end_date }) {
     .orderBy("scheduled_date", "asc")
     .get();
 
-  // Enrich with parent job context
-  const jobCache = {};
-  const entries = [];
-
+  // Collect unique parent job IDs, then batch-fetch them in parallel
+  const parentIds = new Set();
   for (const doc of snap.docs) {
     const data = doc.data();
     const parentJobId = data.job_id || doc.ref.parent.parent?.id;
-
-    if (parentJobId && !jobCache[parentJobId]) {
-      const jobDoc = await db.collection("jobs").doc(parentJobId).get();
-      jobCache[parentJobId] = jobDoc.exists ? jobDoc.data() : {};
-    }
-
-    const jobData = jobCache[parentJobId] || {};
-    entries.push(
-      formatSchedule(doc, {
-        id: parentJobId,
-        customer_name: jobData.customer_name,
-        property_address: jobData.property_address,
-      })
-    );
+    if (parentJobId) parentIds.add(parentJobId);
   }
+
+  const jobCache = {};
+  if (parentIds.size > 0) {
+    const jobDocs = await Promise.all(
+      [...parentIds].map(id => db.collection("jobs").doc(id).get())
+    );
+    for (const jobDoc of jobDocs) {
+      jobCache[jobDoc.id] = jobDoc.exists ? jobDoc.data() : {};
+    }
+  }
+
+  const entries = snap.docs.map(doc => {
+    const data = doc.data();
+    const parentJobId = data.job_id || doc.ref.parent.parent?.id;
+    const jobData = jobCache[parentJobId] || {};
+    return formatSchedule(doc, {
+      id: parentJobId,
+      customer_name: jobData.customer_name,
+      property_address: jobData.property_address,
+    });
+  });
 
   return entries;
 }
@@ -317,8 +323,16 @@ function formatFireLead(doc) {
     property_value: d.property_value || null,
     services: d.services || [],
     status: d.status || "new",
+    lost_reason: d.lost_reason || null,
     assigned_to: d.assigned_to || null,
     assigned_team: d.assigned_team || null,
+    follow_up_date: d.follow_up_date || null,
+    insurance_carrier: d.insurance_carrier || null,
+    adjuster_name: d.adjuster_name || null,
+    adjuster_phone: d.adjuster_phone || null,
+    competitor_name: d.competitor_name || null,
+    gc_name: d.gc_name || null,
+    property_type_override: d.property_type_override || null,
     source_email_id: d.source_email_id || null,
     received_at: d.received_at?.toDate?.().toISOString() || d.received_at || null,
     updated_at: d.updated_at?.toDate?.().toISOString() || d.updated_at || null,
@@ -347,22 +361,38 @@ async function toolGetFireLead(db, { lead_id }) {
   return formatFireLead(doc);
 }
 
-async function toolUpdateFireLeadStatus(db, { lead_id, status, notes, assigned_to, assigned_team, add_note }) {
+async function toolUpdateFireLeadStatus(db, { lead_id, status, lost_reason, notes, assigned_to, assigned_team, add_note, follow_up_date, insurance_carrier, adjuster_name, adjuster_phone, competitor_name, gc_name, property_type_override }) {
   const ref = db.collection("fireleads").doc(lead_id);
   const doc = await ref.get();
   if (!doc.exists) throw new Error(`Fire lead ${lead_id} not found`);
+
+  // Validate: lost_reason required when setting status to lost
+  if (status === "lost" && !lost_reason && !doc.data().lost_reason) {
+    throw new Error("lost_reason is required when setting status to 'lost'");
+  }
 
   const update = { updated_at: Firestore.Timestamp.now() };
   if (status !== undefined) {
     update.status = status;
     // Track first contact timestamp
-    if (status === "contacted" && !doc.data().contacted_at) {
+    if ((status === "contacted" || status === "waiting_on_adjuster") && !doc.data().contacted_at) {
       update.contacted_at = Firestore.Timestamp.now();
     }
+    // Clear lost_reason when moving out of lost status
+    if (status !== "lost") {
+      update.lost_reason = null;
+    }
   }
-  if (notes !== undefined) update.notes = notes;
-  if (assigned_to !== undefined) update.assigned_to = assigned_to;
-  if (assigned_team !== undefined) update.assigned_team = assigned_team;
+  // Nullable fields — empty string clears the field (writes null to Firestore)
+  // lost_reason handled separately above (cleared when status moves out of "lost")
+  if (lost_reason !== undefined && (status === "lost" || status === undefined)) {
+    update.lost_reason = lost_reason || null;
+  }
+  const nullableFields = { notes, assigned_to, assigned_team, follow_up_date,
+    insurance_carrier, adjuster_name, adjuster_phone, competitor_name, gc_name, property_type_override };
+  for (const [k, v] of Object.entries(nullableFields)) {
+    if (v !== undefined) update[k] = v || null;
+  }
 
   // Append a timestamped note to call_notes array
   if (add_note && add_note.text) {
@@ -1077,7 +1107,7 @@ export function registerTools(server, db) {
     "List fire leads from fireleads.com, newest first. Filter by status or assigned SDR.",
     {
       limit: z.number().optional().describe("Max results (default 50)."),
-      status: z.enum(["new", "contacted", "pursuing", "not_interested", "converted", "no_answer"]).optional().describe("Filter by lead status."),
+      status: z.enum(["new", "attempted", "contacted", "waiting_on_adjuster", "pursuing", "converted", "lost"]).optional().describe("Filter by lead status."),
       assigned_to: z.string().optional().describe("Filter by assigned SDR name."),
       assigned_team: z.string().optional().describe("Filter by assigned team ID (e.g., 'team-1')."),
     },
@@ -1109,16 +1139,24 @@ export function registerTools(server, db) {
 
   server.tool(
     "update_firelead_status",
-    "Update a fire lead's status, notes, assignment, or add a timestamped call note.",
+    "Update a fire lead's status, notes, assignment, intel fields, or add a timestamped call note.",
     {
-      lead_id: z.string().describe("The Firestore document ID of the fire lead."),
-      status: z.enum(["new", "contacted", "pursuing", "not_interested", "converted", "no_answer"]).optional().describe("New status."),
-      notes: z.string().optional().describe("Update the incident notes field."),
-      assigned_to: z.string().optional().describe("Assign to an SDR (e.g., 'Vanessa', 'Diana', 'Matt')."),
-      assigned_team: z.string().optional().describe("Assign to a team (e.g., 'team-1', 'team-2', 'team-3')."),
+      lead_id: z.string().max(128).describe("The Firestore document ID of the fire lead."),
+      status: z.enum(["new", "attempted", "contacted", "waiting_on_adjuster", "pursuing", "converted", "lost"]).optional().describe("New pipeline status."),
+      lost_reason: z.enum(["has_contractor", "homeowner_declined", "no_response", "bad_lead", "bad_data", "not_a_fit"]).optional().describe("Why the lead was lost (required when status=lost)."),
+      notes: z.string().max(2000).optional().describe("Update the incident notes field."),
+      assigned_to: z.string().max(100).optional().describe("Assign to an SDR (e.g., 'Nano', 'Diana', 'Matt')."),
+      assigned_team: z.string().max(50).optional().describe("Assign to a team (e.g., 'team-1', 'team-2', 'team-3')."),
+      follow_up_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("Next follow-up date (YYYY-MM-DD)."),
+      insurance_carrier: z.string().max(200).optional().describe("Homeowner's insurance carrier name."),
+      adjuster_name: z.string().max(200).optional().describe("Assigned adjuster's name."),
+      adjuster_phone: z.string().max(30).optional().describe("Adjuster's phone number."),
+      competitor_name: z.string().max(200).optional().describe("Competitor on site or mentioned by homeowner."),
+      gc_name: z.string().max(200).optional().describe("General contractor or restoration company name."),
+      property_type_override: z.string().max(100).optional().describe("Manual property type (e.g., 'Apartment', 'Commercial', 'Single Family')."),
       add_note: z.object({
         text: z.string().describe("The note text."),
-        author: z.string().optional().describe("Who wrote the note (e.g., 'Matt', 'Vanessa')."),
+        author: z.string().optional().describe("Who wrote the note (e.g., 'Matt', 'Nano')."),
       }).optional().describe("Append a timestamped note to the call_notes array."),
     },
     async (args) => {

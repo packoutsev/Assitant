@@ -4,28 +4,54 @@ import {
   ArrowLeft, Flame, MapPin, Phone, User, Building2, ChevronDown, ChevronUp,
   Loader2, Clock, Search, ArrowUpDown, GraduationCap, ExternalLink,
   Home, DollarSign, Lightbulb, MessageSquare, Send, BarChart3, TrendingUp,
-  Users as UsersIcon, Globe, FileDown, LogOut, Shield, Navigation,
+  Users as UsersIcon, Globe, FileDown, LogOut, Shield, Navigation, Calendar,
+  Briefcase, Save,
 } from 'lucide-react';
 import { getMcpClient } from '../jobs/McpClient';
-import type { FireLead, FireLeadStatus, CallNote } from '../jobs/types';
+import { formatDate } from '../lib/format';
+import type { FireLead, FireLeadStatus, FireLeadStatusAny, LostReason, CallNote } from '../jobs/types';
 import { useTeamAuth, type TeamConfig } from './useTeamAuth';
 import TeamPinGate from './TeamPinGate';
 
 const MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
 
-const STATUS_OPTIONS: { value: FireLeadStatus; label: string; color: string }[] = [
-  { value: 'new', label: 'New', color: 'bg-blue-100 text-blue-700' },
-  { value: 'contacted', label: 'Contacted', color: 'bg-yellow-100 text-yellow-700' },
-  { value: 'pursuing', label: 'Pursuing', color: 'bg-purple-100 text-purple-700' },
-  { value: 'converted', label: 'Converted', color: 'bg-emerald-100 text-emerald-700' },
-  { value: 'no_answer', label: 'No Answer', color: 'bg-gray-100 text-gray-600' },
-  { value: 'not_interested', label: 'Not Interested', color: 'bg-red-100 text-red-600' },
+const STATUS_OPTIONS: { value: FireLeadStatus; label: string; color: string; tip: string }[] = [
+  { value: 'new', label: 'New', color: 'bg-blue-100 text-blue-700', tip: 'Just came in — not yet touched' },
+  { value: 'attempted', label: 'Attempted', color: 'bg-slate-100 text-slate-600', tip: 'Called, texted, or visited — no response yet' },
+  { value: 'contacted', label: 'Contacted', color: 'bg-yellow-100 text-yellow-700', tip: 'Actually spoke with someone' },
+  { value: 'waiting_on_adjuster', label: 'Waiting on Adjuster', color: 'bg-orange-100 text-orange-700', tip: 'Homeowner told to wait for adjuster decision' },
+  { value: 'pursuing', label: 'Pursuing', color: 'bg-purple-100 text-purple-700', tip: 'Actively working toward a packout' },
+  { value: 'converted', label: 'Converted', color: 'bg-emerald-100 text-emerald-700', tip: 'Got the job' },
+  { value: 'lost', label: 'Lost', color: 'bg-red-100 text-red-600', tip: 'Closed — select a reason below' },
+];
+
+const LEGACY_STATUS_MAP: Record<string, { label: string; color: string }> = {
+  no_answer: { label: 'No Answer (legacy)', color: 'bg-gray-100 text-gray-600' },
+  not_interested: { label: 'Not Interested (legacy)', color: 'bg-red-100 text-red-600' },
+};
+
+const LOST_REASONS: { value: LostReason; label: string; tip: string }[] = [
+  { value: 'has_contractor', label: 'Has Contractor', tip: 'Competitor already on site or hired (e.g. Kowalski, Arizona Packouts)' },
+  { value: 'homeowner_declined', label: 'Homeowner Declined', tip: 'Spoke to them, they said no thanks' },
+  { value: 'no_response', label: 'No Response', tip: 'Exhausted all attempts — never heard back' },
+  { value: 'bad_lead', label: 'Bad Lead', tip: 'Not a real opportunity — no insurance, too far, vacant property' },
+  { value: 'bad_data', label: 'Bad Data', tip: 'Wrong address, no fire at location, garbage fire, not a structure' },
+  { value: 'not_a_fit', label: 'Not a Fit', tip: 'Commercial vendor list, construction only, or outside our scope' },
+];
+
+const PROPERTY_TYPES = [
+  'Single Family Residence',
+  'Apartment/Multi-family',
+  'Townhome/Condo',
+  'Mobile/Manufactured Home',
+  'Commercial',
+  'Construction',
 ];
 
 // Team config is loaded dynamically from Firestore via useTeamAuth
 
-type FilterValue = 'all' | FireLeadStatus;
-type SortKey = 'newest' | 'oldest' | 'city_az' | 'city_za';
+type FilterValue = 'all' | FireLeadStatusAny | 'follow_up_due';
+type SortKey = 'newest' | 'oldest' | 'city_az' | 'city_za' | 'follow_up';
 type ViewTab = 'leads' | 'metrics' | 'training' | 'azfirehelp';
 
 const SORT_OPTIONS: { value: SortKey; label: string }[] = [
@@ -33,19 +59,27 @@ const SORT_OPTIONS: { value: SortKey; label: string }[] = [
   { value: 'oldest', label: 'Oldest First' },
   { value: 'city_az', label: 'City A → Z' },
   { value: 'city_za', label: 'City Z → A' },
+  { value: 'follow_up', label: 'Follow-up Soonest' },
 ];
 
-function statusColor(status: FireLeadStatus): string {
-  return STATUS_OPTIONS.find((o) => o.value === status)?.color || 'bg-gray-100 text-gray-600';
+function statusColor(status: FireLeadStatusAny): string {
+  const opt = STATUS_OPTIONS.find((o) => o.value === status);
+  if (opt) return opt.color;
+  return LEGACY_STATUS_MAP[status]?.color || 'bg-gray-100 text-gray-600';
 }
 
-function formatDate(date?: string): string {
-  if (!date) return '';
-  try {
-    return new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  } catch {
-    return date;
-  }
+function statusLabel(status: FireLeadStatusAny): string {
+  const opt = STATUS_OPTIONS.find((o) => o.value === status);
+  if (opt) return opt.label;
+  return LEGACY_STATUS_MAP[status]?.label || status;
+}
+
+function getFollowUpUrgency(date?: string): 'overdue' | 'today' | 'future' | null {
+  if (!date) return null;
+  const today = new Date().toISOString().slice(0, 10);
+  if (date < today) return 'overdue';
+  if (date === today) return 'today';
+  return 'future';
 }
 
 function getStreetName(address?: string): string {
@@ -253,6 +287,87 @@ function NoteSection({ lead, onNoteAdded, members }: { lead: FireLead; onNoteAdd
   );
 }
 
+const INTEL_FIELDS: { key: keyof FireLead; label: string; placeholder?: string; type?: 'text' | 'date' | 'select'; options?: string[] }[] = [
+  { key: 'insurance_carrier', label: 'Insurance Carrier', placeholder: 'e.g. State Farm, Allstate' },
+  { key: 'adjuster_name', label: 'Adjuster Name', placeholder: 'Name' },
+  { key: 'adjuster_phone', label: 'Adjuster Phone', placeholder: 'Phone' },
+  { key: 'competitor_name', label: 'Competitor on Site', placeholder: 'e.g. Kowalski' },
+  { key: 'gc_name', label: 'GC / Restoration Co', placeholder: 'e.g. Edge Restoration' },
+  { key: 'follow_up_date', label: 'Follow-up Date', type: 'date' },
+  { key: 'property_type_override', label: 'Property Type', type: 'select', options: PROPERTY_TYPES },
+];
+
+const INPUT_CLASS = 'w-full text-sm rounded-lg border border-sky-200 px-2.5 py-1.5 bg-white focus:outline-none focus:border-sky-400';
+
+function IntelSection({ lead, onUpdate }: { lead: FireLead; onUpdate: (patch: Partial<FireLead>) => void }) {
+  const initForm = () => Object.fromEntries(INTEL_FIELDS.map(f => [f.key, (lead[f.key] as string) || '']));
+  const [form, setForm] = useState<Record<string, string>>(initForm);
+  const [saving, setSaving] = useState(false);
+
+  const filledCount = Object.values(form).filter(Boolean).length;
+  const setField = (key: string, val: string) => setForm(prev => ({ ...prev, [key]: val }));
+
+  const handleSave = async () => {
+    setSaving(true);
+    try {
+      const patch: Record<string, string> = {};
+      for (const f of INTEL_FIELDS) {
+        if (form[f.key] !== ((lead[f.key] as string) || '')) patch[f.key] = form[f.key];
+      }
+      if (Object.keys(patch).length > 0) {
+        await getMcpClient('xcelerate').callTool('update_firelead_status', { lead_id: lead.id, ...patch });
+        onUpdate(patch);
+      }
+    } catch (e) {
+      console.error('Failed to save intel:', e);
+    }
+    setSaving(false);
+  };
+
+  const renderField = (f: typeof INTEL_FIELDS[number]) => (
+    <div key={f.key}>
+      <label className="text-[10px] text-sky-600 uppercase tracking-wider">{f.label}</label>
+      {f.type === 'select' ? (
+        <select value={form[f.key]} onChange={e => setField(f.key, e.target.value)} className={INPUT_CLASS}>
+          <option value="">Auto-detect</option>
+          {f.options!.map(t => <option key={t} value={t}>{t}</option>)}
+        </select>
+      ) : (
+        <input type={f.type || 'text'} value={form[f.key]} onChange={e => setField(f.key, e.target.value)} placeholder={f.placeholder} className={INPUT_CLASS} />
+      )}
+    </div>
+  );
+
+  return (
+    <details className="bg-sky-50 border border-sky-200 rounded-xl mt-2">
+      <summary className="px-3 py-2 text-xs font-semibold text-sky-700 cursor-pointer select-none hover:bg-sky-100 rounded-xl transition-colors flex items-center gap-1.5">
+        <Briefcase className="w-3 h-3" />
+        Intel {filledCount > 0 && <span className="text-sky-400">({filledCount}/{INTEL_FIELDS.length})</span>}
+      </summary>
+      <div className="px-3 pb-3 space-y-2 mt-1">
+        {renderField(INTEL_FIELDS[0])}
+        <div className="grid grid-cols-2 gap-2">
+          {renderField(INTEL_FIELDS[1])}
+          {renderField(INTEL_FIELDS[2])}
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {renderField(INTEL_FIELDS[3])}
+          {renderField(INTEL_FIELDS[4])}
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {renderField(INTEL_FIELDS[5])}
+          {renderField(INTEL_FIELDS[6])}
+        </div>
+        <div className="flex justify-end pt-1">
+          <button onClick={handleSave} disabled={saving} className="px-3 py-1.5 rounded-lg bg-sky-600 text-white text-xs font-medium disabled:opacity-40 hover:bg-sky-700 transition-colors flex items-center gap-1">
+            {saving ? <Loader2 className="w-3 h-3 animate-spin" /> : <><Save className="w-3 h-3" /> Save Intel</>}
+          </button>
+        </div>
+      </div>
+    </details>
+  );
+}
+
 function LeadCard({ lead, onUpdate, isAdmin, teams, members }: { lead: FireLead; onUpdate: (id: string, patch: Partial<FireLead>) => void; isAdmin: boolean; teams: TeamConfig[]; members: string[] }) {
   const [expanded, setExpanded] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -260,13 +375,30 @@ function LeadCard({ lead, onUpdate, isAdmin, teams, members }: { lead: FireLead;
   const handleStatusChange = async (newStatus: FireLeadStatus) => {
     setSaving(true);
     try {
-      await getMcpClient('xcelerate').callTool('update_firelead_status', {
-        lead_id: lead.id,
-        status: newStatus,
-      });
-      onUpdate(lead.id, { status: newStatus });
+      const patch: Partial<FireLead> = { status: newStatus };
+      const toolArgs: Record<string, string> = { lead_id: lead.id, status: newStatus };
+      if (newStatus !== 'lost') {
+        patch.lost_reason = undefined;
+        toolArgs.lost_reason = '';
+      }
+      await getMcpClient('xcelerate').callTool('update_firelead_status', toolArgs);
+      onUpdate(lead.id, patch);
     } catch (e) {
       console.error('Status update failed:', e);
+    }
+    setSaving(false);
+  };
+
+  const handleLostReasonChange = async (reason: LostReason) => {
+    setSaving(true);
+    try {
+      await getMcpClient('xcelerate').callTool('update_firelead_status', {
+        lead_id: lead.id,
+        lost_reason: reason,
+      });
+      onUpdate(lead.id, { lost_reason: reason });
+    } catch (e) {
+      console.error('Lost reason update failed:', e);
     }
     setSaving(false);
   };
@@ -304,6 +436,8 @@ function LeadCard({ lead, onUpdate, isAdmin, teams, members }: { lead: FireLead;
   const brief = useMemo(() => generateBrief(lead), [lead]);
   const streetName = getStreetName(lead.address);
   const isFire = /fire/i.test(lead.incident_type || '');
+  const followUpUrgency = getFollowUpUrgency(lead.follow_up_date);
+  const isLegacyStatus = lead.status === 'no_answer' || lead.status === 'not_interested';
 
   return (
     <div className="bg-white rounded-2xl border border-gray-200 p-5 hover:border-navy/10 transition-all">
@@ -321,16 +455,47 @@ function LeadCard({ lead, onUpdate, isAdmin, teams, members }: { lead: FireLead;
             </span>
           )}
         </div>
-        <select
-          value={lead.status}
-          onChange={(e) => handleStatusChange(e.target.value as FireLeadStatus)}
-          disabled={saving}
-          className={`text-xs font-semibold rounded-full px-2.5 py-1 border-0 cursor-pointer flex-shrink-0 ${statusColor(lead.status)} ${saving ? 'opacity-50' : ''}`}
-        >
-          {STATUS_OPTIONS.map((o) => (
-            <option key={o.value} value={o.value}>{o.label}</option>
-          ))}
-        </select>
+        <div className="flex flex-col items-end gap-1 flex-shrink-0">
+          <div className="relative group">
+            <select
+              value={isLegacyStatus ? '' : lead.status}
+              onChange={(e) => handleStatusChange(e.target.value as FireLeadStatus)}
+              disabled={saving}
+              className={`text-xs font-semibold rounded-full px-2.5 py-1 border-0 cursor-pointer ${statusColor(lead.status)} ${saving ? 'opacity-50' : ''}`}
+            >
+              {isLegacyStatus && (
+                <option value="" disabled>{statusLabel(lead.status)}</option>
+              )}
+              {STATUS_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value}>{o.label}</option>
+              ))}
+            </select>
+            {/* Tooltip showing current status meaning */}
+            <div className="absolute right-0 top-full mt-1 z-20 hidden group-hover:block w-48 bg-gray-900 text-white text-[10px] rounded-lg px-2.5 py-1.5 shadow-lg pointer-events-none">
+              {STATUS_OPTIONS.find((o) => o.value === lead.status)?.tip || LEGACY_STATUS_MAP[lead.status]?.label || ''}
+            </div>
+          </div>
+          {lead.status === 'lost' && (
+            <div className="relative group">
+              <select
+                value={lead.lost_reason || ''}
+                onChange={(e) => handleLostReasonChange(e.target.value as LostReason)}
+                disabled={saving}
+                className="text-[10px] font-medium rounded-full px-2 py-0.5 border-0 cursor-pointer bg-red-50 text-red-600"
+              >
+                <option value="" disabled>Select reason...</option>
+                {LOST_REASONS.map((r) => (
+                  <option key={r.value} value={r.value}>{r.label}</option>
+                ))}
+              </select>
+              {lead.lost_reason && (
+                <div className="absolute right-0 top-full mt-1 z-20 hidden group-hover:block w-52 bg-gray-900 text-white text-[10px] rounded-lg px-2.5 py-1.5 shadow-lg pointer-events-none">
+                  {LOST_REASONS.find((r) => r.value === lead.lost_reason)?.tip || ''}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Property image + address side by side */}
@@ -405,6 +570,34 @@ function LeadCard({ lead, onUpdate, isAdmin, teams, members }: { lead: FireLead;
           <p className="text-xs text-sky-800">{brief}</p>
         </div>
       </div>
+
+      {/* Follow-up badge + intel summary on collapsed card */}
+      {(lead.follow_up_date || lead.competitor_name || lead.insurance_carrier) && (
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          {lead.follow_up_date && (
+            <span className={`inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-lg ${
+              followUpUrgency === 'overdue' ? 'bg-red-100 text-red-700' :
+              followUpUrgency === 'today' ? 'bg-amber-100 text-amber-700' :
+              'bg-gray-100 text-gray-500'
+            }`}>
+              <Calendar className="w-3 h-3" />
+              Follow-up: {formatDate(lead.follow_up_date)}
+              {followUpUrgency === 'overdue' && ' (overdue)'}
+              {followUpUrgency === 'today' && ' (today)'}
+            </span>
+          )}
+          {lead.competitor_name && (
+            <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-lg bg-red-50 text-red-600">
+              Competitor: {lead.competitor_name}
+            </span>
+          )}
+          {lead.insurance_carrier && (
+            <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-lg bg-gray-100 text-gray-600">
+              {lead.insurance_carrier}
+            </span>
+          )}
+        </div>
+      )}
 
       {/* Assignment + expand */}
       <div className="flex items-center justify-between pt-3 border-t border-gray-100">
@@ -490,6 +683,12 @@ function LeadCard({ lead, onUpdate, isAdmin, teams, members }: { lead: FireLead;
               <p className="text-gray-700 mt-1 whitespace-pre-line">{lead.notes}</p>
             </div>
           )}
+          {lead.lost_reason && (
+            <div><span className="text-gray-400">Lost Reason:</span> <span className="text-red-600 font-medium">{LOST_REASONS.find((r) => r.value === lead.lost_reason)?.label || lead.lost_reason}</span></div>
+          )}
+
+          {/* Intel capture */}
+          <IntelSection lead={lead} onUpdate={(patch) => onUpdate(lead.id, patch)} />
 
           {/* Call notes */}
           <NoteSection
@@ -520,13 +719,16 @@ function LeadCard({ lead, onUpdate, isAdmin, teams, members }: { lead: FireLead;
               </ol>
               <p className="text-xs font-semibold text-amber-700 mt-2">Close</p>
               <p className="text-xs text-amber-900 italic">
-                "I really appreciate you talking to me. What we do is we come in and carefully pack up all your belongings — clothes, furniture, electronics, family photos, everything salvageable — and we store it safely while your home is being repaired. Your insurance covers it, so there's no out-of-pocket cost to you. I'm going to have our operations team reach out — is this the best number? And is there a good time for them to call?"
+                "I really appreciate you talking to me. What we do is we come in and carefully pack up all your belongings — clothes, furniture, electronics, family photos, everything salvageable — and we store it safely while your home is being repaired. Your insurance covers it, so there's no out-of-pocket cost to you. We also have a website, azfirehelp.com, with a step-by-step guide for what to do after a fire — I'll text you the link after we hang up. I'm going to have our operations team reach out — is this the best number? And is there a good time for them to call?"
               </p>
               <p className="text-xs font-semibold text-amber-700 mt-2">If Voicemail</p>
               <p className="text-xs text-amber-900 italic">
-                "Hi {lead.owner_name || '[OWNER NAME]'}, this is [YOUR NAME] from 1-800-Packouts. We work with insurance companies and fire departments in the area, and I'm calling about the {isFire ? 'fire' : 'incident'} at your home on {streetName || '[STREET]'}. We help protect and store your belongings while your home is being repaired, and it's covered by your insurance. If you'd like to learn more, please call or text us back at 623-300-2119. I hope you and your family are doing well."
+                "Hi {lead.owner_name || '[OWNER NAME]'}, this is [YOUR NAME] from 1-800-Packouts. We work with insurance companies and fire departments in the area, and I'm calling about the {isFire ? 'fire' : 'incident'} at your home on {streetName || '[STREET]'}. We help protect and store your belongings while your home is being repaired, and it's covered by your insurance. We also put together a free guide at azfirehelp.com with everything you need to know about the next steps — I'll text you the link. Feel free to call or text us back at 623-300-2119. I hope you and your family are doing well."
               </p>
-              <p className="text-xs text-amber-600 mt-1">After call: text azfirehelp.com link</p>
+              <p className="text-xs font-semibold text-amber-700 mt-2">Text Template (send after call or VM)</p>
+              <p className="text-xs text-amber-900 italic bg-amber-100/50 rounded-lg p-2 border border-amber-200">
+                "Hi {lead.owner_name || '[OWNER NAME]'}, this is [YOUR NAME] from 1-800-Packouts. I just tried reaching you about the {isFire ? 'fire' : 'incident'} at your home on {streetName || '[STREET]'}. We work with insurance companies and fire departments in the area, and we help protect and store your belongings while your home is being repaired — all covered by your insurance. We put together a free guide with everything you need to know about next steps: azfirehelp.com. Feel free to call or text us anytime at 623-300-2119. We're here to help."
+              </p>
             </div>
           </details>
         </div>
@@ -543,38 +745,52 @@ function MetricsTab({ leads, teams }: { leads: FireLead[]; teams: TeamConfig[] }
     const byMonth: Record<string, number> = {};
     const byAssignee: Record<string, number> = {};
     const byTeam: Record<string, number> = {};
+    const byLostReason: Record<string, number> = {};
     let withPhone = 0;
     let totalNotes = 0;
+    let followUpsDue = 0;
+    const today = new Date().toISOString().slice(0, 10);
 
     for (const l of leads) {
-      byStatus[l.status] = (byStatus[l.status] || 0) + 1;
+      // Normalize legacy statuses for counting
+      const normStatus = l.status === 'no_answer' ? 'attempted' : l.status === 'not_interested' ? 'lost' : l.status;
+      byStatus[normStatus] = (byStatus[normStatus] || 0) + 1;
       if (l.city) byCity[l.city] = (byCity[l.city] || 0) + 1;
       if (l.assigned_to) byAssignee[l.assigned_to] = (byAssignee[l.assigned_to] || 0) + 1;
       if (l.assigned_team) byTeam[l.assigned_team] = (byTeam[l.assigned_team] || 0) + 1;
       if (l.owner_phone || l.renter_phone || l.commercial_phone) withPhone++;
       totalNotes += (l.call_notes || []).length;
+      if (l.follow_up_date && l.follow_up_date <= today && normStatus !== 'converted' && normStatus !== 'lost') followUpsDue++;
+      if (l.lost_reason) byLostReason[l.lost_reason] = (byLostReason[l.lost_reason] || 0) + 1;
 
       const month = l.date?.substring(0, 7); // YYYY-MM
       if (month) byMonth[month] = (byMonth[month] || 0) + 1;
     }
 
-    const contacted = (byStatus['contacted'] || 0) + (byStatus['pursuing'] || 0) + (byStatus['converted'] || 0) + (byStatus['not_interested'] || 0);
+    // Progressive funnel: each step includes all downstream stages
+    const converted = byStatus['converted'] || 0;
+    const pursuing = (byStatus['pursuing'] || 0) + converted;
+    const waiting = (byStatus['waiting_on_adjuster'] || 0) + pursuing;
+    const contacted = (byStatus['contacted'] || 0) + waiting;
+    const attempted = (byStatus['attempted'] || 0) + contacted + (byStatus['lost'] || 0);
+
     const contactRate = total > 0 ? Math.round((contacted / total) * 100) : 0;
-    const conversionRate = total > 0 ? Math.round(((byStatus['converted'] || 0) / total) * 100) : 0;
-    const pursuing = (byStatus['pursuing'] || 0) + (byStatus['converted'] || 0);
+    const conversionRate = total > 0 ? Math.round((converted / total) * 100) : 0;
     const pursuitRate = contacted > 0 ? Math.round((pursuing / contacted) * 100) : 0;
 
     const topCities = Object.entries(byCity).sort((a, b) => b[1] - a[1]).slice(0, 8);
     const months = Object.entries(byMonth).sort((a, b) => a[0].localeCompare(b[0]));
 
-    return { total, byStatus, contactRate, conversionRate, pursuitRate, contacted, withPhone, totalNotes, topCities, months, byAssignee, byTeam };
+    return { total, byStatus, contactRate, conversionRate, pursuitRate, attempted, contacted, waiting, pursuing, converted, withPhone, totalNotes, topCities, months, byAssignee, byTeam, byLostReason, followUpsDue };
   }, [leads]);
 
   const funnelSteps = [
     { label: 'Total Leads', count: metrics.total, color: 'bg-blue-500' },
+    { label: 'Attempted', count: metrics.attempted, color: 'bg-slate-500' },
     { label: 'Contacted', count: metrics.contacted, color: 'bg-yellow-500' },
-    { label: 'Pursuing', count: (metrics.byStatus['pursuing'] || 0) + (metrics.byStatus['converted'] || 0), color: 'bg-purple-500' },
-    { label: 'Converted', count: metrics.byStatus['converted'] || 0, color: 'bg-emerald-500' },
+    { label: 'Waiting', count: metrics.waiting, color: 'bg-orange-500' },
+    { label: 'Pursuing', count: metrics.pursuing, color: 'bg-purple-500' },
+    { label: 'Converted', count: metrics.converted, color: 'bg-emerald-500' },
   ];
 
   return (
@@ -595,10 +811,10 @@ function MetricsTab({ leads, teams }: { leads: FireLead[]; teams: TeamConfig[] }
           <p className="text-3xl font-bold text-navy mt-1">{metrics.pursuitRate}%</p>
           <p className="text-[10px] text-gray-400">of contacted → pursuing+</p>
         </div>
-        <div className="bg-white rounded-2xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-400 uppercase tracking-wider">Converted</p>
-          <p className="text-3xl font-bold text-emerald-600 mt-1">{metrics.byStatus['converted'] || 0}</p>
-          <p className="text-[10px] text-gray-400">{metrics.conversionRate}% of total</p>
+        <div className={`bg-white rounded-2xl border p-4 ${metrics.followUpsDue > 0 ? 'border-red-300 bg-red-50' : 'border-gray-200'}`}>
+          <p className="text-xs text-gray-400 uppercase tracking-wider">Follow-ups Due</p>
+          <p className={`text-3xl font-bold mt-1 ${metrics.followUpsDue > 0 ? 'text-red-600' : 'text-navy'}`}>{metrics.followUpsDue}</p>
+          <p className="text-[10px] text-gray-400">{metrics.byStatus['converted'] || 0} converted ({metrics.conversionRate}%)</p>
         </div>
       </div>
 
@@ -665,6 +881,21 @@ function MetricsTab({ leads, teams }: { leads: FireLead[]; teams: TeamConfig[] }
         </div>
       </div>
 
+      {/* Lost reasons */}
+      {(metrics.byStatus['lost'] || 0) > 0 && (
+        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Lost Reasons</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 text-center">
+            {LOST_REASONS.map((r) => (
+              <div key={r.value}>
+                <p className="text-2xl font-bold text-red-600">{metrics.byLostReason[r.value] || 0}</p>
+                <p className="text-xs text-gray-400">{r.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Top cities + monthly volume */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="bg-white rounded-2xl border border-gray-200 p-6">
@@ -724,8 +955,8 @@ function MetricsTab({ leads, teams }: { leads: FireLead[]; teams: TeamConfig[] }
             <p className="text-xs text-gray-400">Total Notes Logged</p>
           </div>
           <div>
-            <p className="text-2xl font-bold text-navy">{metrics.byStatus['no_answer'] || 0}</p>
-            <p className="text-xs text-gray-400">No Answer</p>
+            <p className={`text-2xl font-bold ${metrics.followUpsDue > 0 ? 'text-red-600' : 'text-navy'}`}>{metrics.followUpsDue}</p>
+            <p className="text-xs text-gray-400">Follow-ups Due</p>
           </div>
         </div>
       </div>
@@ -736,6 +967,30 @@ function MetricsTab({ leads, teams }: { leads: FireLead[]; teams: TeamConfig[] }
 function TrainingTab() {
   return (
     <div className="space-y-6">
+      {/* Pipeline Stages Guide */}
+      <div className="bg-white rounded-2xl border border-gray-200 p-6">
+        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Pipeline Stages</h2>
+        <div className="space-y-2.5">
+          {STATUS_OPTIONS.map((o) => (
+            <div key={o.value} className="flex items-start gap-3">
+              <span className={`text-xs font-semibold rounded-full px-2.5 py-0.5 flex-shrink-0 mt-0.5 ${o.color}`}>{o.label}</span>
+              <span className="text-sm text-gray-600">{o.tip}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 pt-4 border-t border-gray-100">
+          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Lost Reasons</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {LOST_REASONS.map((r) => (
+              <div key={r.value} className="flex items-start gap-2">
+                <span className="text-xs font-semibold text-red-600 flex-shrink-0 mt-0.5">{r.label}:</span>
+                <span className="text-xs text-gray-500">{r.tip}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Quick Reference */}
       <div className="bg-white rounded-2xl border border-gray-200 p-6">
         <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Fire Leads Quick Reference</h2>
@@ -1040,11 +1295,30 @@ export default function FireLeadList() {
     });
   }, [leads]);
 
+  const todayStr = useMemo(() => new Date().toISOString().slice(0, 10), []);
+
+  const { counts, followUpDueCount } = useMemo(() => {
+    const c: Record<string, number> = { all: deduped.length };
+    let fuDue = 0;
+    for (const l of deduped) {
+      const norm = l.status === 'no_answer' ? 'attempted' : l.status === 'not_interested' ? 'lost' : l.status;
+      c[norm] = (c[norm] || 0) + 1;
+      if (l.follow_up_date && l.follow_up_date <= todayStr && l.status !== 'converted' && l.status !== 'lost' && l.status !== 'not_interested') fuDue++;
+    }
+    return { counts: c, followUpDueCount: fuDue };
+  }, [deduped, todayStr]);
+
   const filtered = useMemo(() => {
     let result = deduped.filter((lead) => {
       // Team visibility: non-admin users only see their team's leads
       if (session && !session.isAdmin && lead.assigned_team !== session.teamId) return false;
-      if (filter !== 'all' && lead.status !== filter) return false;
+      // Status / smart filters
+      if (filter === 'follow_up_due') {
+        if (!lead.follow_up_date || lead.follow_up_date > todayStr) return false;
+        if (lead.status === 'converted' || lead.status === 'lost' || lead.status === 'not_interested') return false;
+      } else if (filter !== 'all') {
+        if (lead.status !== filter) return false;
+      }
       // Admin team filter
       if (session?.isAdmin && teamFilter !== 'all') {
         if (teamFilter === 'unassigned') {
@@ -1068,7 +1342,9 @@ export default function FireLeadList() {
           lead.city?.toLowerCase().includes(q) ||
           lead.owner_name?.toLowerCase().includes(q) ||
           lead.renter_name?.toLowerCase().includes(q) ||
-          lead.incident_number?.toLowerCase().includes(q)
+          lead.incident_number?.toLowerCase().includes(q) ||
+          lead.insurance_carrier?.toLowerCase().includes(q) ||
+          lead.competitor_name?.toLowerCase().includes(q)
         );
       }
       return true;
@@ -1085,13 +1361,15 @@ export default function FireLeadList() {
           return (a.city || 'zzz').localeCompare(b.city || 'zzz');
         case 'city_za':
           return (b.city || '').localeCompare(a.city || '');
+        case 'follow_up':
+          return (a.follow_up_date || '9999').localeCompare(b.follow_up_date || '9999');
         default:
           return 0;
       }
     });
 
     return result;
-  }, [deduped, filter, teamFilter, assigneeFilter, search, sort, session]);
+  }, [deduped, filter, teamFilter, assigneeFilter, search, sort, session, todayStr]);
 
   // Show PIN gate if not authenticated (after all hooks)
   if (teamLoading) {
@@ -1102,12 +1380,6 @@ export default function FireLeadList() {
     );
   }
   if (!session) return <TeamPinGate onSubmit={authenticate} />;
-
-  // Count per status for badges (use deduped)
-  const counts: Record<string, number> = { all: deduped.length };
-  for (const l of deduped) {
-    counts[l.status] = (counts[l.status] || 0) + 1;
-  }
 
   return (
     <div className="min-h-screen bg-warm">
@@ -1266,10 +1538,10 @@ export default function FireLeadList() {
             </div>
 
             {/* Filter chips + route button */}
-            <div className="flex gap-2 flex-wrap mb-6 items-center">
+            <div className="flex gap-2 overflow-x-auto pb-2 mb-6 items-center -mx-6 px-6 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors flex-shrink-0 ${
                   filter === 'all' ? 'bg-navy text-white' : 'bg-white text-gray-600 border border-gray-200 hover:border-navy/30'
                 }`}
               >
@@ -1279,17 +1551,25 @@ export default function FireLeadList() {
                 <button
                   key={o.value}
                   onClick={() => setFilter(o.value)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors flex-shrink-0 ${
                     filter === o.value ? 'bg-navy text-white' : 'bg-white text-gray-600 border border-gray-200 hover:border-navy/30'
                   }`}
                 >
                   {o.label} {counts[o.value] ? <span className="ml-1 text-xs opacity-60">{counts[o.value]}</span> : null}
                 </button>
               ))}
+              <button
+                onClick={() => setFilter('follow_up_due')}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors flex-shrink-0 ${
+                  filter === 'follow_up_due' ? 'bg-red-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:border-red-300'
+                }`}
+              >
+                Follow-up Due {followUpDueCount > 0 && <span className="ml-1 text-xs opacity-60">{followUpDueCount}</span>}
+              </button>
 
               {/* Route optimization button */}
               {(() => {
-                const routableLeads = filtered.filter((l) => l.address && ['new', 'contacted', 'pursuing', 'no_answer'].includes(l.status));
+                const routableLeads = filtered.filter((l) => l.address && ['new', 'attempted', 'contacted', 'waiting_on_adjuster', 'pursuing'].includes(l.status));
                 if (routableLeads.length === 0) return null;
                 const waypoints = routableLeads.slice(0, 25).map((l) => encodeURIComponent(l.address!));
                 // Google Maps directions URL: first address as origin, last as destination, rest as optimized waypoints

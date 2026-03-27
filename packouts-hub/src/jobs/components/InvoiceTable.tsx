@@ -1,14 +1,5 @@
 import type { QBOInvoice } from '../types';
-
-function formatCurrency(amount?: number): string {
-  if (amount == null) return '—';
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
-}
-
-function formatDate(dateStr?: string): string {
-  if (!dateStr) return '—';
-  return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-}
+import { formatDate, formatCurrency } from '../../lib/format';
 
 export default function InvoiceTable({ invoices }: { invoices: QBOInvoice[] }) {
   if (invoices.length === 0) {

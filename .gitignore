@@ -26,8 +26,10 @@ iCloudPhotos/
 .config/
 .gitconfig
 
-# API keys
+# API keys & env files
 .env
+.env.local
+.env*.local
 estimator/.env
 
 # Python cache

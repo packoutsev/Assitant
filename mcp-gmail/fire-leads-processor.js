@@ -24,7 +24,7 @@ const CHAT_API = "https://chat.googleapis.com/v1";
 const FIRE_LEADS_LABEL = "Label_255036435287786768";
 const PROCESSED_FILE = join(HOME, ".fireleads_processed.json");
 const XCELERATE_MCP_URL = "https://xceleratewebhook-326811155221.us-central1.run.app/mcp";
-const XCELERATE_API_KEY = "ee30f26088697fd9e1f8e8857d90aba60e6fc8422f05a0c79b5c06791c809a51";
+const XCELERATE_API_KEY = process.env.XCELERATE_API_KEY || "";
 
 // Google Chat spaces
 const SPACES = {
