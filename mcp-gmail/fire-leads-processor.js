@@ -112,12 +112,12 @@ async function apiPost(base, path, body, service) {
 // ---------------------------------------------------------------------------
 
 async function searchGmail(query, maxResults = 20) {
-  const data = await apiGet(GMAIL_API, "/messages", { q: query, maxResults }, "gmail");
+  const data = await apiGet(GMAIL_API, "/messages", { q: query, maxResults }, "gmail_packouts");
   return data.messages || [];
 }
 
 async function getGmailMessage(id) {
-  return apiGet(GMAIL_API, `/messages/${id}`, { format: "full" }, "gmail");
+  return apiGet(GMAIL_API, `/messages/${id}`, { format: "full" }, "gmail_packouts");
 }
 
 function extractBody(payload) {
@@ -186,6 +186,10 @@ function parseFireleadsEmail(subject, body) {
     services: [],
   };
 
+  // Strip bold markers (* characters) from body — they're email formatting artifacts
+  // that interfere with field parsing regexes
+  body = body.replace(/\*/g, "");
+
   // Determine type from subject
   if (/LIVE LEAD/i.test(subject)) {
     result.type = "LIVE LEAD";
@@ -220,10 +224,10 @@ function parseFireleadsEmail(subject, body) {
     }
   }
 
-  // Address
-  const addrMatch = body.match(/Incident Address:\s*\*?\s*(?:AREA OF:\s*)?(.*?)(?:\s*<|\s*\*|\n)/i);
+  // Address — use [\s\S] to span lines (zip sometimes wraps to next line)
+  const addrMatch = body.match(/Incident Address:\s*(?:AREA OF:\s*)?([\s\S]*?)(?=\s*<https?:|\nIncident County:|\n\s*\n)/i);
   if (addrMatch) {
-    let addr = addrMatch[1].trim().replace(/\s+/g, " ");
+    let addr = addrMatch[1].replace(/\s+/g, " ").trim();
     result.address = addr;
     // Extract zip
     const zipMatch = addr.match(/(\d{5})\s*$/);
@@ -257,10 +261,13 @@ function parseFireleadsEmail(subject, body) {
     const raw = ownerBlock[1].replace(/\*/g, "").replace(/\n/g, " ").replace(/\s+/g, " ").trim();
 
     // Extract all phone numbers first (before splitting on dashes)
-    const allPhones = raw.match(/\d{3}[-.\s]?\d{3}[-.\s]?\d{4}/g) || [];
+    // Handles: 602-510-8825, (602) 510-8825, 6025108825, 602.510.8825
+    const allPhones = (raw.match(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g) || []).map((p) =>
+      p.replace(/[()]/g, "").replace(/\s+/g, "-").replace(/^(\d{3})(\d{3})(\d{4})$/, "$1-$2-$3")
+    );
 
     // Extract name~phone pairs (e.g., "Marla~623-570-1382")
-    const namePairs = raw.match(/(\w+)~(\d{3}[-.\s]?\d{3}[-.\s]?\d{4})/g);
+    const namePairs = raw.match(/(\w+)~(\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})/g);
     if (namePairs) {
       result.owner_phone_detail = namePairs.map((p) => {
         const tildeIdx = p.indexOf("~");
@@ -270,11 +277,10 @@ function parseFireleadsEmail(subject, body) {
     result.owner_phone = allPhones.join(" & ") || null;
 
     // Now parse name and address: split on " - " but protect phone numbers
-    // Replace phone numbers temporarily to avoid dash confusion
+    // Replace phone numbers (and their original forms) temporarily to avoid dash confusion
     let cleaned = raw;
-    for (const ph of allPhones) {
-      cleaned = cleaned.replace(ph, "___PHONE___");
-    }
+    cleaned = cleaned.replace(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g, "___PHONE___");
+    cleaned = cleaned.replace(/\s*\/\/\s*/g, " ");
     // Also remove name~phone patterns
     cleaned = cleaned.replace(/\w+~___PHONE___/g, "").replace(/\s*&\s*$/, "").replace(/\s+/g, " ").trim();
 
@@ -613,7 +619,10 @@ async function main() {
     }
 
     if (!lead.address) {
-      log(`  Skipping — no address found`);
+      log(`  WARNING: no address found — marking processed to avoid blocking pipeline`);
+      log(`  Subject: ${subject}`);
+      markProcessed(msg.id, lead.incident_number);
+      skipped++;
       continue;
     }
 
